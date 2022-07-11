@@ -263,6 +263,14 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    implementation 'com.naver.maps:map-sdk:3.15.0'
+
+    implementation 'com.android.support:appcompat-v7:27.0.0'
+
+    implementation('com.naver.maps:map-sdk:3.15.0') {
+        exclude group: 'com.android.support'
+    }
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
