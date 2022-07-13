@@ -28,6 +28,12 @@ git clone -b https://github.com/dnd-side-project/dnd-7th-6-frontend.git hot6
 cd hot6
 ```
 
+- Download node_modules
+
+```
+npm install || yarn
+```
+
 - Start Emulator
 
 - Start App on Android
@@ -39,5 +45,7 @@ yarn android
 - Start App on iOS
 
 ```
+cd ios
+pod install #M1 Mac | arch -x86_64 pod install
 yarn ios
 ```
