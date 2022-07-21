@@ -27,6 +27,11 @@ module.exports = {
         ],
         'import/namespace': 'off',
       },
+      settings: {
+        'import/resolver': {
+          typescript: {},
+        },
+      },
     },
   ],
 };
