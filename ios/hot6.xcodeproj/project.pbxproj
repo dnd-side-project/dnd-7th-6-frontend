@@ -25,6 +25,55 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = hot6;
 		};
+		062EA275288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5E4674603A5D5B9215FFA0F8E69F8B71;
+			remoteInfo = libwebp;
+		};
+		062EA277288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3566E29624F4738A4953CE7ABF635C5E;
+			remoteInfo = "react-native-config";
+		};
+		062EA279288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CC9CF62342D0D8A46D8176D06AABE411;
+			remoteInfo = "react-native-image-picker";
+		};
+		062EA27B288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5B6D6355CC37E6059957DFDFEA6E4454;
+			remoteInfo = "react-native-image-resizer";
+		};
+		062EA27D288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E55EA3C6F285F6FA8067C5C8A428FA64;
+			remoteInfo = RNFastImage;
+		};
+		062EA27F288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B0B214D775196BA7CA8E17E53048A493;
+			remoteInfo = SDWebImage;
+		};
+		062EA281288ED9D00043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FCF61D9B2B75054A9A3185DDC609B7FF;
+			remoteInfo = SDWebImageWebPCoder;
+		};
 		0630528A287C4EC600DDFD03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -403,6 +452,7 @@
 				0630529D287C4EC600DDFD03 /* fmt */,
 				0630529F287C4EC600DDFD03 /* glog */,
 				063052A1287C4EC600DDFD03 /* libevent */,
+				062EA276288ED9D00043B3EC /* libwebp */,
 				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
@@ -417,7 +467,10 @@
 				063052B9287C4EC600DDFD03 /* React-jsiexecutor */,
 				063052BB287C4EC600DDFD03 /* React-jsinspector */,
 				063052BD287C4EC600DDFD03 /* React-logger */,
+				062EA278288ED9D00043B3EC /* react-native-config */,
 				063052BF287C4EC600DDFD03 /* react-native-geolocation-service */,
+				062EA27A288ED9D00043B3EC /* react-native-image-picker */,
+				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
 				063052C5287C4EC600DDFD03 /* React-perflogger */,
@@ -430,7 +483,10 @@
 				063052D3287C4EC600DDFD03 /* React-RCTText */,
 				063052D5287C4EC600DDFD03 /* React-RCTVibration */,
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
+				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
+				062EA280288ED9D00043B3EC /* SDWebImage */,
+				062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */,
 				063052DB287C4EC600DDFD03 /* SocketRocket */,
 				063052DD287C4EC600DDFD03 /* Yoga */,
 				063052DF287C4EC600DDFD03 /* YogaKit */,
@@ -595,6 +651,62 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		062EA276288ED9D00043B3EC /* libwebp */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = libwebp;
+			path = liblibwebp.a;
+			remoteRef = 062EA275288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA278288ED9D00043B3EC /* react-native-config */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-config";
+			path = "libreact-native-config.a";
+			remoteRef = 062EA277288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA27A288ED9D00043B3EC /* react-native-image-picker */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-image-picker";
+			path = "libreact-native-image-picker.a";
+			remoteRef = 062EA279288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA27C288ED9D00043B3EC /* react-native-image-resizer */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-image-resizer";
+			path = "libreact-native-image-resizer.a";
+			remoteRef = 062EA27B288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA27E288ED9D00043B3EC /* RNFastImage */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNFastImage;
+			path = libRNFastImage.a;
+			remoteRef = 062EA27D288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA280288ED9D00043B3EC /* SDWebImage */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = SDWebImage;
+			path = libSDWebImage.a;
+			remoteRef = 062EA27F288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = SDWebImageWebPCoder;
+			path = libSDWebImageWebPCoder.a;
+			remoteRef = 062EA281288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1200,6 +1312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F34T4G7PLC;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = hot6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1227,6 +1340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F34T4G7PLC;
 				INFOPLIST_FILE = hot6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1278,7 +1392,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1350,7 +1464,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

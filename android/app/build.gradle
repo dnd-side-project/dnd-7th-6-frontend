@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle" //React-Config 추가 코드
 
 import com.android.build.OutputFile
 
@@ -140,6 +141,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+        resValue "string", "build_config_package", "com.hot6" //React-Config 추가
 
         if (isNewArchitectureEnabled()) {
             // We configure the NDK build only if you decide to opt-in for the New Architecture.
@@ -224,6 +226,17 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        // 이름을 release 로 하긴 했지만 다른 이름도 가능하다.
+        // 단, 그 경우 `android.buildTypes.release`의 `signingConfig` 값도 같이 바꿔주어야 한다.
+        //아래는 React-Config 설정 부분
+        // release {
+        //     if(project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+        //         storeFile file(MYAPP_UPLOAD_STORE_FILE)
+        //         storePassword MYAPP_UPLOAD_STORE_PASSWORD
+        //         keyAlias MYAPP_UPLOAD_KEY_ALIAS
+        //         keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+        //     }
+        // }
     }
     buildTypes {
         debug {
@@ -235,6 +248,27 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        //밑 부터 환경 분리 설정 (React-Config)
+        devDebug {
+            initWith debug
+            applicationIdSuffix ".dev"
+            matchingFallbacks = ['debug']
+        }
+        devRelease {
+            initWith release
+            applicationIdSuffix ".dev"
+            matchingFallbacks = ['release']
+        }
+        stageDebug {
+            initWith debug
+            applicationIdSuffix ".test"
+            matchingFallbacks = ['debug']
+        }
+        stageRelease {
+            initWith release
+            applicationIdSuffix ".test"
+            matchingFallbacks = ['release']
         }
     }
 

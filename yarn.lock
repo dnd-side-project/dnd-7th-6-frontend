@@ -3148,6 +3148,13 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dom7@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.4.tgz#8b68c5d8e5e2ed0fddb1cb93e433bc9060c8f3fb"
+  integrity sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
+  dependencies:
+    ssr-window "^4.0.0"
+
 domexception@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/domexception/-/domexception-2.0.1.tgz"
@@ -6722,6 +6729,16 @@ react-native-codegen@^0.69.1:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-config@^1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.6.tgz#2aefebf4d9cf02831e64bbc1307596bd212f6d42"
+  integrity sha512-cSLdOfva2IPCxh6HjHN1IDVW9ratAvNnnAUx6ar2Byvr8KQU7++ysdFYPaoNVuJURuYoAKgvjab8ZcnwGZIO6Q==
+
+react-native-fast-image@^8.5.11:
+  version "8.5.11"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz#e3dc969d0e4e8df026646bf18194465aa55cbc2b"
+  integrity sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA==
+
 react-native-geolocation-service@^5.3.0:
   version "5.3.0"
   resolved "https://registry.npmjs.org/react-native-geolocation-service/-/react-native-geolocation-service-5.3.0.tgz"
@@ -6731,6 +6748,16 @@ react-native-gradle-plugin@^0.0.7:
   version "0.0.7"
   resolved "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   integrity sha512-+4JpbIx42zGTONhBTIXSyfyHICHC29VTvhkkoUOJAh/XHPEixpuBduYgf6Y4y9wsN1ARlQhBBoptTvXvAFQf5g==
+
+react-native-image-picker@^4.8.4:
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-4.8.4.tgz#ac52f1e265458e944664adf1dcd0a9ee408fe083"
+  integrity sha512-Mjh2j/sddyolb16EpmprWzbtyeFvW8Xgzr/8WNi9d6bR2FC/kL78cY/a+7Yzujg5ZDtT1MWys+eWw/qtfwgGiw==
+
+react-native-image-resizer@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/react-native-image-resizer/-/react-native-image-resizer-1.4.5.tgz#5a520aa8baa07638b1894a1d87d4d9a0945c8d58"
+  integrity sha512-33EgL3C9pyvjKpullAB6fWyD5QhoYEpNNB9rxNvUsrpAnL2mHBW7PTrUCCZudJeB6Weg7nbweKrSw1nnto5aqg==
 
 react-native-nmap@^0.0.66:
   version "0.0.66"
@@ -7502,6 +7529,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
+ssr-window@^4.0.0, ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 stack-utils@^2.0.2:
   version "2.0.5"
   resolved "https://registry.npmjs.org/stack-utils/-/stack-utils-2.0.5.tgz"
@@ -7709,6 +7741,14 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swiper@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.3.1.tgz#ad744c38b86b48c2207d169807e995e70cbce6be"
+  integrity sha512-oASYsulsERlbQVTZ8FjlTDJSN4YZwhp+AkvepOj8EOhgpvxzKoMpWpBPrk7ypkMioQUx6x2NPvkRU0Qv9mpS0A==
+  dependencies:
+    dom7 "^4.0.4"
+    ssr-window "^4.0.2"
 
 symbol-observable@1.0.1:
   version "1.0.1"
