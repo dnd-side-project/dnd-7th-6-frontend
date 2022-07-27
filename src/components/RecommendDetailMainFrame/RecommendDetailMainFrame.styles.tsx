@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
 
 export const Frame = styled.Image`
-  height: 500px;
+  height: 400px;
 `;
