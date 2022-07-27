@@ -2,10 +2,14 @@ import React, {PropsWithChildren} from 'react';
 
 import {Container, ChipText} from './Chip.styles';
 
-const Chip = ({children}: PropsWithChildren) => {
+export interface Props {
+  mode?: 'bright' | 'dark';
+}
+
+const Chip = ({children, mode = 'dark'}: PropsWithChildren<Props>) => {
   return (
-    <Container>
-      <ChipText>{children}</ChipText>
+    <Container mode={mode}>
+      <ChipText mode={mode}>{children}</ChipText>
     </Container>
   );
 };
