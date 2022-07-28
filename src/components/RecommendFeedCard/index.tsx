@@ -1,3 +1,3 @@
-import {RecommendFeedCard} from './RecommendFeedCard.styles';
+import RecommendFeedCard from './RecommendFeedCard';
 
 export default RecommendFeedCard;
