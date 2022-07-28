@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import React from 'react';
 
-import PressableIcon from '../PressableIcon';
+import PressableIcon from '../utils/PressableIcon';
 
 import LikeIcon from 'src/icons/LikeIcon';
 import UploadIcon from 'src/icons/UploadIcon';
