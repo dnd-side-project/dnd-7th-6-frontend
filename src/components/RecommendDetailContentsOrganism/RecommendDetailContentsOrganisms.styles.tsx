@@ -1,10 +1,4 @@
 import styled from '@emotion/native';
-import React from 'react';
-
-import PressableIcon from '../utils/PressableIcon';
-
-import LikeIcon from 'src/icons/LikeIcon';
-import UploadIcon from 'src/icons/UploadIcon';
 
 export const Container = styled.View`
   padding: 18px;
@@ -65,19 +59,3 @@ export const IconWrapper = styled.View`
 export const IconContainer = styled.View`
   padding: 0 8px;
 `;
-
-export const PressableLikeIcon = () => {
-  return (
-    <PressableIcon>
-      <LikeIcon />
-    </PressableIcon>
-  );
-};
-
-export const PressableUploadIcon = () => {
-  return (
-    <PressableIcon>
-      <UploadIcon />
-    </PressableIcon>
-  );
-};
