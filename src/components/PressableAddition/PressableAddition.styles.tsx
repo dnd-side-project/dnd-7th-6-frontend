@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {fontPercentage, heightPercentage, widthPercentage} from 'src/utils/ScreenResponse';
+import {fontPercentage, heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 export const Container = styled.Pressable({
   alignSelf: 'flex-start',
