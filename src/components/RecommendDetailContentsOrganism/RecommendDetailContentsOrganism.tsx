@@ -18,8 +18,12 @@ import {
 import useGetPost from 'src/querys/useGetPost';
 import toDateFormat from 'src/utils/toDateFormat';
 
-const RecommendDetailContentsOrganism = () => {
-  const {data} = useGetPost(1);
+interface Props {
+  id: number;
+}
+
+const RecommendDetailContentsOrganism = ({id}: Props) => {
+  const {data} = useGetPost(id);
 
   return (
     <Container>
