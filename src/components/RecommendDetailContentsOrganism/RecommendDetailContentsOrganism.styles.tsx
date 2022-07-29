@@ -39,7 +39,7 @@ export const Username = styled.Text`
   color: #444;
 `;
 
-export const Date = styled.Text`
+export const DateText = styled.Text`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
