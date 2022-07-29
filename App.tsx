@@ -6,7 +6,7 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 
 import BoothScreen from 'src/screens/BoothScreen/BoothScreen';
 import MyScreen from 'src/screens/MyScreen/MyScreen';
-import RecommendScreen from 'src/screens/RecommendScreen/RecommendScreen';
+import RouteRecommendScreen from 'src/screens/RecommendScreen';
 import StorageScreen from 'src/screens/StorageScreen/StorageScreen';
 import theme from 'src/styles/Theme';
 
@@ -22,16 +22,16 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     <QueryClientProvider client={new QueryClient()}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator screenOptions={{headerShown: false}}>
             <Tab.Screen name={'BoothScreen'} component={BoothScreen} />
-            <Tab.Screen name={'RecommendScreen'} component={RecommendScreen} />
+            <Tab.Screen name={'RecommendScreen'} component={RouteRecommendScreen} />
             <Tab.Screen name={'StorageScreen'} component={StorageScreen} />
             <Tab.Screen name={'MyScreen'} component={MyScreen} />
           </Tab.Navigator>
         </NavigationContainer>
-      </ThemeProvider>
+     </ThemeProvider>
     </QueryClientProvider>
   );
 };
