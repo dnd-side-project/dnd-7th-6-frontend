@@ -74,6 +74,13 @@
 			remoteGlobalIDString = FCF61D9B2B75054A9A3185DDC609B7FF;
 			remoteInfo = SDWebImageWebPCoder;
 		};
+		062EA3032892DE250043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 90EE8D3C082C157169540FC8F5913DAD;
+			remoteInfo = RNSVG;
+		};
 		0630528A287C4EC600DDFD03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -485,6 +492,7 @@
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
+				062EA3042892DE250043B3EC /* RNSVG */,
 				062EA280288ED9D00043B3EC /* SDWebImage */,
 				062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */,
 				063052DB287C4EC600DDFD03 /* SocketRocket */,
@@ -705,6 +713,14 @@
 			name = SDWebImageWebPCoder;
 			path = libSDWebImageWebPCoder.a;
 			remoteRef = 062EA281288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA3042892DE250043B3EC /* RNSVG */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNSVG;
+			path = libRNSVG.a;
+			remoteRef = 062EA3032892DE250043B3EC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */ = {
