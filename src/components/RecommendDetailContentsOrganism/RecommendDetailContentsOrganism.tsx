@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import Chip from '../Chip';
+import {PressableUploadIcon, PressableLikeIcon} from '../utils/Pressables/PressableIcons';
 import {
   ChipContainer,
   ChipWrapper,
@@ -10,8 +11,6 @@ import {
   Header,
   IconContainer,
   IconWrapper,
-  PressableLikeIcon,
-  PressableUploadIcon,
   TextSection,
   Username,
 } from './RecommendDetailContentsOrganisms.styles';
