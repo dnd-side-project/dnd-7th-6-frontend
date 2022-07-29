@@ -1,61 +1,64 @@
 import styled from '@emotion/native';
 
-export const Container = styled.View`
-  padding: 18px;
-  background-color: white;
-`;
+import {fontPercentage, heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
+import theme from 'src/styles/Theme';
 
-export const Header = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 8px 0;
-`;
+export const Container = styled.View({
+  paddingVertical: heightPercentage(31),
+  paddingHorizontal: widthPercentage(18),
+  backgroundColor: 'white',
+});
 
-export const TextSection = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
+export const Header = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+});
 
-export const Contents = styled.Text`
-  padding: 8px 0;
-  line-height: 19.6px;
-`;
+export const TextSection = styled.View({
+  flexDirection: 'row',
+});
 
-export const ChipWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 3px;
-  padding: 8px 0;
-`;
+export const Contents = styled.Text({
+  paddingVertical: heightPercentage(16),
+  lineHeight: heightPercentage(19.6),
+  fontSize: fontPercentage(14),
+  color: theme.colors.grayscale[8],
+});
 
-export const ChipContainer = styled.View`
-  padding: 0 8px 8px 0;
-`;
+export const ChipWrapper = styled.View({
+  paddingVertical: heightPercentage(8),
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+});
 
-export const Username = styled.Text`
-  align-items: center;
-  color: #444;
-`;
+export const ChipContainer = styled.View({
+  paddingRight: widthPercentage(8),
+  paddingTop: heightPercentage(8),
+});
 
-export const DateText = styled.Text`
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  margin: 0px 16px;
-  color: #aaa;
-  font-size: 12px;
-  line-height: 22px;
-`;
+export const Username = styled.Text({
+  fontSize: fontPercentage(14),
+  lineHeight: heightPercentage(19.6),
+  color: theme.colors.grayscale[7],
+  textAlignVertical: 'center',
+});
 
-export const IconWrapper = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
+export const DateText = styled.Text({
+  fontSize: fontPercentage(12),
+  lineHeight: heightPercentage(16.8),
+  color: theme.colors.grayscale[5],
+  marginHorizontal: widthPercentage(6),
+  textAlignVertical: 'center',
+});
 
-export const IconContainer = styled.View`
-  padding: 0 8px;
-`;
+export const IconWrapper = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+});
+
+export const IconContainer = styled.View({
+  width: widthPercentage(32),
+  height: heightPercentage(32),
+  justifyContent: 'center',
+  alignItems: 'center',
+});

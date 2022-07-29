@@ -1,15 +1,15 @@
 import React, {PropsWithChildren} from 'react';
 
-import {Container, ChipText} from './Chip.styles';
+import {Container, ChipText, Mode, chipTheme, chipTextTheme} from './Chip.styles';
 
 export interface Props {
-  mode?: 'bright' | 'dark';
+  mode?: Mode;
 }
 
 const Chip = ({children, mode = 'dark'}: PropsWithChildren<Props>) => {
   return (
-    <Container mode={mode}>
-      <ChipText mode={mode}>{children}</ChipText>
+    <Container style={chipTheme[mode]}>
+      <ChipText style={chipTextTheme[mode]}>{children}</ChipText>
     </Container>
   );
 };
