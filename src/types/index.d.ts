@@ -4,16 +4,21 @@ export interface Post {
   content: string;
   likeCount: number;
   status: string;
+  createdAt: string;
+  updatedAt: string;
   postTagSet: Tag[];
   postImageSet: PostImage[];
+  user: User;
 }
 
 export interface Tag {
-  id: 2;
-  tag: string;
-  reviewCount: number;
-  postCount: number;
-  isPhotoBooth: boolean;
+  tag: {
+    id: 2;
+    tag: string;
+    reviewCount: number;
+    postCount: number;
+    isPhotoBooth: boolean;
+  };
 }
 
 export interface PostImage {

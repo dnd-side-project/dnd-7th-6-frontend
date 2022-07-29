@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import Chip from '../Chip';
 import {PressableUploadIcon, PressableLikeIcon} from '../utils/Pressables/PressableIcons';
@@ -7,31 +7,26 @@ import {
   ChipWrapper,
   Container,
   Contents,
-  Date,
+  DateText,
   Header,
   IconContainer,
   IconWrapper,
   TextSection,
   Username,
-} from './RecommendDetailContentsOrganisms.styles';
+} from './RecommendDetailContentsOrganism.styles';
+
+import useGetPost from 'src/querys/useGetPost';
+import toDateFormat from 'src/utils/toDateFormat';
 
 const RecommendDetailContentsOrganism = () => {
-  /*
-    username, date, contents, tags
-  */
-  const [data, setData] = useState({
-    username: 'minbberry',
-    date: '2023. 12. 30',
-    contents: '꿀팁 전수합니다 \n손을 입에 제대로 걸어야 예쁘게 나와요 ~',
-    tags: ['4인 이상', '코믹', '커플포즈', '신규이벤트프레임', '인생네컷 익선동지점'],
-  });
+  const {data} = useGetPost(1);
 
   return (
     <Container>
       <Header>
         <TextSection>
-          <Username>{data.username}</Username>
-          <Date>{data.date}</Date>
+          <Username>{data?.user.email}</Username>
+          <DateText>{toDateFormat(new Date(data?.createdAt || ''))}</DateText>
         </TextSection>
         <IconWrapper>
           <IconContainer>
@@ -42,11 +37,13 @@ const RecommendDetailContentsOrganism = () => {
           </IconContainer>
         </IconWrapper>
       </Header>
-      <Contents>{data.contents}</Contents>
+      <Contents>{data?.content}</Contents>
       <ChipWrapper>
-        {data.tags.map(tag => (
-          <ChipContainer>
-            <Chip mode="bright">{tag}</Chip>
+        {data?.postTagSet.map(({tag}) => (
+          <ChipContainer key={tag.id}>
+            <Chip mode="bright" key={tag.id}>
+              {tag.tag}
+            </Chip>
           </ChipContainer>
         ))}
       </ChipWrapper>
