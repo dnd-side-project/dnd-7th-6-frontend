@@ -10,10 +10,9 @@ export const FeedCardContainer = styled.View({
 });
 
 export const IconContainer = styled.View({
-  width: '100%',
   height: '100%',
-  flexDirection: 'column-reverse',
-  direction: 'rtl',
-  paddingVertical: 16,
-  paddingHorizontal: 15,
+  alignSelf: 'flex-end',
+  justifyContent: 'flex-end',
+  paddingVertical: widthPercentage(16),
+  paddingHorizontal: heightPercentage(15),
 });
