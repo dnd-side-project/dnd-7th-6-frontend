@@ -13,6 +13,6 @@ export const IconContainer = styled.View({
   height: '100%',
   alignSelf: 'flex-end',
   justifyContent: 'flex-end',
-  paddingVertical: widthPercentage(16),
-  paddingHorizontal: heightPercentage(15),
+  paddingVertical: heightPercentage(16),
+  paddingHorizontal: widthPercentage(15),
 });
