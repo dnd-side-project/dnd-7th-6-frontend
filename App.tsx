@@ -22,7 +22,7 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
     <QueryClientProvider client={new QueryClient()}>
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator screenOptions={{headerShown: false}}>
             <Tab.Screen name={'BoothScreen'} component={BoothScreen} />
@@ -31,7 +31,7 @@ const App = () => {
             <Tab.Screen name={'MyScreen'} component={MyScreen} />
           </Tab.Navigator>
         </NavigationContainer>
-     </ThemeProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
