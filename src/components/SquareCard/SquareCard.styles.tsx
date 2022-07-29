@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import {StyleSheet} from 'react-native';
 
-import {heightPercentage, widthPercentage} from 'src/utils/ScreenResponse';
+import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 export const CardContainer = styled.View({
   width: widthPercentage(84),
