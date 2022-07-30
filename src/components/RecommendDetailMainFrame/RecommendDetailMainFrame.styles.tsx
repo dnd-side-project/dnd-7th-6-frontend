@@ -1,7 +1,5 @@
-import styled from '@emotion/native';
-
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
-export const Frame = styled.Image({
+export const style = {
   height: heightPercentage(500),
-});
+};

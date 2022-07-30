@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useMemo} from 'react';
+import FastImage from 'react-native-fast-image';
 
-import {Frame} from './RecommendDetailMainFrame.styles';
+import {style} from './RecommendDetailMainFrame.styles';
 
-const RecommendDetailMainFrame = () => {
-  /*
-    photo_uri
-  */
-  return (
-    <Frame
-      source={{
-        uri: 'https://user-images.githubusercontent.com/49841765/181157700-c2590e53-a1dd-403d-a924-71e25ae48a30.jpg',
-      }}
-    />
-  );
+import useGetPost from 'src/querys/useGetPost';
+
+interface Props {
+  id: number;
+}
+
+const RecommendDetailMainFrame = ({id}: Props) => {
+  const {data} = useGetPost(id);
+  const images =
+    useMemo(() => data?.postImageSet.sort((a, b) => a.imageOrder - b.imageOrder), [data]) || [];
+
+  return <FastImage source={{uri: images[0]?.imageUrl}} style={style} fallback />;
 };
 
 export default RecommendDetailMainFrame;
