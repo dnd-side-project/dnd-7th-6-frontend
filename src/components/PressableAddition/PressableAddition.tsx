@@ -13,11 +13,14 @@ export interface Props {
   mode?: Mode;
 }
 
-const PressableAddition = (props: PressableProps & PropsWithChildren, {mode = 'bright'}: Props) => {
+const PressableAddition = ({
+  mode = 'bright',
+  ...rest
+}: PressableProps & PropsWithChildren<Props>) => {
   return (
-    <Container style={pressableContainerTheme[mode]} {...props}>
+    <Container style={pressableContainerTheme[mode]} {...rest}>
       <PressableAdditionText style={pressableAdditionTextTheme[mode]}>
-        {props.children}
+        {rest.children}
       </PressableAdditionText>
     </Container>
   );
