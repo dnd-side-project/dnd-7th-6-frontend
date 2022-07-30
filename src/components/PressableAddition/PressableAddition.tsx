@@ -1,11 +1,23 @@
 import React, {PropsWithChildren} from 'react';
 
-import {Container, PressableAdditionText} from './PressableAddition.styles';
+import {
+  Container,
+  Mode,
+  PressableAdditionText,
+  pressableAdditionTextTheme,
+  pressableContainerTheme,
+} from './PressableAddition.styles';
 
-const PressableAddition = ({children}: PropsWithChildren) => {
+export interface Props {
+  mode?: Mode;
+}
+
+const PressableAddition = ({children, mode = 'dark'}: PropsWithChildren<Props>) => {
   return (
-    <Container>
-      <PressableAdditionText>{children}</PressableAdditionText>
+    <Container style={pressableContainerTheme[mode]}>
+      <PressableAdditionText style={pressableAdditionTextTheme[mode]}>
+        {children}
+      </PressableAdditionText>
     </Container>
   );
 };
