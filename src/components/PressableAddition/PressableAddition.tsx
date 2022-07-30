@@ -1,4 +1,5 @@
 import React, {PropsWithChildren} from 'react';
+import {PressableProps} from 'react-native';
 
 import {
   Container,
@@ -12,11 +13,11 @@ export interface Props {
   mode?: Mode;
 }
 
-const PressableAddition = ({children, mode = 'dark'}: PropsWithChildren<Props>) => {
+const PressableAddition = (props: PressableProps & PropsWithChildren, {mode = 'bright'}: Props) => {
   return (
-    <Container style={pressableContainerTheme[mode]}>
+    <Container style={pressableContainerTheme[mode]} {...props}>
       <PressableAdditionText style={pressableAdditionTextTheme[mode]}>
-        {children}
+        {props.children}
       </PressableAdditionText>
     </Container>
   );
