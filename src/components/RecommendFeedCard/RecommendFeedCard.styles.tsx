@@ -4,10 +4,11 @@ import {StyleSheet} from 'react-native';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 export const FeedCardContainer = styled.View({
-  width: widthPercentage(164),
+  width: widthPercentage(166),
   height: heightPercentage(220),
-  borderRadius: 12,
   backgroundColor: '#F6F6F6',
+  marginHorizontal: widthPercentage(5.5),
+  marginVertical: heightPercentage(16),
 });
 
 export const IconContainer = styled.View({
@@ -23,6 +24,7 @@ export const IconContainer = styled.View({
 
 export const styles = StyleSheet.create({
   photoStyle: {
+    borderRadius: 12,
     flex: 1,
     zIndex: 2,
   },
