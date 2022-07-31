@@ -8,6 +8,7 @@ export const FeedCardContainer = styled.View({
   height: heightPercentage(220),
   backgroundColor: '#F6F6F6',
   marginHorizontal: widthPercentage(5.5),
+  borderRadius: 12,
   marginVertical: heightPercentage(16),
 });
 
