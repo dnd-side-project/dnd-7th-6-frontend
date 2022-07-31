@@ -9,7 +9,7 @@ type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'Recommen
 const RecommendScreen = ({navigation}: RecommendScreenProps) => {
   return (
     <View>
-      <Text onPress={() => navigation.push('RecommendDetail')}>Main</Text>
+      <Text onPress={() => navigation.push('RecommendDetail', {postId: 1})}>Main</Text>
     </View>
   );
 };
