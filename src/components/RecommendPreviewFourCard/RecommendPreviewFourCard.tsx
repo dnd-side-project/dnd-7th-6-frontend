@@ -25,7 +25,7 @@ const RecommendPreviewFourCard = ({data}: Props) => {
       <FlatList
         data={data}
         numColumns={2}
-        keyExtractor={o => o.url}
+        keyExtractor={o => o.id}
         renderItem={renderItem}
         scrollEnabled={false}
       />
