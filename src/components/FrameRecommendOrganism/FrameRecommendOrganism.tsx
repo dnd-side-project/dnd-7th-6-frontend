@@ -3,7 +3,7 @@ import React, {PropsWithChildren} from 'react';
 import PressableAddition from '../PressableAddition';
 import RecommendPreviewFourCard from '../RecommendPreviewFourCard';
 import {SubHeadline2} from '../utils/Text';
-import {ButtonWrapper, OrganismView, TitleWrapper} from './RecommendPreviewCardsOrganism.styles';
+import {ButtonWrapper, OrganismView, TitleWrapper} from './FrameRecommendOrganism.styles';
 
 import {TestData} from 'src/TestData';
 
@@ -19,7 +19,7 @@ export type renderItemList = {
   };
 };
 
-const RecommendPreviewCardsOrganism = ({children}: PropsWithChildren) => {
+const FrameRecommendOrganism = ({children}: PropsWithChildren) => {
   //TO-DO data fetching
   return (
     <OrganismView>
@@ -28,10 +28,10 @@ const RecommendPreviewCardsOrganism = ({children}: PropsWithChildren) => {
       </TitleWrapper>
       <RecommendPreviewFourCard data={TestData} />
       <ButtonWrapper>
-        <PressableAddition>사진 더보기 </PressableAddition>
+        <PressableAddition>사진 더보기</PressableAddition>
       </ButtonWrapper>
     </OrganismView>
   );
 };
 
-export default RecommendPreviewCardsOrganism;
+export default FrameRecommendOrganism;

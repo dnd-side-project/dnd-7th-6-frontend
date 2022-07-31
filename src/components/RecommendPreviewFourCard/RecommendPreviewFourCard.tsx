@@ -1,7 +1,7 @@
 import React from 'react';
 
+import {Props} from '../PoseRecommendOrganism/PoseRecommendOrganism';
 import RecommendFeedCard from '../RecommendFeedCard';
-import {Props} from '../RecommendPreviewCardsOrganism/RecommendPreviewCardsOrganism';
 import {PreviewFourCardView} from './RecommendPreviewFourCard.styles';
 
 const RecommendPreviewFourCard = ({data}: Props) => {
