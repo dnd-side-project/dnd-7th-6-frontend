@@ -1,16 +1,25 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {useLayoutEffect} from 'react';
+
+import {RecommendHeaderStyle} from './RecommendScreen.header';
 
 import {RecommendParamList} from '.';
 
-type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
+import DefaultScrollView from 'src/components/DefaultScrollView';
+import RecommendPreviewFourCard from 'src/components/RecommendPreviewFourCard';
+import {sData} from 'src/components/RecommendPreviewFourCard/TestData';
 
-const RecommendScreen = ({navigation}: RecommendScreenProps) => {
+export type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
+
+const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
+  useLayoutEffect(() => {
+    RecommendHeaderStyle({navigation, route});
+  });
   return (
-    <View>
-      <Text onPress={() => navigation.push('RecommendDetail')}>Main</Text>
-    </View>
+    <DefaultScrollView>
+      <RecommendPreviewFourCard data={sData} />
+    </DefaultScrollView>
   );
 };
 
