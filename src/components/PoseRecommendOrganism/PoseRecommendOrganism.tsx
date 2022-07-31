@@ -7,18 +7,6 @@ import {ButtonWrapper, OrganismView, TitleWrapper} from './PoseRecommendOrganism
 
 import {TestData} from 'src/TestData';
 
-export interface Props {
-  data: ReadonlyArray<renderItemList['item']>;
-}
-
-export type renderItemList = {
-  item: {
-    url: string;
-    id: string;
-    title: string;
-  };
-};
-
 const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
   //TO-DO data fetching
   return (
