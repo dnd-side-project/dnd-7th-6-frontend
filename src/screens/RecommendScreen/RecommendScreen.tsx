@@ -16,6 +16,7 @@ const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
   useLayoutEffect(() => {
     RecommendHeaderStyle({navigation, route});
   });
+
   return (
     <DefaultScrollView>
       <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
