@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
-import {Props} from '../PoseRecommendOrganism/PoseRecommendOrganism';
 import RecommendFeedCard from '../RecommendFeedCard';
 import {PreviewFourCardView} from './RecommendPreviewFourCard.styles';
 
-const RecommendPreviewFourCard = ({data}: Props) => {
+import {Post} from 'src/types';
+
+interface Props {
+  data: Array<Post>;
+  onPress?: onPressFeedCardHandler;
+}
+
+type onPressFeedCardHandler = (id: number) => () => void;
+
+const RecommendPreviewFourCard = ({data, onPress}: Props) => {
+  const fourPosts = useMemo(() => data.slice(0, 4), [data]);
+
   return (
     <PreviewFourCardView>
-      {data.map(({url, id}) => (
-        <RecommendFeedCard imgUrl={url} key={id} />
+      {fourPosts.map(({id, postImageSet}) => (
+        <RecommendFeedCard
+          imgUrl={postImageSet[0].imageUrl}
+          key={id}
+          {...(onPress ? {onPress: onPress(id)} : {})}
+        />
       ))}
     </PreviewFourCardView>
   );

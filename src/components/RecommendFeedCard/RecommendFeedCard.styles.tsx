@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
-export const FeedCardContainer = styled.View({
+export const FeedCardContainer = styled.Pressable({
   width: widthPercentage(166),
   height: heightPercentage(220),
   backgroundColor: '#F6F6F6',

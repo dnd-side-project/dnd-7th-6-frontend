@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export type RecommendParamList = {
   RecommendScreen: undefined;
-  RecommendDetail: undefined; //TO-DO {imgId: string};
+  RecommendDetail: {postId: number};
 };
 
 const RouteRecommendScreen = () => {
