@@ -11,6 +11,7 @@ export const TitleWrapper = styled.View({
 
 export const OrganismView = styled.View({
   marginTop: heightPercentage(8),
+  marginBottom: heightPercentage(52),
 });
 
 export const ButtonWrapper = styled.View({

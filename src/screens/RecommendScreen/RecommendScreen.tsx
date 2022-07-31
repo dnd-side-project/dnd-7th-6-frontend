@@ -9,6 +9,7 @@ import {RecommendParamList} from '.';
 import DefaultScrollView from 'src/components/DefaultScrollView';
 import FrameRecommendOrganism from 'src/components/FrameRecommendOrganism';
 import PoseRecommendOrganism from 'src/components/PoseRecommendOrganism';
+import RecommendSituationPoseOrganism from 'src/components/RecommendSituationPoseOrganism';
 
 export type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
 
@@ -19,6 +20,7 @@ const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
   return (
     <DefaultScrollView>
       <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
+      <RecommendSituationPoseOrganism />
       <FrameRecommendOrganism>프레임 추천</FrameRecommendOrganism>
     </DefaultScrollView>
   );

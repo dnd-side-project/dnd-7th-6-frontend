@@ -13,6 +13,7 @@ export const CardContainer = styled.View({
 export const styles = StyleSheet.create({
   photoStyle: {
     flex: 1,
+    borderRadius: 12,
     zIndex: 2,
   },
 });
