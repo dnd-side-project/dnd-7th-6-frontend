@@ -5,6 +5,8 @@ import RecommendPreviewFourCard from '../RecommendPreviewFourCard';
 import {SubHeadline2} from '../utils/Text';
 import {ButtonWrapper, OrganismView, TitleWrapper} from './RecommendPreviewCardsOrganism.styles';
 
+import {TestData} from 'src/TestData';
+
 export interface Props {
   data: ReadonlyArray<renderItemList['item']>;
 }
@@ -17,13 +19,14 @@ export type renderItemList = {
   };
 };
 
-const RecommendPreviewCardsOrganism = ({children, data}: PropsWithChildren & Props) => {
+const RecommendPreviewCardsOrganism = ({children}: PropsWithChildren) => {
+  //TO-DO data fetching
   return (
     <OrganismView>
       <TitleWrapper>
         <SubHeadline2>{children}</SubHeadline2>
       </TitleWrapper>
-      <RecommendPreviewFourCard data={data} />
+      <RecommendPreviewFourCard data={TestData} />
       <ButtonWrapper>
         <PressableAddition>사진 더보기 </PressableAddition>
       </ButtonWrapper>
