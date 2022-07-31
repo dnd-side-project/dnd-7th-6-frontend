@@ -7,8 +7,8 @@ import {PreviewFourCardView} from './RecommendPreviewFourCard.styles';
 const RecommendPreviewFourCard = ({data}: Props) => {
   return (
     <PreviewFourCardView>
-      {data.map(({url}) => (
-        <RecommendFeedCard imgUrl={url} />
+      {data.map(({url, id}) => (
+        <RecommendFeedCard imgUrl={url} key={id} />
       ))}
     </PreviewFourCardView>
   );

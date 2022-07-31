@@ -7,8 +7,8 @@ import {RecommendHeaderStyle} from './RecommendScreen.header';
 import {RecommendParamList} from '.';
 
 import DefaultScrollView from 'src/components/DefaultScrollView';
-import RecommendPreviewFourCard from 'src/components/RecommendPreviewFourCard';
-import {sData} from 'src/components/RecommendPreviewFourCard/TestData';
+import RecommendPreviewCardsOrganism from 'src/components/RecommendPreviewCardsOrganism';
+import {TestData} from 'src/TestData';
 
 export type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
 
@@ -18,7 +18,11 @@ const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
   });
   return (
     <DefaultScrollView>
-      <RecommendPreviewFourCard data={sData} />
+      {/*여기 검색창 추가 됩니다.*/}
+      <RecommendPreviewCardsOrganism data={TestData}>요즘 뜨는 포즈!</RecommendPreviewCardsOrganism>
+      <RecommendPreviewCardsOrganism data={TestData}>
+        이벤트 프레임 추천
+      </RecommendPreviewCardsOrganism>
     </DefaultScrollView>
   );
 };
