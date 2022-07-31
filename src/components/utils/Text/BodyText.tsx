@@ -27,3 +27,15 @@ export const BodyText4 = styled.Text({
   fontFamily: fonts[3].fontFamily,
   lineHeight: fonts[3].lineHeight,
 });
+
+export const BodyText5 = styled.Text({
+  fontSize: fonts[4].size,
+  fontFamily: fonts[4].fontFamily,
+  lineHeight: fonts[4].lineHeight,
+});
+
+export const BodyText6 = styled.Text({
+  fontSize: fonts[5].size,
+  fontFamily: fonts[5].fontFamily,
+  lineHeight: fonts[5].lineHeight,
+});
