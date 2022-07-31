@@ -21,7 +21,7 @@ const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
       <ScrollView>
         <RecommendDetailMainFrame id={route.params.postId} />
         <RecommendDetailContentsOrganism id={route.params.postId} />
-        <RecommendDetailDiffOrganism />
+        <RecommendDetailDiffOrganism id={route.params.postId} />
       </ScrollView>
     </SafeAreaView>
   );

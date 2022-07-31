@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useMemo} from 'react';
 
 import RecommendFeedCard from '../RecommendFeedCard';
@@ -8,15 +7,13 @@ import {Post} from 'src/types';
 
 interface Props {
   data: Array<Post>;
+  onPress?: onPressFeedCardHandler;
 }
 
-const RecommendPreviewFourCard = ({data}: Props) => {
-  const fourPosts = useMemo(() => data.slice(0, 4), [data]);
-  const navigation = useNavigation();
+type onPressFeedCardHandler = (id: number) => () => void;
 
-  const handlePressFeedCard = (id: number) => () => {
-    navigation.navigate('RecommendDetail' as never, {postId: id} as never);
-  };
+const RecommendPreviewFourCard = ({data, onPress}: Props) => {
+  const fourPosts = useMemo(() => data.slice(0, 4), [data]);
 
   return (
     <PreviewFourCardView>
@@ -24,7 +21,7 @@ const RecommendPreviewFourCard = ({data}: Props) => {
         <RecommendFeedCard
           imgUrl={postImageSet[0].imageUrl}
           key={id}
-          onPress={handlePressFeedCard(id)}
+          {...(onPress ? {onPress: onPress(id)} : {})}
         />
       ))}
     </PreviewFourCardView>
