@@ -10,7 +10,7 @@ export type SquareViewProps = {
 };
 
 export const SquareView = styled.View(({index}: SquareViewProps) => ({
-  height: heightPercentage(100),
+  height: heightPercentage(110),
   marginRight: widthPercentage(12),
   marginLeft: index === 0 ? heightPercentage(16) : 0,
 }));

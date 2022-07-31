@@ -13,6 +13,7 @@ const SituationPoseRecommendSwiper = () => {
         horizontal
         bounces={false}
         bouncesZoom={false}
+        overScrollMode={'never'}
         showsHorizontalScrollIndicator={false}>
         {SwiperData.map(({url, id, title}, index) => (
           <SquareView key={id} index={index}>
