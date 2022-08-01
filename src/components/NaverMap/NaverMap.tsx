@@ -1,7 +1,12 @@
 import React from 'react';
-import NaverMapView, {type Coord, Marker} from 'react-native-nmap';
+import NaverMapView, {Marker} from 'react-native-nmap';
 
 import {styles} from './NaverMap.styles';
+type PhotoBoothData = {
+  latitude: number;
+  longitude: number;
+  id: number;
+};
 const NaverMap = ({mapRef, setScreenPos, data}: any) => {
   return (
     // @ts-ignore: 모듈 문제
@@ -13,13 +18,13 @@ const NaverMap = ({mapRef, setScreenPos, data}: any) => {
       compass={false}
       scaleBar={false}
       showsMyLocationButton={false}>
-      {data.map(MarkersOnMap)}
+      {data?.map(MarkersOnMap)}
     </NaverMapView>
   );
 };
 
-const MarkersOnMap = (coordinate: Coord) => {
-  return <Marker coordinate={{...coordinate}} />;
+const MarkersOnMap = (data: PhotoBoothData) => {
+  return <Marker coordinate={{latitude: data.latitude, longitude: data.longitude}} key={data.id} />;
 };
 
 export default NaverMap;
