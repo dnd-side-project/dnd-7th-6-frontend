@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText4} from '../utils/Text';
+import {BodyText5} from '../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -15,7 +15,7 @@ export const SquareView = styled.View(({index}: SquareViewProps) => ({
   marginLeft: index === 0 ? heightPercentage(16) : 0,
 }));
 
-export const SquareText = styled(BodyText4)({
+export const SquareText = styled(BodyText5)({
   color: theme.colors.grayscale[9],
   marginTop: heightPercentage(2),
   alignSelf: 'center',
