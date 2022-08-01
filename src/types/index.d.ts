@@ -35,3 +35,14 @@ export interface User {
   userProvider?: string;
   providerId?: string;
 }
+
+export interface PhotoBooth {
+  id: number;
+  jibunAddress: string;
+  latitude: number;
+  likeCount: number;
+  longitude: number;
+  name: string;
+  roadAddress: string;
+  status: string;
+}
