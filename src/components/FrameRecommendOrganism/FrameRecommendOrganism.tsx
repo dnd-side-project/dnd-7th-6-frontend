@@ -3,8 +3,12 @@ import React, {PropsWithChildren} from 'react';
 
 import PressableAddition from '../PressableAddition';
 import RecommendPreviewFourCard from '../RecommendPreviewFourCard';
-import {SubHeadline2} from '../utils/Text';
-import {ButtonWrapper, OrganismView, TitleWrapper} from './FrameRecommendOrganism.styles';
+import {
+  ButtonWrapper,
+  OrganismView,
+  TitleWrapper,
+  TitleText,
+} from './FrameRecommendOrganism.styles';
 
 import {TestData} from 'src/TestData';
 
@@ -31,7 +35,7 @@ const FrameRecommendOrganism = ({children}: PropsWithChildren) => {
   return (
     <OrganismView>
       <TitleWrapper>
-        <SubHeadline2>{children}</SubHeadline2>
+        <TitleText>{children}</TitleText>
       </TitleWrapper>
       <RecommendPreviewFourCard data={TestData} onPress={handlePressCard} />
       <ButtonWrapper>
