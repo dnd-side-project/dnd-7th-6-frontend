@@ -5,6 +5,7 @@ import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
   backgroundColor: 'white',
+  paddingBottom: heightPercentage(30),
 });
 
 export const TitleContainer = styled.View({
