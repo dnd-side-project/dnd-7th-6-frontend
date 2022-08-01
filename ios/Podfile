@@ -6,7 +6,7 @@ install! 'cocoapods', :deterministic_uuids => false
 
 target 'hot6' do
   config = use_native_modules!
-
+  pod 'NMapsMap','3.10.1'
   # Flags change depending on the env values.
   flags = get_default_flags()
 
