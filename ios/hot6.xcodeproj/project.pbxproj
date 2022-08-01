@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* hot6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* hot6Tests.m */; };
+		062EA349289427290043B3EC /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 062EA309289427290043B3EC /* Fonts */; };
 		0630524F287C4EB900DDFD03 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630524E287C4EB900DDFD03 /* File.swift */; };
 		0C80B921A6F3F58F76C31292 /* libPods-hot6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-hot6.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
@@ -73,6 +74,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = FCF61D9B2B75054A9A3185DDC609B7FF;
 			remoteInfo = SDWebImageWebPCoder;
+		};
+		062EA3032892DE250043B3EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 90EE8D3C082C157169540FC8F5913DAD;
+			remoteInfo = RNSVG;
 		};
 		0630528A287C4EC600DDFD03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -381,6 +389,7 @@
 		00E356EE1AD99517003FC87E /* hot6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hot6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* hot6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hot6Tests.m; sourceTree = "<group>"; };
+		062EA309289427290043B3EC /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		0630524D287C4EB900DDFD03 /* hot6-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hot6-Bridging-Header.h"; sourceTree = "<group>"; };
 		0630524E287C4EB900DDFD03 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		06305250287C4EC600DDFD03 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
@@ -485,6 +494,7 @@
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
+				062EA3042892DE250043B3EC /* RNSVG */,
 				062EA280288ED9D00043B3EC /* SDWebImage */,
 				062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */,
 				063052DB287C4EC600DDFD03 /* SocketRocket */,
@@ -529,6 +539,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				062EA309289427290043B3EC /* Fonts */,
 				13B07FAE1A68108700A75B9A /* hot6 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* hot6Tests */,
@@ -705,6 +716,14 @@
 			name = SDWebImageWebPCoder;
 			path = libSDWebImageWebPCoder.a;
 			remoteRef = 062EA281288ED9D00043B3EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		062EA3042892DE250043B3EC /* RNSVG */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNSVG;
+			path = libRNSVG.a;
+			remoteRef = 062EA3032892DE250043B3EC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */ = {
@@ -1065,6 +1084,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				062EA349289427290043B3EC /* Fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -1392,7 +1412,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1464,7 +1484,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
