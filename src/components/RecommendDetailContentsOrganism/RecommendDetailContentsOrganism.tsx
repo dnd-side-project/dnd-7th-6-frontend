@@ -1,22 +1,10 @@
 import React from 'react';
 
 import Chip from '../Chip';
-import {PressableUploadIcon, PressableLikeIcon} from '../utils/Pressables/PressableIcons';
-import {
-  ChipContainer,
-  ChipWrapper,
-  Container,
-  Contents,
-  DateText,
-  Header,
-  IconContainer,
-  IconWrapper,
-  TextSection,
-  Username,
-} from './RecommendDetailContentsOrganism.styles';
+import UserReviewView from '../utils/UserReviewView';
+import {ChipContainer, ChipWrapper, Container} from './RecommendDetailContentsOrganism.styles';
 
 import useGetPost from 'src/querys/useGetPost';
-import toDateFormat from 'src/utils/toDateFormat';
 
 interface Props {
   id: number;
@@ -27,26 +15,17 @@ const RecommendDetailContentsOrganism = ({id}: Props) => {
 
   return (
     <Container>
-      <Header>
-        <TextSection>
-          <Username>{data?.user.email}</Username>
-          <DateText>{toDateFormat(new Date(data?.createdAt || ''))}</DateText>
-        </TextSection>
-        <IconWrapper>
-          <IconContainer>
-            <PressableLikeIcon />
-          </IconContainer>
-          <IconContainer>
-            <PressableUploadIcon />
-          </IconContainer>
-        </IconWrapper>
-      </Header>
-      <Contents>{data?.content}</Contents>
+      <UserReviewView
+        writer={data?.user.email || ''}
+        date={new Date(data?.createdAt || '')}
+        contents={data?.content || ''}
+        hasIcon={true}
+      />
       <ChipWrapper>
         {data?.postTagSet.map(({tag}) => (
           <ChipContainer key={tag.id}>
             <Chip mode="bright" key={tag.id}>
-              {tag.tag}
+              {tag.title}
             </Chip>
           </ChipContainer>
         ))}

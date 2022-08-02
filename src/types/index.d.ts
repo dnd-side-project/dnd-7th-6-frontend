@@ -14,7 +14,7 @@ export interface Post {
 export interface Tag {
   tag: {
     id: 2;
-    tag: string;
+    title: string;
     reviewCount: number;
     postCount: number;
     isPhotoBooth: boolean;
