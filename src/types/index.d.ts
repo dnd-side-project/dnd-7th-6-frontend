@@ -36,6 +36,13 @@ export interface User {
   providerId?: string;
 }
 
+export interface BoothSummary {
+  title: string;
+  distance: string;
+  review: number;
+  tags: string[];
+  images: string[];
+  
 export interface PhotoBooth {
   id: number;
   jibunAddress: string;
