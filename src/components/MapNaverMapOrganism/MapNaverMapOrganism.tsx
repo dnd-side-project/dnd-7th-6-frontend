@@ -18,7 +18,7 @@ type positionType = {
 const MapNaverMapOrganism = () => {
   const mapRef = useRef(null);
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
-  const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(true);
+  const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
     latitude: 0,
     longitude: 0,
@@ -42,6 +42,9 @@ const MapNaverMapOrganism = () => {
   useEffect(() => {
     refetch();
   }, [onInitialize, refetch]);
+  useEffect(() => {
+    setShowRefreshPressable(true);
+  }, [screenCenterPos]);
 
   return (
     <ContainerView>
@@ -51,18 +54,14 @@ const MapNaverMapOrganism = () => {
             <MapRefreshSearchPressable
               onPress={() => {
                 refetch();
+                setShowRefreshPressable(false);
               }}>
               이 지역 재검색
             </MapRefreshSearchPressable>
           </MapRefreshPressableWrapper>
         )}
       </RefreshandSearchWrapper>
-      <NaverMap
-        mapRef={mapRef}
-        setScreenPos={setScreenCenterPos}
-        data={data?.data}
-        refetch={refetch}
-      />
+      <NaverMap mapRef={mapRef} setScreenPos={setScreenCenterPos} data={data?.data} />
     </ContainerView>
   );
 };

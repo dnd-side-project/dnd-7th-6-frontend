@@ -383,6 +383,20 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		06C92A5728996D04009267C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8F65F9361F2069CF9E9D751272968DE4;
+			remoteInfo = RNGestureHandler;
+		};
+		06C92A5928996D04009267C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C777CF2FB1E39A45CBBDB54E8693F471;
+			remoteInfo = RNReanimated;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -493,6 +507,8 @@
 				063052D5287C4EC600DDFD03 /* React-RCTVibration */,
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
+				06C92A5828996D04009267C3 /* RNGestureHandler */,
+				06C92A5A28996D04009267C3 /* RNReanimated */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
 				062EA3042892DE250043B3EC /* RNSVG */,
 				062EA280288ED9D00043B3EC /* SDWebImage */,
@@ -1068,6 +1084,22 @@
 			name = YogaKit;
 			path = libYogaKit.a;
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C92A5828996D04009267C3 /* RNGestureHandler */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNGestureHandler;
+			path = libRNGestureHandler.a;
+			remoteRef = 06C92A5728996D04009267C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C92A5A28996D04009267C3 /* RNReanimated */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNReanimated;
+			path = libRNReanimated.a;
+			remoteRef = 06C92A5928996D04009267C3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

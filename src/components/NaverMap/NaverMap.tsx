@@ -15,7 +15,9 @@ const NaverMap = ({mapRef, setScreenPos, data}: any) => {
     <NaverMapView
       ref={mapRef}
       style={styles.NaverMapStyle}
-      onCameraChange={event => setScreenPos({latitude: event.latitude, longitude: event.longitude})}
+      onCameraChange={event => {
+        setScreenPos({latitude: event.latitude, longitude: event.longitude});
+      }}
       zoomControl={false}
       compass={false}
       scaleBar={false}
