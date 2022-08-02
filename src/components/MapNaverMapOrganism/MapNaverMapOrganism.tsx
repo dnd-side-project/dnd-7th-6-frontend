@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react';
-import Geolocation from 'react-native-geolocation-service';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
 import NaverMap from '../NaverMap';
@@ -11,13 +10,14 @@ import {
 
 import requestLocationPermission from 'src/hooks/requestLocationPermission';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
+import getGeolocation from 'src/utils/getGeolocation';
 type positionType = {
   latitude: number;
   longitude: number;
 };
 const MapNaverMapOrganism = () => {
   const mapRef = useRef(null);
-
+  const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(true);
   const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
     latitude: 0,
@@ -26,30 +26,22 @@ const MapNaverMapOrganism = () => {
   const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
 
   useEffect(() => {
-    requestLocationPermission().then(result => {
+    requestLocationPermission().then(async result => {
       if (result === 'granted') {
-        Geolocation.getCurrentPosition(
-          current => {
-            const {latitude, longitude} = {
-              latitude: current.coords.latitude,
-              longitude: current.coords.longitude,
-            };
-            mapRef.current.animateToCoordinate({
-              latitude: latitude,
-              longitude: longitude,
-            });
-
-            refetch();
-          },
-          console.error,
-          {
-            enableHighAccuracy: true,
-            timeout: 20000,
-          },
-        );
+        const {longitude, latitude} = await getGeolocation();
+        setScreenCenterPos({latitude: latitude, longitude: longitude});
+        setOnInitialize(false);
+        //@ts-ignore: native 모듈 문제
+        mapRef.current.animateToCoordinate({
+          latitude: latitude,
+          longitude: longitude,
+        });
       }
     });
   }, []);
+  useEffect(() => {
+    refetch();
+  }, [onInitialize, refetch]);
 
   return (
     <ContainerView>
@@ -65,7 +57,12 @@ const MapNaverMapOrganism = () => {
           </MapRefreshPressableWrapper>
         )}
       </RefreshandSearchWrapper>
-      <NaverMap mapRef={mapRef} setScreenPos={setScreenCenterPos} data={data?.data} />
+      <NaverMap
+        mapRef={mapRef}
+        setScreenPos={setScreenCenterPos}
+        data={data?.data}
+        refetch={refetch}
+      />
     </ContainerView>
   );
 };
