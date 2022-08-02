@@ -14,7 +14,7 @@ export interface Post {
 export interface Tag {
   tag: {
     id: 2;
-    tag: string;
+    title: string;
     reviewCount: number;
     postCount: number;
     isPhotoBooth: boolean;
@@ -42,4 +42,14 @@ export interface BoothSummary {
   review: number;
   tags: string[];
   images: string[];
+  
+export interface PhotoBooth {
+  id: number;
+  jibunAddress: string;
+  latitude: number;
+  likeCount: number;
+  longitude: number;
+  name: string;
+  roadAddress: string;
+  status: string;
 }
