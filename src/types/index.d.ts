@@ -35,3 +35,11 @@ export interface User {
   userProvider?: string;
   providerId?: string;
 }
+
+export interface BoothSummary {
+  title: string;
+  distance: string;
+  review: number;
+  tags: string[];
+  images: string[];
+}
