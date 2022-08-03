@@ -1,8 +1,8 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 
-import SquareCard from '../SquareCard';
-import {SquareText, SquareView} from './SituationPoseRecommendSwiper.styles';
+import SquareCard from '../../SquareCard';
+import {SquareText, SquareView} from './SituationPoseSwiper.styles';
 
 import {SwiperData} from 'src/SwiperData';
 

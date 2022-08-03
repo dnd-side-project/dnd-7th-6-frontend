@@ -1,12 +1,13 @@
 import React from 'react';
 
-import BannerView from '../Banner';
-import SituationPoseRecommendSwiper from '../SituationPoseRecommendSwiper';
+import SituationPoseRecommendSwiper from '../SituationPoseSwiper';
 import {
   BannerViewWrapper,
   RecommendSituationPoseView,
   TitleText,
 } from './RecommendSituationPoseOrganism.styles';
+
+import BannerView from 'src/components/Banner';
 const RecommendSituationPoseOrganism = () => {
   return (
     <RecommendSituationPoseView>

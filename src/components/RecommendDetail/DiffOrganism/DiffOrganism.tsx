@@ -1,17 +1,12 @@
 import React from 'react';
+
+import {Container, IconWrapper, NumOfDiff, Title, TitleContainer} from './DiffOrganism.styles';
+
+import RecommendPreviewFourCard from 'src/components/Recommend/PreviewFourCard';
+import {PressableRightArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
+import {SubHeadline2} from 'src/components/utils/Text';
 import useGetPost from 'src/querys/useGetPost';
 import {TestData} from 'src/TestData';
-import RecommendPreviewFourCard from '../RecommendPreviewFourCard';
-
-import {PressableRightArrowIcon} from '../utils/Pressables/PressableIcons';
-import {SubHeadline2} from '../utils/Text';
-import {
-  Container,
-  IconWrapper,
-  NumOfDiff,
-  Title,
-  TitleContainer,
-} from './RecommendDetailDiffOrganism.styles';
 
 interface Props {
   id: number;

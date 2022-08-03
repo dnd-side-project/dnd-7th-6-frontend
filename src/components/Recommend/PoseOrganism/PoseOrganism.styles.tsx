@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
 
-import {SubHeadline2} from '../utils/Text';
-
+import {SubHeadline2} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
