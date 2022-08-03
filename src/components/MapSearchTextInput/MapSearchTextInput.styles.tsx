@@ -3,7 +3,7 @@ import styled from '@emotion/native';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-export const SearchBarCotainer = styled.Pressable({
+export const SearchBarCotainer = styled.View({
   flexDirection: 'row',
   backgroundColor: theme.colors.grayscale[2],
   borderRadius: 8,
@@ -14,4 +14,9 @@ export const SearchBarCotainer = styled.Pressable({
 
 export const SearchBarIconWrapper = styled.View({
   marginLeft: widthPercentage(16),
+});
+
+export const SearchBarTextInput = styled.TextInput({
+  marginLeft: widthPercentage(8),
+  color: theme.colors.grayscale[6],
 });
