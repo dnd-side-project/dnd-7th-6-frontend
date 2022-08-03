@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
+import NaverMapView from 'react-native-nmap';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
 import NaverMap from '../NaverMap';
@@ -16,9 +17,9 @@ type positionType = {
   longitude: number;
 };
 const MapNaverMapOrganism = () => {
-  const mapRef = useRef(null);
+  const mapRef = useRef<NaverMapView>(null);
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
-  const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(true);
+  const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
     latitude: 0,
     longitude: 0,
@@ -31,7 +32,9 @@ const MapNaverMapOrganism = () => {
         const {longitude, latitude} = await getGeolocation();
         setScreenCenterPos({latitude: latitude, longitude: longitude});
         setOnInitialize(false);
-        //@ts-ignore: native 모듈 문제
+        if (!mapRef || !mapRef.current) {
+          return;
+        }
         mapRef.current.animateToCoordinate({
           latitude: latitude,
           longitude: longitude,
@@ -42,6 +45,9 @@ const MapNaverMapOrganism = () => {
   useEffect(() => {
     refetch();
   }, [onInitialize, refetch]);
+  useEffect(() => {
+    setShowRefreshPressable(true);
+  }, [screenCenterPos]);
 
   return (
     <ContainerView>
@@ -51,18 +57,14 @@ const MapNaverMapOrganism = () => {
             <MapRefreshSearchPressable
               onPress={() => {
                 refetch();
+                setShowRefreshPressable(false);
               }}>
               이 지역 재검색
             </MapRefreshSearchPressable>
           </MapRefreshPressableWrapper>
         )}
       </RefreshandSearchWrapper>
-      <NaverMap
-        mapRef={mapRef}
-        setScreenPos={setScreenCenterPos}
-        data={data?.data}
-        refetch={refetch}
-      />
+      <NaverMap mapRef={mapRef} setScreenPos={setScreenCenterPos} data={data?.data} />
     </ContainerView>
   );
 };

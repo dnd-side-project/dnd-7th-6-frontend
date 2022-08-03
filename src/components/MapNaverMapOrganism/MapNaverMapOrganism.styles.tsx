@@ -9,7 +9,7 @@ export const ContainerView = styled.View({
 
 export const MapRefreshPressableWrapper = styled.View({
   position: 'absolute',
-  marginTop: getStatusBarHeight(true),
+  marginTop: getStatusBarHeight(true) + 58,
   alignSelf: 'center',
 });
 
