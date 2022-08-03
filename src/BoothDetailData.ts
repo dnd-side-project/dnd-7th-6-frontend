@@ -11,10 +11,10 @@ const BoothDetailData = {
   keyword: {
     total: 9999,
     elements: [
-      {title: '깨끗해요', numOfKeyword: 99999},
-      {title: '소품이 다양해요', numOfKeyword: 126},
-      {title: '파우더룸이 잘 되어있어요', numOfKeyword: 50},
-      {title: '인테리어가 멋져요', numOfKeyword: 50},
+      {keyword: '깨끗해요', count: 99999},
+      {keyword: '소품이 다양해요', count: 126},
+      {keyword: '파우더룸이 잘 되어있어요', count: 50},
+      {keyword: '인테리어가 멋져요', count: 50},
     ],
   },
   review: {
