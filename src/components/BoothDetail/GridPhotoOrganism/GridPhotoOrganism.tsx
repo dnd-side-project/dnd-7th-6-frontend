@@ -9,6 +9,7 @@ import {
   Headline,
   style,
   TextContainer,
+  TotalPhoto,
 } from './GridPhotoOrganism.styles';
 
 import BoothDetailData from 'src/BoothDetailData';
@@ -28,7 +29,12 @@ const GridPhotoOrganism = () => {
         data={data.boothPhoto.elements.slice(0, 6)}
         numColumns={3}
         renderItem={uri => (
-          <FastImage key={uri.item.id} source={{uri: uri.item.uri}} style={style.fastImage} />
+          <FastImage
+            key={uri.item.id}
+            source={{uri: uri.item.uri}}
+            style={{...style.fastImage, ...{opacity: uri.index === 5 ? 0.5 : 1}}}>
+            {uri.index !== 5 || <TotalPhoto>{data.boothPhoto.elements.length}</TotalPhoto>}
+          </FastImage>
         )}
       />
       <ButtonWrapper>
