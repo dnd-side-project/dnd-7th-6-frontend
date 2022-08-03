@@ -8,6 +8,7 @@ import RouteBoothScreen from 'src/screens/BoothScreen';
 import MyScreen from 'src/screens/MyScreen/MyScreen';
 import RouteRecommendScreen from 'src/screens/RecommendScreen';
 import StorageScreen from 'src/screens/StorageScreen/StorageScreen';
+import GlobalStyle from 'src/styles/GlobalStyle';
 import theme from 'src/styles/Theme';
 
 export type RootParamList = {
@@ -23,7 +24,7 @@ const App = () => {
   return (
     <QueryClientProvider client={new QueryClient()}>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
+        <NavigationContainer theme={GlobalStyle}>
           <Tab.Navigator screenOptions={{headerShown: false}}>
             <Tab.Screen name={'BoothScreen'} component={RouteBoothScreen} />
             <Tab.Screen name={'RecommendScreen'} component={RouteRecommendScreen} />
