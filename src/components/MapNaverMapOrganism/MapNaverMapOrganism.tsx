@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
+import NaverMapView from 'react-native-nmap';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
 import NaverMap from '../NaverMap';
@@ -16,7 +17,7 @@ type positionType = {
   longitude: number;
 };
 const MapNaverMapOrganism = () => {
-  const mapRef = useRef(null);
+  const mapRef = useRef<NaverMapView>(null);
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
@@ -31,7 +32,9 @@ const MapNaverMapOrganism = () => {
         const {longitude, latitude} = await getGeolocation();
         setScreenCenterPos({latitude: latitude, longitude: longitude});
         setOnInitialize(false);
-        //@ts-ignore: native 모듈 문제
+        if (!mapRef || !mapRef.current) {
+          return;
+        }
         mapRef.current.animateToCoordinate({
           latitude: latitude,
           longitude: longitude,
