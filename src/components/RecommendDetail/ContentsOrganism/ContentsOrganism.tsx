@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Chip from '../Chip';
-import UserReviewView from '../utils/UserReviewView';
-import {ChipContainer, ChipWrapper, Container} from './RecommendDetailContentsOrganism.styles';
+import Chip from '../../Chip';
+import UserReviewView from '../../utils/UserReviewView';
+import {ChipContainer, ChipWrapper, Container} from './ContentsOrganism.styles';
 
 import useGetPost from 'src/querys/useGetPost';
 

@@ -7,9 +7,9 @@ import {RecommendHeaderStyle} from './RecommendScreen.header';
 import {RecommendParamList} from '.';
 
 import DefaultScrollView from 'src/components/DefaultScrollView';
-import FrameRecommendOrganism from 'src/components/FrameRecommendOrganism';
-import PoseRecommendOrganism from 'src/components/PoseRecommendOrganism';
-import RecommendSituationPoseOrganism from 'src/components/RecommendSituationPoseOrganism';
+import FrameOrganism from 'src/components/Recommend/FrameOrganism';
+import PoseRecommendOrganism from 'src/components/Recommend/PoseOrganism/PoseOrganism';
+import RecommendSituationPoseOrganism from 'src/components/Recommend/SituationPoseOrganism';
 
 export type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
 
@@ -22,7 +22,7 @@ const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
     <DefaultScrollView>
       <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
       <RecommendSituationPoseOrganism />
-      <FrameRecommendOrganism>프레임 추천</FrameRecommendOrganism>
+      <FrameOrganism>프레임 추천</FrameOrganism>
     </DefaultScrollView>
   );
 };

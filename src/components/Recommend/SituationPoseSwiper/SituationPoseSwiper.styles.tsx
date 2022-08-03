@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText5} from '../utils/Text';
+import {BodyText5} from '../../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';

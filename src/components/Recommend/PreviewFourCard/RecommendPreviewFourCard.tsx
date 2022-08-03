@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 
-import RecommendFeedCard from '../RecommendFeedCard';
+import RecommendFeedCard from '../FeedCard';
 import {PreviewFourCardView} from './RecommendPreviewFourCard.styles';
 
 import {Post} from 'src/types';

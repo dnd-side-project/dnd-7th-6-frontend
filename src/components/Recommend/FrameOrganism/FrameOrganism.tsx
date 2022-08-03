@@ -1,13 +1,25 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
 
-import PressableAddition from '../PressableAddition';
-import RecommendPreviewFourCard from '../RecommendPreviewFourCard';
-import {ButtonWrapper, OrganismView, TitleText, TitleWrapper} from './PoseRecommendOrganism.styles';
+import RecommendPreviewFourCard from '../PreviewFourCard';
+import {ButtonWrapper, OrganismView, TitleWrapper, TitleText} from './FrameOrganism.styles';
 
+import PressableAddition from 'src/components/PressableAddition';
 import {TestData} from 'src/TestData';
 
-const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
+export interface Props {
+  data: ReadonlyArray<renderItemList['item']>;
+}
+
+export type renderItemList = {
+  item: {
+    url: string;
+    id: string;
+    title: string;
+  };
+};
+
+const FrameRecommendOrganism = ({children}: PropsWithChildren) => {
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -28,4 +40,4 @@ const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
   );
 };
 
-export default PoseRecommendOrganism;
+export default FrameRecommendOrganism;
