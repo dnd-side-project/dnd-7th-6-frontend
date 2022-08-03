@@ -42,7 +42,8 @@ export interface BoothSummary {
   review: number;
   tags: string[];
   images: string[];
-  
+}
+
 export interface PhotoBooth {
   id: number;
   jibunAddress: string;
