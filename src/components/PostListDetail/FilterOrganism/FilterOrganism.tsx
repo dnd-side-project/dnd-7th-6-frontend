@@ -1,15 +1,17 @@
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {ChipWrapper, Container, SortingButton} from './FilterOrganism.styles';
+import {ChipWrapper, Container} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
 
 const FilterOrganism = () => {
   return (
     <Container>
-      <SortingButton>인기순</SortingButton>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ChipWrapper>
+          <OptionChip>인기순</OptionChip>
+        </ChipWrapper>
         <ChipWrapper>
           <OptionChip>브랜드</OptionChip>
         </ChipWrapper>
