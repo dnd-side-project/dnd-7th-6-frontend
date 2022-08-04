@@ -1,6 +1,7 @@
 import {ThemeProvider} from '@emotion/react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
+import {getFocusedRouteNameFromRoute, NavigationContainer} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
 
@@ -17,6 +18,7 @@ export type RootParamList = {
   StorageScreen: undefined;
   MyScreen: undefined;
 };
+export type RootScreenProps = NativeStackScreenProps<RootParamList, 'BoothScreen'>;
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +28,19 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={GlobalStyle}>
           <Tab.Navigator screenOptions={{headerShown: false}}>
-            <Tab.Screen name={'BoothScreen'} component={RouteBoothScreen} />
+            <Tab.Screen
+              name={'BoothScreen'}
+              component={RouteBoothScreen}
+              options={({route}) => ({
+                tabBarStyle: (() => {
+                  const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+                  console.log(routeName);
+                  if (routeName === 'BoothSearch') {
+                    return {display: 'none'};
+                  }
+                })(),
+              })}
+            />
             <Tab.Screen name={'RecommendScreen'} component={RouteRecommendScreen} />
             <Tab.Screen name={'StorageScreen'} component={StorageScreen} />
             <Tab.Screen name={'MyScreen'} component={MyScreen} />

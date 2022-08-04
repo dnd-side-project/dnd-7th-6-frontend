@@ -1,16 +1,19 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 
 import {PressableSearchIcon} from '../utils/Pressables/PressableIcons';
-import {SearchBarCotainer, SearchBarIconWrapper} from './MapSearchTextInput.styles';
+import {
+  SearchBarCotainer,
+  SearchBarIconWrapper,
+  SearchBarTextInput,
+} from './MapSearchTextInput.styles';
 
-const MapSearchTextInput = ({children}: PropsWithChildren) => {
-  const navigation = useNavigation();
+const MapSearchTextInput = () => {
   return (
-    <SearchBarCotainer onPress={() => navigation.navigate('BoothSearch' as never, {} as never)}>
+    <SearchBarCotainer>
       <SearchBarIconWrapper>
         <PressableSearchIcon />
       </SearchBarIconWrapper>
+      <SearchBarTextInput />
     </SearchBarCotainer>
   );
 };
