@@ -14,7 +14,6 @@ const MapSearchList = () => {
   const {data, refetch} = useGetSearchedLocation(keyword);
   const debounce = useDebounce(refetch, 500);
   useEffect(() => {
-    console.log(keyword);
     if (!keyword) {
       return;
     }

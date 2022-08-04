@@ -21,3 +21,18 @@ export const SearchBarTextInput = styled.TextInput({
   marginLeft: widthPercentage(8),
   color: theme.colors.grayscale[6],
 });
+
+export const RightIconAndroid = styled.Pressable({
+  width: widthPercentage(18),
+  height: widthPercentage(18),
+  borderRadius: 100,
+  backgroundColor: theme.colors.grayscale[3],
+  position: 'absolute',
+  right: widthPercentage(9),
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const PressableDeleteView = styled.View({
+  alignSelf: 'center',
+});

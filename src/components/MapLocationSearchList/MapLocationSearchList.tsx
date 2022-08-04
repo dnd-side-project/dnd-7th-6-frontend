@@ -1,4 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {
   SearchAddressName,
@@ -7,17 +9,24 @@ import {
   SearchPlaceName,
 } from './MapLocationSearchList.styles';
 
+import {inputSearchKeyword} from 'src/redux/actions/MapAction';
 import {SearchLocationDatas} from 'src/types';
 
 interface Props {
   item: SearchLocationDatas;
 }
 
-const MapLocationSearchList = (item: Props) => {
+const MapLocationSearchList = ({item}: Props) => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   return (
-    <SearchListWrapper>
-      <SearchPlaceName>{item?.item.place_name}</SearchPlaceName>
-      <SearchAddressName>{item?.item.address_name}</SearchAddressName>
+    <SearchListWrapper
+      onPress={() => {
+        dispatch(inputSearchKeyword(''));
+        navigation.goBack();
+      }}>
+      <SearchPlaceName>{item?.place_name}</SearchPlaceName>
+      <SearchAddressName>{item?.address_name}</SearchAddressName>
       <SearchBarSeparator />
     </SearchListWrapper>
   );
