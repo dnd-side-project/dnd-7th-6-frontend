@@ -1,6 +1,11 @@
 import React from 'react';
 
-import {SearchListWrapper, SearchPlaceName} from './MapLocationSearchList.styles';
+import {
+  SearchAddressName,
+  SearchBarSeparator,
+  SearchListWrapper,
+  SearchPlaceName,
+} from './MapLocationSearchList.styles';
 
 import {SearchLocationDatas} from 'src/types';
 
@@ -9,10 +14,11 @@ interface Props {
 }
 
 const MapLocationSearchList = (item: Props) => {
-  console.log(item);
   return (
     <SearchListWrapper>
-      <SearchPlaceName>{item?.item.address_name}</SearchPlaceName>
+      <SearchPlaceName>{item?.item.place_name}</SearchPlaceName>
+      <SearchAddressName>{item?.item.address_name}</SearchAddressName>
+      <SearchBarSeparator />
     </SearchListWrapper>
   );
 };
