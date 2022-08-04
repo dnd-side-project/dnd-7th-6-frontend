@@ -6,6 +6,7 @@ import * as React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider} from 'react-redux';
 
+import TabBar from 'src/components/utils/TabBar';
 import store from 'src/redux/store';
 import RouteBoothScreen from 'src/screens/BoothScreen';
 import MyScreen from 'src/screens/MyScreen/MyScreen';
@@ -30,11 +31,25 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <NavigationContainer theme={GlobalStyle}>
-            <Tab.Navigator screenOptions={{headerShown: false}}>
-              <Tab.Screen name={'BoothScreen'} component={RouteBoothScreen} />
-              <Tab.Screen name={'RecommendScreen'} component={RouteRecommendScreen} />
-              <Tab.Screen name={'StorageScreen'} component={StorageScreen} />
-              <Tab.Screen name={'MyScreen'} component={MyScreen} />
+            <Tab.Navigator
+              screenOptions={{headerShown: false}}
+              tabBar={props => <TabBar {...props} />}>
+              <Tab.Screen
+                name={'BoothScreen'}
+                component={RouteBoothScreen}
+                options={{tabBarLabel: '위치'}}
+              />
+              <Tab.Screen
+                name={'RecommendScreen'}
+                component={RouteRecommendScreen}
+                options={{tabBarLabel: '추천'}}
+              />
+              <Tab.Screen
+                name={'StorageScreen'}
+                component={StorageScreen}
+                options={{tabBarLabel: '찜'}}
+              />
+              <Tab.Screen name={'MyScreen'} component={MyScreen} options={{tabBarLabel: '마이'}} />
             </Tab.Navigator>
           </NavigationContainer>
         </Provider>

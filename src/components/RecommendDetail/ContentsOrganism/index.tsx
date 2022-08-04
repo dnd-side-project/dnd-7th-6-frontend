@@ -1,3 +1,3 @@
-import DetailContentsOrganism from './ContentsOrganism';
+import ContentsOrganism from './ContentsOrganism';
 
-export default DetailContentsOrganism;
+export default ContentsOrganism;

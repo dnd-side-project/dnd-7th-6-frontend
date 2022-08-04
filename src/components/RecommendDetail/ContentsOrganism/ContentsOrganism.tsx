@@ -10,7 +10,7 @@ interface Props {
   id: number;
 }
 
-const RecommendDetailContentsOrganism = ({id}: Props) => {
+const ContentsOrganism = ({id}: Props) => {
   const {data} = useGetPost(id);
 
   return (
@@ -34,4 +34,4 @@ const RecommendDetailContentsOrganism = ({id}: Props) => {
   );
 };
 
-export default RecommendDetailContentsOrganism;
+export default ContentsOrganism;

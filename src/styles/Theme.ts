@@ -46,7 +46,7 @@ const theme: Theme = {
     grayscale: [
       '#FFFFFF',
       '#FFFFFF',
-      '#F6F6F6',
+      '#F9F9F9',
       '#E5E5E5',
       '#CCCCCC',
       '#BDBDBD',
