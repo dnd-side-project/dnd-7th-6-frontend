@@ -38,7 +38,6 @@ const App = () => {
                   if (routeName === 'BoothSearch') {
                     return {display: 'none'};
                   }
-                  return;
                 })(),
               })}
             />
