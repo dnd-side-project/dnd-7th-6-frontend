@@ -1,6 +1,7 @@
 import {ThemeProvider} from '@emotion/react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider} from 'react-redux';
@@ -19,6 +20,7 @@ export type RootParamList = {
   StorageScreen: undefined;
   MyScreen: undefined;
 };
+export type RootScreenProps = NativeStackScreenProps<RootParamList, 'BoothScreen'>;
 
 const Tab = createBottomTabNavigator();
 
