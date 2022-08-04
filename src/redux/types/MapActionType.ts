@@ -1,1 +1,2 @@
 export const FOCUS_BOOTH = 'FOCUS_BOOTH';
+export const INPUT_SEARCH_KEYWORD = 'INPUT_SEARCH_KEYWORD';

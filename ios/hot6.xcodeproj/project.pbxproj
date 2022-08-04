@@ -476,7 +476,7 @@
 				0630529F287C4EC600DDFD03 /* glog */,
 				063052A1287C4EC600DDFD03 /* libevent */,
 				062EA276288ED9D00043B3EC /* libwebp */,
-				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
+				063052A3287C4EC600DDFD03 /* libPods-hot6.a */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
 				063052A9287C4EC600DDFD03 /* RCTTypeSafety */,
@@ -838,10 +838,9 @@
 			remoteRef = 063052A0287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		063052A3287C4EC600DDFD03 /* Pods-hot6 */ = {
+		063052A3287C4EC600DDFD03 /* libPods-hot6.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			name = "Pods-hot6";
 			path = "libPods-hot6.a";
 			remoteRef = 063052A2287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1444,7 +1443,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;

@@ -1,9 +1,10 @@
 import {Reducer} from 'redux';
 
-import {FOCUS_BOOTH} from '../types/MapActionType';
+import {FOCUS_BOOTH, INPUT_SEARCH_KEYWORD} from '../types/MapActionType';
 
 const initialState = {
   focusBooth: null,
+  searchKeyword: '',
 };
 
 const mapReducer: Reducer = (state = initialState, action) => {
@@ -12,6 +13,8 @@ const mapReducer: Reducer = (state = initialState, action) => {
   switch (action.type) {
     case FOCUS_BOOTH:
       return {...state, focusBooth: payload.booth};
+    case INPUT_SEARCH_KEYWORD:
+      return {...state, searchKeyword: payload.keyword};
     default:
       return state;
   }

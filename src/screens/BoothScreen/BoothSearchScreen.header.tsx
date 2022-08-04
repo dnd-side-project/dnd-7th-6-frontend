@@ -10,7 +10,7 @@ export const BoothSearchHeaderStyle = ({navigation}: BoothScreenProps) => {
     headerShown: true,
     headerShadowVisible: false,
     headerTransparent: true,
-    headerTitle: MapSearchTextInput,
+    headerTitle: () => <MapSearchTextInput />,
     headerLeft: () => <PressableLeftArrowIcon onPress={() => navigation.goBack()} />,
   });
 };

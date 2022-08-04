@@ -19,6 +19,7 @@ const NaverMap = ({mapRef, setScreenPos, data}: any) => {
         setScreenPos({latitude: event.latitude, longitude: event.longitude});
       }}
       zoomControl={false}
+      onMapClick={e => console.log(e.longitude)}
       compass={false}
       scaleBar={false}
       showsMyLocationButton={false}>
