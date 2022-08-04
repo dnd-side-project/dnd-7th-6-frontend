@@ -1,24 +1,28 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useLayoutEffect} from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import {PostListDetailHeaderStyle} from './PostListDetailScreen.header';
 
 import {RecommendParamList} from '.';
+
+import CardListOrganism from 'src/components/PostListDetail/CardListOrganism';
+import FilterOrganism from 'src/components/PostListDetail/FilterOrganism';
 
 export type PostListDetailScreenProps = NativeStackScreenProps<
   RecommendParamList,
   'PostListDetail'
 >;
 
-const PostListDetailScreen = ({navigation, route}: PostListDetailScreenProps) => {
+const PostListDetailScreen = (props: PostListDetailScreenProps) => {
   useLayoutEffect(() => {
-    PostListDetailHeaderStyle({navigation, route});
+    PostListDetailHeaderStyle(props);
   });
 
   return (
     <SafeAreaView>
-      <ScrollView />
+      <FilterOrganism />
+      <CardListOrganism />
     </SafeAreaView>
   );
 };
