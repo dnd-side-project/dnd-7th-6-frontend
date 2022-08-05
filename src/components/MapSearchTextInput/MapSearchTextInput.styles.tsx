@@ -17,9 +17,13 @@ export const SearchBarIconWrapper = styled.View({
 });
 
 export const SearchBarTextInput = styled.TextInput({
+  paddingVertical: 0,
   width: widthPercentage(270),
+  height: '100%',
   marginLeft: widthPercentage(8),
-  color: theme.colors.grayscale[6],
+  color: theme.colors.grayscale[8],
+  fontFamily: theme.fonts.Body[3].fontFamily,
+  fontSize: theme.fonts.Body[3].size,
 });
 
 export const RightIconAndroid = styled.Pressable({
