@@ -1,11 +1,19 @@
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import {ChipWrapper, Container} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
+import {openFilterSheet} from 'src/redux/actions/PostAction';
 
 const FilterOrganism = () => {
+  const dispatch = useDispatch();
+
+  const handlePressFilterChip = (index: number) => () => {
+    dispatch(openFilterSheet());
+  };
+
   return (
     <Container>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -13,16 +21,16 @@ const FilterOrganism = () => {
           <OptionChip>인기순</OptionChip>
         </ChipWrapper>
         <ChipWrapper>
-          <OptionChip>브랜드</OptionChip>
+          <OptionChip onPress={handlePressFilterChip(0)}>브랜드</OptionChip>
         </ChipWrapper>
         <ChipWrapper>
-          <OptionChip>인원</OptionChip>
+          <OptionChip onPress={handlePressFilterChip(1)}>인원</OptionChip>
         </ChipWrapper>
         <ChipWrapper>
-          <OptionChip>포즈컨셉</OptionChip>
+          <OptionChip onPress={handlePressFilterChip(2)}>포즈컨셉</OptionChip>
         </ChipWrapper>
         <ChipWrapper>
-          <OptionChip>프레임</OptionChip>
+          <OptionChip onPress={handlePressFilterChip(3)}>프레임</OptionChip>
         </ChipWrapper>
       </ScrollView>
     </Container>

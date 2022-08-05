@@ -7,6 +7,7 @@ import theme from 'src/styles/Theme';
 export const Container = styled.View({
   paddingHorizontal: widthPercentage(16),
   paddingBottom: heightPercentage(14),
+  paddingTop: heightPercentage(6),
   flexDirection: 'row',
   alignItems: 'center',
   borderBottomWidth: 1,
