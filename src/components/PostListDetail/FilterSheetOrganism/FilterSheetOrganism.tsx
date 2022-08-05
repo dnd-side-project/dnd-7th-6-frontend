@@ -1,12 +1,13 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, {useMemo, useRef} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import * as Swiper from 'react-native-swiper';
 import {useDispatch, useSelector} from 'react-redux';
 
 import CardListOrganism from '../CardListOrganism';
 import FilterOrganism from '../FilterOrganism';
+import FilterSheetNavigator from '../FilterSheetNavigator/FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
@@ -16,6 +17,7 @@ import {heightPercentage} from 'src/styles/ScreenResponse';
 const FilterSheetOrganism = () => {
   const isOpenFilterSheet = useSelector((state: RootState) => state.postReducer.isOpenFilterSheet);
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const swiperRef = useRef(null);
   const snapPoints = useMemo(() => [1, heightPercentage(500)], []);
   const dispatch = useDispatch();
 
@@ -33,19 +35,12 @@ const FilterSheetOrganism = () => {
           </SafeAreaView>
         )}
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}>
-        <Swiper.default>
-          <View>
-            <Text>asdf</Text>
-          </View>
-          <View>
-            <Text>asdf</Text>
-          </View>
-          <View>
-            <Text>asdf</Text>
-          </View>
-          <View>
-            <Text>asdf</Text>
-          </View>
+        <FilterSheetNavigator />
+        <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
+          <View />
+          <View />
+          <View />
+          <View />
         </Swiper.default>
       </BottomSheet>
     </>
