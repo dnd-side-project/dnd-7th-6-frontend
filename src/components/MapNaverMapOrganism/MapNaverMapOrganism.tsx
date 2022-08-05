@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
-import NaverMapView from 'react-native-nmap';
+import NaverMapView, {Coord} from 'react-native-nmap';
+import {useSelector} from 'react-redux';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
 import NaverMap from '../NaverMap';
@@ -11,6 +12,7 @@ import {
 
 import requestLocationPermission from 'src/hooks/requestLocationPermission';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
+import {RootState} from 'src/redux/store';
 import getGeolocation from 'src/utils/getGeolocation';
 type positionType = {
   latitude: number;
@@ -18,6 +20,7 @@ type positionType = {
 };
 const MapNaverMapOrganism = () => {
   const mapRef = useRef<NaverMapView>(null);
+
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
@@ -25,7 +28,9 @@ const MapNaverMapOrganism = () => {
     longitude: 0,
   });
   const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
+  const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.changeMapCoord);
 
+  //첫 로딩시 현재 사용자 위치 가져오기
   useEffect(() => {
     requestLocationPermission().then(async result => {
       if (result === 'granted') {
@@ -42,12 +47,27 @@ const MapNaverMapOrganism = () => {
       }
     });
   }, []);
+  //첫 로딩시 data refetching
   useEffect(() => {
     refetch();
   }, [onInitialize, refetch]);
   useEffect(() => {
     setShowRefreshPressable(true);
   }, [screenCenterPos]);
+
+  //coord 변경 되었을 때 화면 옮기기
+  useEffect(() => {
+    if (searchedCoord.latitude === 0 && searchedCoord.longitude === 0) {
+      return;
+    }
+    if (!mapRef || !mapRef.current) {
+      return;
+    }
+    mapRef.current.animateToCoordinate({
+      latitude: searchedCoord.latitude,
+      longitude: searchedCoord.longitude,
+    });
+  }, [searchedCoord]);
 
   return (
     <ContainerView>
