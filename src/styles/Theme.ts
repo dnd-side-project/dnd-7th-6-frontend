@@ -46,7 +46,7 @@ const theme: Theme = {
     grayscale: [
       '#FFFFFF',
       '#FFFFFF',
-      '#F6F6F6',
+      '#F9F9F9',
       '#E5E5E5',
       '#CCCCCC',
       '#BDBDBD',
@@ -88,6 +88,11 @@ const theme: Theme = {
       },
       {
         size: fontPercentage(16),
+        fontFamily: 'Pretendard-SemiBold',
+        lineHeight: fontPercentage(20),
+      },
+      {
+        size: fontPercentage(14),
         fontFamily: 'Pretendard-SemiBold',
         lineHeight: fontPercentage(20),
       },
