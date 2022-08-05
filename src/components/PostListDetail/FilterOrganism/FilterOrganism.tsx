@@ -5,13 +5,14 @@ import {useDispatch} from 'react-redux';
 import {ChipWrapper, Container} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
-import {openFilterSheet} from 'src/redux/actions/PostAction';
+import {openFilterSheet, changeFocus} from 'src/redux/actions/PostAction';
 
 const FilterOrganism = () => {
   const dispatch = useDispatch();
 
   const handlePressFilterChip = (index: number) => () => {
     dispatch(openFilterSheet());
+    dispatch(changeFocus(index));
   };
 
   return (
