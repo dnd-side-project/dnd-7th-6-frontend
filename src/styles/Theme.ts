@@ -91,6 +91,11 @@ const theme: Theme = {
         fontFamily: 'Pretendard-SemiBold',
         lineHeight: fontPercentage(20),
       },
+      {
+        size: fontPercentage(14),
+        fontFamily: 'Pretendard-SemiBold',
+        lineHeight: fontPercentage(20),
+      },
     ],
     Body: [
       {
