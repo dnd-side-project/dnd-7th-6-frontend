@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import {Container} from './CardListOrganism.styles';
 
 import RecommendFeedCard from 'src/components/Recommend/FeedCard/RecommendFeedCard';
+import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
 
 const CardListOrganism = () => {
-  const [isVisibleTabBar, setIsVisibleTabBar] = useState(true);
+  const dispatch = useDispatch();
 
   const handleScroll = ({nativeEvent}: NativeSyntheticEvent<NativeScrollEvent>) => {
     const curY = nativeEvent.velocity?.y;
     if (!curY) {
       return;
     }
-    setIsVisibleTabBar(curY > 0);
+    dispatch(curY > 0 ? hideTabBar() : showTabBar());
   };
 
   return (
