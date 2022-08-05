@@ -5,7 +5,7 @@ import {CHANGE_MAP_COORD, FOCUS_BOOTH, INPUT_SEARCH_KEYWORD} from '../types/MapA
 const initialState = {
   focusBooth: null,
   searchKeyword: '',
-  changeMapCoord: {latitude: 0, longitude: 0},
+  mapCoord: {latitude: 0, longitude: 0},
 };
 
 const mapReducer: Reducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const mapReducer: Reducer = (state = initialState, action) => {
     case INPUT_SEARCH_KEYWORD:
       return {...state, searchKeyword: payload.keyword};
     case CHANGE_MAP_COORD:
-      return {...state, changeMapCoord: payload.coord};
+      return {...state, mapCoord: payload.coord};
     default:
       return state;
   }

@@ -28,24 +28,27 @@ const MapNaverMapOrganism = () => {
     longitude: 0,
   });
   const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
-  const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.changeMapCoord);
+  const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.mapCoord);
 
   //첫 로딩시 현재 사용자 위치 가져오기
   useEffect(() => {
-    requestLocationPermission().then(async result => {
-      if (result === 'granted') {
-        const {longitude, latitude} = await getGeolocation();
-        setScreenCenterPos({latitude: latitude, longitude: longitude});
-        setOnInitialize(false);
-        if (!mapRef || !mapRef.current) {
-          return;
-        }
-        mapRef.current.animateToCoordinate({
-          latitude: latitude,
-          longitude: longitude,
-        });
+    const initMap = async () => {
+      const permission = await requestLocationPermission();
+      if (permission !== 'granted') {
+        return;
       }
-    });
+      const {longitude, latitude} = await getGeolocation();
+      setScreenCenterPos({latitude: latitude, longitude: longitude});
+      setOnInitialize(false);
+      if (!mapRef || !mapRef.current) {
+        return;
+      }
+      mapRef.current.animateToCoordinate({
+        latitude: latitude,
+        longitude: longitude,
+      });
+    };
+    initMap();
   }, []);
   //첫 로딩시 data refetching
   useEffect(() => {
