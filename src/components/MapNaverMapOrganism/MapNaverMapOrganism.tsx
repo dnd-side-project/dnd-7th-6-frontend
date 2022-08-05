@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import NaverMapView, {Coord} from 'react-native-nmap';
+import NaverMapView, {type Coord} from 'react-native-nmap';
 import {useSelector} from 'react-redux';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
@@ -14,22 +14,17 @@ import requestLocationPermission from 'src/hooks/requestLocationPermission';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
 import {RootState} from 'src/redux/store';
 import getGeolocation from 'src/utils/getGeolocation';
-type positionType = {
-  latitude: number;
-  longitude: number;
-};
 const MapNaverMapOrganism = () => {
   const mapRef = useRef<NaverMapView>(null);
 
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
-  const [screenCenterPos, setScreenCenterPos] = useState<positionType>({
+  const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.mapCoord);
+  const [screenCenterPos, setScreenCenterPos] = useState<Coord>({
     latitude: 0,
     longitude: 0,
   });
   const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
-  const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.mapCoord);
-
   //첫 로딩시 현재 사용자 위치 가져오기
   useEffect(() => {
     const initMap = async () => {

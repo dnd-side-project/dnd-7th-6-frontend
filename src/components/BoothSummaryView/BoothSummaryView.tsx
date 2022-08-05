@@ -14,25 +14,25 @@ import {
   Title,
 } from './BoothSummaryView.styles';
 
-import {BoothSummary} from 'src/types';
+import {PhotoBooth} from 'src/types';
 import toLocaleString from 'src/utils/toLocaleString';
 
-const BoothSummaryView = (props: BoothSummary) => {
+const BoothSummaryView = (item: PhotoBooth) => {
   return (
     <Container>
       <DescriptionContainer>
-        <Title>{props.title}</Title>
+        <Title>{item.name}</Title>
         <SubText>
-          <Distance>{props.distance}km</Distance>
+          <Distance>17km</Distance>
           <Text> | </Text>
-          <Review>부스리뷰 {toLocaleString(props.review)}개</Review>
+          <Review>부스리뷰 {toLocaleString(10)}개</Review>
         </SubText>
         <TagContainer>
-          {props.tags.map(tag => (
+          {/* {props.tags.map(tag => (
             <ChipWrapper key={tag}>
               <RoundChip mode="gray">{tag}</RoundChip>
             </ChipWrapper>
-          ))}
+          ))} */}
         </TagContainer>
       </DescriptionContainer>
       <ImageContainer />
