@@ -7,9 +7,10 @@ import BoothSummaryView from '../BoothSummaryView';
 import MapNaverMapOrganism from '../MapNaverMapOrganism';
 import {BottomSheetConatiner, bottomSheetStyle, handleStyle} from './MapBottomSheetOrganism.styles';
 
-import BoothSummaryData from 'src/BoothSummaryData';
+import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
 import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
+import {PhotoBooth} from 'src/types';
 
 const MapBottomSheetOrganism = () => {
   const sheetIndex = useSelector((state: RootState) => state.mapReducer.bottomSheetHeightIndex);
@@ -18,7 +19,7 @@ const MapBottomSheetOrganism = () => {
     () => [heightPercentage(145), heightPercentage(400), heightPercentage(630)],
     [],
   );
-
+  const {data} = useGetPhotoBoothLocation({longitude: 0, latitude: 0});
   return (
     <BottomSheetConatiner>
       <BottomSheet
@@ -27,11 +28,10 @@ const MapBottomSheetOrganism = () => {
         ref={bottomSheetRef}
         backdropComponent={MapNaverMapOrganism}
         handleIndicatorStyle={handleStyle}
-        enableContentPanningGesture={true}
         index={sheetIndex}>
         <BottomSheetFlatList
-          data={BoothSummaryData}
-          renderItem={info => <BoothSummaryView {...info.item} key={info.item.id} />}
+          data={data?.data}
+          renderItem={({item}: {item: PhotoBooth}) => <BoothSummaryView {...item} />}
         />
       </BottomSheet>
     </BottomSheetConatiner>

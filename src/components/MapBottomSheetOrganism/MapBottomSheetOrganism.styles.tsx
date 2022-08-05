@@ -4,7 +4,6 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const BottomSheetConatiner = styled.View({
-  zIndex: 2,
   width: '100%',
   height: '100%',
 });
