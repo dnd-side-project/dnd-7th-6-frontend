@@ -1,13 +1,14 @@
 import React, {useLayoutEffect} from 'react';
-import {View} from 'react-native';
 
 import {BoothScreenProps} from './BoothScreen';
 import {BoothSearchHeaderStyle} from './BoothSearchScreen.header';
+
+import MapSearchList from 'src/components/MapSearchList';
 const BoothSearchScreen = ({navigation, route}: BoothScreenProps) => {
   useLayoutEffect(() => {
     BoothSearchHeaderStyle({navigation, route});
   }, [navigation, route]);
-  return <View />;
+  return <MapSearchList />;
 };
 
 export default BoothSearchScreen;
