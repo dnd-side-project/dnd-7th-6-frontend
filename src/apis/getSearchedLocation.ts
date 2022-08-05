@@ -1,13 +1,15 @@
 import axios from 'axios';
+import {Config} from 'react-native-config';
 
 const getSearchedLocation = async (searchingWord: string) => {
+  console.log(Config.KAKAO_API_KEY);
   if (!searchingWord) {
     return;
   }
   const url = `https://dapi.kakao.com/v2/local/search/keyword.json?query=${searchingWord}`;
   const result = await axios.get(url, {
     headers: {
-      Authorization: 'KakaoAK 4096554163c79bc576c3b9bf225e3d04',
+      Authorization: Config.KAKAO_API_KEY,
     },
   });
   return result.data;
