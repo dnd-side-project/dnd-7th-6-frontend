@@ -20,3 +20,8 @@ export const Label = styled(SubHeadline2)<{selected: boolean}>(({selected}) => (
   marginRight: widthPercentage(2),
   color: selected ? theme.colors.grayscale[8] : theme.colors.grayscale[5],
 }));
+
+export const IconWrapper = styled.View({
+  width: 6,
+  height: 6,
+});
