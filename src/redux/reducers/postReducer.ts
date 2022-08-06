@@ -41,12 +41,18 @@ const postReducer: Reducer = (state = initialState, action) => {
     case CHANGE_FILTER.HEADCOUNT.NUMBER:
       return {
         ...state,
-        filteredHeadcount: {number: toggleTag(state.filteredHeadcount.number, payload.target)},
+        filteredHeadcount: {
+          ...state.filteredHeadcount,
+          number: toggleTag(state.filteredHeadcount.number, payload.target),
+        },
       };
     case CHANGE_FILTER.HEADCOUNT.RELATION:
       return {
         ...state,
-        filteredHeadcount: {relation: toggleTag(state.filteredHeadcount.relation, payload.target)},
+        filteredHeadcount: {
+          ...state.filteredHeadcount,
+          relation: toggleTag(state.filteredHeadcount.relation, payload.target),
+        },
       };
     case CHANGE_FILTER.POSE.EMOTION:
       return {
