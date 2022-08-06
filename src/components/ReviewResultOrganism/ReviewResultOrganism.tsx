@@ -80,7 +80,7 @@ const ReviewResultOrganism = () => {
         <ReviewNextPressable
           onPress={
             resultCounter.length > 0
-              ? () => navigation.navigate('BoothResultReview' as never, {} as never)
+              ? () => navigation.navigate('BoothImageReview' as never, {} as never)
               : () => {}
           }
           disable={!(resultCounter.length > 0)}
