@@ -1,6 +1,6 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, {useEffect, useMemo, useRef} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import * as Swiper from 'react-native-swiper';
 import {useDispatch, useSelector} from 'react-redux';
@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import CardListOrganism from '../CardListOrganism';
 import FilterOrganism from '../FilterOrganism';
 import BrandFilter from '../FilterPages/BrandFilter';
+import FrameFilter from '../FilterPages/FrameFilter';
 import HeadcountFilter from '../FilterPages/HeadcountFilter';
 import PoseFilter from '../FilterPages/PoseFilter';
 import FilterSheetNavigator from '../FilterSheetNavigator';
@@ -54,7 +55,7 @@ const FilterSheetOrganism = () => {
           <BrandFilter />
           <HeadcountFilter />
           <PoseFilter />
-          <View />
+          <FrameFilter />
         </Swiper.default>
       </BottomSheet>
     </>
