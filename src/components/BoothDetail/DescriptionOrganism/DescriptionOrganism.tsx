@@ -36,8 +36,7 @@ const DescriptionOrganism = () => {
         매일 {data.activeTime[0]} ~ {data.activeTime[1]}
       </Contents>
       <ButtonWrapper>
-        <PressableAddition
-          onPress={() => navigation.navigate('BoothStoreReview' as never, {} as never)}>
+        <PressableAddition onPress={() => navigation.navigate('BoothReview' as never, {} as never)}>
           부스 정보 알려주기
         </PressableAddition>
       </ButtonWrapper>

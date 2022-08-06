@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import NaverMapView, {Coord} from 'react-native-nmap';
+import NaverMapView, {type Coord} from 'react-native-nmap';
 import {useSelector} from 'react-redux';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';

@@ -1,13 +1,14 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useLayoutEffect} from 'react';
-import {View} from 'react-native';
 
 import {ReviewHeaderStyle} from './BoothReviewScreen.header';
 
-import {BoothParamList} from '.';
+import {PostReviewParamList} from '.';
+
+import ReviewImageOrganism from 'src/components/ReviewImageOrganism';
 
 export type ResultImageScreenProps = NativeStackScreenProps<
-  BoothParamList,
+  PostReviewParamList,
   'BoothImageReviewScreen'
 >;
 
@@ -15,6 +16,6 @@ const BoothImageReviewScreen = ({navigation, route}: ResultImageScreenProps) => 
   useLayoutEffect(() => {
     ReviewHeaderStyle({navigation, route});
   }, [navigation, route]);
-  return <View />;
+  return <ReviewImageOrganism />;
 };
 export default BoothImageReviewScreen;

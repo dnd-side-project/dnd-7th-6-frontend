@@ -3,11 +3,11 @@ import React, {useLayoutEffect} from 'react';
 
 import {ReviewHeaderStyle} from './BoothReviewScreen.header';
 
-import {BoothParamList} from '.';
+import {PostReviewParamList} from '.';
 
 import ReviewResultOrganism from 'src/components/ReviewResultOrganism';
 export type ResultReviewScreenProps = NativeStackScreenProps<
-  BoothParamList,
+  PostReviewParamList,
   'BoothResultReviewScreen'
 >;
 

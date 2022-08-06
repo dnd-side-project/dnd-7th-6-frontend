@@ -11,9 +11,18 @@ export const ReviewHeaderStyle = ({
   navigation,
 }: StoreReviewScreenProps | ResultReviewScreenProps | ResultImageScreenProps) => {
   navigation.setOptions({
-    headerLeft: () => <PressableLeftArrowIcon onPress={() => navigation.goBack()} />,
+    headerLeft: () => {
+      return (
+        <PressableLeftArrowIcon
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+      );
+    },
     title: '부스 리뷰 작성',
     headerTitleAlign: 'center',
+    headerShadowVisible: false,
     headerTitleStyle: {
       fontFamily: theme.fonts.Body[0].fontFamily,
       fontSize: theme.fonts.Body[0].size,
