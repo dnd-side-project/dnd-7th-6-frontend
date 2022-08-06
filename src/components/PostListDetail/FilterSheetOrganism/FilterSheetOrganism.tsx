@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import CardListOrganism from '../CardListOrganism';
 import FilterOrganism from '../FilterOrganism';
+import BrandFilter from '../FilterPages/BrandFilter';
 import FilterSheetNavigator from '../FilterSheetNavigator/FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
@@ -37,7 +38,7 @@ const FilterSheetOrganism = () => {
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}>
         <FilterSheetNavigator />
         <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
-          <View />
+          <BrandFilter />
           <View />
           <View />
           <View />
