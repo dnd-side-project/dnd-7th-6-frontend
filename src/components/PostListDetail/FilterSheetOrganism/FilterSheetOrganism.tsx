@@ -9,6 +9,7 @@ import CardListOrganism from '../CardListOrganism';
 import FilterOrganism from '../FilterOrganism';
 import BrandFilter from '../FilterPages/BrandFilter';
 import HeadcountFilter from '../FilterPages/HeadcountFilter';
+import PoseFilter from '../FilterPages/PoseFilter/PoseFilter';
 import FilterSheetNavigator from '../FilterSheetNavigator/FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
@@ -52,7 +53,7 @@ const FilterSheetOrganism = () => {
         <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
           <BrandFilter />
           <HeadcountFilter />
-          <View />
+          <PoseFilter />
           <View />
         </Swiper.default>
       </BottomSheet>
