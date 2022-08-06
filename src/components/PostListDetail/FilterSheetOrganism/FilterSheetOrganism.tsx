@@ -9,8 +9,8 @@ import CardListOrganism from '../CardListOrganism';
 import FilterOrganism from '../FilterOrganism';
 import BrandFilter from '../FilterPages/BrandFilter';
 import HeadcountFilter from '../FilterPages/HeadcountFilter';
-import PoseFilter from '../FilterPages/PoseFilter/PoseFilter';
-import FilterSheetNavigator from '../FilterSheetNavigator/FilterSheetNavigator';
+import PoseFilter from '../FilterPages/PoseFilter';
+import FilterSheetNavigator from '../FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';

@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {Container} from '../HeadcountFilter/HeadcountFilter.styles';
-import NestedFilterOrganism from '../NestedFilterOrganism/NestedFilterOrganism';
+import NestedFilterOrganism from '../NestedFilterOrganism';
 import {ChipWrapper} from '../NestedFilterOrganism/NestedFilterOrganism.styles';
 
 import FilterChip from 'src/components/Chip/FilterChip';
