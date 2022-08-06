@@ -8,7 +8,7 @@ interface Props {
 type onPressNextPressable = () => void;
 const ReviewNextPressable = ({onPress, disable}: Props) => {
   return (
-    <ReviewNextPressableContainer onPress={onPress} disable={disable}>
+    <ReviewNextPressableContainer onPress={disable ? () => {} : onPress} disable={disable}>
       <ReviewNextPressableText disable={disable}>다음</ReviewNextPressableText>
     </ReviewNextPressableContainer>
   );

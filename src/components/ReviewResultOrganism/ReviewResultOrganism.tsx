@@ -30,7 +30,22 @@ const ReviewResultOrganism = () => {
   const [select, setSelect] = useState<any>({});
   const [resultCounter, setResultCounter] = useState([]);
   const navigation = useNavigation();
-
+  const tagOnPress = (index: {toString: () => string | number}) =>
+    setSelect((prevState: any) => {
+      const nextState = {...prevState};
+      nextState[index.toString()] = !prevState[index.toString()];
+      const limiter: any = Object.values(nextState).filter(function (v) {
+        if (v) {
+          return v;
+        }
+      });
+      setResultCounter(limiter);
+      if (limiter.length > 4) {
+        return prevState;
+      }
+      return nextState;
+    });
+  const nextOnPress = () => navigation.navigate('BoothImageReview' as never, {} as never);
   return (
     <ReviewSectionContainer>
       <ReviewBoothName>{boothName}</ReviewBoothName>
@@ -47,24 +62,7 @@ const ReviewResultOrganism = () => {
           bounces={false}
           renderItem={({item, index}: any) => {
             return (
-              <ReviewSelectPressable
-                selected={select[index]}
-                onPress={() =>
-                  setSelect((prevState: any) => {
-                    const nextState = {...prevState};
-                    nextState[index.toString()] = !prevState[index.toString()];
-                    const limiter: any = Object.values(nextState).filter(function (v) {
-                      if (v) {
-                        return v;
-                      }
-                    });
-                    setResultCounter(limiter);
-                    if (limiter.length > 4) {
-                      return prevState;
-                    }
-                    return nextState;
-                  })
-                }>
+              <ReviewSelectPressable selected={select[index]} onPress={() => tagOnPress(index)}>
                 {item.title}
               </ReviewSelectPressable>
             );
@@ -77,14 +75,7 @@ const ReviewResultOrganism = () => {
         <TagInputPressable />
       </TagInputWrapper>
       <ReviewNextPressableWrapper>
-        <ReviewNextPressable
-          onPress={
-            resultCounter.length > 0
-              ? () => navigation.navigate('BoothImageReview' as never, {} as never)
-              : () => {}
-          }
-          disable={!(resultCounter.length > 0)}
-        />
+        <ReviewNextPressable onPress={nextOnPress} disable={!(resultCounter.length > 0)} />
       </ReviewNextPressableWrapper>
     </ReviewSectionContainer>
   );

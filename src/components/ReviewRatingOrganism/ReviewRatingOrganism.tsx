@@ -36,6 +36,23 @@ const ReviewRatingOrganism = () => {
   const [select, setSelect] = useState<any>({});
   const [specificCounter, setSpecificCounter] = useState([]);
   const currentStars: number = useSelector((state: RootState) => state.reviewReducer.currentStar);
+  const tagOnPress = (index: {toString: () => string | number}) =>
+    setSelect((prevState: any) => {
+      const nextState = {...prevState};
+      nextState[index.toString()] = !prevState[index.toString()];
+      const limiter: any = Object.values(nextState).filter(v => {
+        if (v) {
+          return v;
+        }
+      });
+      setSpecificCounter(limiter);
+      if (limiter.length > 4) {
+        return prevState;
+      }
+      return nextState;
+    });
+  const nextOnPress = () => navigation.navigate('BoothResultReview' as never, {} as never);
+
   return (
     <ReviewSectionContainer>
       <ReviewBoothName>{boothName}</ReviewBoothName>
@@ -56,24 +73,7 @@ const ReviewRatingOrganism = () => {
           numColumns={2}
           renderItem={({item, index}: any) => {
             return (
-              <ReviewSelectPressable
-                selected={select[index]}
-                onPress={() =>
-                  setSelect((prevState: any) => {
-                    const nextState = {...prevState};
-                    nextState[index.toString()] = !prevState[index.toString()];
-                    const limiter: any = Object.values(nextState).filter(function (v) {
-                      if (v) {
-                        return v;
-                      }
-                    });
-                    setSpecificCounter(limiter);
-                    if (limiter.length > 4) {
-                      return prevState;
-                    }
-                    return nextState;
-                  })
-                }>
+              <ReviewSelectPressable selected={select[index]} onPress={() => tagOnPress(index)}>
                 {item.title}
               </ReviewSelectPressable>
             );
@@ -82,11 +82,7 @@ const ReviewRatingOrganism = () => {
       </SpecificListWrapper>
       <ReviewNextPressableWrapper>
         <ReviewNextPressable
-          onPress={
-            currentStars > 0 && specificCounter.length > 0
-              ? () => navigation.navigate('BoothResultReview' as never, {} as never)
-              : () => {}
-          }
+          onPress={nextOnPress}
           disable={!(currentStars > 0 && specificCounter.length > 0)}
         />
       </ReviewNextPressableWrapper>
