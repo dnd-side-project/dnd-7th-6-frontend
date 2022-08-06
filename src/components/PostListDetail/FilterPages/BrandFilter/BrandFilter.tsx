@@ -1,7 +1,8 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {ChipWrapper, Container} from './BrandFilter.styles';
+import {ChipWrapper} from '../NestedFilterOrganism/NestedFilterOrganism.styles';
+import {Container} from './BrandFilter.styles';
 
 import FilterChip from 'src/components/Chip/FilterChip';
 import {changeFilteredBrand} from 'src/redux/actions/PostAction';
