@@ -13,6 +13,7 @@ import {
   ReviewNextPressableWrapper,
   ReviewSectionContainer,
   SpecificFlatList,
+  SpecificListWrapper,
   SpecificWrapper,
 } from './ReviewRatingOrganism.styles';
 
@@ -47,35 +48,38 @@ const ReviewRatingOrganism = () => {
         <BoothRatingDescription>매장 특징이 무엇인가요?</BoothRatingDescription>
         <BoothSpecificDescription>(최대 4개)</BoothSpecificDescription>
       </SpecificWrapper>
-      <SpecificFlatList
-        scrollEnabled={false}
-        data={specificData}
-        numColumns={2}
-        renderItem={({item, index}: any) => {
-          return (
-            <ReviewSelectPressable
-              selected={select[index]}
-              onPress={() =>
-                setSelect((prevState: any) => {
-                  const nextState = {...prevState};
-                  nextState[index.toString()] = !prevState[index.toString()];
-                  const limiter: any = Object.values(nextState).filter(function (v) {
-                    if (v) {
-                      return v;
+      <SpecificListWrapper>
+        <SpecificFlatList
+          scrollEnabled={true}
+          bounces={false}
+          data={specificData}
+          numColumns={2}
+          renderItem={({item, index}: any) => {
+            return (
+              <ReviewSelectPressable
+                selected={select[index]}
+                onPress={() =>
+                  setSelect((prevState: any) => {
+                    const nextState = {...prevState};
+                    nextState[index.toString()] = !prevState[index.toString()];
+                    const limiter: any = Object.values(nextState).filter(function (v) {
+                      if (v) {
+                        return v;
+                      }
+                    });
+                    setSpecificCounter(limiter);
+                    if (limiter.length > 4) {
+                      return prevState;
                     }
-                  });
-                  setSpecificCounter(limiter);
-                  if (limiter.length > 4) {
-                    return prevState;
-                  }
-                  return nextState;
-                })
-              }>
-              {item.title}
-            </ReviewSelectPressable>
-          );
-        }}
-      />
+                    return nextState;
+                  })
+                }>
+                {item.title}
+              </ReviewSelectPressable>
+            );
+          }}
+        />
+      </SpecificListWrapper>
       <ReviewNextPressableWrapper>
         <ReviewNextPressable
           onPress={

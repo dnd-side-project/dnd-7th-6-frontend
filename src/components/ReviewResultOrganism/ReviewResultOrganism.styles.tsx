@@ -42,6 +42,10 @@ export const TagInputPressable = styled.Pressable({
   borderRadius: 8,
 });
 
+export const ResultListWrapper = styled.View({
+  height: heightPercentage(200),
+});
+
 export const ResultFlatList = styled.FlatList({
   marginLeft: widthPercentage(10),
 });

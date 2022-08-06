@@ -1,6 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View} from 'react-native';
 
 import ReviewBoothName from '../ReviewBoothName';
 import ReviewNextPressable from '../ReviewNextPressable';
@@ -10,6 +9,7 @@ import {
   BoothSpecificDescription,
   QuestionWrapper,
   ResultFlatList,
+  ResultListWrapper,
   ReviewNextPressableWrapper,
   ReviewSectionContainer,
   TagInputDescription,
@@ -39,11 +39,12 @@ const ReviewResultOrganism = () => {
         <BoothQuestionDescription>결과물 사진은 어떻게 나왔나요?</BoothQuestionDescription>
         <BoothSpecificDescription>(최대 4개)</BoothSpecificDescription>
       </QuestionWrapper>
-      <View>
+      <ResultListWrapper>
         <ResultFlatList
-          scrollEnabled={false}
+          scrollEnabled={true}
           data={specificData}
           numColumns={2}
+          bounces={false}
           renderItem={({item, index}: any) => {
             return (
               <ReviewSelectPressable
@@ -69,7 +70,7 @@ const ReviewResultOrganism = () => {
             );
           }}
         />
-      </View>
+      </ResultListWrapper>
 
       <TagInputWrapper>
         <TagInputDescription>태그 입력</TagInputDescription>

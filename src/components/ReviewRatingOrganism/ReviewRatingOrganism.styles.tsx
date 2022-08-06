@@ -32,10 +32,16 @@ export const BoothSpecificDescription = styled(BodyText3)({
   marginLeft: widthPercentage(4),
 });
 
+export const SpecificListWrapper = styled.View({
+  height: heightPercentage(250),
+});
+
 export const SpecificFlatList = styled.FlatList({
   marginLeft: widthPercentage(10),
 });
 
 export const ReviewNextPressableWrapper = styled.View({
   bottom: heightPercentage(10),
+  alignSelf: 'center',
+  position: 'absolute',
 });
