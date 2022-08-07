@@ -1,9 +1,12 @@
 import {
   CHANGE_FILTER,
   CHANGE_FOCUS,
+  CLEAR_FILTER,
   CLOSE_FILTER_SHEET,
   OPEN_FILTER_SHEET,
 } from '../types/PostActionType';
+
+import {ALL, FILTER} from 'src/constants/filters';
 
 export const openFilterSheet = () => ({
   type: OPEN_FILTER_SHEET,
@@ -47,3 +50,20 @@ export const changeFilteredFrame = (target: number) => ({
   type: CHANGE_FILTER.FRAME,
   payload: {target},
 });
+
+export const clearFilter = (type?: number) => {
+  switch (type) {
+    case ALL:
+      return {type: CLEAR_FILTER.ALL};
+    case FILTER.BRAND:
+      return {type: CLEAR_FILTER.BRAND};
+    case FILTER.HEADCOUNT:
+      return {type: CLEAR_FILTER.HEADCOUNT};
+    case FILTER.POSE:
+      return {type: CLEAR_FILTER.POSE};
+    case FILTER.FRAME:
+      return {type: CLEAR_FILTER.FRAME};
+    default:
+      return {type: CLEAR_FILTER.ALL};
+  }
+};

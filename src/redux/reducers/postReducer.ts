@@ -3,15 +3,14 @@ import {Reducer} from 'redux';
 import {
   CHANGE_FILTER,
   CHANGE_FOCUS,
+  CLEAR_FILTER,
   CLOSE_FILTER_SHEET,
   OPEN_FILTER_SHEET,
 } from '../types/PostActionType';
 
 import toggleTag from 'src/utils/toggleTag';
 
-const initialState = {
-  isOpenFilterSheet: false,
-  focusedFilter: 0,
+const filterState = {
   filteredBrand: {},
   filteredHeadcount: {
     number: {},
@@ -22,6 +21,11 @@ const initialState = {
     situation: {},
   },
   filteredFrame: {},
+};
+const initialState = {
+  isOpenFilterSheet: false,
+  focusedFilter: 0,
+  ...filterState,
 };
 
 const postReducer: Reducer = (state = initialState, action) => {
@@ -69,6 +73,31 @@ const postReducer: Reducer = (state = initialState, action) => {
           ...state.filteredPose,
           situation: toggleTag(state.filteredPose.situation, payload.target),
         },
+      };
+    case CLEAR_FILTER.ALL:
+      return {
+        ...state,
+        ...filterState,
+      };
+    case CLEAR_FILTER.BRAND:
+      return {
+        ...state,
+        filteredBrand: {},
+      };
+    case CLEAR_FILTER.HEADCOUNT:
+      return {
+        ...state,
+        filteredHeadcount: {...filterState.filteredHeadcount},
+      };
+    case CLEAR_FILTER.POSE:
+      return {
+        ...state,
+        filteredPose: {...filterState.filteredPose},
+      };
+    case CLEAR_FILTER.FRAME:
+      return {
+        ...state,
+        filteredFrame: {},
       };
     default:
       return state;
