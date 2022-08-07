@@ -21,3 +21,9 @@ export const SubHeadline3 = styled.Text({
   fontFamily: fonts[2].fontFamily,
   lineHeight: fonts[2].lineHeight,
 });
+
+export const SubHeadline4 = styled.Text({
+  fontSize: fonts[3].size,
+  fontFamily: fonts[3].fontFamily,
+  lineHeight: fonts[3].lineHeight,
+});

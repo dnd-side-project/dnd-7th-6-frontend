@@ -26,6 +26,7 @@ module.exports = {
           },
         ],
         'import/namespace': 'off',
+        'react-hooks/exhaustive-deps': 'off',
       },
       settings: {
         'import/resolver': {

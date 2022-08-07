@@ -11,6 +11,7 @@ export const Container = styled.Pressable({
   paddingBottom: heightPercentage(18),
   paddingTop: heightPercentage(16),
   paddingHorizontal: widthPercentage(16),
+  height: heightPercentage(118),
   borderBottomWidth: 1,
   borderBottomColor: theme.colors.grayscale[2],
 });
