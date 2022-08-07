@@ -7,7 +7,7 @@ import DotIcon from 'src/icons/DotIcon';
 import {changeFocus} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
 import theme from 'src/styles/Theme';
-import getFirstSelected from 'src/utils/getFirstSelected';
+import getSelectedItems from 'src/utils/getSelectedItems';
 
 const FilterSheetNavigator = () => {
   const {focusedFilter, filteredBrand, filteredHeadcount, filteredPose, filteredFrame} =
@@ -28,7 +28,7 @@ const FilterSheetNavigator = () => {
             {label}
           </Label>
           <IconWrapper>
-            {!getFirstSelected(filtered[i]) || <DotIcon color={theme.colors.primary[1].normal} />}
+            {!getSelectedItems(filtered[i]) || <DotIcon color={theme.colors.primary[1].normal} />}
           </IconWrapper>
         </LabelWrapper>
       ))}
