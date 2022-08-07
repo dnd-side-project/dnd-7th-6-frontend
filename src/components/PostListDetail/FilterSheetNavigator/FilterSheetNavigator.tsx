@@ -7,6 +7,7 @@ import DotIcon from 'src/icons/DotIcon';
 import {changeFocus} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
 import theme from 'src/styles/Theme';
+import getFirstSelected from 'src/utils/getFirstSelected';
 
 const FilterSheetNavigator = () => {
   const {focusedFilter, filteredBrand, filteredHeadcount, filteredPose, filteredFrame} =
@@ -14,21 +15,6 @@ const FilterSheetNavigator = () => {
   const dispatch = useDispatch();
   const labels = ['브랜드', '인원', '포즈컨셉', '프레임'];
   const filtered = [filteredBrand, filteredHeadcount, filteredPose, filteredFrame];
-
-  const checkFiltered = (node: any): boolean => {
-    if (typeof node === 'boolean') {
-      return node;
-    }
-    return Object.keys(node).reduce((result, key) => {
-      if (result) {
-        return true;
-      }
-      if (typeof node[key] !== 'boolean') {
-        return checkFiltered(node[key]);
-      }
-      return node[key];
-    }, false);
-  };
 
   const handlePressLabel = (index: number) => () => {
     dispatch(changeFocus(index));
@@ -42,7 +28,7 @@ const FilterSheetNavigator = () => {
             {label}
           </Label>
           <IconWrapper>
-            {!checkFiltered(filtered[i]) || <DotIcon color={theme.colors.primary[1].normal} />}
+            {!getFirstSelected(filtered[i]) || <DotIcon color={theme.colors.primary[1].normal} />}
           </IconWrapper>
         </LabelWrapper>
       ))}
