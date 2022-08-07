@@ -2,12 +2,14 @@ import {configureStore} from '@reduxjs/toolkit';
 import {combineReducers, Reducer, Store} from 'redux';
 
 import mapReducer from './reducers/mapReducer';
+import postReducer from './reducers/postReducer';
 import reviewReducer from './reducers/reviewReducer';
 import tabBarReducer from './reducers/tabBarReducer';
 
 const rootReducer: Reducer = combineReducers({
   mapReducer,
   tabBarReducer,
+  postReducer,
   reviewReducer,
 });
 

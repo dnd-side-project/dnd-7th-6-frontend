@@ -5,8 +5,8 @@ import {fontPercentage} from './ScreenResponse';
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
-      primary: PrimaryColorTheme;
-      secondary: Array<SecondaryColorTheme>;
+      primary: Array<ColorTheme>;
+      secondary: Array<ColorTheme>;
       grayscale: Array<string>;
     };
     fonts: {
@@ -17,11 +17,7 @@ declare module '@emotion/react' {
   }
 }
 
-export interface PrimaryColorTheme {
-  normal: string;
-}
-
-export interface SecondaryColorTheme {
+export interface ColorTheme {
   light: string;
   normal: string;
   dark: string;
@@ -35,9 +31,11 @@ export interface HeadLineFontsTheme {
 
 const theme: Theme = {
   colors: {
-    primary: {
-      normal: '#0F0F0F',
-    },
+    primary: [
+      {light: '#8B55FF', normal: '#7E42FF', dark: '6E30F3'},
+      {light: '#8B55FF', normal: '#7E42FF', dark: '6E30F3'},
+      {light: '#FF75B0', normal: '#FF58A0', dark: 'FC3D8F'},
+    ],
     secondary: [
       {light: '#FE5454', normal: '#FF4040', dark: 'DC0909'},
       {light: '#FE5454', normal: '#FF4040', dark: 'DC0909'},
