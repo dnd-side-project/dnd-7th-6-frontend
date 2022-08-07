@@ -6,20 +6,31 @@ import {ChipWrapper, Container} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
 import useFilteredItem from 'src/hooks/useFilteredItem';
-import {openFilterSheet, changeFocus} from 'src/redux/actions/PostAction';
+import {openFilterSheet, changeFocus, clearFilter} from 'src/redux/actions/PostAction';
 
 const FilterOrganism = () => {
   const labels = ['브랜드', '인원', '포즈컨셉', '프레임'];
   const {getCountOfSelected, getFirstSelected} = useFilteredItem();
   const dispatch = useDispatch();
 
-  const handlePressFilterChip = (index: number) => () => {
-    dispatch(openFilterSheet());
+  const openFilter = (index: number) => {
     dispatch(changeFocus(index));
+    dispatch(openFilterSheet());
   };
-  const getChipContents = (index: number) => {
-    const countOfSelected = getCountOfSelected(index);
-    const firstSelected = getFirstSelected(index);
+  const handlePressFilterChip = (index: number) => () => {
+    openFilter(index);
+  };
+  const handlePressFilterChipIcon = (index: number, countOfSelected: number) => () => {
+    openFilter(index);
+    if (countOfSelected) {
+      dispatch(clearFilter(index));
+    }
+  };
+  const getChipContents = (
+    index: number,
+    countOfSelected: number,
+    firstSelected: ReturnType<typeof getFirstSelected>,
+  ) => {
     if (!countOfSelected) {
       return labels[index];
     }
@@ -29,13 +40,21 @@ const FilterOrganism = () => {
   return (
     <Container>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {[0, 1, 2, 3].map(index => (
-          <ChipWrapper key={index}>
-            <OptionChip active={!!getCountOfSelected(index)} onPress={handlePressFilterChip(index)}>
-              {getChipContents(index)}
-            </OptionChip>
-          </ChipWrapper>
-        ))}
+        {[0, 1, 2, 3].map(index => {
+          const countOfSelected = getCountOfSelected(index);
+          const firstSelected = getFirstSelected(index);
+
+          return (
+            <ChipWrapper key={index}>
+              <OptionChip
+                active={!!countOfSelected}
+                onPress={handlePressFilterChip(index)}
+                onPressIcon={handlePressFilterChipIcon(index, countOfSelected)}>
+                {getChipContents(index, countOfSelected, firstSelected)}
+              </OptionChip>
+            </ChipWrapper>
+          );
+        })}
       </ScrollView>
     </Container>
   );
