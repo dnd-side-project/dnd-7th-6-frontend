@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 
 import {
@@ -18,7 +19,7 @@ import {
 
 const DescriptionOrganism = () => {
   const [data] = useState(BoothDetailData);
-
+  const navigation = useNavigation();
   return (
     <Container>
       <IconContainer>
@@ -35,7 +36,9 @@ const DescriptionOrganism = () => {
         매일 {data.activeTime[0]} ~ {data.activeTime[1]}
       </Contents>
       <ButtonWrapper>
-        <PressableAddition>부스 정보 알려주기</PressableAddition>
+        <PressableAddition onPress={() => navigation.navigate('BoothReview' as never, {} as never)}>
+          부스 정보 알려주기
+        </PressableAddition>
       </ButtonWrapper>
     </Container>
   );

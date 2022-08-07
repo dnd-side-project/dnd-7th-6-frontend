@@ -40,13 +40,6 @@
 			remoteGlobalIDString = 3566E29624F4738A4953CE7ABF635C5E;
 			remoteInfo = "react-native-config";
 		};
-		062EA279288ED9D00043B3EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CC9CF62342D0D8A46D8176D06AABE411;
-			remoteInfo = "react-native-image-picker";
-		};
 		062EA27B288ED9D00043B3EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -397,6 +390,83 @@
 			remoteGlobalIDString = C777CF2FB1E39A45CBBDB54E8693F471;
 			remoteInfo = RNReanimated;
 		};
+		06E2E0B9289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB1D7880F01CE5024CE360F0D72A6DE3;
+			remoteInfo = "Permission-Camera";
+		};
+		06E2E0BB289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 437C6E620004E36CC6D5E091AFCE2237;
+			remoteInfo = "Permission-LocationAccuracy";
+		};
+		06E2E0BD289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 11C24EA25460DA1CF59AF70D747DA5EF;
+			remoteInfo = "Permission-LocationAlways";
+		};
+		06E2E0BF289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A710801FF4681D52F3948DD170856943;
+			remoteInfo = "Permission-LocationWhenInUse";
+		};
+		06E2E0C1289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B3DD4468EF372D977659FA36E28EFD79;
+			remoteInfo = "Permission-Notifications";
+		};
+		06E2E0C3289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 440764F00D9573560E387E1B72397B42;
+			remoteInfo = "Permission-PhotoLibrary";
+		};
+		06E2E0C5289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AEA4A114C08533A2C0F8E039A4C5EB9;
+			remoteInfo = RNImageCropPicker;
+		};
+		06E2E0C7289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DCCC9C42EB3E07CFD81800EC8A2515D;
+			remoteInfo = "RNImageCropPicker-QBImagePicker";
+		};
+		06E2E0C9289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 778C1572AE22EE933ACA12594B6DF949;
+			remoteInfo = RNPermissions;
+		};
+		06E2E0CB289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7862C607B7BE0510C2D65193F9B4B4F9;
+			remoteInfo = TOCropViewController;
+		};
+		06E2E0CD289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE1E812071397E31AE21DFF368B781B1;
+			remoteInfo = "TOCropViewController-TOCropViewControllerBundle";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -476,7 +546,13 @@
 				0630529F287C4EC600DDFD03 /* glog */,
 				063052A1287C4EC600DDFD03 /* libevent */,
 				062EA276288ED9D00043B3EC /* libwebp */,
-				063052A3287C4EC600DDFD03 /* libPods-hot6.a */,
+				06E2E0BA289E4DB1004A3FCC /* Permission-Camera */,
+				06E2E0BC289E4DB1004A3FCC /* Permission-LocationAccuracy */,
+				06E2E0BE289E4DB1004A3FCC /* Permission-LocationAlways */,
+				06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */,
+				06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */,
+				06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */,
+				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
 				063052A9287C4EC600DDFD03 /* RCTTypeSafety */,
@@ -492,7 +568,6 @@
 				063052BD287C4EC600DDFD03 /* React-logger */,
 				062EA278288ED9D00043B3EC /* react-native-config */,
 				063052BF287C4EC600DDFD03 /* react-native-geolocation-service */,
-				062EA27A288ED9D00043B3EC /* react-native-image-picker */,
 				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
@@ -508,12 +583,17 @@
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				06C92A5828996D04009267C3 /* RNGestureHandler */,
+				06E2E0C6289E4DB1004A3FCC /* RNImageCropPicker */,
+				06E2E0C8289E4DB1004A3FCC /* RNImageCropPicker-QBImagePicker */,
+				06E2E0CA289E4DB1004A3FCC /* RNPermissions */,
 				06C92A5A28996D04009267C3 /* RNReanimated */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
 				062EA3042892DE250043B3EC /* RNSVG */,
 				062EA280288ED9D00043B3EC /* SDWebImage */,
 				062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */,
 				063052DB287C4EC600DDFD03 /* SocketRocket */,
+				06E2E0CC289E4DB1004A3FCC /* TOCropViewController */,
+				06E2E0CE289E4DB1004A3FCC /* TOCropViewController-TOCropViewControllerBundle */,
 				063052DD287C4EC600DDFD03 /* Yoga */,
 				063052DF287C4EC600DDFD03 /* YogaKit */,
 			);
@@ -694,14 +774,6 @@
 			remoteRef = 062EA277288ED9D00043B3EC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		062EA27A288ED9D00043B3EC /* react-native-image-picker */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			name = "react-native-image-picker";
-			path = "libreact-native-image-picker.a";
-			remoteRef = 062EA279288ED9D00043B3EC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		062EA27C288ED9D00043B3EC /* react-native-image-resizer */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -838,9 +910,10 @@
 			remoteRef = 063052A0287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		063052A3287C4EC600DDFD03 /* libPods-hot6.a */ = {
+		063052A3287C4EC600DDFD03 /* Pods-hot6 */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
+			name = "Pods-hot6";
 			path = "libPods-hot6.a";
 			remoteRef = 063052A2287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1099,6 +1172,94 @@
 			name = RNReanimated;
 			path = libRNReanimated.a;
 			remoteRef = 06C92A5928996D04009267C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BA289E4DB1004A3FCC /* Permission-Camera */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-Camera";
+			path = "libPermission-Camera.a";
+			remoteRef = 06E2E0B9289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BC289E4DB1004A3FCC /* Permission-LocationAccuracy */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationAccuracy";
+			path = "libPermission-LocationAccuracy.a";
+			remoteRef = 06E2E0BB289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BE289E4DB1004A3FCC /* Permission-LocationAlways */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationAlways";
+			path = "libPermission-LocationAlways.a";
+			remoteRef = 06E2E0BD289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationWhenInUse";
+			path = "libPermission-LocationWhenInUse.a";
+			remoteRef = 06E2E0BF289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-Notifications";
+			path = "libPermission-Notifications.a";
+			remoteRef = 06E2E0C1289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-PhotoLibrary";
+			path = "libPermission-PhotoLibrary.a";
+			remoteRef = 06E2E0C3289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C6289E4DB1004A3FCC /* RNImageCropPicker */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNImageCropPicker;
+			path = libRNImageCropPicker.a;
+			remoteRef = 06E2E0C5289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C8289E4DB1004A3FCC /* RNImageCropPicker-QBImagePicker */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "RNImageCropPicker-QBImagePicker";
+			path = QBImagePicker.bundle;
+			remoteRef = 06E2E0C7289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CA289E4DB1004A3FCC /* RNPermissions */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNPermissions;
+			path = libRNPermissions.a;
+			remoteRef = 06E2E0C9289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CC289E4DB1004A3FCC /* TOCropViewController */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = TOCropViewController;
+			path = libTOCropViewController.a;
+			remoteRef = 06E2E0CB289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CE289E4DB1004A3FCC /* TOCropViewController-TOCropViewControllerBundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "TOCropViewController-TOCropViewControllerBundle";
+			path = TOCropViewControllerBundle.bundle;
+			remoteRef = 06E2E0CD289E4DB1004A3FCC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

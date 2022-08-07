@@ -2,12 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>포토부스 사진 촬영을 위해 카메라 권한이 필요합니다.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>포토부스 사진 선택을 위해 라이브러리 접근 권한이 필요합니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>포토부스 사진 선택을 위해 라이브러리 접근 권한이 필요합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This is the plist item for NSLocationWhenInUseUsageDescription</string>
+	<string>포토부스 위치 검색을 위해 위치 접근 권한이 필요합니다.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This is the plist item for NSLocationAlwaysAndWhenInUseUsageDescription</string>
+	<string>포토부스 위치 검색을 위해 위치 접근 권한이 필요합니다.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This is the plist item for NSLocationAlwaysUsageDescription</string>
+	<string>포토부스 위치 검색을 위해 위치 접근 권한이 필요합니다.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
