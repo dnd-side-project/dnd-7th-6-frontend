@@ -19,9 +19,6 @@ const FilterOrganism = () => {
     <Container>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <ChipWrapper>
-          <OptionChip>인기순</OptionChip>
-        </ChipWrapper>
-        <ChipWrapper>
           <OptionChip onPress={handlePressFilterChip(0)}>브랜드</OptionChip>
         </ChipWrapper>
         <ChipWrapper>
