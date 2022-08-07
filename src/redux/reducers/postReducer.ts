@@ -57,12 +57,18 @@ const postReducer: Reducer = (state = initialState, action) => {
     case CHANGE_FILTER.POSE.EMOTION:
       return {
         ...state,
-        filteredPose: {emotion: toggleTag(state.filteredPose.emotion, payload.target)},
+        filteredPose: {
+          ...state.filteredPose,
+          emotion: toggleTag(state.filteredPose.emotion, payload.target),
+        },
       };
     case CHANGE_FILTER.POSE.SITUATION:
       return {
         ...state,
-        filteredPose: {situation: toggleTag(state.filteredPose.situation, payload.target)},
+        filteredPose: {
+          ...state.filteredPose,
+          situation: toggleTag(state.filteredPose.situation, payload.target),
+        },
       };
     default:
       return state;
