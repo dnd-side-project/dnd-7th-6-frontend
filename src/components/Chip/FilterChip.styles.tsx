@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText3} from '../utils/Text';
+import {BodyText5} from '../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -18,11 +18,11 @@ export const Container = styled.Pressable<Props>(({selected}) => ({
   borderColor: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[3],
 }));
 
-export const Title = styled(BodyText3)<Props>(({selected}) => ({
+export const Title = styled(BodyText5)<Props>(({selected}) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[9],
   marginRight: widthPercentage(4),
 }));
 
-export const Count = styled(BodyText3)<Props>(({selected}) => ({
+export const Count = styled(BodyText5)<Props>(({selected}) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[6],
 }));

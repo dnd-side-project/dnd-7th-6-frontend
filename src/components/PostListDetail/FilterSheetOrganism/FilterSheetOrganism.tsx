@@ -16,14 +16,15 @@ import FilterSheetNavigator from '../FilterSheetNavigator';
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
 import {Header} from 'src/screens/RecommendScreen/PostListDetailScreen.header';
-import {heightPercentage} from 'src/styles/ScreenResponse';
+import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
+import theme from 'src/styles/Theme';
 
 const FilterSheetOrganism = () => {
   const isOpenFilterSheet = useSelector((state: RootState) => state.postReducer.isOpenFilterSheet);
   const focused = useSelector((state: RootState) => state.postReducer.focusedFilter);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const swiperRef = useRef<Swiper.default>(null);
-  const snapPoints = useMemo(() => [1, heightPercentage(500)], []);
+  const snapPoints = useMemo(() => [1, heightPercentage(600)], []);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,6 +43,10 @@ const FilterSheetOrganism = () => {
         snapPoints={snapPoints}
         index={isOpenFilterSheet ? 1 : 0}
         ref={bottomSheetRef}
+        handleIndicatorStyle={{
+          width: widthPercentage(80),
+          backgroundColor: theme.colors.grayscale[5],
+        }}
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
         backdropComponent={() => (
           <SafeAreaView>
