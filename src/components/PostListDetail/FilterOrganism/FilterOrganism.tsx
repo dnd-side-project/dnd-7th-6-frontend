@@ -21,9 +21,10 @@ const FilterOrganism = () => {
     openFilter(index);
   };
   const handlePressFilterChipIcon = (index: number, countOfSelected: number) => () => {
-    openFilter(index);
     if (countOfSelected) {
       dispatch(clearFilter(index));
+    } else {
+      openFilter(index);
     }
   };
   const getChipContents = (

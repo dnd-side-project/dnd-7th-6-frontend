@@ -1,22 +1,19 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, {useEffect, useMemo, useRef} from 'react';
-import {SafeAreaView} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import * as Swiper from 'react-native-swiper';
 import {useDispatch, useSelector} from 'react-redux';
 
-import CardListOrganism from '../CardListOrganism';
-import FilterOrganism from '../FilterOrganism';
 import BrandFilter from '../FilterPages/BrandFilter';
 import FrameFilter from '../FilterPages/FrameFilter';
 import HeadcountFilter from '../FilterPages/HeadcountFilter';
 import PoseFilter from '../FilterPages/PoseFilter';
+import FilterSheetBackdrop from '../FilterSheetBackdrop';
 import FilterSheetFooter from '../FilterSheetFooter';
 import FilterSheetNavigator from '../FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
-import {Header} from 'src/screens/RecommendScreen/PostListDetailScreen.header';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -45,18 +42,12 @@ const FilterSheetOrganism = () => {
         index={isOpenFilterSheet ? 1 : 0}
         ref={bottomSheetRef}
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
-        backdropComponent={() => (
-          <SafeAreaView>
-            <Header />
-            <FilterOrganism />
-            <CardListOrganism />
-          </SafeAreaView>
-        )}
+        backdropComponent={() => <FilterSheetBackdrop />}
+        footerComponent={FilterSheetFooter}
         handleIndicatorStyle={{
           width: widthPercentage(80),
           backgroundColor: theme.colors.grayscale[5],
-        }}
-        footerComponent={FilterSheetFooter}>
+        }}>
         <FilterSheetNavigator />
         <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
           <BrandFilter />
