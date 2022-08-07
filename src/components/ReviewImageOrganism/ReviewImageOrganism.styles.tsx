@@ -5,10 +5,6 @@ import {BodyText3, BodyText4, SubHeadline2} from '../utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-interface Props {
-  focus: boolean;
-}
-
 export const ReviewSectionContainer = styled.View({
   width: '100%',
   height: '100%',
@@ -61,21 +57,6 @@ export const BoothSelectTitle = styled(BodyText3)({
 export const BoothDescribeTitle = styled(SubHeadline2)({
   color: theme.colors.grayscale[8],
   marginBottom: heightPercentage(16),
-});
-
-export const BoothDescribeTextInputWrapper = styled.View(({focus}: Props) => ({
-  height: heightPercentage(174),
-  width: widthPercentage(343),
-  borderRadius: 8,
-  borderWidth: 1,
-  padding: 12,
-  borderColor: focus ? '#8048F8' : theme.colors.grayscale[3],
-  alignSelf: 'center',
-}));
-
-export const BoothDescribeTextInput = styled.TextInput({
-  width: '100%',
-  height: '100%',
 });
 
 export const BoothDescribeTextLengthText = styled(BodyText4)({
