@@ -11,6 +11,7 @@ import BrandFilter from '../FilterPages/BrandFilter';
 import FrameFilter from '../FilterPages/FrameFilter';
 import HeadcountFilter from '../FilterPages/HeadcountFilter';
 import PoseFilter from '../FilterPages/PoseFilter';
+import FilterSheetFooter from '../FilterSheetFooter';
 import FilterSheetNavigator from '../FilterSheetNavigator';
 
 import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
@@ -43,10 +44,6 @@ const FilterSheetOrganism = () => {
         snapPoints={snapPoints}
         index={isOpenFilterSheet ? 1 : 0}
         ref={bottomSheetRef}
-        handleIndicatorStyle={{
-          width: widthPercentage(80),
-          backgroundColor: theme.colors.grayscale[5],
-        }}
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
         backdropComponent={() => (
           <SafeAreaView>
@@ -54,7 +51,12 @@ const FilterSheetOrganism = () => {
             <FilterOrganism />
             <CardListOrganism />
           </SafeAreaView>
-        )}>
+        )}
+        handleIndicatorStyle={{
+          width: widthPercentage(80),
+          backgroundColor: theme.colors.grayscale[5],
+        }}
+        footerComponent={FilterSheetFooter}>
         <FilterSheetNavigator />
         <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
           <BrandFilter />

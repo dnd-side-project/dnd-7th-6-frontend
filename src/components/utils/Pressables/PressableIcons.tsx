@@ -1,7 +1,6 @@
+import styled from '@emotion/native';
 import React from 'react';
 import {PressableProps} from 'react-native';
-
-import PressableIcon from '../PressableIcon';
 
 import BottomArrowIcon from 'src/icons/BottomArrowIcon';
 import CancelIcon from 'src/icons/CancelIcon';
@@ -11,6 +10,10 @@ import RefreshIcon from 'src/icons/RefreshIcon';
 import RightArrowIcon from 'src/icons/RightArrowIcon';
 import SearchIcon from 'src/icons/SearchIcon';
 import UploadIcon from 'src/icons/UploadIcon';
+
+const PressableIcon = styled.Pressable({
+  alignSelf: 'flex-start',
+});
 
 const makePressableComponent = (IconComponent: React.FC) => (props: PressableProps) => {
   return (

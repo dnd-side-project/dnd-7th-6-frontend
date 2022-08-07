@@ -18,7 +18,7 @@ const FilterSheetNavigator = () => {
   const handlePressLabel = (index: number) => () => {
     dispatch(changeFocus(index));
   };
-  console.log(getCountOfSelected(1));
+
   return (
     <Container>
       {labels.map((label, i) => (
