@@ -3,6 +3,7 @@ import {
   ADD_STORE_DESCRIPTION,
   CHANGE_STARS,
   CLEAR_DATA,
+  SHOW_PAUSE_MODAL,
 } from '../types/ReviewActionType';
 
 export const changeStars = (star: number) => ({
@@ -22,4 +23,9 @@ export const addStoreDescription = (text: string) => ({
 
 export const clearData = () => ({
   type: CLEAR_DATA,
+});
+
+export const showPauseModal = (isModal: boolean) => ({
+  type: SHOW_PAUSE_MODAL,
+  payload: {isModal},
 });

@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {Alert} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ReviewBoothName from '../ReviewBoothName';
 import ReviewNextPressable from '../ReviewNextPressable';
@@ -17,6 +18,7 @@ import {
   SpecificWrapper,
 } from './ReviewRatingOrganism.styles';
 
+import {clearData} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
 const ReviewRatingOrganism = () => {
   const boothName = '포토시그니처 대구 교동카페 거리점';
@@ -33,6 +35,7 @@ const ReviewRatingOrganism = () => {
     {id: 9, title: '배경색이 다양해요'},
   ];
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [select, setSelect] = useState<any>({});
   const [specificCounter, setSpecificCounter] = useState([]);
   const currentStars: number = useSelector((state: RootState) => state.reviewReducer.currentStar);
@@ -52,6 +55,28 @@ const ReviewRatingOrganism = () => {
       return nextState;
     });
   const nextOnPress = () => navigation.navigate('BoothResultReview' as never, {} as never);
+
+  useEffect(
+    () =>
+      navigation.addListener('beforeRemove', e => {
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+
+        // Prompt the user before leaving the screen
+        Alert.alert('리뷰 작성을 중단하시겠어요??', '입력한 내용은 저장되지 않아요!', [
+          {text: '계속 작성하기', style: 'cancel', onPress: () => {}},
+          {
+            text: '나가기',
+            style: 'destructive',
+            onPress: () => {
+              dispatch(clearData());
+              navigation.dispatch(e.data.action);
+            },
+          },
+        ]);
+      }),
+    [navigation],
+  );
 
   return (
     <ReviewSectionContainer>
