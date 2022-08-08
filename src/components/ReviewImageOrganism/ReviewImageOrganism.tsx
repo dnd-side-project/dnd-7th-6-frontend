@@ -8,14 +8,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import ImageSelectPressable from '../ImageSelectPressable/ImageSelectPressable';
 import ReviewNextPressable from '../ReviewNextPressable';
 import DismissKeyboardView from '../utils/DismissKeyboardScrollView';
+import TextField from '../utils/TextField';
 import {
   BoothDescribeTitle,
   BoothDescribeWrapper,
   CameranImageWrapper,
   ReviewSectionContainer,
   BoothSelectTitle,
-  BoothDescribeTextInput,
-  BoothDescribeTextInputWrapper,
   SubtitleBooth,
   ReviewNextPressableWrapper,
   ImageWrapper,
@@ -100,20 +99,19 @@ const ReviewImageOrganism = () => {
           <BoothDescribeTitle>이 매장에 대해 설명해주세요</BoothDescribeTitle>
           <BoothSelectTitle>(선택)</BoothSelectTitle>
         </BoothDescribeWrapper>
-        <BoothDescribeTextInputWrapper focus={focusTextInput}>
-          <BoothDescribeTextInput
-            multiline={true}
-            placeholder="이 부스를 이용하면서 느꼈던 느낌을 알려주세요."
-            textAlignVertical="top"
-            value={descriptionText}
-            onFocus={() => setFocusTextInput(true)}
-            onBlur={() => setFocusTextInput(false)}
-            maxLength={300}
-            onChangeText={value => {
-              dispatch(addStoreDescription(value));
-            }}
-          />
-        </BoothDescribeTextInputWrapper>
+        <TextField
+          focus={focusTextInput}
+          multiline={true}
+          placeholder="이 부스를 이용하면서 느꼈던 느낌을 알려주세요."
+          textAlignVertical="top"
+          value={descriptionText}
+          onFocus={() => setFocusTextInput(true)}
+          onBlur={() => setFocusTextInput(false)}
+          maxLength={300}
+          onChangeText={value => {
+            dispatch(addStoreDescription(value));
+          }}
+        />
         <BoothDescribeTextLengthText>{descriptionText.length}/300</BoothDescribeTextLengthText>
         <ReviewNextPressableWrapper>
           <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
