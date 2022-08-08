@@ -18,7 +18,7 @@ const ReviewStarRating = () => {
       {maxRating.map(item => {
         return (
           <StarPressable key={item} onPress={() => dispatch(changeStars(item))}>
-            {item <= currentStars ? <ColorStarIcon /> : <StarIcon />}
+            {item <= currentStars ? <ColorStarIcon size={38} /> : <StarIcon />}
           </StarPressable>
         );
       })}

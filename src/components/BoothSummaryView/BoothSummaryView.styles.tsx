@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText5, BodyText6, SubHeadline2} from '../utils/Text';
+import {BodyText4, BodyText6, SubHeadline3} from '../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -29,7 +29,7 @@ export const ChipWrapper = styled.View({
   paddingRight: widthPercentage(4),
 });
 
-export const Title = styled(SubHeadline2)({
+export const Title = styled(SubHeadline3)({
   color: theme.colors.grayscale[9],
 });
 
@@ -37,10 +37,10 @@ export const SubText = styled.Text({
   marginVertical: heightPercentage(4),
 });
 
-export const Distance = styled(BodyText5)({
+export const Distance = styled(BodyText4)({
   color: theme.colors.grayscale[7],
 });
 
-export const Review = styled(BodyText6)({
+export const Rating = styled(BodyText6)({
   color: theme.colors.grayscale[7],
 });

@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import NaverMapView, {type Coord} from 'react-native-nmap';
+import NaverMapView, {TrackingMode, type Coord} from 'react-native-nmap';
 import {useSelector} from 'react-redux';
 
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
@@ -38,6 +38,7 @@ const MapNaverMapOrganism = () => {
       if (!mapRef || !mapRef.current) {
         return;
       }
+      mapRef.current.setLocationTrackingMode(TrackingMode.Follow);
       mapRef.current.animateToCoordinate({
         latitude: latitude,
         longitude: longitude,
@@ -45,6 +46,7 @@ const MapNaverMapOrganism = () => {
     };
     initMap();
   }, []);
+
   //첫 로딩시 data refetching
   useEffect(() => {
     refetch();

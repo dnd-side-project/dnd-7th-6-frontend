@@ -14,5 +14,4 @@ export const MapRefreshPressableWrapper = styled.View({
 
 export const RefreshandSearchWrapper = styled.View({
   width: '100%',
-  zIndex: 2,
 });

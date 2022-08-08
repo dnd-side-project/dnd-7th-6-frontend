@@ -9,6 +9,8 @@ const useGetPhotoBoothLocation = (coord: Coord) => {
     async () => await getPhotoBoothLocation({...coord, distance: 3}),
     {
       onError: error => console.log(error),
+      enabled: false,
+      staleTime: Infinity,
     },
   );
 };

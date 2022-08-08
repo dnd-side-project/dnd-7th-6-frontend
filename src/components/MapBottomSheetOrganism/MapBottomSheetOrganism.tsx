@@ -1,25 +1,44 @@
 import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
-import React, {useMemo, useRef} from 'react';
+import {useHeaderHeight} from '@react-navigation/elements';
+import React, {useEffect, useMemo, useRef} from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import BoothSummaryView from '../BoothSummaryView';
 import MapNaverMapOrganism from '../MapNaverMapOrganism';
 import {BottomSheetConatiner, bottomSheetStyle, handleStyle} from './MapBottomSheetOrganism.styles';
 
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
+import {changeBottomSheetHeight} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
-import {PhotoBooth} from 'src/types';
+import {PhotoBoothContentData} from 'src/types';
+import valueOfPlatform from 'src/utils/valueOfPlatform';
 
 const MapBottomSheetOrganism = () => {
   const sheetIndex = useSelector((state: RootState) => state.mapReducer.bottomSheetHeightIndex);
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const headerHeight = useHeaderHeight();
   const snapPoints = useMemo(
-    () => [heightPercentage(145), heightPercentage(400), heightPercentage(630)],
+    () => [
+      heightPercentage(30),
+      heightPercentage(143),
+      valueOfPlatform({
+        ios: heightPercentage(666),
+        android: heightPercentage(666) - headerHeight,
+      }),
+    ],
     [],
   );
+
   const {data} = useGetPhotoBoothLocation({longitude: 0, latitude: 0});
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data) {
+      dispatch(changeBottomSheetHeight(1));
+    }
+  }, [data]);
+
   return (
     <BottomSheetConatiner>
       <BottomSheet
@@ -30,8 +49,8 @@ const MapBottomSheetOrganism = () => {
         handleIndicatorStyle={handleStyle}
         index={sheetIndex}>
         <BottomSheetFlatList
-          data={data?.data}
-          renderItem={({item}: {item: PhotoBooth}) => <BoothSummaryView {...item} />}
+          data={data?.data.content}
+          renderItem={({item}: {item: PhotoBoothContentData}) => <BoothSummaryView {...item} />}
         />
       </BottomSheet>
     </BottomSheetConatiner>

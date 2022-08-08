@@ -1,13 +1,11 @@
 import React from 'react';
 import NaverMapView, {Marker} from 'react-native-nmap';
+import {useDispatch} from 'react-redux';
 
 import {styles} from './NaverMap.styles';
 
-type PhotoBoothData = {
-  latitude: number;
-  longitude: number;
-  id: number;
-};
+import {changeBottomSheetHeight} from 'src/redux/actions/MapAction';
+import {PhotoBoothContentData} from 'src/types';
 
 const NaverMap = ({mapRef, setScreenPos, data}: any) => {
   return (
@@ -21,17 +19,18 @@ const NaverMap = ({mapRef, setScreenPos, data}: any) => {
       zoomControl={false}
       compass={false}
       scaleBar={false}
-      showsMyLocationButton={false}>
-      {data?.map(MarkersOnMap)}
+      showsMyLocationButton={false}
+      mapType={1}>
+      {data?.content.map(MarkersOnMap)}
     </NaverMapView>
   );
 };
 
-const MarkersOnMap = (data: PhotoBoothData) => {
+const MarkersOnMap = (data: PhotoBoothContentData) => {
   return (
     <Marker
-      coordinate={{latitude: data.latitude, longitude: data.longitude}}
-      key={data.id}
+      coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
+      key={data.photoBooth.id}
       image={require('src/assets/images/marker.png')}
     />
   );
