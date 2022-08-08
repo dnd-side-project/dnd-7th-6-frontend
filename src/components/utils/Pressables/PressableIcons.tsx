@@ -11,7 +11,6 @@ import PlusIcon from 'src/icons/PlusIcon';
 import RefreshIcon from 'src/icons/RefreshIcon';
 import RightArrowIcon from 'src/icons/RightArrowIcon';
 import SearchIcon from 'src/icons/SearchIcon';
-import StarIcon from 'src/icons/StarIcon';
 import UploadIcon from 'src/icons/UploadIcon';
 
 const PressableIcon = styled.Pressable({
@@ -35,6 +34,4 @@ export const PressableDeleteIcon = makePressableComponent(DeleteIcon);
 export const PressableBottomArrowIcon = makePressableComponent(BottomArrowIcon);
 export const PressableCancelIcon = makePressableComponent(CancelIcon);
 export const PressableRefreshIcon = makePressableComponent(RefreshIcon);
-export const PressableStarIcon = makePressableComponent(StarIcon);
-export const PressableColorStarIcon = makePressableComponent(ColorStarIcon);
 export const PressablePlusIcon = makePressableComponent(PlusIcon);
