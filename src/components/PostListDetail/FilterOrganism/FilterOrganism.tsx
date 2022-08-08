@@ -6,12 +6,14 @@ import {ChipWrapper, Container} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
 import useFilteredItem from 'src/hooks/useFilteredItem';
+import useFilterTag from 'src/hooks/useFilterTag';
 import {openFilterSheet, changeFocus, clearFilter} from 'src/redux/actions/PostAction';
 
 const FilterOrganism = () => {
   const labels = ['브랜드', '인원', '포즈컨셉', '프레임'];
   const {getCountOfSelected, getFirstSelected} = useFilteredItem();
   const dispatch = useDispatch();
+  const {getFilterTagById} = useFilterTag();
 
   const openFilter = (index: number) => {
     dispatch(changeFocus(index));
@@ -35,7 +37,7 @@ const FilterOrganism = () => {
     if (!countOfSelected) {
       return labels[index];
     }
-    return `${firstSelected?.index} ${countOfSelected}`;
+    return `${getFilterTagById(firstSelected?.index || 0)} ${countOfSelected}`;
   };
 
   return (

@@ -7,7 +7,7 @@ import {PressableRefreshIcon} from 'src/components/utils/Pressables/PressableIco
 import PressableSubmit from 'src/components/utils/Pressables/PressableSubmit';
 import useFilteredItem from 'src/hooks/useFilteredItem';
 import useGetPostsByTag from 'src/querys/useGetPostsByTag';
-import {clearFilter} from 'src/redux/actions/PostAction';
+import {clearFilter, closeFilterSheet} from 'src/redux/actions/PostAction';
 import {widthPercentage} from 'src/styles/ScreenResponse';
 
 const FilterSheetFooter = () => {
@@ -15,7 +15,10 @@ const FilterSheetFooter = () => {
   const {tagIdSet} = useFilteredItem();
   const {data} = useGetPostsByTag(tagIdSet);
 
-  const handlePressRefresh = () => dispatch(clearFilter());
+  const handlePressRefresh = () => {
+    dispatch(clearFilter());
+    dispatch(closeFilterSheet());
+  };
 
   return (
     <Container>
