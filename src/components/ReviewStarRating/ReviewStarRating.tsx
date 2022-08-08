@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {StarPressable, StarWrapper} from './ReviewStarRating.styles';
 
-import ColorStarIcon from 'src/icons/ColorStarIcon';
+import ColorStarIcon38 from 'src/icons/ColorStarIcon38';
 import StarIcon from 'src/icons/StarIcon';
 import {changeStars} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
@@ -18,7 +18,7 @@ const ReviewStarRating = () => {
       {maxRating.map(item => {
         return (
           <StarPressable key={item} onPress={() => dispatch(changeStars(item))}>
-            {item <= currentStars ? <ColorStarIcon size={38} /> : <StarIcon />}
+            {item <= currentStars ? <ColorStarIcon38 /> : <StarIcon />}
           </StarPressable>
         );
       })}

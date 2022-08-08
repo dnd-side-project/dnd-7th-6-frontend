@@ -78,3 +78,13 @@ export interface PhotoBoothContentData {
   };
   tagSet: null;
 }
+
+export interface PhotoBoothBrandTag {
+  id: number;
+  title: string;
+  keyword: string;
+  photoBoothCount: number;
+  reviewCount: number;
+  postCount: number;
+  tagType: string;
+}
