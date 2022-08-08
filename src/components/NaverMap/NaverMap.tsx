@@ -31,21 +31,12 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressabl
 };
 
 const MarkersOnMap = (data: PhotoBoothContentData) => {
-  const [focusMarker, setFocusMarker] = useState(-1);
-  const onPressMarker = () => {
-    setFocusMarker(data.photoBooth.id);
-  };
   return (
     <Marker
       coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
       key={data.photoBooth.id}
       caption={{text: data.photoBooth.name, textSize: 10}}
-      image={
-        data.photoBooth.id === focusMarker
-          ? require('src/assets/images/focusedMarker.png')
-          : require('src/assets/images/marker.png')
-      }
-      onClick={onPressMarker}
+      image={require('src/assets/images/marker.png')}
     />
   );
 };
