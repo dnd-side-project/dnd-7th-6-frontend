@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native';
 import {RecommendParamList} from '..';
 
 import InputContentsOrganism from 'src/components/PostWrite/InputContentsOrganism';
+import InputCustomTagOrganism from 'src/components/PostWrite/InputCustomTagOrganism';
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
@@ -24,6 +25,7 @@ const PostWriteMainScreen = ({navigation}: DetailScreenProps) => {
       <DismissKeyboardView>
         <InputContentsOrganism />
         <SelectTagOrganism />
+        <InputCustomTagOrganism />
       </DismissKeyboardView>
     </SafeAreaView>
   );
