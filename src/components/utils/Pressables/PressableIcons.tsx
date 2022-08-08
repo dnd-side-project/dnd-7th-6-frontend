@@ -4,7 +4,6 @@ import {PressableProps} from 'react-native';
 
 import BottomArrowIcon from 'src/icons/BottomArrowIcon';
 import CancelIcon from 'src/icons/CancelIcon';
-import ColorStarIcon from 'src/icons/ColorStarIcon';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import LeftArrowIcon from 'src/icons/LeftArrowIcon';
 import LikeIcon from 'src/icons/LikeIcon';

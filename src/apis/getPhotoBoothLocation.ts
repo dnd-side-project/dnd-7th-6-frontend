@@ -7,7 +7,7 @@ interface RequestParams {
   distance: number;
 }
 const getPhotoBoothLocation = async ({latitude, longitude, distance}: RequestParams) => {
-  const url = `${getApiServer}/api/v1/photo-booth/near-by?latitude=${latitude.toString()}&longitude=${longitude.toString()}&distance=${distance.toString()}&status=ACTIVE`;
+  const url = `${getApiServer}/api/v1/photo-booth/near-by?latitude=${latitude}&longitude=${longitude}&distance=${distance}&status=ACTIVE`;
   return await axios.get(url).catch(error => {
     console.error(JSON.stringify(error));
   });

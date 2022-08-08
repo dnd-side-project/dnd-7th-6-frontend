@@ -44,17 +44,6 @@ export interface BoothSummary {
   images: string[];
 }
 
-export interface PhotoBooth {
-  id: number;
-  jibunAddress: string;
-  latitude: number;
-  likeCount: number;
-  longitude: number;
-  name: string;
-  roadAddress: string;
-  status: string;
-}
-
 export interface SearchLocation {
   documents: SearchLocationDatas[];
 }
@@ -72,4 +61,20 @@ export interface SearchLocationDatas {
   road_address_name: string;
   x: string;
   y: string;
+}
+
+export interface PhotoBoothContentData {
+  firstReview: null;
+  like: boolean;
+  photoBooth: {
+    id: number;
+    jibunAddress: string;
+    latitude: number;
+    likeCount: number;
+    longitude: number;
+    name: string;
+    roadAddress: string;
+    status: string;
+  };
+  tagSet: null;
 }

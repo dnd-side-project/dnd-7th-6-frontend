@@ -13,7 +13,8 @@ export const bottomSheetStyle = {
 };
 
 export const handleStyle = {
-  width: widthPercentage(80),
+  width: widthPercentage(70),
   height: heightPercentage(4),
   backgroundColor: theme.colors.grayscale[6],
+  zIndex: 1,
 };

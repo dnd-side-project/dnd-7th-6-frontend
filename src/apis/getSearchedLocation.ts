@@ -2,7 +2,6 @@ import axios from 'axios';
 import {Config} from 'react-native-config';
 
 const getSearchedLocation = async (searchingWord: string) => {
-  console.log(Config.KAKAO_API_KEY);
   if (!searchingWord) {
     return;
   }

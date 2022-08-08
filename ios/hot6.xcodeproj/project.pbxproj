@@ -552,7 +552,7 @@
 				06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */,
 				06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */,
 				06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */,
-				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
+				063052A3287C4EC600DDFD03 /* libPods-hot6.a */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
 				063052A9287C4EC600DDFD03 /* RCTTypeSafety */,
@@ -910,10 +910,9 @@
 			remoteRef = 063052A0287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		063052A3287C4EC600DDFD03 /* Pods-hot6 */ = {
+		063052A3287C4EC600DDFD03 /* libPods-hot6.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			name = "Pods-hot6";
 			path = "libPods-hot6.a";
 			remoteRef = 063052A2287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;

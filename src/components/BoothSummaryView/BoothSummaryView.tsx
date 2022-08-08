@@ -8,24 +8,24 @@ import {
   DescriptionContainer,
   Distance,
   ImageContainer,
-  Review,
+  Rating,
   SubText,
   TagContainer,
   Title,
 } from './BoothSummaryView.styles';
 
-import {PhotoBooth} from 'src/types';
+import {PhotoBoothContentData} from 'src/types';
 import toLocaleString from 'src/utils/toLocaleString';
 
-const BoothSummaryView = (item: PhotoBooth) => {
+const BoothSummaryView = (item: PhotoBoothContentData) => {
   return (
     <Container>
       <DescriptionContainer>
-        <Title>{item.name}</Title>
+        <Title>{item.photoBooth.name}</Title>
         <SubText>
           <Distance>17km</Distance>
           <Text> | </Text>
-          <Review>부스리뷰 {toLocaleString(10)}개</Review>
+          <Rating>부스리뷰 {toLocaleString(10)}개</Rating>
         </SubText>
         <TagContainer>
           {/* {props.tags.map(tag => (
