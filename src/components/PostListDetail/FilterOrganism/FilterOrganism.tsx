@@ -1,5 +1,6 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 
 import {ChipWrapper, Container, RefreshWrapper} from './FilterOrganism.styles';
@@ -61,9 +62,15 @@ const FilterOrganism = () => {
           );
         })}
       </ScrollView>
-      <RefreshWrapper onPress={() => dispatch(clearFilter(ALL))}>
-        <RefreshIcon />
-      </RefreshWrapper>
+      <LinearGradient
+        start={{x: 0.1, y: 0}}
+        end={{x: 0, y: 0}}
+        colors={['#ffffffff', '#ffffff00']}
+        style={{position: 'absolute', right: 0, top: 0, bottom: 0, alignSelf: 'center'}}>
+        <RefreshWrapper onPress={() => dispatch(clearFilter(ALL))}>
+          <RefreshIcon />
+        </RefreshWrapper>
+      </LinearGradient>
     </Container>
   );
 };
