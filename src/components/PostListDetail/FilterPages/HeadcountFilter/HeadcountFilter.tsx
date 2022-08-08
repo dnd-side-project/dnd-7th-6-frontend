@@ -6,27 +6,21 @@ import {ChipWrapper} from '../NestedFilterOrganism/NestedFilterOrganism.styles';
 import {Container} from './HeadcountFilter.styles';
 
 import FilterChip from 'src/components/Chip/FilterChip';
+import {FILTER} from 'src/constants/filters';
+import useGetTagForm from 'src/querys/useGetTagForm';
 import {
   changeFilteredHeadcountNumber,
   changeFilteredHeadcountRelation,
 } from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
+import {Tag} from 'src/types';
 
 const HeadcountFilter = () => {
   const {number, relation} = useSelector((state: RootState) => state.postReducer.filteredHeadcount);
   const dispatch = useDispatch();
-  const numOfPeople = [
-    {id: 1, title: '혼자', count: 999},
-    {id: 2, title: '2명', count: 999},
-    {id: 3, title: '3명', count: 999},
-    {id: 4, title: '4명', count: 999},
-    {id: 5, title: '5명 이상', count: 999},
-  ];
-  const relationData = [
-    {id: 1, title: '커플', count: 999},
-    {id: 2, title: '친구', count: 999},
-    {id: 3, title: '가족', count: 999},
-  ];
+  const {data} = useGetTagForm(FILTER.HEADCOUNT);
+  // @ts-ignore
+  const tags: Tag[][] = (data || []) as Promise<Tag[][]>;
 
   const handlePressNumberChip = (id: number) => () => {
     dispatch(changeFilteredHeadcountNumber(id));
@@ -38,11 +32,11 @@ const HeadcountFilter = () => {
   return (
     <Container>
       <NestedFilterOrganism type="인원 수">
-        {numOfPeople.map(({id, title, count}) => (
+        {(tags[0] || []).map(({id, title, postCount}) => (
           <ChipWrapper key={id}>
             <FilterChip
               title={title}
-              count={count}
+              count={postCount}
               selected={number[id]}
               onPress={handlePressNumberChip(id)}
             />
@@ -50,11 +44,11 @@ const HeadcountFilter = () => {
         ))}
       </NestedFilterOrganism>
       <NestedFilterOrganism type="관계">
-        {relationData.map(({id, title, count}) => (
+        {(tags[1] || []).map(({id, title, postCount}) => (
           <ChipWrapper key={id}>
             <FilterChip
               title={title}
-              count={count}
+              count={postCount}
               selected={relation[id]}
               onPress={handlePressRelationChip(id)}
             />

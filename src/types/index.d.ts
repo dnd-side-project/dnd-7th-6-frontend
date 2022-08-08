@@ -12,13 +12,13 @@ export interface Post {
 }
 
 export interface Tag {
-  tag: {
-    id: 2;
-    title: string;
-    reviewCount: number;
-    postCount: number;
-    isPhotoBooth: boolean;
-  };
+  id: number;
+  title: string;
+  keyword: string;
+  photoBoothCount: number;
+  reviewCount: number;
+  postCount: number;
+  tagType: string;
 }
 
 export interface PostImage {
