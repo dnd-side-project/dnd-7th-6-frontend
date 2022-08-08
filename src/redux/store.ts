@@ -3,6 +3,7 @@ import {combineReducers, Reducer, Store} from 'redux';
 
 import mapReducer from './reducers/mapReducer';
 import postReducer from './reducers/postReducer';
+import postWriteReducer from './reducers/postWriteReducer';
 import reviewReducer from './reducers/reviewReducer';
 import tabBarReducer from './reducers/tabBarReducer';
 
@@ -11,6 +12,7 @@ const rootReducer: Reducer = combineReducers({
   tabBarReducer,
   postReducer,
   reviewReducer,
+  postWriteReducer,
 });
 
 const store: Store = configureStore({reducer: rootReducer});

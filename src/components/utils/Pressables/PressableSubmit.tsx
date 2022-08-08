@@ -6,7 +6,7 @@ import {ButtonTitle, SubmitButtonContainer} from './PressableSubmit.styles';
 const PressableSubmit = ({children, ...props}: PropsWithChildren<PressableProps>) => {
   return (
     <SubmitButtonContainer {...props}>
-      <ButtonTitle>{children}</ButtonTitle>
+      <ButtonTitle disabled={props.disabled}>{children}</ButtonTitle>
     </SubmitButtonContainer>
   );
 };
