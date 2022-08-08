@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native';
 import {RecommendParamList} from '..';
 
 import InputContentsOrganism from 'src/components/PostWrite/InputContentsOrganism';
+import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 
@@ -22,6 +23,7 @@ const PostWriteMainScreen = ({navigation}: DetailScreenProps) => {
       <LeftBackHeader onPressBack={() => navigation.goBack()}>새 게시물</LeftBackHeader>
       <DismissKeyboardView>
         <InputContentsOrganism />
+        <SelectTagOrganism />
       </DismissKeyboardView>
     </SafeAreaView>
   );
