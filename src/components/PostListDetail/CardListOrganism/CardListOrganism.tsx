@@ -1,15 +1,25 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 import {Container, FlatListWrapper, PostDetailFlatList} from './CardListOrganism.styles';
+import ListEmptyComponent from './ListEmptyComponent';
 import SortingListHeader from './SortingListHeader';
 
 import RecommendFeedCard from 'src/components/Recommend/FeedCard/RecommendFeedCard';
+import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
 
 const CardListOrganism = () => {
   const dispatch = useDispatch();
+  const {data, fetchNextPage} = useGetInfinitePosts({
+    tagIdSet: [],
+  });
+  const posts = useMemo(() => {
+    return data?.pages.reduce((allOfPosts: any, page: any) => {
+      return [...allOfPosts, ...page.result.content];
+    }, []);
+  }, [data]);
 
   const handleScroll = ({nativeEvent}: NativeSyntheticEvent<NativeScrollEvent>) => {
     const curY = nativeEvent.velocity?.y;
@@ -29,10 +39,12 @@ const CardListOrganism = () => {
     <Container>
       <FlatListWrapper>
         <PostDetailFlatList
+          ListEmptyComponent={ListEmptyComponent}
           numColumns={2}
-          data={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]}
-          renderItem={() => <RecommendFeedCard imgUrl="" />}
+          data={posts?.map(post => ({imgUrl: post.postImageSet[0].imageUrl}))}
+          renderItem={({item}: any) => <RecommendFeedCard imgUrl={item.imgUrl} />}
           onScroll={handleScroll}
+          onEndReached={() => fetchNextPage()}
           ListHeaderComponent={<SortingListHeader>인기순</SortingListHeader>}
         />
       </FlatListWrapper>
