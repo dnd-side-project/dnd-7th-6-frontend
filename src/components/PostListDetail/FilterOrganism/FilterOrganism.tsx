@@ -2,11 +2,13 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 import {useDispatch} from 'react-redux';
 
-import {ChipWrapper, Container} from './FilterOrganism.styles';
+import {ChipWrapper, Container, RefreshWrapper} from './FilterOrganism.styles';
 
 import OptionChip from 'src/components/Chip/OptionChip';
+import {ALL} from 'src/constants/filters';
 import useFilteredItem from 'src/hooks/useFilteredItem';
 import useFilterTag from 'src/hooks/useFilterTag';
+import RefreshIcon from 'src/icons/RefreshIcon';
 import {openFilterSheet, changeFocus, clearFilter} from 'src/redux/actions/PostAction';
 
 const FilterOrganism = () => {
@@ -59,6 +61,9 @@ const FilterOrganism = () => {
           );
         })}
       </ScrollView>
+      <RefreshWrapper onPress={() => dispatch(clearFilter(ALL))}>
+        <RefreshIcon />
+      </RefreshWrapper>
     </Container>
   );
 };

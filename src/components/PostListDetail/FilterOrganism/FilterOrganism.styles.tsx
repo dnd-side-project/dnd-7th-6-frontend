@@ -4,7 +4,7 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
-  paddingHorizontal: widthPercentage(16),
+  paddingLeft: widthPercentage(16),
   paddingBottom: heightPercentage(14),
   paddingTop: heightPercentage(6),
   flexDirection: 'row',
@@ -15,4 +15,9 @@ export const Container = styled.View({
 
 export const ChipWrapper = styled.View({
   marginRight: widthPercentage(8),
+});
+
+export const RefreshWrapper = styled.Pressable({
+  paddingHorizontal: widthPercentage(16),
+  paddingVertical: heightPercentage(13),
 });
