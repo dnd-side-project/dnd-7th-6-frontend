@@ -8,7 +8,7 @@ const InputCustomTagOrganism = () => {
   return (
     <Container>
       <Text>
-        <Label>직접 태그를 남겨보세요.</Label>
+        <Label>직접 태그를 남겨보세요. </Label>
         <SubLabel>(최대 4개)</SubLabel>
       </Text>
       <FakeInputText>
