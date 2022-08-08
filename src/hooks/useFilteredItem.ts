@@ -48,8 +48,20 @@ const useFilteredItem = () => {
       return {type, index: selected[0]};
     }, null);
   };
+  const getTagIdSet = () => {
+    return items.reduce((set: any, filters) => {
+      filters.forEach(({filtered}) => {
+        set = [...set, ...Object.keys(filtered).filter(key => filtered[key])];
+      });
+      return set;
+    }, []);
+  };
+  const tagIdSet = useMemo(
+    () => getTagIdSet(),
+    [filteredBrand, filteredHeadcount, filteredPose, filteredFrame],
+  );
 
-  return {getCountOfSelected, getFirstSelected};
+  return {getCountOfSelected, getFirstSelected, tagIdSet};
 };
 
 export default useFilteredItem;

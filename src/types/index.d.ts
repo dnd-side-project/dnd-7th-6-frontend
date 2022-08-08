@@ -1,3 +1,13 @@
+export interface PostTag {
+  tag: {
+    id: number;
+    title: string;
+    reviewCount: number;
+    postCount: number;
+    tagType: string;
+  };
+}
+
 export interface Post {
   id: number;
   title: string;
@@ -6,9 +16,18 @@ export interface Post {
   status: string;
   createdAt: string;
   updatedAt: string;
-  postTagSet: Tag[];
+  postTagSet: PostTag[];
   postImageSet: PostImage[];
   user: User;
+}
+
+export interface Recommendation {
+  content: Post[];
+  totalPages: number;
+  numberOfElement: number;
+  size: number;
+  number: number;
+  sort: any;
 }
 
 export interface Tag {
