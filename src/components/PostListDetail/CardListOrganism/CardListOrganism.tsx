@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FlatList, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
+import React, {useEffect} from 'react';
+import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 import {Container, FlatListWrapper, PostDetailFlatList} from './CardListOrganism.styles';
@@ -18,6 +18,12 @@ const CardListOrganism = () => {
     }
     dispatch(curY > 0 ? hideTabBar() : showTabBar());
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(showTabBar());
+    };
+  }, []);
 
   return (
     <Container>

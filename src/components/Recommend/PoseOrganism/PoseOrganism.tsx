@@ -22,7 +22,9 @@ const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
       </TitleWrapper>
       <PreviewFourCard data={TestData} onPress={handlePressCard} />
       <ButtonWrapper>
-        <PressableAddition>사진 더보기</PressableAddition>
+        <PressableAddition onPress={() => navigation.navigate('PostListDetail' as never)}>
+          사진 더보기
+        </PressableAddition>
       </ButtonWrapper>
     </OrganismView>
   );
