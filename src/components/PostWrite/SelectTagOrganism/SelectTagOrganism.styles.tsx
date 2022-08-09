@@ -7,5 +7,5 @@ export const SelectTagScrollView = styled.ScrollView({
 });
 
 export const EmptyBox = styled.View({
-  height: heightPercentage(116),
+  height: heightPercentage(160),
 });

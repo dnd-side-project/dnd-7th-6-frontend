@@ -3,9 +3,10 @@ import React, {PropsWithChildren} from 'react';
 import {PressableProps} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import {Container} from './NextButtonOrganism.styles';
+import {Container, ProgressBarWrapper} from './NextButtonOrganism.styles';
 
 import PressableSubmit from 'src/components/utils/Pressables/PressableSubmit';
+import ProgressBar from 'src/components/utils/ProgressBar';
 import {RootState} from 'src/redux/store';
 
 interface Props {
@@ -25,6 +26,9 @@ const NextButtonOrganism = ({screenName, ...props}: PropsWithChildren<Props & Pr
 
   return (
     <Container>
+      <ProgressBarWrapper>
+        <ProgressBar length={1 / 3} />
+      </ProgressBarWrapper>
       <PressableSubmit
         {...props}
         disabled={disabledPressableSubmit}

@@ -7,11 +7,13 @@ import {PostWriteParamList} from '.';
 import NextButtonOrganism from 'src/components/PostWrite/NextButtonOrganism';
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
+import useHideTabBar from 'src/hooks/useHideTabBar';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 
 const SelectTagScreen = ({navigation}: PostWriteMainScreenProps) => {
+  useHideTabBar();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
