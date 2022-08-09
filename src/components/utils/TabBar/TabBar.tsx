@@ -1,6 +1,6 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React, {useEffect, useRef} from 'react';
-import {Animated, Easing} from 'react-native';
+import {Animated, Easing, SafeAreaView} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {BodyText5} from '../Text';
@@ -36,7 +36,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
   }, [isVisibleTabBar]);
 
   return (
-    <>
+    <SafeAreaView>
       <Animated.View style={{height: slideUpAnimation, flexDirection: 'row'}}>
         {state.routes.map(route => {
           const {options} = descriptors[route.key];
@@ -51,7 +51,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
           );
         })}
       </Animated.View>
-    </>
+    </SafeAreaView>
   );
 };
 

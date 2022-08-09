@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NaverMapView, {Marker} from 'react-native-nmap';
-import {useDispatch} from 'react-redux';
 
 import {styles} from './NaverMap.styles';
 
-import {changeBottomSheetHeight} from 'src/redux/actions/MapAction';
 import {PhotoBoothContentData} from 'src/types';
 
-const NaverMap = ({mapRef, setScreenPos, data}: any) => {
+const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressable}: any) => {
   return (
     // @ts-ignore: 모듈 문제
     <NaverMapView
       ref={mapRef}
       style={styles.NaverMapStyle}
       onCameraChange={event => {
-        setScreenPos({latitude: event.latitude, longitude: event.longitude});
+        if (
+          event.latitude.toFixed(6) !== centerPos.latitude.toFixed(6) ||
+          event.longitude.toFixed(6) !== centerPos.longitude.toFixed(6)
+        ) {
+          setScreenPos({latitude: event.latitude, longitude: event.longitude});
+          setShowRefreshPressable(true);
+        }
       }}
       zoomControl={false}
       compass={false}
@@ -31,6 +35,7 @@ const MarkersOnMap = (data: PhotoBoothContentData) => {
     <Marker
       coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
       key={data.photoBooth.id}
+      caption={{text: data.photoBooth.name, textSize: 10}}
       image={require('src/assets/images/marker.png')}
     />
   );

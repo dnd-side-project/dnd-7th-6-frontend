@@ -2,6 +2,7 @@ import {type Coord} from 'react-native-nmap';
 
 import {
   CHANGE_BOTTOMSHEET_HEIGHT,
+  CHANGE_FILTER,
   CHANGE_MAP_COORD,
   FOCUS_BOOTH,
   INPUT_SEARCH_KEYWORD,
@@ -27,4 +28,14 @@ export const changeMapCoord = (coord: Coord) => ({
 export const changeBottomSheetHeight = (index: number) => ({
   type: CHANGE_BOTTOMSHEET_HEIGHT,
   payload: {index},
+});
+
+export const changeFilteredBrandonMap = (target: number) => ({
+  type: CHANGE_FILTER.BRAND,
+  payload: {target},
+});
+
+export const changeFilteredTagonMap = (target: number) => ({
+  type: CHANGE_FILTER.TAG,
+  payload: {target},
 });

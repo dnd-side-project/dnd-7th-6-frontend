@@ -9,13 +9,17 @@ import {
   Distance,
   ImageContainer,
   Rating,
+  ReviewCount,
+  ReviewCountContainer,
   SubText,
   TagContainer,
   Title,
 } from './BoothSummaryView.styles';
 
+import ColorStarIcon14 from 'src/icons/ColorStarIcon14';
 import {PhotoBoothContentData} from 'src/types';
-import toLocaleString from 'src/utils/toLocaleString';
+
+const data = ['#넓은 촬영공간', '#홀수출력 가능'];
 
 const BoothSummaryView = (item: PhotoBoothContentData) => {
   return (
@@ -23,19 +27,24 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
       <DescriptionContainer>
         <Title>{item.photoBooth.name}</Title>
         <SubText>
-          <Distance>17km</Distance>
+          <Distance>17.7km</Distance>
           <Text> | </Text>
-          <Rating>부스리뷰 {toLocaleString(10)}개</Rating>
+          <ColorStarIcon14 />
+          <Rating>4.9</Rating>
         </SubText>
         <TagContainer>
-          {/* {props.tags.map(tag => (
+          {data.map(tag => (
             <ChipWrapper key={tag}>
               <RoundChip mode="gray">{tag}</RoundChip>
             </ChipWrapper>
-          ))} */}
+          ))}
         </TagContainer>
       </DescriptionContainer>
-      <ImageContainer />
+      <ImageContainer>
+        <ReviewCountContainer>
+          <ReviewCount>999+</ReviewCount>
+        </ReviewCountContainer>
+      </ImageContainer>
     </Container>
   );
 };
