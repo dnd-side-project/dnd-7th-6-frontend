@@ -14,7 +14,7 @@ interface Props {
 }
 
 const NextButtonOrganism = ({screenName, ...props}: PropsWithChildren<Props & PressableProps>) => {
-  const {tags} = useSelector((state: RootState) => state.postWriteReducer);
+  const {tags, screenIndex} = useSelector((state: RootState) => state.postWriteReducer);
   const navigation = useNavigation();
   const nextScreenMap: {[screen: string]: string} = {
     PostWrite: 'SelectTag',
@@ -24,10 +24,12 @@ const NextButtonOrganism = ({screenName, ...props}: PropsWithChildren<Props & Pr
     .flat()
     .every(([_, selected]: any) => !selected);
 
+  console.log(screenIndex, 1, 3);
+
   return (
     <Container>
       <ProgressBarWrapper>
-        <ProgressBar length={1 / 3} />
+        <ProgressBar prevIndex={screenIndex} nextIndex={1} total={3} />
       </ProgressBarWrapper>
       <PressableSubmit
         {...props}

@@ -7,7 +7,7 @@ interface Props {
   length: number;
 }
 
-export const MainBar = styled.View<Props>({
+export const MainBar = styled.View({
   width: '100%',
   height: heightPercentage(4),
   backgroundColor: theme.colors.grayscale[3],

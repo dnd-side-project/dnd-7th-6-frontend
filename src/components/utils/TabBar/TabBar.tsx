@@ -21,7 +21,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
     useNativeDriver: false,
   });
   const slideUp = Animated.timing(slideUpAnimation, {
-    toValue: 56,
+    toValue: heightPercentage(54),
     duration: 300,
     easing: Easing.linear,
     useNativeDriver: false,

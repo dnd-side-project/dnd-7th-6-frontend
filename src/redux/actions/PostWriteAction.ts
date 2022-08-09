@@ -1,3 +1,4 @@
+import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_POST_WRITE_IMAGE,
   INPUT_POST_CONTENTS,
@@ -17,4 +18,9 @@ export const addPostWriteImage = (image: string) => ({
 export const toggleTagChip = (index: number, tagId: number) => ({
   type: TOGGLE_TAG_CHIP,
   payload: {index, tagId},
+});
+
+export const changeScreen = (target: number) => ({
+  type: CHANGE_SCREEN,
+  payload: {target},
 });
