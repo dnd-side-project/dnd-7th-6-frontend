@@ -23,7 +23,7 @@ const SelectTagOrganism = () => {
   return (
     <ScrollView>
       {typesOfTag.map((type, i) => (
-        <SelectTagSection key={i} tagsByType={tagsByType[i]} type={type} />
+        <SelectTagSection selects={{}} key={i} tagsByType={tagsByType[i]} type={type} />
       ))}
     </ScrollView>
   );

@@ -20,9 +20,9 @@ export const Container = styled.Pressable<Props>(({selected}) => ({
 
 export const Title = styled(BodyText5)<Props>(({selected}) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[9],
-  marginRight: widthPercentage(4),
 }));
 
 export const Count = styled(BodyText5)<Props>(({selected}) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[6],
+  marginLeft: widthPercentage(4),
 }));
