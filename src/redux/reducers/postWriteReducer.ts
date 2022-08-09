@@ -22,7 +22,7 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...state, image: {uri: payload.image}};
     case TOGGLE_TAG_CHIP:
       const nextState = [...state.tags];
-      nextState[payload.index] = {[payload.tagId]: true};
+      nextState[payload.index] = {[payload.tagId]: !nextState[payload.index][payload.tagId]};
       return {...state, tags: nextState};
     default:
       return state;
