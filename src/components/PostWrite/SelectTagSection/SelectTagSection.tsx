@@ -10,9 +10,10 @@ interface Props {
   selects: {[id: number]: boolean | undefined};
   tagsByType: Tag[];
   type: string;
+  onPressTag: (id: number) => () => void;
 }
 
-const SelectTagSection = ({selects, tagsByType, type}: PropsWithChildren<Props>) => {
+const SelectTagSection = ({selects, tagsByType, type, onPressTag}: PropsWithChildren<Props>) => {
   return (
     <Container>
       <View>
@@ -20,7 +21,11 @@ const SelectTagSection = ({selects, tagsByType, type}: PropsWithChildren<Props>)
         <ChipContainer>
           {tagsByType.map(tag => (
             <ChipWrapper key={tag.id}>
-              <FilterChip selected={selects[tag.id] || false} title={tag.title} />
+              <FilterChip
+                selected={selects[tag.id] || false}
+                title={tag.title}
+                onPress={onPressTag(tag.id)}
+              />
             </ChipWrapper>
           ))}
         </ChipContainer>

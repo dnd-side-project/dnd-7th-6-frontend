@@ -1,11 +1,16 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import SelectTagSection from '../SelectTagSection';
 
 import useGetFilterTags from 'src/querys/useGetFilterTags';
+import {toggleTagChip} from 'src/redux/actions/PostWriteAction';
+import {RootState} from 'src/redux/store';
 
 const SelectTagOrganism = () => {
+  const dispatch = useDispatch();
+  const {tags} = useSelector((state: RootState) => state.postWriteReducer);
   const {data} = useGetFilterTags();
   if (!data) {
     return <></>;
@@ -20,10 +25,20 @@ const SelectTagOrganism = () => {
     data.frameTagList,
   ];
 
+  const handlePressTag = (index: number) => (id: number) => () => {
+    dispatch(toggleTagChip(index, id));
+  };
+
   return (
     <ScrollView>
       {typesOfTag.map((type, i) => (
-        <SelectTagSection selects={{}} key={i} tagsByType={tagsByType[i]} type={type} />
+        <SelectTagSection
+          selects={tags[i]}
+          key={i}
+          tagsByType={tagsByType[i]}
+          type={type}
+          onPressTag={handlePressTag(i)}
+        />
       ))}
     </ScrollView>
   );
