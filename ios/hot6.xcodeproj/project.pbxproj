@@ -376,6 +376,13 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		066C199728A27BDA006E14DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3501832F51E21BCD681DC315B3424B43;
+			remoteInfo = BVLinearGradient;
+		};
 		06C92A5728996D04009267C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -533,6 +540,7 @@
 		06305251287C4EC600DDFD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				066C199828A27BDA006E14DB /* BVLinearGradient */,
 				0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */,
 				0630528D287C4EC600DDFD03 /* DoubleConversion */,
 				0630528F287C4EC600DDFD03 /* Flipper */,
@@ -552,7 +560,7 @@
 				06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */,
 				06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */,
 				06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */,
-				063052A3287C4EC600DDFD03 /* libPods-hot6.a */,
+				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
 				063052A9287C4EC600DDFD03 /* RCTTypeSafety */,
@@ -910,9 +918,10 @@
 			remoteRef = 063052A0287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		063052A3287C4EC600DDFD03 /* libPods-hot6.a */ = {
+		063052A3287C4EC600DDFD03 /* Pods-hot6 */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
+			name = "Pods-hot6";
 			path = "libPods-hot6.a";
 			remoteRef = 063052A2287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1155,6 +1164,14 @@
 			name = YogaKit;
 			path = libYogaKit.a;
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		066C199828A27BDA006E14DB /* BVLinearGradient */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = BVLinearGradient;
+			path = libBVLinearGradient.a;
+			remoteRef = 066C199728A27BDA006E14DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		06C92A5828996D04009267C3 /* RNGestureHandler */ = {

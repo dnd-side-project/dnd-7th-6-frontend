@@ -22,7 +22,7 @@ const MapBottomSheetOrganism = () => {
   const snapPoints = useMemo(
     () => [
       heightPercentage(30),
-      heightPercentage(143),
+      heightPercentage(130),
       valueOfPlatform({
         ios: heightPercentage(630),
         android: heightPercentage(640) - headerHeight,
