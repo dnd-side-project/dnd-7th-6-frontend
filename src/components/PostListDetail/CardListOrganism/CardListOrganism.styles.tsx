@@ -16,7 +16,7 @@ export const FlatListWrapper = styled.View({
 });
 
 export const PostDetailFlatList = styled.FlatList({
-  height: height - heightPercentage(194),
+  height: height - heightPercentage(145),
 });
 
 export const SortButtonWrapper = styled.Pressable({
