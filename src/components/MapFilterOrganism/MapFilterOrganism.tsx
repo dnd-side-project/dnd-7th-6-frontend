@@ -30,7 +30,11 @@ const MapFilterOrganism = () => {
     dispatch(changeFilteredBrandonMap(id));
   };
   return (
-    <FilterScollView horizontal={true} scrollEnabled showsHorizontalScrollIndicator={false}>
+    <FilterScollView
+      horizontal={true}
+      scrollEnabled
+      showsHorizontalScrollIndicator={false}
+      nestedScrollEnabled>
       <BrandContainer>
         <MapFilterBrandChip onTouchStart={brandChipOnPress} selected={brandDropdown} key={null}>
           브랜드

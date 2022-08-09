@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NaverMapView, {Marker} from 'react-native-nmap';
 
 import {styles} from './NaverMap.styles';
