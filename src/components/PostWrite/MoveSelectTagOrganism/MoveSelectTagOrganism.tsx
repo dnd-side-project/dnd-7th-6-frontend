@@ -4,7 +4,7 @@ import {Container, Label, style} from './MoveSelectTagOrganism.styles';
 
 import {PressableRightArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
 
-const SelectTagOrganism = () => {
+const MoveSelectTagOrganism = () => {
   return (
     <Container>
       <Label>사진 태그를 선택해보세요</Label>
@@ -13,4 +13,4 @@ const SelectTagOrganism = () => {
   );
 };
 
-export default SelectTagOrganism;
+export default MoveSelectTagOrganism;
