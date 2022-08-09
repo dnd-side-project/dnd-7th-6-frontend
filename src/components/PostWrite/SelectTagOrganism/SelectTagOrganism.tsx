@@ -3,6 +3,7 @@ import {ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import SelectTagSection from '../SelectTagSection';
+import {EmptyBox} from './SelectTagOrganism.styles';
 
 import useGetFilterTags from 'src/querys/useGetFilterTags';
 import {toggleTagChip} from 'src/redux/actions/PostWriteAction';
@@ -40,6 +41,7 @@ const SelectTagOrganism = () => {
           onPressTag={handlePressTag(i)}
         />
       ))}
+      <EmptyBox />
     </ScrollView>
   );
 };
