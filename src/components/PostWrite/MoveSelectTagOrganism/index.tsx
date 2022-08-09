@@ -1,3 +1,3 @@
-import SelectTagOrganism from './SelectTagOrganism';
+import MoveSelectTagOrganism from './MoveSelectTagOrganism';
 
-export default SelectTagOrganism;
+export default MoveSelectTagOrganism;

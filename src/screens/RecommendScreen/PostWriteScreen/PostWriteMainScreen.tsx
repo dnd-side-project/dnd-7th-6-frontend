@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 
 import {PostWriteParamList} from '.';
@@ -13,15 +13,9 @@ import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView'
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
-export type DetailScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
+export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 
-const PostWriteMainScreen = ({navigation}: DetailScreenProps) => {
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  });
-
+const PostWriteMainScreen = ({navigation}: PostWriteMainScreenProps) => {
   return (
     <SafeAreaView style={{marginBottom: heightPercentage(54)}}>
       <LeftBackHeader onPressBack={() => navigation.goBack()}>새 게시물</LeftBackHeader>

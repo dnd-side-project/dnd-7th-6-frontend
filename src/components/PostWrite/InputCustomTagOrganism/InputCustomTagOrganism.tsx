@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import {Label} from '../SelectTagOrganism/SelectTagOrganism.styles';
+import {Label} from '../MoveSelectTagOrganism/MoveSelectTagOrganism.styles';
 import {Container, FakeInputText, FakePlaceholder, SubLabel} from './InputCustomTagOrganism.styles';
 
 const InputCustomTagOrganism = () => {
