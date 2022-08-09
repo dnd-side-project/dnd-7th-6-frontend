@@ -5,8 +5,8 @@ import PostWriteMainScreen from './PostWriteMainScreen';
 
 const Stack = createNativeStackNavigator();
 
-export type BoothParamList = {
-  PostWriteMainScreen: undefined;
+export type PostWriteParamList = {
+  PostWriteMain: undefined;
 };
 
 const RoutePostWriteScreen = () => {
