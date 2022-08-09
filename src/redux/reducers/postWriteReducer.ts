@@ -6,8 +6,6 @@ import {
   TOGGLE_TAG_CHIP,
 } from '../types/PostWriteActionType';
 
-import toggleTag from 'src/utils/toggleTag';
-
 const initialState = {
   contents: '',
   image: {uri: ''},
@@ -24,7 +22,7 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...state, image: {uri: payload.image}};
     case TOGGLE_TAG_CHIP:
       const nextState = [...state.tags];
-      nextState[payload.index] = toggleTag(nextState[payload.index], payload.tagId);
+      nextState[payload.index] = {[payload.tagId]: true};
       return {...state, tags: nextState};
     default:
       return state;
