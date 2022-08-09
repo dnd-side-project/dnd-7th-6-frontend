@@ -24,8 +24,8 @@ const MapBottomSheetOrganism = () => {
       heightPercentage(30),
       heightPercentage(143),
       valueOfPlatform({
-        ios: heightPercentage(666),
-        android: heightPercentage(666) - headerHeight,
+        ios: heightPercentage(630),
+        android: heightPercentage(640) - headerHeight,
       }),
     ],
     [],
@@ -33,9 +33,14 @@ const MapBottomSheetOrganism = () => {
 
   const {data} = useGetPhotoBoothLocation({longitude: 0, latitude: 0});
   const dispatch = useDispatch();
+  const bottomSheetOnChange = (event: number) => {
+    dispatch(changeBottomSheetHeight(event));
+  };
   useEffect(() => {
-    if (data) {
+    if (data?.data.content.length) {
       dispatch(changeBottomSheetHeight(1));
+    } else {
+      dispatch(changeBottomSheetHeight(0));
     }
   }, [data]);
 
@@ -47,6 +52,7 @@ const MapBottomSheetOrganism = () => {
         ref={bottomSheetRef}
         backdropComponent={MapNaverMapOrganism}
         handleIndicatorStyle={handleStyle}
+        onChange={bottomSheetOnChange}
         index={sheetIndex}>
         <BottomSheetFlatList
           data={data?.data.content}
