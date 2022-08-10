@@ -64,7 +64,6 @@ const ReviewImageOrganism = () => {
     dispatch(addImage(nextData));
   };
 
-  const [focusTextInput, setFocusTextInput] = useState<boolean>(false);
   const navigation = useNavigation();
   const nextOnPress = () => navigation.navigate('BoothReviewComplete' as never, {} as never);
 
@@ -100,13 +99,11 @@ const ReviewImageOrganism = () => {
           <BoothSelectTitle>(선택)</BoothSelectTitle>
         </BoothDescribeWrapper>
         <TextField
-          focus={focusTextInput}
+          isBorder={true}
           multiline={true}
           placeholder="이 부스를 이용하면서 느꼈던 느낌을 알려주세요."
           textAlignVertical="top"
           value={descriptionText}
-          onFocus={() => setFocusTextInput(true)}
-          onBlur={() => setFocusTextInput(false)}
           maxLength={300}
           onChangeText={value => {
             dispatch(addStoreDescription(value));
