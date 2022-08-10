@@ -1,11 +1,8 @@
 import styled from '@emotion/native';
+import {Dimensions} from 'react-native';
 
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export const SelectTagScrollView = styled.ScrollView({
-  paddingBottom: heightPercentage(80),
-});
-
-export const EmptyBox = styled.View({
-  height: heightPercentage(160),
+  height: Dimensions.get('window').height - heightPercentage(220),
 });

@@ -28,7 +28,7 @@ const NextButtonOrganism = ({
         <ProgressBar prevIndex={screenIndex} nextIndex={nextIndex} total={4} />
       </ProgressBarWrapper>
       <PressableSubmit {...props} onPress={() => navigation.navigate(screenName as never)}>
-        {props.disabled ? '완료' : '다음'}
+        다음
       </PressableSubmit>
     </Container>
   );

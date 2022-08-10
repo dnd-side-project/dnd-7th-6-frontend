@@ -1,9 +1,8 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import SelectTagSection from '../SelectTagSection';
-import {EmptyBox} from './SelectTagOrganism.styles';
+import {SelectTagScrollView} from './SelectTagOrganism.styles';
 
 import useGetFilterTags from 'src/querys/useGetFilterTags';
 import {toggleTagChip} from 'src/redux/actions/PostWriteAction';
@@ -31,7 +30,7 @@ const SelectTagOrganism = () => {
   };
 
   return (
-    <ScrollView>
+    <SelectTagScrollView>
       {typesOfTag.map((type, i) => (
         <SelectTagSection
           selects={tags[i]}
@@ -41,8 +40,7 @@ const SelectTagOrganism = () => {
           onPressTag={handlePressTag(i)}
         />
       ))}
-      <EmptyBox />
-    </ScrollView>
+    </SelectTagScrollView>
   );
 };
 
