@@ -4,8 +4,10 @@ import {
   CHANGE_BOTTOMSHEET_HEIGHT,
   CHANGE_FILTER,
   CHANGE_MAP_COORD,
+  CHANGE_TAG_DATA,
   FOCUS_BOOTH,
   INPUT_SEARCH_KEYWORD,
+  INPUT_TAG_KEYWORD,
 } from '../types/MapActionType';
 
 import {BoothSummary} from 'src/types';
@@ -18,6 +20,16 @@ export const focusBooth = (booth: BoothSummary) => ({
 export const inputSearchKeyword = (keyword: string) => ({
   type: INPUT_SEARCH_KEYWORD,
   payload: {keyword},
+});
+
+export const inputTagKeyword = (tagword: string) => ({
+  type: INPUT_TAG_KEYWORD,
+  payload: {tagword},
+});
+
+export const changeTagData = (tagData: any) => ({
+  type: CHANGE_TAG_DATA,
+  payload: {tagData},
 });
 
 export const changeMapCoord = (coord: Coord) => ({
