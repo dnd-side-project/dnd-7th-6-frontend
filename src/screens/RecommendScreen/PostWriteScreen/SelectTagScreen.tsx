@@ -4,22 +4,15 @@ import {SafeAreaView} from 'react-native';
 
 import {PostWriteParamList} from '.';
 
-import NextButtonOrganism from 'src/components/PostWrite/NextButtonOrganism';
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useHideTabBar from 'src/hooks/useHideTabBar';
 import {heightPercentage} from 'src/styles/ScreenResponse';
+import SelectTagNextButton from 'src/components/PostWrite/NextButtons/SelectTag';
 
 export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 
 const SelectTagScreen = ({navigation}: PostWriteMainScreenProps) => {
-  useHideTabBar();
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  });
-
   return (
     <SafeAreaView
       style={{
@@ -28,7 +21,7 @@ const SelectTagScreen = ({navigation}: PostWriteMainScreenProps) => {
       }}>
       <LeftBackHeader onPressBack={() => navigation.goBack()}>태그 선택</LeftBackHeader>
       <SelectTagOrganism />
-      <NextButtonOrganism screenName="TagScreen" />
+      <SelectTagNextButton />
     </SafeAreaView>
   );
 };

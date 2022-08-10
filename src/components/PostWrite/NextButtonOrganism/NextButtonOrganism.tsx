@@ -11,31 +11,24 @@ import {RootState} from 'src/redux/store';
 
 interface Props {
   screenName: string;
+  nextIndex: number;
 }
 
-const NextButtonOrganism = ({screenName, ...props}: PropsWithChildren<Props & PressableProps>) => {
-  const {tags, screenIndex} = useSelector((state: RootState) => state.postWriteReducer);
+const NextButtonOrganism = ({
+  screenName,
+  nextIndex,
+  ...props
+}: PropsWithChildren<Props & PressableProps>) => {
+  const {screenIndex} = useSelector((state: RootState) => state.postWriteReducer);
   const navigation = useNavigation();
-  const nextScreenMap: {[screen: string]: string} = {
-    PostWrite: 'SelectTag',
-  };
-  const disabledPressableSubmit = tags
-    .map((tag: any) => Object.entries(tag))
-    .flat()
-    .every(([_, selected]: any) => !selected);
-
-  console.log(screenIndex, 1, 3);
 
   return (
     <Container>
       <ProgressBarWrapper>
-        <ProgressBar prevIndex={screenIndex} nextIndex={1} total={3} />
+        <ProgressBar prevIndex={screenIndex} nextIndex={nextIndex} total={4} />
       </ProgressBarWrapper>
-      <PressableSubmit
-        {...props}
-        disabled={disabledPressableSubmit}
-        onPress={() => navigation.navigate(nextScreenMap[screenName] as never)}>
-        {disabledPressableSubmit ? '완료' : '다음'}
+      <PressableSubmit {...props} onPress={() => navigation.navigate(screenName as never)}>
+        {props.disabled ? '완료' : '다음'}
       </PressableSubmit>
     </Container>
   );
