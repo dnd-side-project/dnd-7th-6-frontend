@@ -6,7 +6,6 @@ import {PostWriteParamList} from '.';
 
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
-import useHideTabBar from 'src/hooks/useHideTabBar';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 import SelectTagNextButton from 'src/components/PostWrite/NextButtons/SelectTag';
 

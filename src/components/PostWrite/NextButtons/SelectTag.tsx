@@ -12,7 +12,9 @@ const SelectTagNextButton = () => {
     .every(([_, selected]: any) => !selected);
 
   return (
-    <NextButtonOrganism screenName="InputTag" nextIndex={1} disabled={disabledPressableSubmit} />
+    <NextButtonOrganism screenName="InputTag" nextIndex={1} disabled={disabledPressableSubmit}>
+      다음
+    </NextButtonOrganism>
   );
 };
 

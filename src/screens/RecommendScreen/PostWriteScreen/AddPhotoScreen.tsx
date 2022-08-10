@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useLayoutEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {
   Dimensions,
   NativeSyntheticEvent,
@@ -15,11 +15,10 @@ import {heightPercentage} from 'src/styles/ScreenResponse';
 import AddPhotoNextButton from 'src/components/PostWrite/NextButtons/AddPhoto';
 import {useDispatch} from 'react-redux';
 import {showTabBar} from 'src/redux/actions/TabBarAction';
-import {ScrollView} from 'react-native-gesture-handler';
 import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
-export type AddPhotoScreenProps = NativeStackScreenProps<PostWriteParamList, 'AddPhoto'>;
+export type AddPhotoScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 
 const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
   const dispatch = useDispatch();

@@ -17,6 +17,7 @@ interface Props {
 const NextButtonOrganism = ({
   screenName,
   nextIndex,
+  children,
   ...props
 }: PropsWithChildren<Props & PressableProps>) => {
   const {screenIndex} = useSelector((state: RootState) => state.postWriteReducer);
@@ -28,7 +29,7 @@ const NextButtonOrganism = ({
         <ProgressBar prevIndex={screenIndex} nextIndex={nextIndex} total={4} />
       </ProgressBarWrapper>
       <PressableSubmit {...props} onPress={() => navigation.navigate(screenName as never)}>
-        다음
+        {children}
       </PressableSubmit>
     </Container>
   );
