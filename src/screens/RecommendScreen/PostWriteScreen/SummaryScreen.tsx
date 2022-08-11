@@ -14,8 +14,10 @@ import AddPhotoOrganism from 'src/components/PostWrite/AddPhotoOrganism';
 import Boundary from 'src/components/PostWrite/Boundary';
 import DirectTagSummaryOrganism from 'src/components/PostWrite/DirectTagSummaryOrganism';
 import SummaryNextButton from 'src/components/PostWrite/NextButtons/Summary';
+import SelectSharedScopeOrganism from 'src/components/PostWrite/SelectSharedScopeOrganism/SelectSharedScopeOrganism';
 import SelectTagSummaryOrganism from 'src/components/PostWrite/SelectTagSummaryOrganism';
 import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
+import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
@@ -34,12 +36,15 @@ const SummaryScreen = ({navigation}: SummaryScreenProps) => {
       <KeyboardAwareScrollView
         ref={scrollRef}
         style={{height: Dimensions.get('window').height - heightPercentage(220)}}>
-        <AddPhotoOrganism />
-        <TextFieldOrganism isFlex={false} onFocus={handleFocusTextField} />
-        <Boundary />
-        <SelectTagSummaryOrganism />
-        <DirectTagSummaryOrganism />
-        <Boundary />
+        <DismissKeyboardView>
+          <AddPhotoOrganism />
+          <TextFieldOrganism isFlex={false} onFocus={handleFocusTextField} />
+          <Boundary />
+          <SelectTagSummaryOrganism />
+          <DirectTagSummaryOrganism />
+          <Boundary />
+          <SelectSharedScopeOrganism />
+        </DismissKeyboardView>
       </KeyboardAwareScrollView>
       <SummaryNextButton />
     </SafeAreaView>
