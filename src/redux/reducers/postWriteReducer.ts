@@ -3,6 +3,7 @@ import {Reducer} from 'redux';
 import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_POST_WRITE_IMAGE,
+  CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
   TOGGLE_TAG_CHIP,
@@ -14,6 +15,7 @@ const initialState = {
   image: {uri: ''},
   tags: [{}, {}, {}, {}, {}, {}],
   directTags: [],
+  isPublic: true,
 };
 
 const postWriteReducer: Reducer = (state = initialState, action) => {
@@ -32,6 +34,8 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...state, screenIndex: payload.target};
     case CLEAR_POST_WRITE:
       return {...initialState};
+    case CHANGE_SHARED_SCOPE:
+      return {...state, isPublic: payload.sharedScope};
     default:
       return state;
   }

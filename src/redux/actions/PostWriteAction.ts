@@ -2,6 +2,7 @@ import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_DIRECT_TAG,
   ADD_POST_WRITE_IMAGE,
+  CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
   TOGGLE_TAG_CHIP,
@@ -34,4 +35,9 @@ export const addDirectTag = (target: string) => ({
 
 export const clearPostWrite = () => ({
   type: CLEAR_POST_WRITE,
+});
+
+export const changeSharedScope = (sharedScope: boolean) => ({
+  type: CHANGE_SHARED_SCOPE,
+  payload: {sharedScope},
 });
