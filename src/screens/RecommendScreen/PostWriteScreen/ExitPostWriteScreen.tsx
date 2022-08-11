@@ -4,6 +4,7 @@ import {SafeAreaView} from 'react-native';
 
 import {PostWriteParamList} from '.';
 
+import ExitCenterOrganism from 'src/components/PostWrite/ExitCenterOrganism';
 import ExitNavigationOrganism from 'src/components/PostWrite/ExitNavigationOrganism/ExitNavigationOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 
@@ -13,6 +14,7 @@ const ExitPostWriteScreen = ({navigation}: ExitPostWriteScreenProps) => {
   return (
     <SafeAreaView>
       <LeftBackHeader onPressBack={() => navigation.goBack()} />
+      <ExitCenterOrganism />
       <ExitNavigationOrganism />
     </SafeAreaView>
   );

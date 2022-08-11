@@ -4,7 +4,7 @@ import {SubHeadline3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-export const Container = styled.SafeAreaView({
+export const Container = styled.View({
   paddingHorizontal: widthPercentage(16),
 });
 
