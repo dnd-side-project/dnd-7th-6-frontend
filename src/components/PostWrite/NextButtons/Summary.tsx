@@ -4,7 +4,7 @@ import NextButtonOrganism from '../NextButtonOrganism';
 
 const SummaryNextButton = () => {
   return (
-    <NextButtonOrganism screenName="CheckPost" nextIndex={2}>
+    <NextButtonOrganism screenName="ExitPostWrite" nextIndex={2}>
       완료
     </NextButtonOrganism>
   );
