@@ -3,9 +3,9 @@ import {PressableProps, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {PressableCancelIcon} from '../utils/Pressables/PressableIcons';
-import {Container, Title} from './TagInputChip.styles';
+import {Container, IconWrapper, Title} from './TagInputChip.styles';
 
-import {changeTagData} from 'src/redux/actions/MapAction';
+import {changeTagData} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
 
 interface Props {
@@ -19,7 +19,7 @@ const TagInputChip = ({
   index,
   ...props
 }: PropsWithChildren<PressableProps & Props>) => {
-  const tagData: any = useSelector((state: RootState) => state.mapReducer.tagData);
+  const tagData: any = useSelector((state: RootState) => state.reviewReducer.tagData);
   const dispatch = useDispatch();
   const deleteOnPress = (indexs: number | undefined) => {
     const nextData = [...tagData].filter((item, i) => {
@@ -31,7 +31,13 @@ const TagInputChip = ({
     <Container {...props} active={active} index={index}>
       {active ? <Title active={active}>{children}</Title> : <View>{children}</View>}
 
-      {active ? <PressableCancelIcon onPress={() => deleteOnPress(index)} /> : <></>}
+      {active ? (
+        <IconWrapper>
+          <PressableCancelIcon onPress={() => deleteOnPress(index)} />
+        </IconWrapper>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };
