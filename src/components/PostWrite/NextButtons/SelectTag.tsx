@@ -1,7 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {RootState} from 'src/redux/store';
+
 import NextButtonOrganism from '../NextButtonOrganism';
+
+import {RootState} from 'src/redux/store';
 
 const SelectTagNextButton = () => {
   const {tags} = useSelector((state: RootState) => state.postWriteReducer);
@@ -12,7 +14,7 @@ const SelectTagNextButton = () => {
     .every(([_, selected]: any) => !selected);
 
   return (
-    <NextButtonOrganism screenName="InputTag" nextIndex={1} disabled={disabledPressableSubmit}>
+    <NextButtonOrganism screenName="Summary" nextIndex={1} disabled={disabledPressableSubmit}>
       다음
     </NextButtonOrganism>
   );

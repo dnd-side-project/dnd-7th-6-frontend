@@ -1,3 +1,5 @@
+import React from 'react';
+
 import NextButtonOrganism from '../NextButtonOrganism';
 
 const SummaryNextButton = () => {

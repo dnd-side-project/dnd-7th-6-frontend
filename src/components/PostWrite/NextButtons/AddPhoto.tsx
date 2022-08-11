@@ -1,7 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {RootState} from 'src/redux/store';
+
 import NextButtonOrganism from '../NextButtonOrganism';
+
+import {RootState} from 'src/redux/store';
 
 const AddPhotoNextButton = () => {
   const {image} = useSelector((state: RootState) => state.postWriteReducer);

@@ -6,12 +6,14 @@ import {
   TextInputProps,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+
+import {Container} from './TextFieldOrganism.styles';
+
 import TextField from 'src/components/utils/TextField';
 import {inputPostContents} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
-import {Container} from './TextFieldOrganism.styles';
 
-const TextFieldOrganism = (props: TextInputProps) => {
+const TextFieldOrganism = ({isFlex = true, ...props}: TextInputProps & {isFlex?: boolean}) => {
   const [focus, setFocus] = useState(false);
   const {contents} = useSelector((state: RootState) => state.postWriteReducer);
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const TextFieldOrganism = (props: TextInputProps) => {
   };
 
   return (
-    <Container focus={focus}>
+    <Container focus={focus} isFlex={isFlex}>
       <TextField
         {...props}
         textAlignVertical="top"

@@ -1,13 +1,13 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 
 import {PostWriteParamList} from '.';
 
+import SelectTagNextButton from 'src/components/PostWrite/NextButtons/SelectTag';
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import {heightPercentage} from 'src/styles/ScreenResponse';
-import SelectTagNextButton from 'src/components/PostWrite/NextButtons/SelectTag';
 
 export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 

@@ -1,32 +1,47 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useRef} from 'react';
+import {
+  Dimensions,
+  NativeSyntheticEvent,
+  SafeAreaView,
+  TextInputFocusEventData,
+} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+
+import {PostWriteParamList} from '.';
+
 import AddPhotoOrganism from 'src/components/PostWrite/AddPhotoOrganism';
 import Boundary from 'src/components/PostWrite/Boundary';
-import ContentSection from 'src/components/PostWrite/ContentSection';
+import DirectTagSummaryOrganism from 'src/components/PostWrite/DirectTagSummaryOrganism';
+import SummaryNextButton from 'src/components/PostWrite/NextButtons/Summary';
+import SelectTagSummaryOrganism from 'src/components/PostWrite/SelectTagSummaryOrganism';
 import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
-import {PostWriteParamList} from '.';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type SummaryScreenProps = NativeStackScreenProps<PostWriteParamList, 'Summary'>;
 
 const SummaryScreen = ({navigation}: SummaryScreenProps) => {
+  const scrollRef = useRef<KeyboardAwareScrollView>(null);
+
+  const handleFocusTextField = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    scrollRef.current?.scrollToFocusedInput(e.target, heightPercentage(120));
+  };
+
   return (
     <SafeAreaView>
       <LeftBackHeader onPressBack={() => navigation.goBack()}>새 게시물</LeftBackHeader>
-      <ScrollView>
+      <KeyboardAwareScrollView
+        ref={scrollRef}
+        style={{height: Dimensions.get('window').height - heightPercentage(220)}}>
         <AddPhotoOrganism />
-        <TextFieldOrganism />
+        <TextFieldOrganism isFlex={false} onFocus={handleFocusTextField} />
         <Boundary />
-        <ContentSection
-          title="선택 태그"
-          onPressRightIcon={() => navigation.navigate('SelectTag')}></ContentSection>
-        <ContentSection
-          title="직접 태그"
-          subTitle="(최대 4개)"
-          onPressRightIcon={() => navigation.navigate('SelectTag')}></ContentSection>
-      </ScrollView>
+        <SelectTagSummaryOrganism />
+        <DirectTagSummaryOrganism />
+        <Boundary />
+      </KeyboardAwareScrollView>
+      <SummaryNextButton />
     </SafeAreaView>
   );
 };

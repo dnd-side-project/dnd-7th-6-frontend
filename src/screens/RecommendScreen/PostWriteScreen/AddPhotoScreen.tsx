@@ -6,17 +6,17 @@ import {
   SafeAreaView,
   TextInputFocusEventData,
 } from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useDispatch} from 'react-redux';
 
 import {PostWriteParamList} from '.';
 
 import AddPhotoOrganism from 'src/components/PostWrite/AddPhotoOrganism';
-import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
-import {heightPercentage} from 'src/styles/ScreenResponse';
 import AddPhotoNextButton from 'src/components/PostWrite/NextButtons/AddPhoto';
-import {useDispatch} from 'react-redux';
-import {showTabBar} from 'src/redux/actions/TabBarAction';
 import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type AddPhotoScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
 
