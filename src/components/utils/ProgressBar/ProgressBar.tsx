@@ -1,32 +1,29 @@
 import React, {useEffect, useRef} from 'react';
 import {Animated, Easing} from 'react-native';
-import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
-import theme from 'src/styles/Theme';
 
 import {MainBar} from './ProgressBar.styles';
 
+import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
+import theme from 'src/styles/Theme';
+
 interface Props {
-  prevIndex: number;
-  nextIndex: number;
+  index: number;
   total: number;
 }
 
-const ProgressBar = ({prevIndex, nextIndex, total}: Props) => {
-  const fillAnimation = useRef(
-    new Animated.Value((prevIndex / total) * widthPercentage(343)),
-  ).current;
-  const next = widthPercentage(343) * (nextIndex / total);
+const ProgressBar = ({index, total}: Props) => {
+  const fillAnimation = useRef(new Animated.Value((index / total) * widthPercentage(343))).current;
 
   const fill = Animated.timing(fillAnimation, {
-    toValue: next,
-    duration: 1000,
-    easing: Easing.sin,
+    toValue: (index / total) * widthPercentage(343),
+    duration: 500,
+    easing: Easing.exp,
     useNativeDriver: false,
   });
 
   useEffect(() => {
     fill.start();
-  }, [fillAnimation]);
+  }, [fillAnimation, index]);
 
   return (
     <MainBar>

@@ -12,9 +12,10 @@ import {useDispatch} from 'react-redux';
 import {PostWriteParamList} from '.';
 
 import AddPhotoOrganism from 'src/components/PostWrite/AddPhotoOrganism';
-import AddPhotoNextButton from 'src/components/PostWrite/NextButtons/AddPhoto';
 import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
+import useFocus from 'src/hooks/useFocus';
+import {changeScreen} from 'src/redux/actions/PostWriteAction';
 import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
@@ -31,6 +32,10 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
     scrollToInput(e.target);
   };
 
+  useFocus(() => {
+    dispatch(changeScreen(0));
+  });
+
   return (
     <SafeAreaView style={{marginBottom: heightPercentage(54)}}>
       <LeftBackHeader
@@ -46,7 +51,6 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
         <AddPhotoOrganism />
         <TextFieldOrganism onFocus={handleFocusInputField} />
       </KeyboardAwareScrollView>
-      <AddPhotoNextButton />
     </SafeAreaView>
   );
 };

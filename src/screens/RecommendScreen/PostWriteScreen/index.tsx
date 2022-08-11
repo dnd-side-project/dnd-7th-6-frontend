@@ -6,19 +6,23 @@ import ExitPostWriteScreen from './ExitPostWriteScreen';
 import SelectTagScreen from './SelectTagScreen';
 import SummaryScreen from './SummaryScreen';
 
-import useHideTabBar from 'src/hooks/useHideTabBar';
+import usePostWriteTabBar from 'src/hooks/usePostWriteTabBar';
 
 const Stack = createNativeStackNavigator();
 
+interface PostWriteProps {
+  nextScreen: string;
+}
+
 export type PostWriteParamList = {
-  PostWriteMain: undefined;
-  SelectTag: undefined;
-  Summary: undefined;
-  ExitPostWrite: undefined;
+  PostWriteMain: PostWriteProps;
+  SelectTag: PostWriteProps;
+  Summary: PostWriteProps;
+  ExitPostWrite: PostWriteProps;
 };
 
 const RoutePostWriteScreen = () => {
-  useHideTabBar();
+  usePostWriteTabBar();
 
   return (
     <Stack.Navigator initialRouteName="PostWriteMain" screenOptions={{headerShown: false}}>
