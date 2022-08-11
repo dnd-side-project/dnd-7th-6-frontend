@@ -3,6 +3,7 @@ import {Reducer} from 'redux';
 import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_POST_WRITE_IMAGE,
+  CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
   TOGGLE_TAG_CHIP,
 } from '../types/PostWriteActionType';
@@ -12,6 +13,7 @@ const initialState = {
   contents: '',
   image: {uri: ''},
   tags: [{}, {}, {}, {}, {}, {}],
+  directTags: [],
 };
 
 const postWriteReducer: Reducer = (state = initialState, action) => {
@@ -28,6 +30,8 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...state, tags: nextState};
     case CHANGE_SCREEN:
       return {...state, screenIndex: payload.target};
+    case CLEAR_POST_WRITE:
+      return {...initialState};
     default:
       return state;
   }

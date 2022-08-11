@@ -1,6 +1,8 @@
 import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
+  ADD_DIRECT_TAG,
   ADD_POST_WRITE_IMAGE,
+  CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
   TOGGLE_TAG_CHIP,
 } from '../types/PostWriteActionType';
@@ -23,4 +25,13 @@ export const toggleTagChip = (index: number, tagId: number) => ({
 export const changeScreen = (target: number) => ({
   type: CHANGE_SCREEN,
   payload: {target},
+});
+
+export const addDirectTag = (target: string) => ({
+  type: ADD_DIRECT_TAG,
+  payload: {target},
+});
+
+export const clearPostWrite = () => ({
+  type: CLEAR_POST_WRITE,
 });

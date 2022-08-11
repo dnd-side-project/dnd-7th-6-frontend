@@ -28,7 +28,14 @@ const NextButtonOrganism = ({
       <ProgressBarWrapper>
         <ProgressBar prevIndex={screenIndex} nextIndex={nextIndex} total={4} />
       </ProgressBarWrapper>
-      <PressableSubmit {...props} onPress={() => navigation.navigate(screenName as never)}>
+      <PressableSubmit
+        {...props}
+        onPress={e => {
+          navigation.navigate(screenName as never);
+          if (props.onPress) {
+            props.onPress(e);
+          }
+        }}>
         {children}
       </PressableSubmit>
     </Container>
