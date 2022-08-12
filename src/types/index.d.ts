@@ -47,12 +47,13 @@ export interface PostImage {
 }
 
 export interface User {
+  id: number;
   email: string;
-  upwd: string;
+  name: string;
   status: string;
   userRole: string;
-  userProvider?: string;
-  providerId?: string;
+  userProvider: null;
+  providerId: null;
 }
 
 export interface BoothSummary {
@@ -107,4 +108,18 @@ export interface PhotoBoothBrandTag {
   reviewCount: number;
   postCount: number;
   tagType: string;
+}
+
+export interface Review {
+  id: number;
+  title: string;
+  content: string;
+  likeCount: 0;
+  status: string;
+  starScore: number;
+  createdAt: string;
+  updatedAt: string;
+  reviewTagSet: Array<{tag: Tag}>;
+  reviewImageSet: Array<PostImage>;
+  user: User;
 }
