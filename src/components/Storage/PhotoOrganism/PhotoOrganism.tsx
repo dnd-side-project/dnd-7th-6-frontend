@@ -1,19 +1,23 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {Dimensions, FlatList} from 'react-native';
+
+import {Container} from './PhotoOrganism.styles';
 
 import FeedCard from 'src/components/Recommend/FeedCard';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const PhotoOrganism = () => {
   const data = [{}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
-    <View>
+    <Container>
       <FlatList
         data={data}
         numColumns={2}
+        style={{height: Dimensions.get('window').height - heightPercentage(215)}}
         renderItem={({index}) => <FeedCard key={index} imgUrl="" />}
       />
-    </View>
+    </Container>
   );
 };
 

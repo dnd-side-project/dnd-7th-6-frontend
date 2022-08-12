@@ -10,6 +10,10 @@ interface Props {
   selected: boolean;
 }
 
+export const Container = styled.View({
+  height: '100%',
+});
+
 export const Navigator = styled.View({
   flexDirection: 'row',
 });
@@ -29,14 +33,14 @@ export const ButtonTitle = styled(SubHeadline3)<Props>(({selected}) => ({
 
 export const OuterSlider = styled.View({
   width: '100%',
-  height: heightPercentage(2),
+  height: heightPercentage(3),
   backgroundColor: theme.colors.grayscale[2],
 });
 
 export const style = StyleSheet.create({
   innerSlider: {
     width: '50%',
-    height: heightPercentage(2),
+    height: heightPercentage(3),
     backgroundColor: theme.colors.grayscale[7],
   },
 });

@@ -2,7 +2,14 @@ import React, {PropsWithChildren, useEffect, useRef, useState} from 'react';
 import {Animated, Easing, LayoutChangeEvent} from 'react-native';
 import * as Swiper from 'react-native-swiper';
 
-import {Button, ButtonTitle, Navigator, OuterSlider, style} from './LineSlideView.styles';
+import {
+  Button,
+  ButtonTitle,
+  Container,
+  Navigator,
+  OuterSlider,
+  style,
+} from './LineSlideView.styles';
 
 interface Props {
   items: {name: string; count: number}[];
@@ -32,11 +39,15 @@ const LineSlideView = ({items, index, setIndex, children}: PropsWithChildren<Pro
 
   useEffect(() => {
     moveSlide.start();
-    swiperRef.current?.scrollTo(index);
+    if (index <= 0) {
+      swiperRef.current?.scrollBy(-1);
+    } else {
+      swiperRef.current?.scrollBy(1);
+    }
   }, [index]);
 
   return (
-    <>
+    <Container>
       <Navigator onLayout={handleLayout}>
         {items.map(({name, count}, i) => (
           <Button key={name} onPress={() => setIndex(i)}>
@@ -49,13 +60,13 @@ const LineSlideView = ({items, index, setIndex, children}: PropsWithChildren<Pro
         <Animated.View style={{...style.innerSlider, left: slideAnimation}} />
       </OuterSlider>
       <Swiper.default
+        showsPagination={false}
         onIndexChanged={handleChangeSwiperIndex}
         horizontal={true}
-        ref={swiperRef}
-        showsPagination={false}>
+        ref={swiperRef}>
         {children}
       </Swiper.default>
-    </>
+    </Container>
   );
 };
 
