@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 
+import PhotoOrganism from '../PhotoOrganism';
+
 import LineSlideView from 'src/components/utils/LineSlideView';
 
 const SwipeOrganism = () => {
@@ -11,12 +13,10 @@ const SwipeOrganism = () => {
   ];
 
   return (
-    <>
-      <LineSlideView items={items} index={index} setIndex={setIndex}>
-        <View />
-        <View />
-      </LineSlideView>
-    </>
+    <LineSlideView items={items} index={index} setIndex={setIndex}>
+      <PhotoOrganism />
+      <View />
+    </LineSlideView>
   );
 };
 
