@@ -1,8 +1,14 @@
 import * as React from 'react';
-import {View} from 'react-native';
+import {SafeAreaView} from 'react-native';
+
+import StorageHeader from 'src/components/Storage/StorageHeader';
 
 const StorageScreen = () => {
-  return <View />;
+  return (
+    <SafeAreaView>
+      <StorageHeader />
+    </SafeAreaView>
+  );
 };
 
 export default StorageScreen;
