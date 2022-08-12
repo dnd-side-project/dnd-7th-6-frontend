@@ -1,9 +1,9 @@
 import React, {PropsWithChildren} from 'react';
-import {PressableProps, View} from 'react-native';
+import {PressableProps} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {PressableCancelIcon} from '../utils/Pressables/PressableIcons';
-import {Container, IconWrapper, Title} from './TagInputChip.styles';
+import {ChipWrapper, Container, IconWrapper, Title} from './TagInputChip.styles';
 
 import {changeTagData} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
@@ -29,7 +29,13 @@ const TagInputChip = ({
   };
   return (
     <Container {...props} active={active} index={index}>
-      {active ? <Title active={active}>{children}</Title> : <View>{children}</View>}
+      {active ? (
+        <ChipWrapper>
+          <Title active={active}>{children}</Title>
+        </ChipWrapper>
+      ) : (
+        <ChipWrapper>{children}</ChipWrapper>
+      )}
 
       {active ? (
         <IconWrapper>

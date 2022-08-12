@@ -47,3 +47,9 @@ export const RightCountView = styled(BodyText3)({
   alignSelf: 'center',
   justifyContent: 'center',
 });
+
+export const ChipTextInput = styled.TextInput({
+  fontFamily: theme.fonts.Body[3].fontFamily,
+  fontSize: theme.fonts.Body[3].size,
+  height: heightPercentage(50),
+});

@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import TagInputChip from '../Chip/TagInputChip';
 import {
   ChipScrollViewWrapper,
+  ChipTextInput,
   RightCountView,
   SearchBarCotainer,
   SearchBarTextInput,
@@ -89,7 +90,7 @@ const ReviewTagInput = ({
           )}
           {chipMode ? (
             <TagInputChip>
-              <TextInput
+              <ChipTextInput
                 autoFocus
                 onChangeText={chipTextInputOnPress}
                 onEndEditing={chipEndEditingEvent}
