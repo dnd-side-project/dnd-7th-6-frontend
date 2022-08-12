@@ -18,9 +18,7 @@ const SelectTagScreen = ({navigation, route}: PostWriteMainScreenProps) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('asdffsfd', isModifyMode);
     if (isModifyMode) {
-      console.log('slee', isModifyMode);
       dispatch(changeModifyMode(true));
     }
   });

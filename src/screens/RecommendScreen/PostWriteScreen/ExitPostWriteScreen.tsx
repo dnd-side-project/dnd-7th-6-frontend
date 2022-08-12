@@ -24,7 +24,14 @@ const ExitPostWriteScreen = ({navigation}: ExitPostWriteScreenProps) => {
 
   return (
     <SafeAreaView>
-      <LeftBackHeader onPressBack={() => navigation.goBack()} />
+      <LeftBackHeader
+        onPressBack={() =>
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'Recommend' as never}],
+          })
+        }
+      />
       <ExitCenterOrganism />
       <ExitNavigationOrganism />
     </SafeAreaView>
