@@ -27,7 +27,7 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
       <DescriptionContainer>
         <Title>{item.photoBooth.name}</Title>
         <SubText>
-          <Distance>17.7km</Distance>
+          <Distance>{item.distance.toFixed(2)}km</Distance>
           <Text> | </Text>
           <ColorStarIcon14 />
           <Rating>4.9</Rating>

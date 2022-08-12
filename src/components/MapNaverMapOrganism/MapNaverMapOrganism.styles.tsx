@@ -11,7 +11,6 @@ export const ContainerView = styled.View({
 
 export const FilterWrapper = styled.View({
   width: '100%',
-  elevation: 1,
 });
 
 export const MapWrapper = styled.View({

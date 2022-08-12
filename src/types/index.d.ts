@@ -83,6 +83,7 @@ export interface SearchLocationDatas {
 }
 
 export interface PhotoBoothContentData {
+  distance: number;
   firstReview: null;
   like: boolean;
   photoBooth: {
