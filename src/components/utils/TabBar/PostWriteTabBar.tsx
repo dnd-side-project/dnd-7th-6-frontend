@@ -8,7 +8,7 @@ import ProgressBar from '../ProgressBar';
 import {Container, ProgressBarWrapper} from './PostWriteTabBar.styles';
 
 import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
-import {changeModifyMode} from 'src/redux/actions/PostWriteAction';
+import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
 import {hideTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 
@@ -27,6 +27,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
       navigation.navigate(screens[screenIndex + 1] as never);
     }
     dispatch(hideTabBar());
+    if (screenIndex === 2) {
+      dispatch(clearPostWrite());
+    }
   };
 
   return (
