@@ -1,6 +1,7 @@
 import {Reducer} from 'redux';
 
 import {
+  CHANGE_BOOTH_DATA,
   CHANGE_BOTTOMSHEET_HEIGHT,
   CHANGE_FILTER,
   CHANGE_MAP_COORD,
@@ -15,6 +16,7 @@ const initialState = {
   searchKeyword: '',
   mapCoord: {latitude: 0, longitude: 0},
   bottomSheetHeightIndex: 0,
+  boothData: [],
   filteredBrand: {},
   filteredTag: {},
 };
@@ -31,10 +33,16 @@ const mapReducer: Reducer = (state = initialState, action) => {
       return {...state, mapCoord: payload.coord};
     case CHANGE_BOTTOMSHEET_HEIGHT:
       return {...state, bottomSheetHeightIndex: payload.index};
-    case CHANGE_FILTER.BRAND:
+    case CHANGE_BOOTH_DATA:
+      return {
+        ...state,
+        boothData: payload.booth,
+      };
+    case CHANGE_FILTER.BRANDS:
       return {...state, filteredBrand: toggleTag(state.filteredBrand, payload.target)};
     case CHANGE_FILTER.TAG:
       return {...state, filteredTag: toggleTag(state.filteredTag, payload.target)};
+
     default:
       return state;
   }

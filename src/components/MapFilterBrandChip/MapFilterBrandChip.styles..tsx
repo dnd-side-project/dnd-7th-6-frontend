@@ -9,6 +9,7 @@ export const Container = styled.Pressable<{selected: boolean}>(({selected}) => (
   paddingVertical: heightPercentage(7),
   paddingRight: widthPercentage(6),
   paddingLeft: widthPercentage(12),
+  height: heightPercentage(38),
   flexDirection: 'row',
   borderRadius: 20,
   shadowOffset: {width: 0, height: 4},

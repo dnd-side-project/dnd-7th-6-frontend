@@ -1,6 +1,7 @@
 import {type Coord} from 'react-native-nmap';
 
 import {
+  CHANGE_BOOTH_DATA,
   CHANGE_BOTTOMSHEET_HEIGHT,
   CHANGE_FILTER,
   CHANGE_MAP_COORD,
@@ -8,9 +9,7 @@ import {
   INPUT_SEARCH_KEYWORD,
 } from '../types/MapActionType';
 
-import {BoothSummary} from 'src/types';
-
-export const focusBooth = (booth: BoothSummary) => ({
+export const focusBooth = (booth: any) => ({
   type: FOCUS_BOOTH,
   payload: {booth},
 });
@@ -30,8 +29,13 @@ export const changeBottomSheetHeight = (index: number) => ({
   payload: {index},
 });
 
+export const changeBoothData = (booth: any) => ({
+  type: CHANGE_BOOTH_DATA,
+  payload: {booth},
+});
+
 export const changeFilteredBrandonMap = (target: number) => ({
-  type: CHANGE_FILTER.BRAND,
+  type: CHANGE_FILTER.BRANDS,
   payload: {target},
 });
 
