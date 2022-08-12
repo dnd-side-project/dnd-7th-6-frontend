@@ -2,6 +2,7 @@ import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_DIRECT_TAG,
   ADD_POST_WRITE_IMAGE,
+  CHANGE_MODIFY_MODE,
   CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
@@ -40,4 +41,9 @@ export const clearPostWrite = () => ({
 export const changeSharedScope = (sharedScope: boolean) => ({
   type: CHANGE_SHARED_SCOPE,
   payload: {sharedScope},
+});
+
+export const changeModifyMode = (modifyMode: boolean) => ({
+  type: CHANGE_MODIFY_MODE,
+  payload: {modifyMode},
 });

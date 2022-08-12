@@ -10,15 +10,11 @@ import usePostWriteTabBar from 'src/hooks/usePostWriteTabBar';
 
 const Stack = createNativeStackNavigator();
 
-interface PostWriteProps {
-  nextScreen: string;
-}
-
 export type PostWriteParamList = {
-  PostWriteMain: PostWriteProps;
-  SelectTag: PostWriteProps;
-  Summary: PostWriteProps;
-  ExitPostWrite: PostWriteProps;
+  PostWriteMain: undefined;
+  SelectTag: {isModifyMode?: boolean};
+  Summary: undefined;
+  ExitPostWrite: undefined;
 };
 
 const RoutePostWriteScreen = () => {

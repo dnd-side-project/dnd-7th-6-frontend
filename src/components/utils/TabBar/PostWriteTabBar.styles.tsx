@@ -17,5 +17,6 @@ export const Container = styled.View({
 });
 
 export const ProgressBarWrapper = styled.View({
-  paddingVertical: heightPercentage(16),
+  justifyContent: 'center',
+  height: heightPercentage(36),
 });

@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 import {useDispatch} from 'react-redux';
 
@@ -8,16 +8,27 @@ import {PostWriteParamList} from '.';
 import SelectTagOrganism from 'src/components/PostWrite/SelectTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useFocus from 'src/hooks/useFocus';
-import {changeScreen} from 'src/redux/actions/PostWriteAction';
+import {changeModifyMode, changeScreen} from 'src/redux/actions/PostWriteAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
-export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
+export type PostWriteMainScreenProps = NativeStackScreenProps<PostWriteParamList, 'SelectTag'>;
 
-const SelectTagScreen = ({navigation}: PostWriteMainScreenProps) => {
+const SelectTagScreen = ({navigation, route}: PostWriteMainScreenProps) => {
+  const isModifyMode = route.params?.isModifyMode || false;
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    console.log('asdffsfd', isModifyMode);
+    if (isModifyMode) {
+      console.log('slee', isModifyMode);
+      dispatch(changeModifyMode(true));
+    }
+  });
+
   useFocus(() => {
-    dispatch(changeScreen(1));
+    if (!isModifyMode) {
+      dispatch(changeScreen(1));
+    }
   });
 
   return (

@@ -29,7 +29,7 @@ const ContentSection = ({
           <Title>{title}</Title>
           {subTitle && <SubTitle>{subTitle}</SubTitle>}
         </Text>
-        {onPressRightIcon && <ModifyButton>수정</ModifyButton>}
+        {onPressRightIcon && <ModifyButton onPress={onPressRightIcon}>수정</ModifyButton>}
       </HeaderBox>
       <Contents>{children}</Contents>
     </Container>

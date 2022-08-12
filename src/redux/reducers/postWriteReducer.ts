@@ -3,6 +3,7 @@ import {Reducer} from 'redux';
 import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_POST_WRITE_IMAGE,
+  CHANGE_MODIFY_MODE,
   CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
   INPUT_POST_CONTENTS,
@@ -11,6 +12,7 @@ import {
 
 const initialState = {
   screenIndex: 0,
+  isModifyMode: false,
   contents: '',
   image: {uri: ''},
   tags: [{}, {}, {}, {}, {}, {}],
@@ -36,6 +38,8 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...initialState};
     case CHANGE_SHARED_SCOPE:
       return {...state, isPublic: payload.sharedScope};
+    case CHANGE_MODIFY_MODE:
+      return {...state, isModifyMode: payload.modifyMode};
     default:
       return state;
   }

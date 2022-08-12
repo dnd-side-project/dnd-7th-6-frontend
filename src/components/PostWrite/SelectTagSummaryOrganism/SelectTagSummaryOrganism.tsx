@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -9,12 +10,17 @@ import useFilterTag from 'src/hooks/useFilterTag';
 import {RootState} from 'src/redux/store';
 
 const SelectTagSummaryOrganism = () => {
+  const navigation = useNavigation();
   const {tags} = useSelector((state: RootState) => state.postWriteReducer);
   const {getFilterTagById} = useFilterTag();
 
   return (
     <>
-      <ContentSection title="선택 태그">
+      <ContentSection
+        title="선택 태그"
+        onPressRightIcon={() =>
+          navigation.navigate('SelectTag' as never, {isModifyMode: true} as never)
+        }>
         <ChipContainer>
           {tags
             .reduce((chips: [], tagMap: any) => {
