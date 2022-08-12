@@ -20,7 +20,7 @@ import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
 import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useFocus from 'src/hooks/useFocus';
-import {changeScreen} from 'src/redux/actions/PostWriteAction';
+import {changeModifyMode, changeScreen} from 'src/redux/actions/PostWriteAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type SummaryScreenProps = NativeStackScreenProps<PostWriteParamList, 'Summary'>;
@@ -35,6 +35,7 @@ const SummaryScreen = ({navigation}: SummaryScreenProps) => {
 
   useFocus(() => {
     dispatch(changeScreen(2));
+    dispatch(changeModifyMode(false));
   });
 
   return (
@@ -47,8 +48,8 @@ const SummaryScreen = ({navigation}: SummaryScreenProps) => {
           <AddPhotoOrganism />
           <TextFieldOrganism isFlex={false} onFocus={handleFocusTextField} />
           <Boundary />
-          <SelectTagSummaryOrganism />
-          <DirectTagSummaryOrganism />
+          <SelectTagSummaryOrganism navigation={navigation} />
+          <DirectTagSummaryOrganism navigation={navigation} />
           <Boundary />
           <SelectSharedScopeOrganism />
         </DismissKeyboardView>

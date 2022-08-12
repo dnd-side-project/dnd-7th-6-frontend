@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -8,19 +8,23 @@ import {ChipContainer, ChipWrapper} from './SelectTagSummaryOrganism.styles';
 import FilterChip from 'src/components/Chip/FilterChip';
 import useFilterTag from 'src/hooks/useFilterTag';
 import {RootState} from 'src/redux/store';
+import {PostWriteParamList} from 'src/screens/RecommendScreen/PostWriteScreen';
 
-const SelectTagSummaryOrganism = () => {
-  const navigation = useNavigation();
+interface Props {
+  navigation: NativeStackNavigationProp<PostWriteParamList, 'Summary', undefined>;
+}
+
+const SelectTagSummaryOrganism = ({navigation}: Props) => {
   const {tags} = useSelector((state: RootState) => state.postWriteReducer);
   const {getFilterTagById} = useFilterTag();
 
+  const handlePressModifyButton = () => {
+    navigation.push('SelectTag' as never, {isModifyMode: true} as never);
+  };
+
   return (
     <>
-      <ContentSection
-        title="선택 태그"
-        onPressRightIcon={() =>
-          navigation.navigate('SelectTag' as never, {isModifyMode: true} as never)
-        }>
+      <ContentSection title="선택 태그" onPressRightIcon={handlePressModifyButton}>
         <ChipContainer>
           {tags
             .reduce((chips: [], tagMap: any) => {
