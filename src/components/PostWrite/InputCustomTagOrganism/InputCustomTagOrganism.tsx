@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import TagInput from 'src/components/SearchTagInput/TagInput';
+import TagSearchList from 'src/components/SearchTagInput/TagSearchList';
 import {changeCustomTag} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
 
@@ -23,6 +24,12 @@ const InputCustomTagOrganism = () => {
         setInputWord={setInputWord}
         tagData={customTags}
         onDelete={handleDelete}
+      />
+      <TagSearchList
+        inputWord={inputWord}
+        setInputWord={setInputWord}
+        tagData={customTags}
+        changeTagData={changeCustomTag}
       />
     </>
   );
