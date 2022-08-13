@@ -30,7 +30,7 @@ const CustomTagScreen = ({navigation, route}: CustomTagScreenProps) => {
 
   return (
     <SafeAreaView>
-      <LeftBackHeader onPressBack={() => navigation.goBack()}>태그 선택</LeftBackHeader>
+      <LeftBackHeader onPressBack={() => navigation.goBack()}>태그 직접 입력</LeftBackHeader>
       <InputCustomTagOrganism />
     </SafeAreaView>
   );
