@@ -3,6 +3,7 @@ import {Reducer} from 'redux';
 import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_POST_WRITE_IMAGE,
+  CHANGE_CUSTOM_TAG,
   CHANGE_MODIFY_MODE,
   CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
@@ -16,7 +17,7 @@ const initialState = {
   contents: '',
   image: {uri: ''},
   tags: [{}, {}, {}, {}, {}, {}],
-  directTags: [],
+  customTags: [],
   isPublic: true,
 };
 
@@ -40,6 +41,8 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
       return {...state, isPublic: payload.sharedScope};
     case CHANGE_MODIFY_MODE:
       return {...state, isModifyMode: payload.modifyMode};
+    case CHANGE_CUSTOM_TAG:
+      return {...state, customTags: [...payload.customTags]};
     default:
       return state;
   }

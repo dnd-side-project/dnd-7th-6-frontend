@@ -18,11 +18,13 @@ const TagInput = ({
   setInputWord,
   tagData,
   changeTagData,
+  onDelete,
 }: {
   inputWord: string;
   setInputWord: Dispatch<SetStateAction<string>>;
   tagData: string[];
   changeTagData: any;
+  onDelete?: (index?: number) => void;
 }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -76,7 +78,7 @@ const TagInput = ({
           {tagData.length > 0 ? (
             tagData.map((item: any, index: number) => {
               return (
-                <TagInputChip active key={index} index={index}>
+                <TagInputChip active key={index} index={index} deleteOnPress={onDelete}>
                   {item}
                 </TagInputChip>
               );
