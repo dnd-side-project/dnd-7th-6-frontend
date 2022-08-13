@@ -3,20 +3,14 @@ import * as React from 'react';
 
 import {PostReviewParamList} from '.';
 
-import BoothReviewHeader from 'src/components/BoothReview/BoothReviewHeader';
 import ReviewRatingOrganism from 'src/components/BoothReview/ReviewRatingOrganism';
 
 export type StoreReviewScreenProps = NativeStackScreenProps<
   PostReviewParamList,
   'BoothStoreReviewScreen'
 >;
-const BoothStoreReviewScreen = ({navigation}: StoreReviewScreenProps) => {
-  return (
-    <>
-      <BoothReviewHeader onPress={() => navigation.goBack()}>부스 리뷰 작성</BoothReviewHeader>
-      <ReviewRatingOrganism />
-    </>
-  );
+const BoothStoreReviewScreen = () => {
+  return <ReviewRatingOrganism />;
 };
 
 export default BoothStoreReviewScreen;
