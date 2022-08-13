@@ -1,12 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {
-  NativeSyntheticEvent,
-  ScrollView,
-  TextInput,
-  TextInputKeyPressEventData,
-} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {NativeSyntheticEvent, ScrollView, TextInputKeyPressEventData} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import TagInputChip from '../Chip/TagInputChip';
 import {
@@ -17,17 +12,17 @@ import {
   SearchBarTextInput,
 } from './ReviewTagInput.styles';
 
-import {changeTagData} from 'src/redux/actions/ReviewAction';
-import {RootState} from 'src/redux/store';
-
 const ReviewTagInput = ({
   inputWord,
   setInputWord,
+  tagData,
+  changeTagData,
 }: {
   inputWord: string;
   setInputWord: Dispatch<SetStateAction<string>>;
+  tagData: string[];
+  changeTagData: any;
 }) => {
-  const tagData: any = useSelector((state: RootState) => state.reviewReducer.tagData);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [chipMode, setChipMode] = useState(false);
@@ -67,7 +62,7 @@ const ReviewTagInput = ({
       }
     }
   };
-  const chipEndEditingEvent = () => {
+  const chipTextEventOnPress = () => {
     let prevData = [...tagData];
     prevData.push(inputWord);
     dispatch(changeTagData(prevData));
@@ -77,7 +72,7 @@ const ReviewTagInput = ({
     <SearchBarCotainer>
       <ChipScrollViewWrapper>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {tagData !== [] ? (
+          {tagData.length > 0 ? (
             tagData.map((item: any, index: number) => {
               return (
                 <TagInputChip active key={index} index={index}>
@@ -93,7 +88,7 @@ const ReviewTagInput = ({
               <ChipTextInput
                 autoFocus
                 onChangeText={chipTextInputOnPress}
-                onEndEditing={chipEndEditingEvent}
+                onSubmitEditing={chipTextEventOnPress}
                 value={inputWord}
               />
             </TagInputChip>

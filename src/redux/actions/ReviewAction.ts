@@ -12,7 +12,7 @@ export const changeStars = (star: number) => ({
   payload: {star},
 });
 
-export const changeTagData = (tagData: any) => ({
+export const changeTagData = (tagData: string[]) => ({
   type: CHANGE_TAG_DATA,
   payload: {tagData},
 });
