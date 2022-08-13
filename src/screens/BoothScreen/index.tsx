@@ -24,7 +24,7 @@ const RouteBoothScreen = () => {
       <Stack.Screen
         name="BoothReview"
         component={RoutePostReviewScreen}
-        options={{headerShown: false}}
+        options={{headerShown: false, gestureEnabled: false}}
       />
     </Stack.Navigator>
   );

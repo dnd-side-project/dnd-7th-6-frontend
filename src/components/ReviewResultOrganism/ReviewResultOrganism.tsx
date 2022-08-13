@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ReviewBoothName from '../ReviewBoothName';
 import ReviewNextPressable from '../ReviewNextPressable';
@@ -14,8 +15,13 @@ import {
   ReviewSectionContainer,
   TagInputDescription,
   TagInputPressable,
+  TagInputText,
   TagInputWrapper,
+  TagsWrapper,
 } from './ReviewResultOrganism.styles';
+
+import {changeResultTags} from 'src/redux/actions/ReviewAction';
+import {RootState} from 'src/redux/store';
 const ReviewResultOrganism = () => {
   const boothName = '포토시그니처 대구 교동카페 거리점';
   const specificData = [
@@ -27,24 +33,14 @@ const ReviewResultOrganism = () => {
     {id: 5, title: '생각보다 어두워요'},
     {id: 6, title: '생각보다 어두워요'},
   ];
-  const [select, setSelect] = useState<any>({});
-  const [resultCounter, setResultCounter] = useState([]);
   const navigation = useNavigation();
-  const tagOnPress = (index: {toString: () => string | number}) =>
-    setSelect((prevState: any) => {
-      const nextState = {...prevState};
-      nextState[index.toString()] = !prevState[index.toString()];
-      const limiter: any = Object.values(nextState).filter(function (v) {
-        if (v) {
-          return v;
-        }
-      });
-      setResultCounter(limiter);
-      if (limiter.length > 4) {
-        return prevState;
-      }
-      return nextState;
-    });
+  const dispatch = useDispatch();
+  const resultTags = useSelector((state: RootState) => state.reviewReducer.resultTags);
+  const resultNext = useSelector((state: RootState) => state.reviewReducer.resultNext);
+
+  const tagOnPress = (id: number) => () => {
+    dispatch(changeResultTags(id));
+  };
   const nextOnPress = () => navigation.navigate('BoothImageReview' as never, {} as never);
   const tagPageOnPress = () => navigation.navigate('BoothTagInput' as never, {} as never);
 
@@ -62,9 +58,9 @@ const ReviewResultOrganism = () => {
           data={specificData}
           numColumns={2}
           bounces={false}
-          renderItem={({item, index}: any) => {
+          renderItem={({item}: any) => {
             return (
-              <ReviewSelectPressable selected={select[index]} onPress={() => tagOnPress(index)}>
+              <ReviewSelectPressable selected={resultTags[item.id]} onPress={tagOnPress(item.id)}>
                 {item.title}
               </ReviewSelectPressable>
             );
@@ -73,11 +69,17 @@ const ReviewResultOrganism = () => {
       </ResultListWrapper>
 
       <TagInputWrapper>
-        <TagInputDescription>태그 입력</TagInputDescription>
-        <TagInputPressable onPress={tagPageOnPress} />
+        <TagsWrapper>
+          <TagInputDescription>태그를 직접 남겨보세요</TagInputDescription>
+          <BoothSpecificDescription>(최대 4개)</BoothSpecificDescription>
+        </TagsWrapper>
+
+        <TagInputPressable>
+          <TagInputText>태그를 입력해주세요</TagInputText>
+        </TagInputPressable>
       </TagInputWrapper>
       <ReviewNextPressableWrapper>
-        <ReviewNextPressable onPress={nextOnPress} disable={!(resultCounter.length > 0)} />
+        <ReviewNextPressable onPress={nextOnPress} disable={!resultNext} />
       </ReviewNextPressableWrapper>
     </ReviewSectionContainer>
   );

@@ -15,11 +15,11 @@ import {
   CameranImageWrapper,
   ReviewSectionContainer,
   BoothSelectTitle,
-  SubtitleBooth,
   ReviewNextPressableWrapper,
   ImageWrapper,
   DeletePressable,
   BoothDescribeTextLengthText,
+  ReviewTextInput,
 } from './ReviewImageOrganism.styles';
 
 import DeleteIcon from 'src/icons/DeleteIcon';
@@ -94,13 +94,13 @@ const ReviewImageOrganism = () => {
               );
             })}
         </CameranImageWrapper>
-        <SubtitleBooth>(선택)</SubtitleBooth>
         <BoothDescribeWrapper>
           <BoothDescribeTitle>이 매장에 대해 설명해주세요</BoothDescribeTitle>
           <BoothSelectTitle>(선택)</BoothSelectTitle>
         </BoothDescribeWrapper>
         <TextField
           focus={focusTextInput}
+          style={ReviewTextInput}
           multiline={true}
           placeholder="이 부스를 이용하면서 느꼈던 느낌을 알려주세요."
           textAlignVertical="top"
