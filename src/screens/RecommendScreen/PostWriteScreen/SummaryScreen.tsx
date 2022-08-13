@@ -34,7 +34,7 @@ const SummaryScreen = ({navigation}: SummaryScreenProps) => {
   };
 
   useFocus(() => {
-    dispatch(changeScreen(2));
+    dispatch(changeScreen(3));
     dispatch(changeModifyMode(false));
   });
 

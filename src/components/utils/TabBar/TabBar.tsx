@@ -40,7 +40,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
   }, [isVisibleTabBar]);
 
   useEffect(() => {
-    if (screenIndex >= 3) {
+    if (screenIndex >= 4) {
       dispatch(closePostWrite());
     }
   }, [screenIndex]);
