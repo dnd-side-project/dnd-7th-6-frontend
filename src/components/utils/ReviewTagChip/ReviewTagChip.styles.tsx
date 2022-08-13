@@ -13,8 +13,11 @@ export const Container = styled.Pressable({
   borderRadius: 20,
 });
 
+export const IconWrapper = styled.View({
+  paddingRight: widthPercentage(4),
+});
+
 export const TagTitle = styled(BodyText5)({
   color: theme.colors.grayscale[6],
   textAlignVertical: 'center',
-  marginLeft: widthPercentage(4),
 });

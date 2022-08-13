@@ -32,15 +32,15 @@ const ReviewSummary = (props: Review) => {
       <Content>{props.content}</Content>
       {isExistImage || (
         <ImageContainer>
-          {props.reviewImageSet.map(({imageUrl}) => (
-            <FastImage source={{uri: imageUrl}} style={style.fastImage} />
+          {props.reviewImageSet.map(({id, imageUrl}) => (
+            <FastImage key={id} source={{uri: imageUrl}} style={style.fastImage} />
           ))}
         </ImageContainer>
       )}
       {isExistTag || (
         <TagContainer>
           {props.reviewTagSet.map(({tag}) => (
-            <TagWrapper>
+            <TagWrapper key={tag.id}>
               <ReviewTagChip {...tag} />
             </TagWrapper>
           ))}

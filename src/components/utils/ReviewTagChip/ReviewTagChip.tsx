@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Container, TagTitle} from './ReviewTagChip.styles';
+import {Container, IconWrapper, TagTitle} from './ReviewTagChip.styles';
 
 import Heart18 from 'src/icons/Heart18';
 import {Tag} from 'src/types';
@@ -8,7 +8,11 @@ import {Tag} from 'src/types';
 const ReviewTagChip = (tag: Tag) => {
   return (
     <Container>
-      {tag.tagType === 'CUSTOM' || <Heart18 />}
+      {tag.tagType === 'CUSTOM' || (
+        <IconWrapper>
+          <Heart18 />
+        </IconWrapper>
+      )}
       <TagTitle>{tag.title}</TagTitle>
     </Container>
   );
