@@ -6,7 +6,7 @@ import BottomArrowIcon from 'src/icons/BottomArrowIcon';
 import CancelIcon from 'src/icons/CancelIcon';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import LeftArrowIcon from 'src/icons/LeftArrowIcon';
-import LikeIcon from 'src/icons/LikeIcon';
+import LikeHeartIcon from 'src/icons/LikeHeartIcon';
 import PlusIcon from 'src/icons/PlusIcon';
 import RefreshIcon from 'src/icons/RefreshIcon';
 import RightArrowIcon from 'src/icons/RightArrowIcon';
@@ -26,7 +26,7 @@ const makePressableComponent = (IconComponent: React.FC) => (props: PressablePro
 };
 
 export const PressableUploadIcon = makePressableComponent(UploadIcon);
-export const PressableLikeIcon = makePressableComponent(LikeIcon);
+export const PressableLikeIcon = makePressableComponent(LikeHeartIcon);
 export const PressableRightArrowIcon = makePressableComponent(RightArrowIcon);
 export const PressableSearchIcon = makePressableComponent(SearchIcon);
 export const PressableLeftArrowIcon = makePressableComponent(LeftArrowIcon);
