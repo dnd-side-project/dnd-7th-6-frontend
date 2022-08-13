@@ -1,19 +1,27 @@
 import {Reducer} from 'redux';
 
-import {HIDE_TABBAR, SHOW_TABBAR} from '../types/TabBarActionType';
+import {
+  CLOSE_POST_WRITE,
+  HIDE_TABBAR,
+  OPEN_POST_WRTIE,
+  SHOW_TABBAR,
+} from '../types/TabBarActionType';
 
 const initialState = {
   isVisibleTabBar: true,
+  isPostWriteScreen: false,
 };
 
 const tabBarReducer: Reducer = (state = initialState, action) => {
-  const {payload} = action;
-
   switch (action.type) {
     case SHOW_TABBAR:
       return {...state, isVisibleTabBar: true};
     case HIDE_TABBAR:
       return {...state, isVisibleTabBar: false};
+    case OPEN_POST_WRTIE:
+      return {...state, isPostWriteScreen: true};
+    case CLOSE_POST_WRITE:
+      return {...state, isPostWriteScreen: false};
     default:
       return state;
   }

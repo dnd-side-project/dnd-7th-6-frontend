@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import {Alert} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {type Image, openPicker} from 'react-native-image-crop-picker';
@@ -64,7 +64,6 @@ const ReviewImageOrganism = () => {
     dispatch(addImage(nextData));
   };
 
-  const [focusTextInput, setFocusTextInput] = useState<boolean>(false);
   const navigation = useNavigation();
   const nextOnPress = () => navigation.navigate('BoothReviewComplete' as never, {} as never);
 
@@ -99,14 +98,12 @@ const ReviewImageOrganism = () => {
           <BoothSelectTitle>(선택)</BoothSelectTitle>
         </BoothDescribeWrapper>
         <TextField
-          focus={focusTextInput}
+          isBorder={true}
           style={ReviewTextInput}
           multiline={true}
           placeholder="이 매장을 이용하면서 느꼈던 느낌을 알려주세요."
           textAlignVertical="top"
           value={descriptionText}
-          onFocus={() => setFocusTextInput(true)}
-          onBlur={() => setFocusTextInput(false)}
           maxLength={300}
           onChangeText={value => {
             dispatch(addStoreDescription(value));
