@@ -12,6 +12,7 @@ export const Backdrop = styled.View({
   backgroundColor: theme.colors.grayscale[10] + 'aa',
   paddingHorizontal: widthPercentage(16),
   justifyContent: 'center',
+  zIndex: 100,
 });
 
 export const Modal = styled.View({
