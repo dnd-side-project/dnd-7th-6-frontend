@@ -2,6 +2,7 @@ import {
   ADD_IMAGE,
   ADD_STORE_DESCRIPTION,
   CHANGE_STARS,
+  CHANGE_TAGS,
   CLEAR_DATA,
   SHOW_PAUSE_MODAL,
 } from '../types/ReviewActionType';
@@ -28,4 +29,14 @@ export const clearData = () => ({
 export const showPauseModal = (isModal: boolean) => ({
   type: SHOW_PAUSE_MODAL,
   payload: {isModal},
+});
+
+export const changeSpecificTags = (target: number) => ({
+  type: CHANGE_TAGS.SPECIFIC,
+  payload: {target},
+});
+
+export const changeResultTags = (target: number) => ({
+  type: CHANGE_TAGS.RESULT,
+  payload: {target},
 });

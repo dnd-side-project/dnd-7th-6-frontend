@@ -13,7 +13,7 @@ export const ReviewSectionContainer = styled.View({
 export const CameranImageWrapper = styled.ScrollView({
   height: heightPercentage(90),
   marginTop: heightPercentage(14),
-  marginBottom: heightPercentage(10),
+  marginBottom: heightPercentage(64),
   flexGrow: 0,
 });
 
@@ -73,3 +73,9 @@ export const ReviewNextPressableWrapper = styled.View({
   alignSelf: 'center',
   flex: 1,
 });
+
+export const ReviewTextInput = {
+  color: theme.colors.grayscale[8],
+  fontFamily: theme.fonts.Body[4].fontFamily,
+  fontSize: theme.fonts.Body[4].size,
+};

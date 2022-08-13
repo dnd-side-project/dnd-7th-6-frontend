@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText3, SubHeadline2} from '../utils/Text';
+import {BodyText3, BodyText4, SubHeadline2} from '../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -15,6 +15,11 @@ export const RatingnTextWrapper = styled.View({
   marginTop: heightPercentage(40),
   marginLeft: heightPercentage(16),
   marginBottom: heightPercentage(62),
+});
+export const BoothRatingText = styled(BodyText4)({
+  color: theme.colors.grayscale[7],
+  marginTop: heightPercentage(14),
+  alignSelf: 'center',
 });
 
 export const BoothRatingDescription = styled(SubHeadline2)({

@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText3, SubHeadline2, SubHeadline3} from '../utils/Text';
+import {BodyText3, BodyText4, SubHeadline2, SubHeadline3} from '../utils/Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -27,16 +27,23 @@ export const BoothSpecificDescription = styled(BodyText3)({
 });
 
 export const TagInputWrapper = styled.View({
+  marginTop: widthPercentage(60),
+});
+
+export const TagsWrapper = styled.View({
+  flexDirection: 'row',
   marginLeft: widthPercentage(16),
-  marginTop: widthPercentage(62),
 });
 
 export const TagInputDescription = styled(SubHeadline3)({
   color: theme.colors.grayscale[8],
 });
+
 export const TagInputPressable = styled.Pressable({
+  marginLeft: widthPercentage(16),
   marginTop: heightPercentage(18),
   backgroundColor: theme.colors.grayscale[2],
+  justifyContent: 'center',
   width: widthPercentage(343),
   height: heightPercentage(40),
   borderRadius: 8,
@@ -48,6 +55,11 @@ export const ResultListWrapper = styled.View({
 
 export const ResultFlatList = styled.FlatList({
   marginLeft: widthPercentage(10),
+});
+
+export const TagInputText = styled(BodyText4)({
+  marginLeft: widthPercentage(12),
+  color: theme.colors.grayscale[5],
 });
 
 export const ReviewNextPressableWrapper = styled.View({
