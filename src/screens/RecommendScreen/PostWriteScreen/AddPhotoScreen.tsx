@@ -1,10 +1,11 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Dimensions,
   NativeSyntheticEvent,
   SafeAreaView,
   TextInputFocusEventData,
+  View,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDispatch} from 'react-redux';
@@ -24,12 +25,17 @@ export type AddPhotoScreenProps = NativeStackScreenProps<PostWriteParamList, 'Po
 const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
   const dispatch = useDispatch();
   const scroll = useRef<KeyboardAwareScrollView>(null);
+  const [focus, setFocus] = useState(false);
 
   const scrollToInput = (node: any) => {
-    scroll.current?.scrollToFocusedInput(node, heightPercentage(120));
+    scroll.current?.scrollToFocusedInput(node, heightPercentage(270));
   };
   const handleFocusInputField = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    setFocus(true);
     scrollToInput(e.target);
+  };
+  const handleBlurInputField = () => {
+    setFocus(false);
   };
 
   useFocus(() => {
@@ -49,7 +55,8 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
         ref={scroll}
         style={{height: Dimensions.get('window').height - heightPercentage(220)}}>
         <AddPhotoOrganism />
-        <TextFieldOrganism onFocus={handleFocusInputField} />
+        <TextFieldOrganism onBlur={handleBlurInputField} onFocus={handleFocusInputField} />
+        {!focus || <View style={{height: 60}} />}
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
