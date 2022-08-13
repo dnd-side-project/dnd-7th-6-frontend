@@ -2,7 +2,8 @@ import {
   ADD_IMAGE,
   ADD_STORE_DESCRIPTION,
   CHANGE_STARS,
-  CHANGE_TAGS
+  CHANGE_TAGS,
+  CHANGE_TAG_DATA,
   CLEAR_DATA,
   SHOW_PAUSE_MODAL,
 } from '../types/ReviewActionType';
