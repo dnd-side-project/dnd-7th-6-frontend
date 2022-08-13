@@ -46,6 +46,8 @@ const ReviewResultOrganism = () => {
       return nextState;
     });
   const nextOnPress = () => navigation.navigate('BoothImageReview' as never, {} as never);
+  const tagPageOnPress = () => navigation.navigate('BoothTagInput' as never, {} as never);
+
   return (
     <ReviewSectionContainer>
       <ReviewBoothName>{boothName}</ReviewBoothName>
@@ -72,7 +74,7 @@ const ReviewResultOrganism = () => {
 
       <TagInputWrapper>
         <TagInputDescription>태그 입력</TagInputDescription>
-        <TagInputPressable />
+        <TagInputPressable onPress={tagPageOnPress} />
       </TagInputWrapper>
       <ReviewNextPressableWrapper>
         <ReviewNextPressable onPress={nextOnPress} disable={!(resultCounter.length > 0)} />
