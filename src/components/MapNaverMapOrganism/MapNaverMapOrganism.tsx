@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {Platform} from 'react-native';
 import NaverMapView, {TrackingMode, type Coord} from 'react-native-nmap';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import MapFilterOrganism from '../MapFilterOrganism';
 import MapRefreshSearchPressable from '../MapRefreshSearchPressable';
@@ -15,6 +16,7 @@ import {
 import requestLocationPermission from 'src/hooks/requestLocationPermission';
 import CrosshairIcon from 'src/icons/CrosshairIcon';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
+import {focusBooth} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
 import getGeolocation from 'src/utils/getGeolocation';
 const MapNaverMapOrganism = () => {
@@ -27,6 +29,7 @@ const MapNaverMapOrganism = () => {
     longitude: 0,
   });
   const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
+  const dispatch = useDispatch();
   const refetchOnPress = () => {
     refetch();
     setShowRefreshPressable(false);
@@ -42,7 +45,9 @@ const MapNaverMapOrganism = () => {
       }
       const {longitude, latitude} = await getGeolocation();
       setScreenCenterPos({latitude: latitude, longitude: longitude});
-      mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});
+      if (Platform.OS === 'android') {
+        mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});
+      }
     };
     initMap().then(() => setOnInitialize(false));
   }, []);
@@ -55,6 +60,13 @@ const MapNaverMapOrganism = () => {
     };
     initData();
   }, [onInitialize]);
+
+  //가장 가까이 있는 marker focused로 변경
+  useEffect(() => {
+    if (data?.data.content[0]) {
+      dispatch(focusBooth(data?.data.content[0]));
+    }
+  }, [data?.data.content]);
 
   //coord 변경 되었을 때 화면 옮기기
   useEffect(() => {
@@ -70,13 +82,16 @@ const MapNaverMapOrganism = () => {
     });
   }, [searchedCoord]);
 
-  const currentPositionOnPress = async () => {
-    const permission = await requestLocationPermission();
-    if (permission !== 'granted') {
-      return;
-    }
-    const {longitude, latitude} = await getGeolocation();
-    mapRef.current?.animateToCoordinate({longitude: longitude, latitude: latitude});
+  const currentPositionOnPress = () => {
+    const getDataOnMap = async () => {
+      const permission = await requestLocationPermission();
+      if (permission !== 'granted') {
+        return;
+      }
+      const {longitude, latitude} = await getGeolocation();
+      mapRef.current?.animateToCoordinate({longitude: longitude, latitude: latitude});
+    };
+    getDataOnMap();
   };
 
   return (

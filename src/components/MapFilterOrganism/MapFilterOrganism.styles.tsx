@@ -35,6 +35,8 @@ export const DropdownObject = styled.Pressable(({selected}: Props) => ({
   marginVertical: heightPercentage(2),
   paddingHorizontal: widthPercentage(10),
   paddingVertical: heightPercentage(8),
+  width: widthPercentage(88),
+  height: heightPercentage(36),
   borderRadius: 4,
   backgroundColor: selected ? '#F6F2FF' : theme.colors.grayscale[1],
 }));
