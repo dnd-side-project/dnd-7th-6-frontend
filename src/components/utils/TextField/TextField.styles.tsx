@@ -1,8 +1,9 @@
 import styled from '@emotion/native';
 
-import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
-import theme from 'src/styles/Theme';
 import {BodyText5} from '../Text/BodyText';
+
+import {heightPercentage} from 'src/styles/ScreenResponse';
+import theme from 'src/styles/Theme';
 
 interface Props {
   focus: boolean;
@@ -15,6 +16,7 @@ export const TextFieldWrapper = styled.Pressable(({focus, isBorder}: Props) => (
   alignSelf: 'flex-start',
   width: '100%',
   borderWidth: isBorder ? 1 : 0,
+  borderRadius: 8,
 }));
 
 export const TextFieldInput = styled.TextInput({

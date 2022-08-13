@@ -17,7 +17,7 @@ export type BoothParamList = {
 
 const RouteBoothScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="Booth">
+    <Stack.Navigator initialRouteName="BoothReview">
       <Stack.Screen name="Booth" component={BoothScreen} />
       <Stack.Screen name="BoothSearch" component={BoothSearchScreen} />
       <Stack.Screen name="BoothDetail" component={BoothDetailScreen} />

@@ -6,7 +6,7 @@ import theme from 'src/styles/Theme';
 
 export const ReviewSectionContainer = styled.View({
   width: '100%',
-  height: '100%',
+  flex: 1,
 });
 
 export const QuestionWrapper = styled.View({
