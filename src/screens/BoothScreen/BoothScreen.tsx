@@ -6,7 +6,7 @@ import BoothHeaderStyle from './BoothScreen.header';
 
 import {BoothParamList} from '.';
 
-import MapBottomSheetOrganism from 'src/components/MapBottomSheetOrganism';
+import MapBottomSheetOrganism from 'src/components/Booth/MapBottomSheetOrganism';
 export type BoothScreenProps = NativeStackScreenProps<BoothParamList, 'BoothScreen'>;
 const BoothScreen = ({navigation, route}: BoothScreenProps) => {
   useLayoutEffect(() => {
