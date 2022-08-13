@@ -2,7 +2,7 @@ import {
   ADD_IMAGE,
   ADD_STORE_DESCRIPTION,
   CHANGE_STARS,
-  CHANGE_TAGS,
+  CHANGE_TAGS
   CLEAR_DATA,
   SHOW_PAUSE_MODAL,
 } from '../types/ReviewActionType';
@@ -10,6 +10,11 @@ import {
 export const changeStars = (star: number) => ({
   type: CHANGE_STARS,
   payload: {star},
+});
+
+export const changeTagData = (tagData: string[]) => ({
+  type: CHANGE_TAG_DATA,
+  payload: {tagData},
 });
 
 export const addImage = (image: {uri: string}[]) => ({

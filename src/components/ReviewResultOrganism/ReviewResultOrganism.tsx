@@ -42,6 +42,8 @@ const ReviewResultOrganism = () => {
     dispatch(changeResultTags(id));
   };
   const nextOnPress = () => navigation.navigate('BoothImageReview' as never, {} as never);
+  const tagPageOnPress = () => navigation.navigate('BoothTagInput' as never, {} as never);
+
   return (
     <ReviewSectionContainer>
       <ReviewBoothName>{boothName}</ReviewBoothName>

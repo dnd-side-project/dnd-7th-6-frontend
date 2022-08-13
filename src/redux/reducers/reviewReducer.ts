@@ -28,6 +28,8 @@ const reviewReducer: Reducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_STARS:
       return {...state, currentStar: payload.star};
+    case CHANGE_TAG_DATA:
+      return {...state, tagData: payload.tagData};
     case ADD_IMAGE:
       return {...state, imageData: payload.image};
     case ADD_STORE_DESCRIPTION:
