@@ -9,12 +9,21 @@ import ExitCenterOrganism from 'src/components/PostWrite/ExitCenterOrganism';
 import ExitNavigationOrganism from 'src/components/PostWrite/ExitNavigationOrganism/ExitNavigationOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useHideTabBar from 'src/hooks/useHideTabBar';
+import {clearPostWrite} from 'src/redux/actions/PostWriteAction';
 import {closePostWrite} from 'src/redux/actions/TabBarAction';
 
 export type ExitPostWriteScreenProps = NativeStackScreenProps<PostWriteParamList, 'ExitPostWrite'>;
 
 const ExitPostWriteScreen = ({navigation}: ExitPostWriteScreenProps) => {
   const dispatch = useDispatch();
+
+  const handlePressBack = () => {
+    dispatch(clearPostWrite());
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Recommend' as never}],
+    });
+  };
 
   useHideTabBar();
 
@@ -24,14 +33,7 @@ const ExitPostWriteScreen = ({navigation}: ExitPostWriteScreenProps) => {
 
   return (
     <SafeAreaView>
-      <LeftBackHeader
-        onPressBack={() =>
-          navigation.reset({
-            index: 0,
-            routes: [{name: 'Recommend' as never}],
-          })
-        }
-      />
+      <LeftBackHeader onPressBack={handlePressBack} />
       <ExitCenterOrganism />
       <ExitNavigationOrganism />
     </SafeAreaView>
