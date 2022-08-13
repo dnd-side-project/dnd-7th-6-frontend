@@ -6,7 +6,7 @@ import {ReviewHeaderStyle} from './BoothReviewScreen.header';
 
 import {PostReviewParamList} from '.';
 
-import ReviewRatingOrganism from 'src/components/ReviewRatingOrganism';
+import ReviewRatingOrganism from 'src/components/BoothReview/ReviewRatingOrganism';
 
 export type StoreReviewScreenProps = NativeStackScreenProps<
   PostReviewParamList,

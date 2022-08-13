@@ -5,7 +5,7 @@ import {ReviewHeaderStyle} from './BoothReviewScreen.header';
 
 import {PostReviewParamList} from '.';
 
-import ReviewImageOrganism from 'src/components/ReviewImageOrganism';
+import ReviewImageOrganism from 'src/components/BoothReview/ReviewImageOrganism';
 
 export type ResultImageScreenProps = NativeStackScreenProps<
   PostReviewParamList,

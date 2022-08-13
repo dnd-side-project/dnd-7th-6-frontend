@@ -17,14 +17,14 @@ export type BoothParamList = {
 
 const RouteBoothScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="BoothDetail">
+    <Stack.Navigator initialRouteName="Booth">
       <Stack.Screen name="Booth" component={BoothScreen} />
       <Stack.Screen name="BoothSearch" component={BoothSearchScreen} />
       <Stack.Screen name="BoothDetail" component={BoothDetailScreen} />
       <Stack.Screen
         name="BoothReview"
         component={RoutePostReviewScreen}
-        options={{headerShown: false}}
+        options={{headerShown: false, gestureEnabled: false}}
       />
     </Stack.Navigator>
   );

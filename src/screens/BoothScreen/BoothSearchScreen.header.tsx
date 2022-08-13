@@ -3,7 +3,7 @@ import React from 'react';
 
 import {BoothScreenProps} from './BoothScreen';
 
-import MapSearchTextInput from 'src/components/MapSearchTextInput';
+import MapSearchTextInput from 'src/components/Booth/MapSearchTextInput';
 import {PressableLeftArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
 
 export const BoothSearchHeaderStyle = (props: BoothScreenProps) => {

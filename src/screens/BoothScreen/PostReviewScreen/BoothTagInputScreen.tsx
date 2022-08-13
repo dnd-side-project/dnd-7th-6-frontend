@@ -6,7 +6,7 @@ import {BoothTagHeaderStyle} from './BoothTagInputScreen.header';
 
 import {PostReviewParamList} from '.';
 
-import ReviewTagOrganism from 'src/components/ReviewTagOrganism';
+import ReviewTagOrganism from 'src/components/BoothReview/ReviewTagOrganism';
 
 export type BoothTagInputScreenProps = NativeStackScreenProps<
   PostReviewParamList,
