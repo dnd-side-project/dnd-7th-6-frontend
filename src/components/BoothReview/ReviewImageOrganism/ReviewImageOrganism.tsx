@@ -18,8 +18,8 @@ import {
   ReviewNextPressableWrapper,
   ImageWrapper,
   DeletePressable,
-  BoothDescribeTextLengthText,
   ReviewTextInput,
+  TextFieldWrapper,
 } from './ReviewImageOrganism.styles';
 
 import DeleteIcon from 'src/icons/DeleteIcon';
@@ -97,19 +97,20 @@ const ReviewImageOrganism = () => {
           <BoothDescribeTitle>이 매장에 대해 설명해주세요</BoothDescribeTitle>
           <BoothSelectTitle>(선택)</BoothSelectTitle>
         </BoothDescribeWrapper>
-        <TextField
-          isBorder={true}
-          style={ReviewTextInput}
-          multiline={true}
-          placeholder="이 매장을 이용하면서 느꼈던 느낌을 알려주세요."
-          textAlignVertical="top"
-          value={descriptionText}
-          maxLength={300}
-          onChangeText={value => {
-            dispatch(addStoreDescription(value));
-          }}
-        />
-        <BoothDescribeTextLengthText>{descriptionText.length}/300</BoothDescribeTextLengthText>
+        <TextFieldWrapper>
+          <TextField
+            isBorder={true}
+            style={ReviewTextInput}
+            multiline={true}
+            placeholder="이 매장을 이용하면서 느꼈던 느낌을 알려주세요."
+            textAlignVertical="top"
+            value={descriptionText}
+            maxLength={300}
+            onChangeText={value => {
+              dispatch(addStoreDescription(value));
+            }}
+          />
+        </TextFieldWrapper>
         <ReviewNextPressableWrapper>
           <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
         </ReviewNextPressableWrapper>

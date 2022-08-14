@@ -1,10 +1,9 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useLayoutEffect} from 'react';
-
-import {ReviewHeaderStyle} from './BoothReviewScreen.header';
+import React from 'react';
 
 import {PostReviewParamList} from '.';
 
+import BoothReviewHeader from 'src/components/BoothReview/BoothReviewHeader';
 import ReviewResultOrganism from 'src/components/BoothReview/ReviewResultOrganism';
 
 export type ResultReviewScreenProps = NativeStackScreenProps<
@@ -12,11 +11,12 @@ export type ResultReviewScreenProps = NativeStackScreenProps<
   'BoothResultReviewScreen'
 >;
 
-const BoothResultReviewScreen = ({navigation, route}: ResultReviewScreenProps) => {
-  useLayoutEffect(() => {
-    ReviewHeaderStyle({navigation, route});
-  }, [navigation, route]);
-
-  return <ReviewResultOrganism />;
+const BoothResultReviewScreen = ({navigation}: ResultReviewScreenProps) => {
+  return (
+    <>
+      <BoothReviewHeader onPress={() => navigation.goBack()}>부스 리뷰 작성</BoothReviewHeader>
+      <ReviewResultOrganism />
+    </>
+  );
 };
 export default BoothResultReviewScreen;
