@@ -10,6 +10,8 @@ import {
   KakaoLoginContainer,
   LoginContainer,
   LoginImage,
+  LoginTitle,
+  LogoImage,
 } from './LoginOrganism.styles';
 const LoginOrganism = () => {
   const navigation = useNavigation();
@@ -44,8 +46,14 @@ const LoginOrganism = () => {
       />
       <LoginContainer>
         <LoginImage />
-        <KakaoLoginContainer />
-        <GoogleLoginContainer onPress={googleLoginPressable} />
+        <KakaoLoginContainer>
+          <LogoImage source={require('src/assets/images/kakaoImage.png')} resizeMode="contain" />
+          <LoginTitle>카카오로 계속하기</LoginTitle>
+        </KakaoLoginContainer>
+        <GoogleLoginContainer onPress={googleLoginPressable}>
+          <LogoImage source={require('src/assets/images/googleImage.png')} resizeMode="contain" />
+          <LoginTitle>구글로 계속하기</LoginTitle>
+        </GoogleLoginContainer>
       </LoginContainer>
     </>
   );
