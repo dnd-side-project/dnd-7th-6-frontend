@@ -16,7 +16,7 @@ const login = async (loginBridge: () => Promise<LoginParam>) => {
 
     return result.data;
   } catch (error) {
-    console.error(error);
+    return Promise.reject(error);
   }
 };
 

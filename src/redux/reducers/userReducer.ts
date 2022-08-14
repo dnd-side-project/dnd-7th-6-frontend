@@ -1,9 +1,10 @@
 import {Reducer} from 'redux';
 
-import {LOGIN} from '../types/UserActionType';
+import {LOGIN, USER_INFO, SET_ACCESS_TOKEN} from '../types/UserActionType';
 
 const initialState = {
-  isLogined: false,
+  isLoggedIn: false,
+  accessToken: '',
   userInfo: {},
 };
 
@@ -12,7 +13,11 @@ const tabBarReducer: Reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case LOGIN:
-      return {...state, isLogined: true, userInfo: {...payload.userInfo}};
+      return {...state, isLoggedIn: payload.isloggedin};
+    case USER_INFO:
+      return {...state, userInfo: {...payload.userInfo}};
+    case SET_ACCESS_TOKEN:
+      return {...state, accessToken: payload.accessToken};
     default:
       return state;
   }
