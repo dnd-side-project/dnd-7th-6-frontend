@@ -15,6 +15,7 @@ target 'hot6' do
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+  pod 'GoogleSignIn', '~> 6.2.2'
 
   # Flags change depending on the env values.
   flags = get_default_flags()

@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 
 import PostListDetailScreen from './PostListDetailScreen';
+import RoutePostWriteScreen from './PostWriteScreen';
 import RecommendDetailScreen from './RecommendDetailScreen';
 import RecommendScreen from './RecommendScreen';
 
@@ -19,6 +20,11 @@ const RouteRecommendScreen = () => {
       <Stack.Screen name="Recommend" component={RecommendScreen} />
       <Stack.Screen name="RecommendDetail" component={RecommendDetailScreen} />
       <Stack.Screen name="PostListDetail" component={PostListDetailScreen} />
+      <Stack.Screen
+        name="RoutePostWrite"
+        component={RoutePostWriteScreen}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

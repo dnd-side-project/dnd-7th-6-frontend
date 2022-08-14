@@ -1,19 +1,23 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React, {useEffect, useRef} from 'react';
 import {Animated, Easing, SafeAreaView} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {BodyText5} from '../Text';
+import PostWriteTabBar from './PostWriteTabBar';
 import {TabWrapper} from './TabBar.styles';
 
+import {closePostWrite} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
+  const dispatch = useDispatch();
   const slideUpAnimation = useRef(new Animated.Value(heightPercentage(54))).current;
-  const isVisibleTabBar = useSelector(
-    (globalState: RootState) => globalState.tabBarReducer.isVisibleTabBar,
+  const {isVisibleTabBar, isPostWriteScreen} = useSelector(
+    (globalState: RootState) => globalState.tabBarReducer,
   );
+  const {screenIndex} = useSelector((globalState: RootState) => globalState.postWriteReducer);
   const slideDown = Animated.timing(slideUpAnimation, {
     toValue: 0,
     duration: 300,
@@ -21,7 +25,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
     useNativeDriver: false,
   });
   const slideUp = Animated.timing(slideUpAnimation, {
-    toValue: 56,
+    toValue: heightPercentage(54),
     duration: 300,
     easing: Easing.linear,
     useNativeDriver: false,
@@ -34,6 +38,16 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
       slideDown.start();
     }
   }, [isVisibleTabBar]);
+
+  useEffect(() => {
+    if (screenIndex >= 4) {
+      dispatch(closePostWrite());
+    }
+  }, [screenIndex]);
+
+  if (isPostWriteScreen) {
+    return <PostWriteTabBar />;
+  }
 
   return (
     <SafeAreaView>

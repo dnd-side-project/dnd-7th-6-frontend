@@ -7,7 +7,6 @@ const toggleTag = (prev: {[key: number]: boolean}, target: number) => {
   }
 
   next[target] = !next[target];
-
   return next;
 };
 

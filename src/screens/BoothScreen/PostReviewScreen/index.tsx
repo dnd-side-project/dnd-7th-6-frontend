@@ -5,11 +5,13 @@ import BoothImageReviewScreen from './BoothImageReviewScreen';
 import BoothResultReviewScreen from './BoothResultReviewScreen';
 import BoothReviewCompleteScreen from './BoothReviewCompleteScreen';
 import BoothStoreReviewScreen from './BoothStoreReviewScreen';
+import BoothTagInputScreen from './BoothTagInputScreen';
 
 const Stack = createNativeStackNavigator();
 
 export type PostReviewParamList = {
   BoothStoreReviewScreen: undefined;
+  BoothTagInputScreen: undefined;
   BoothResultReviewScreen: undefined;
   BoothImageReviewScreen: undefined;
   BoothReviewCompleteScreen: undefined;
@@ -17,8 +19,9 @@ export type PostReviewParamList = {
 
 const RoutePostReviewScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="BoothStoreReview">
+    <Stack.Navigator initialRouteName="BoothStoreReview" screenOptions={{headerShown: false}}>
       <Stack.Screen name="BoothStoreReview" component={BoothStoreReviewScreen} />
+      <Stack.Screen name="BoothTagInput" component={BoothTagInputScreen} />
       <Stack.Screen name="BoothResultReview" component={BoothResultReviewScreen} />
       <Stack.Screen name="BoothImageReview" component={BoothImageReviewScreen} />
       <Stack.Screen name="BoothReviewComplete" component={BoothReviewCompleteScreen} />

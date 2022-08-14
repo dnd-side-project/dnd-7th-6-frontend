@@ -3,7 +3,7 @@ import React, {useLayoutEffect} from 'react';
 
 import {PostReviewParamList} from '.';
 
-import ReviewCompleteOrganism from 'src/components/ReviewCompleteOrganism';
+import ReviewCompleteOrganism from 'src/components/BoothReview/ReviewCompleteOrganism';
 
 export type ReviewCompleteScreenProps = NativeStackScreenProps<
   PostReviewParamList,

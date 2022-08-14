@@ -7,6 +7,7 @@ import {RecommendHeaderStyle} from './RecommendScreen.header';
 import {RecommendParamList} from '.';
 
 import DefaultScrollView from 'src/components/DefaultScrollView';
+import AddPostButton from 'src/components/Recommend/AddPostButton';
 import FrameOrganism from 'src/components/Recommend/FrameOrganism';
 import PoseRecommendOrganism from 'src/components/Recommend/PoseOrganism/PoseOrganism';
 import RecommendSituationPoseOrganism from 'src/components/Recommend/SituationPoseOrganism';
@@ -19,11 +20,14 @@ const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
   });
 
   return (
-    <DefaultScrollView>
-      <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
-      <RecommendSituationPoseOrganism />
-      <FrameOrganism>프레임 추천</FrameOrganism>
-    </DefaultScrollView>
+    <>
+      <DefaultScrollView>
+        <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
+        <RecommendSituationPoseOrganism />
+        <FrameOrganism>프레임 추천</FrameOrganism>
+      </DefaultScrollView>
+      <AddPostButton />
+    </>
   );
 };
 
