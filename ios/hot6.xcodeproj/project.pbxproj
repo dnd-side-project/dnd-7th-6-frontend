@@ -376,6 +376,48 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		0658B66B28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3FD1B4C1246D643E9476438C28048FA8;
+			remoteInfo = AppAuth;
+		};
+		0658B66D28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD56AB51475BC5F592781EE2692D1412;
+			remoteInfo = GoogleSignIn;
+		};
+		0658B66F28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E5BA41B7F2E1FE47F9ABCAC27C9E4281;
+			remoteInfo = "GoogleSignIn-GoogleSignIn";
+		};
+		0658B67128A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6FD122EA0AB9AB2A8FFA5F676C795DF0;
+			remoteInfo = GTMAppAuth;
+		};
+		0658B67328A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1998E0D8085221AD87F89B614C10E52;
+			remoteInfo = GTMSessionFetcher;
+		};
+		0658B67528A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 97CE6A3FA04F0B3C1E0418A227804309;
+			remoteInfo = RNGoogleSignin;
+		};
 		066C199728A27BDA006E14DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -540,6 +582,7 @@
 		06305251287C4EC600DDFD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				0658B66C28A898D300BF5CC4 /* AppAuth */,
 				066C199828A27BDA006E14DB /* BVLinearGradient */,
 				0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */,
 				0630528D287C4EC600DDFD03 /* DoubleConversion */,
@@ -552,6 +595,10 @@
 				0630529B287C4EC600DDFD03 /* FlipperKit */,
 				0630529D287C4EC600DDFD03 /* fmt */,
 				0630529F287C4EC600DDFD03 /* glog */,
+				0658B66E28A898D300BF5CC4 /* GoogleSignIn */,
+				0658B67028A898D300BF5CC4 /* GoogleSignIn-GoogleSignIn */,
+				0658B67228A898D300BF5CC4 /* GTMAppAuth */,
+				0658B67428A898D300BF5CC4 /* GTMSessionFetcher */,
 				063052A1287C4EC600DDFD03 /* libevent */,
 				062EA276288ED9D00043B3EC /* libwebp */,
 				06E2E0BA289E4DB1004A3FCC /* Permission-Camera */,
@@ -591,6 +638,7 @@
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				06C92A5828996D04009267C3 /* RNGestureHandler */,
+				0658B67628A898D300BF5CC4 /* RNGoogleSignin */,
 				06E2E0C6289E4DB1004A3FCC /* RNImageCropPicker */,
 				06E2E0C8289E4DB1004A3FCC /* RNImageCropPicker-QBImagePicker */,
 				06E2E0CA289E4DB1004A3FCC /* RNPermissions */,
@@ -1164,6 +1212,54 @@
 			name = YogaKit;
 			path = libYogaKit.a;
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B66C28A898D300BF5CC4 /* AppAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = AppAuth;
+			path = libAppAuth.a;
+			remoteRef = 0658B66B28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B66E28A898D300BF5CC4 /* GoogleSignIn */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GoogleSignIn;
+			path = libGoogleSignIn.a;
+			remoteRef = 0658B66D28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67028A898D300BF5CC4 /* GoogleSignIn-GoogleSignIn */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "GoogleSignIn-GoogleSignIn";
+			path = GoogleSignIn.bundle;
+			remoteRef = 0658B66F28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67228A898D300BF5CC4 /* GTMAppAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GTMAppAuth;
+			path = libGTMAppAuth.a;
+			remoteRef = 0658B67128A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67428A898D300BF5CC4 /* GTMSessionFetcher */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GTMSessionFetcher;
+			path = libGTMSessionFetcher.a;
+			remoteRef = 0658B67328A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67628A898D300BF5CC4 /* RNGoogleSignin */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNGoogleSignin;
+			path = libRNGoogleSignin.a;
+			remoteRef = 0658B67528A898D300BF5CC4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		066C199828A27BDA006E14DB /* BVLinearGradient */ = {
