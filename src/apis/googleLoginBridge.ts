@@ -8,7 +8,7 @@ interface LoginParam {
   provider: 'KAKAO' | 'GOOGLE' | 'NAVER';
 }
 
-const googleLoginBridge = async (): Promise<LoginParam | undefined> => {
+const googleLoginBridge = async (): Promise<LoginParam> => {
   await GoogleSignin.configure({
     iosClientId: Config.IOS_GOOGLE_API_KEY,
   });
@@ -29,6 +29,7 @@ const googleLoginBridge = async (): Promise<LoginParam | undefined> => {
     } else {
       Alert.alert('로그인 도중 오류가 발생했습니다.');
     }
+    return Promise.reject(error);
   }
 };
 

@@ -6,6 +6,7 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider} from 'react-redux';
 
 import AppInner from 'AppInner';
+import {Interceptor} from 'src/components/utils/Interceptor';
 import store from 'src/redux/store';
 import RouteLoginScreen from 'src/screens/LoginScreen';
 import GlobalStyle from 'src/styles/GlobalStyle';
@@ -25,14 +26,16 @@ const App = () => {
     <QueryClientProvider client={new QueryClient()}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <NavigationContainer theme={GlobalStyle}>
-            <Stack.Navigator
-              screenOptions={{headerShown: false}}
-              initialRouteName="RouteLoginScreen">
-              <Stack.Screen name="AppInner" component={AppInner} />
-              <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
+          <Interceptor>
+            <NavigationContainer theme={GlobalStyle}>
+              <Stack.Navigator
+                screenOptions={{headerShown: false}}
+                initialRouteName="RouteLoginScreen">
+                <Stack.Screen name="AppInner" component={AppInner} />
+                <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </Interceptor>
         </Provider>
       </ThemeProvider>
     </QueryClientProvider>
