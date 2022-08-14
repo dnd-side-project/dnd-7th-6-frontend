@@ -9,7 +9,6 @@ interface LoginParam {
 const kakaoLoginBridge = async (): Promise<LoginParam> => {
   await login();
   const profile = (await getProfile()) as KakaoProfile;
-
   return {
     email: profile.email,
     providerId: profile.id,
