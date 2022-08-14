@@ -9,9 +9,11 @@ import DeleteIcon from 'src/icons/DeleteIcon';
 import LeftArrowIcon from 'src/icons/LeftArrowIcon';
 import LikeHeartIcon from 'src/icons/LikeHeartIcon';
 import PlusIcon from 'src/icons/PlusIcon';
+import RecordUploadIcon from 'src/icons/RecordUploadIcon';
 import RefreshIcon from 'src/icons/RefreshIcon';
 import RightArrowIcon from 'src/icons/RightArrowIcon';
 import SearchIcon from 'src/icons/SearchIcon';
+import SettingIcon from 'src/icons/SettingIcon';
 import UploadIcon from 'src/icons/UploadIcon';
 
 const PressableIcon = styled.Pressable({
@@ -37,3 +39,5 @@ export const PressableCancelIcon = makePressableComponent(CancelIcon);
 export const PressableCancelWhiteIcon = makePressableComponent(CancelIconWhite);
 export const PressableRefreshIcon = makePressableComponent(RefreshIcon);
 export const PressablePlusIcon = makePressableComponent(PlusIcon);
+export const PressableRecordUploadIcon = makePressableComponent(RecordUploadIcon);
+export const PressableSettingIcon = makePressableComponent(SettingIcon);

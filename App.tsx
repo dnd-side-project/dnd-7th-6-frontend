@@ -28,9 +28,7 @@ const App = () => {
         <Provider store={store}>
           <Interceptor>
             <NavigationContainer theme={GlobalStyle}>
-              <Stack.Navigator
-                screenOptions={{headerShown: false}}
-                initialRouteName="RouteLoginScreen">
+              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="AppInner">
                 <Stack.Screen name="AppInner" component={AppInner} />
                 <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
               </Stack.Navigator>

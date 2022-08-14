@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {View} from 'react-native';
 
-const MyScreen = () => {
-  return <View />;
+import RecordOrganism from 'src/components/Record/RecordOrganism';
+
+const RecordScreen = () => {
+  return <RecordOrganism />;
 };
 
-export default MyScreen;
+export default RecordScreen;
