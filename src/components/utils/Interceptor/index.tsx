@@ -4,8 +4,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {useDispatch, useSelector} from 'react-redux';
 
 import getAccessToken from 'src/apis/getAccessToken';
-import getUser from 'src/apis/getUser';
-import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
+import {loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 import getApiServer from 'src/utils/getApiServer';
 
@@ -50,8 +49,6 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
           const newAccessToken = await getAccessToken(refreshToken);
           originalHeader.headers.Authorization = `Bearer ${newAccessToken}`;
           dispatch(setAccessToken(newAccessToken));
-          const user = await getUser();
-          dispatch(changeUserInfo(user));
           dispatch(loginAction(true));
           return axios(originalHeader);
         }
