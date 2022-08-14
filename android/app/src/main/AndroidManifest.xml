@@ -29,8 +29,19 @@
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.LAUNCHER" />    
         </intent-filter>
       </activity>
+      <activity 
+    android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:host="oauth"
+          android:scheme="kakaoc60ff6c55e1d71393c286f2b2eb576d5" />
+    </intent-filter>
+</activity>
     </application>
 </manifest>
