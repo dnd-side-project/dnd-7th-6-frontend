@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 
+import {SubHeadline3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -22,13 +23,29 @@ export const KakaoLoginContainer = styled.Pressable({
   borderRadius: 4,
   width: widthPercentage(343),
   height: heightPercentage(48),
+  alignItems: 'center',
+  justifyContent: 'center',
 });
 
 export const GoogleLoginContainer = styled.Pressable({
   marginTop: widthPercentage(8),
-  backgroundColor: '#FFFFFF',
+  backgroundColor: theme.colors.grayscale[1],
   borderRadius: 4,
   width: widthPercentage(343),
   height: heightPercentage(48),
   borderWidth: 1,
+  borderColor: theme.colors.grayscale[3],
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const LoginTitle = styled(SubHeadline3)({
+  color: theme.colors.grayscale[10],
+});
+
+export const LogoImage = styled.Image({
+  position: 'absolute',
+  left: widthPercentage(14),
+  width: widthPercentage(18),
+  height: heightPercentage(17),
 });
