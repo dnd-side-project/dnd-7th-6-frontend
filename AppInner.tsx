@@ -10,7 +10,7 @@ import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/Use
 import {RootState} from 'src/redux/store';
 import RouteBoothScreen from 'src/screens/BoothScreen';
 import RouteRecommendScreen from 'src/screens/RecommendScreen';
-import RecordScreen from 'src/screens/RecordScreen/RecordScreen';
+import RouteRecordScreen from 'src/screens/RecordScreen';
 import StorageScreen from 'src/screens/StorageScreen/StorageScreen';
 
 const Tab = createBottomTabNavigator();
@@ -57,7 +57,11 @@ const AppInner = () => {
         options={{tabBarLabel: '추천'}}
       />
       <Tab.Screen name={'StorageScreen'} component={StorageScreen} options={{tabBarLabel: '찜'}} />
-      <Tab.Screen name={'RecordScreen'} component={RecordScreen} options={{tabBarLabel: '기록'}} />
+      <Tab.Screen
+        name={'RouteRecordScreen'}
+        component={RouteRecordScreen}
+        options={{tabBarLabel: '기록'}}
+      />
     </Tab.Navigator>
   );
 };

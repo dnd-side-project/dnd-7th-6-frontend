@@ -14,8 +14,8 @@ const StarBox = ({score}: Props) => {
 
   return (
     <Container>
-      {isActiveStars.map(isActive => (
-        <StarIcon16 isActive={isActive} />
+      {isActiveStars.map((isActive, i) => (
+        <StarIcon16 isActive={isActive} key={i} />
       ))}
     </Container>
   );

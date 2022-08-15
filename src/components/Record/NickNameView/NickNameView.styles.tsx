@@ -18,11 +18,18 @@ export const NickNameImageWrapper = styled.View({
   marginLeft: widthPercentage(16),
 });
 
-export const NickNamenIconWrapper = styled.View({
+export const NickNamenIconWrapper = styled.Pressable({
   marginLeft: widthPercentage(4),
+  height: heightPercentage(24),
+  flexDirection: 'row',
+  marginTop: heightPercentage(4),
 });
 
 export const NickNameText = styled(BodyText3)({
   color: theme.colors.grayscale[7],
   textDecorationLine: 'underline',
+});
+
+export const IconWrapper = styled.View({
+  marginLeft: widthPercentage(6),
 });
