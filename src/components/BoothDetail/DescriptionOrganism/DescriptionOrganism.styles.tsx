@@ -28,10 +28,12 @@ export const List = styled.View({
 export const ListRow = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  paddingBottom: heightPercentage(8),
 });
 
 export const TextElement = styled(BodyText4)({
   color: theme.colors.grayscale[8],
+  paddingHorizontal: widthPercentage(6),
 });
 
 export const Distance = styled(SubHeadline4)({

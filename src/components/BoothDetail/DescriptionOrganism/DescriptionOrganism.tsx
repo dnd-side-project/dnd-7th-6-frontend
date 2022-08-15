@@ -3,14 +3,16 @@ import React from 'react';
 import {
   BoothName,
   Container,
+  Distance,
   List,
   ListRow,
   TextElement,
   TitleSection,
 } from './DescriptionOrganism.styles';
 
-import {PressableLikeIcon} from 'src/components/utils/Pressables/PressableIcons';
-import LocationIcon from 'src/icons/LocationIcon';
+import {PressableGeneralHeartIcon} from 'src/components/utils/Pressables/PressableIcons';
+import NavigationIcon from 'src/icons/NavigationIcon';
+import PinIcon from 'src/icons/PinIcon';
 import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
 
 interface Props {
@@ -25,17 +27,20 @@ const DescriptionOrganism = ({id, distance}: Props) => {
     <Container>
       <TitleSection>
         <BoothName>{data.photoBooth.name}</BoothName>
-        <PressableLikeIcon />
+        <PressableGeneralHeartIcon />
       </TitleSection>
       <List>
         <ListRow>
-          <LocationIcon />
+          <PinIcon />
           <TextElement>{data.photoBooth.jibunAddress}</TextElement>
         </ListRow>
         <ListRow>
-          <LocationIcon />
+          <NavigationIcon />
           <TextElement>
-            현재 위치로 부터 {distance < 0 ? `${(distance * 1000).toFixed(0)}m` : `${distance}km`}
+            현재 위치로 부터{' '}
+            <Distance>
+              {distance < 0 ? `${(distance * 1000).toFixed(0)}m` : `${distance}km`}
+            </Distance>
           </TextElement>
         </ListRow>
       </List>
