@@ -1,9 +1,8 @@
 import React from 'react';
 
-import BoothConditionOrganism from '../BoothConditionOrganism';
 import DescriptionOrganism from '../DescriptionOrganism';
 import ImageSliderOrganism from '../ImageSliderOrganism';
-import PhotoConditionOrganism from '../PhotoConditionOrganism';
+import InnerScrollView from '../InnerScrollView/InnerScrollView';
 import {ScrollContainer} from './OuterScrollView.styles';
 
 interface Props {
@@ -16,8 +15,7 @@ const OuterScrollView = ({id, distance}: Props) => {
     <ScrollContainer>
       <ImageSliderOrganism id={id} />
       <DescriptionOrganism id={id} distance={distance} />
-      <BoothConditionOrganism id={id} />
-      <PhotoConditionOrganism id={id} />
+      <InnerScrollView id={id} />
     </ScrollContainer>
   );
 };

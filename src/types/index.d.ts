@@ -30,6 +30,22 @@ export interface Recommendation {
   sort: any;
 }
 
+export interface ServerResponse<T> {
+  content: T[];
+  totalPages: number;
+  numberOfElement: number;
+  size: number;
+  number: number;
+  sort: any;
+}
+
+export interface ReviewImage {
+  id: number;
+  imageUrl: string;
+  imageOrder: number;
+  like: boolean;
+}
+
 export interface Tag {
   id: number;
   title: string;

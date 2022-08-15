@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FlatList} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import {
-  ButtonWrapper,
   Container,
   Count,
   Headline,
@@ -12,34 +11,34 @@ import {
   TotalPhoto,
 } from './GridPhotoOrganism.styles';
 
-import BoothDetailData from 'src/BoothDetailData';
-import PressableAddition from 'src/components/PressableAddition';
+import useGetReviewImagesMock from 'src/querys/useGetReviewImages';
 import toLocaleString from 'src/utils/toLocaleString';
 
-const GridPhotoOrganism = () => {
-  const [data] = useState(BoothDetailData);
+interface Props {
+  id: number;
+}
+
+const GridPhotoOrganism = ({id}: Props) => {
+  const data = useGetReviewImagesMock(id);
 
   return (
     <Container>
       <TextContainer>
-        <Headline>포톡커들의 사진 </Headline>
-        <Count> {toLocaleString(data.boothPhoto.total)}</Count>
+        <Headline>이 매장에서 찍은 사진 </Headline>
+        <Count> {toLocaleString(data.totalElements)}</Count>
       </TextContainer>
       <FlatList
-        data={data.boothPhoto.elements.slice(0, 6)}
+        data={data.content.slice(0, 6)}
         numColumns={3}
         renderItem={uri => (
           <FastImage
             key={uri.item.id}
-            source={{uri: uri.item.uri}}
+            source={{uri: uri.item.imageUrl}}
             style={{...style.fastImage, ...{opacity: uri.index === 5 ? 0.5 : 1}}}>
-            {uri.index !== 5 || <TotalPhoto>{data.boothPhoto.elements.length}</TotalPhoto>}
+            {uri.index !== 5 || <TotalPhoto>{data.totalElements}</TotalPhoto>}
           </FastImage>
         )}
       />
-      <ButtonWrapper>
-        <PressableAddition>사진 더보기</PressableAddition>
-      </ButtonWrapper>
     </Container>
   );
 };
