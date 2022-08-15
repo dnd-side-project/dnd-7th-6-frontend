@@ -48,6 +48,12 @@ export const TagContainer = styled.View({
   flexWrap: 'wrap',
 });
 
+export const ViewMore = styled(BodyText4)({
+  color: theme.colors.grayscale[5],
+  backgroundColor: theme.colors.grayscale[0],
+  paddingHorizontal: widthPercentage(10),
+});
+
 export const style = StyleSheet.create({
   fastImage: {
     width: widthPercentage(80),
