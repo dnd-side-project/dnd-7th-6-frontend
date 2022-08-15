@@ -29,6 +29,7 @@ const LoginOrganism = () => {
     const user = await getUser();
     dispatch(changeUserInfo(user));
     dispatch(loginAction(true));
+    navigation.goBack();
   };
 
   return (

@@ -2,6 +2,7 @@ import {CHANGE_SCREEN} from '../types/PostActionType';
 import {
   ADD_DIRECT_TAG,
   ADD_POST_WRITE_IMAGE,
+  CHANGE_CUSTOM_TAG,
   CHANGE_MODIFY_MODE,
   CHANGE_SHARED_SCOPE,
   CLEAR_POST_WRITE,
@@ -48,4 +49,9 @@ export const changeSharedScope = (sharedScope: boolean) => ({
 export const changeModifyMode = (modifyMode: boolean) => ({
   type: CHANGE_MODIFY_MODE,
   payload: {modifyMode},
+});
+
+export const changeCustomTag = (customTags: string[]) => ({
+  type: CHANGE_CUSTOM_TAG,
+  payload: {customTags},
 });

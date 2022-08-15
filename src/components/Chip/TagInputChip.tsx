@@ -11,22 +11,26 @@ import {RootState} from 'src/redux/store';
 interface Props {
   active?: boolean;
   index?: number;
+  deleteOnPress?: (index?: number) => void;
 }
 
 const TagInputChip = ({
   children,
   active = false,
   index,
+  deleteOnPress,
   ...props
 }: PropsWithChildren<PressableProps & Props>) => {
   const tagData: any = useSelector((state: RootState) => state.reviewReducer.tagData);
   const dispatch = useDispatch();
-  const deleteOnPress = (indexs: number | undefined) => {
+  const legacyOnDelete = (indexs: number | undefined) => {
     const nextData = [...tagData].filter((item, i) => {
       return indexs !== i;
     });
     dispatch(changeTagData(nextData));
   };
+  const handleDelete = deleteOnPress || legacyOnDelete;
+
   return (
     <Container {...props} active={active} index={index}>
       {active ? (
@@ -39,7 +43,7 @@ const TagInputChip = ({
 
       {active ? (
         <IconWrapper>
-          <PressableCancelIcon onPress={() => deleteOnPress(index)} />
+          <PressableCancelIcon onPress={() => handleDelete(index)} />
         </IconWrapper>
       ) : (
         <></>
