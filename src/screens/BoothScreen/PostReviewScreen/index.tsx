@@ -19,7 +19,7 @@ export type PostReviewParamList = {
 
 const RoutePostReviewScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="BoothStoreReview">
+    <Stack.Navigator initialRouteName="BoothStoreReview" screenOptions={{headerShown: false}}>
       <Stack.Screen name="BoothStoreReview" component={BoothStoreReviewScreen} />
       <Stack.Screen name="BoothTagInput" component={BoothTagInputScreen} />
       <Stack.Screen name="BoothResultReview" component={BoothResultReviewScreen} />

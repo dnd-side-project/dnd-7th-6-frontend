@@ -1,8 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {Alert} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {BackHandler} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
+import BoothReviewHeader from '../BoothReviewHeader';
 import ReviewBoothName from '../ReviewBoothName';
 import ReviewNextPressable from '../ReviewNextPressable';
 import ReviewSelectPressable from '../ReviewSelectPressable';
@@ -19,6 +20,7 @@ import {
   SpecificWrapper,
 } from './ReviewRatingOrganism.styles';
 
+import Alert from 'src/components/utils/Alert';
 import {changeSpecificTags, clearData} from 'src/redux/actions/ReviewAction';
 import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
@@ -49,7 +51,7 @@ const ReviewRatingOrganism = () => {
   const currentStars: number = useSelector((state: RootState) => state.reviewReducer.currentStar);
   const specificTags = useSelector((state: RootState) => state.reviewReducer.specificTags);
   const specificNext = useSelector((state: RootState) => state.reviewReducer.specificNext);
-
+  const [alertOpen, setAlertOpen] = useState(false);
   const tagsOnPress = (id: number) => () => {
     dispatch(changeSpecificTags(id));
   };
@@ -57,34 +59,34 @@ const ReviewRatingOrganism = () => {
   useEffect(() => {
     dispatch(hideTabBar());
   });
-  // return ()=>{navigation.removeListener('beforeRemove')}
   useEffect(() => {
-    const navigationCallback = (e: any): void => {
-      if (e.data.action.type !== 'GO_BACK') {
-        return;
-      }
-      e.preventDefault();
-
-      // Prompt the user before leaving the screen
-      Alert.alert('리뷰 작성을 중단하시겠어요??', '입력한 내용은 저장되지 않아요!', [
-        {text: '계속 작성하기', style: 'cancel', onPress: () => {}},
-        {
-          text: '나가기',
-          style: 'destructive',
-          onPress: () => {
-            dispatch(clearData());
-            dispatch(showTabBar());
-
-            navigation.dispatch(e.data.action);
-          },
-        },
-      ]);
-    };
-    navigation.addListener('beforeRemove', navigationCallback);
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      setAlertOpen(true);
+      return true;
+    });
+    return () => backHandler.remove();
   }, []);
 
   return (
     <ReviewSectionContainer>
+      <BoothReviewHeader onPress={() => setAlertOpen(true)}>부스 리뷰 작성</BoothReviewHeader>
+
+      {alertOpen && (
+        <Alert
+          title="리뷰 작성을 중단 하시겠어요?"
+          subTitle="입력된 내용은 저장되지 않아요!"
+          cancelButtonText="나가기"
+          checkButtonText="계속 작성하기"
+          onPressCheck={() => {
+            setAlertOpen(false);
+          }}
+          onPressCancel={() => {
+            dispatch(clearData());
+            dispatch(showTabBar());
+            navigation.goBack();
+          }}
+        />
+      )}
       <ReviewBoothName>{boothName}</ReviewBoothName>
       <RatingnTextWrapper>
         <BoothRatingDescription>이 매장은 어떠셨나요?</BoothRatingDescription>

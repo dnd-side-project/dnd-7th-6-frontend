@@ -48,6 +48,10 @@ export const BoothDescribeWrapper = styled.View({
   marginLeft: widthPercentage(16),
 });
 
+export const TextFieldWrapper = styled.View({
+  paddingHorizontal: widthPercentage(16),
+});
+
 export const BoothSelectTitle = styled(BodyText3)({
   color: theme.colors.grayscale[5],
   marginLeft: widthPercentage(4),
