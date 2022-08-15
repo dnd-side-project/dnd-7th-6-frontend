@@ -38,6 +38,7 @@ export interface Tag {
   reviewCount: number;
   postCount: number;
   tagType: string;
+  tagIconImageUrl: string;
 }
 
 export interface PostImage {
@@ -89,6 +90,8 @@ export interface PhotoBooth {
   latitude: number;
   likeCount: number;
   longitude: number;
+  reviewCount: number;
+  starCount: number | null;
   name: string;
   roadAddress: string;
   status: string;
@@ -96,9 +99,13 @@ export interface PhotoBooth {
 
 export interface PhotoBoothResponse {
   photoBooth: PhotoBooth;
-  firstReview: Review;
-  tagSet: Tag[];
   like: boolean;
+  distance?: number;
+  reviewImageList: string[];
+  tagSummary: {
+    BOOTH_CONDITION: {tag: Tag; reviewCount: number}[];
+    PHOTO_CONDITION: {tag: Tag; reviewCount: number}[];
+  };
 }
 
 export interface PhotoBoothContentData {

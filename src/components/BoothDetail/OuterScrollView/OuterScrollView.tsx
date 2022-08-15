@@ -1,8 +1,10 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
 
+import BoothConditionOrganism from '../BoothConditionOrganism';
 import DescriptionOrganism from '../DescriptionOrganism';
 import ImageSliderOrganism from '../ImageSliderOrganism';
+import PhotoConditionOrganism from '../PhotoConditionOrganism';
+import {ScrollContainer} from './OuterScrollView.styles';
 
 interface Props {
   id: number;
@@ -11,10 +13,12 @@ interface Props {
 
 const OuterScrollView = ({id, distance}: Props) => {
   return (
-    <ScrollView>
+    <ScrollContainer>
       <ImageSliderOrganism id={id} />
       <DescriptionOrganism id={id} distance={distance} />
-    </ScrollView>
+      <BoothConditionOrganism id={id} />
+      <PhotoConditionOrganism id={id} />
+    </ScrollContainer>
   );
 };
 

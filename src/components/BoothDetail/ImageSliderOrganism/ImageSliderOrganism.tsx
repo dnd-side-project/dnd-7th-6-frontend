@@ -21,9 +21,9 @@ const ImageSliderOrganism = ({id}: Props) => {
         activeDotColor={theme.colors.grayscale[1]}
         dotColor={theme.colors.grayscale[0] + '66'}
         dotStyle={style.dot}>
-        {data.firstReview.reviewImageSet.map(image => (
-          <View key={image.id}>
-            <FastImage source={{uri: image.imageUrl}} style={style.fastImage} />
+        {data.reviewImageList.map(uri => (
+          <View key={uri}>
+            <FastImage source={{uri}} style={style.fastImage} />
           </View>
         ))}
       </Swiper.default>
