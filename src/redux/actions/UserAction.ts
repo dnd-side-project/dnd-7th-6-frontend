@@ -7,7 +7,7 @@ export const loginAction = (isloggedin: boolean) => ({
   payload: {isloggedin},
 });
 
-export const changeUserInfo = (userInfo: User) => ({
+export const changeUserInfo = (userInfo: User | {}) => ({
   type: USER_INFO,
   payload: {userInfo},
 });
