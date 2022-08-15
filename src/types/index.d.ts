@@ -83,20 +83,29 @@ export interface SearchLocationDatas {
   y: string;
 }
 
+export interface PhotoBooth {
+  id: number;
+  jibunAddress: string;
+  latitude: number;
+  likeCount: number;
+  longitude: number;
+  name: string;
+  roadAddress: string;
+  status: string;
+}
+
+export interface PhotoBoothResponse {
+  photoBooth: PhotoBooth;
+  firstReview: Review;
+  tagSet: Tag[];
+  like: boolean;
+}
+
 export interface PhotoBoothContentData {
   distance: number;
   firstReview: null;
   like: boolean;
-  photoBooth: {
-    id: number;
-    jibunAddress: string;
-    latitude: number;
-    likeCount: number;
-    longitude: number;
-    name: string;
-    roadAddress: string;
-    status: string;
-  };
+  photoBooth: PhotoBooth;
   tagSet: null;
 }
 
