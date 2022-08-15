@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 
 import {PostWriteParamList} from '.';
 
+import InputCustomTagOrganism from 'src/components/PostWrite/InputCustomTagOrganism/InputCustomTagOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useFocus from 'src/hooks/useFocus';
 import {changeModifyMode, changeScreen} from 'src/redux/actions/PostWriteAction';
@@ -29,7 +30,8 @@ const CustomTagScreen = ({navigation, route}: CustomTagScreenProps) => {
 
   return (
     <SafeAreaView>
-      <LeftBackHeader onPressBack={() => navigation.goBack()}>태그 선택</LeftBackHeader>
+      <LeftBackHeader onPressBack={() => navigation.goBack()}>태그 직접 입력</LeftBackHeader>
+      <InputCustomTagOrganism />
     </SafeAreaView>
   );
 };

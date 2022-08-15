@@ -10,9 +10,17 @@ interface Props {
 }
 
 const DirectTagSummaryOrganism = ({navigation}: Props) => {
+  const handlePressModifyButton = () => {
+    navigation.push('CustomTag' as never, {isModifyMode: true} as never);
+  };
+
   return (
     <>
-      <ContentSection title="직접 태그 " subTitle=" (최대 4개)" onPressRightIcon={() => {}} />
+      <ContentSection
+        title="직접 태그 "
+        subTitle=" (최대 4개)"
+        onPressRightIcon={handlePressModifyButton}
+      />
     </>
   );
 };
