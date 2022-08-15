@@ -27,7 +27,7 @@ const BoothDetailScreen = ({navigation, route}: DetailScreenProps) => {
       <HeaderOrganism id={id} navigation={navigation} />
       <ScrollView>
         <ImageSliderOrganism id={id} />
-        <DescriptionOrganism />
+        <DescriptionOrganism id={id} distance={distance} />
         <KeywordOrganism />
         <ReviewOrganism />
       </ScrollView>

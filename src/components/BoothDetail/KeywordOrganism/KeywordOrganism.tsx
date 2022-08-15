@@ -6,7 +6,6 @@ import {
   Container,
   Headline,
   KeywordContainer,
-  NumOfKeyword,
   ReviewWriteLink,
   TextContainer,
 } from './KeywordOrganism.styles';
@@ -23,13 +22,12 @@ const KeywordOrganism = () => {
       <TextContainer>
         <Text>
           <Headline>이 지점 키워드 </Headline>
-          <NumOfKeyword>{data.keyword.total}</NumOfKeyword>
         </Text>
         <ReviewWriteLink>나도 리뷰 쓰기</ReviewWriteLink>
       </TextContainer>
       <KeywordContainer>
-        {data.keyword.elements.slice(0, 4).map(word => (
-          <KeywordBox {...word} key={word.keyword} />
+        {data.tagSet.slice(0, 4).map(({id, title, reviewCount}) => (
+          <KeywordBox key={id} keyword={title} count={reviewCount} />
         ))}
       </KeywordContainer>
       <ButtonWrapper>

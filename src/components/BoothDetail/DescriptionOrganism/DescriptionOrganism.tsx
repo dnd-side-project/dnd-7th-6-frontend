@@ -1,45 +1,44 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import {
-  ButtonWrapper,
+  BoothName,
   Container,
-  Contents,
-  IconContainer,
-  IconWrapper,
-  Title,
+  List,
+  ListRow,
+  TextElement,
+  TitleSection,
 } from './DescriptionOrganism.styles';
 
-import BoothDetailData from 'src/BoothDetailData';
-import PressableAddition from 'src/components/PressableAddition';
-import {
-  PressableLikeIcon,
-  PressableUploadIcon,
-} from 'src/components/utils/Pressables/PressableIcons';
+import {PressableLikeIcon} from 'src/components/utils/Pressables/PressableIcons';
+import LocationIcon from 'src/icons/LocationIcon';
+import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
 
-const DescriptionOrganism = () => {
-  const [data] = useState(BoothDetailData);
-  const navigation = useNavigation();
+interface Props {
+  id: number;
+  distance: number;
+}
+
+const DescriptionOrganism = ({id, distance}: Props) => {
+  const data = useGetPhotoBoothMock(id);
+
   return (
     <Container>
-      <IconContainer>
-        <IconWrapper>
-          <PressableUploadIcon />
-        </IconWrapper>
-        <IconWrapper>
-          <PressableLikeIcon />
-        </IconWrapper>
-      </IconContainer>
-      <Title>{data.title}</Title>
-      <Contents>{data.address}</Contents>
-      <Contents>
-        매일 {data.activeTime[0]} ~ {data.activeTime[1]}
-      </Contents>
-      <ButtonWrapper>
-        <PressableAddition onPress={() => navigation.navigate('BoothReview' as never, {} as never)}>
-          부스 정보 알려주기
-        </PressableAddition>
-      </ButtonWrapper>
+      <TitleSection>
+        <BoothName>{data.photoBooth.name}</BoothName>
+        <PressableLikeIcon />
+      </TitleSection>
+      <List>
+        <ListRow>
+          <LocationIcon />
+          <TextElement>{data.photoBooth.jibunAddress}</TextElement>
+        </ListRow>
+        <ListRow>
+          <LocationIcon />
+          <TextElement>
+            현재 위치로 부터 {distance < 0 ? `${(distance * 1000).toFixed(0)}m` : `${distance}km`}
+          </TextElement>
+        </ListRow>
+      </List>
     </Container>
   );
 };

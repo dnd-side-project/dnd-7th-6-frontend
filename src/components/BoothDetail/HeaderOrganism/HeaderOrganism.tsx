@@ -13,7 +13,9 @@ interface Props {
 const HeaderOrganism = ({id, navigation}: Props) => {
   const data = useGetPhotoBoothMock(id);
 
-  return <LeftBackHeader onPressBack={() => navigation.goBack()}>{data.title}</LeftBackHeader>;
+  return (
+    <LeftBackHeader onPressBack={() => navigation.goBack()}>{data.photoBooth.name}</LeftBackHeader>
+  );
 };
 
 export default HeaderOrganism;

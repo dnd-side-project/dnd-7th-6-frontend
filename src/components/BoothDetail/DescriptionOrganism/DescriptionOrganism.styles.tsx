@@ -1,6 +1,7 @@
 import styled from '@emotion/native';
 
-import {BodyText4, Headline2} from 'src/components/utils/Text';
+import {BodyText4, SubHeadline1} from 'src/components/utils/Text';
+import {SubHeadline4} from 'src/components/utils/Text/SubHeadline';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -9,26 +10,30 @@ export const Container = styled.View({
   paddingHorizontal: widthPercentage(16),
 });
 
-export const IconContainer = styled.View({
-  justifyContent: 'flex-end',
+export const TitleSection = styled.View({
   flexDirection: 'row',
-  marginBottom: heightPercentage(2),
+  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
-export const IconWrapper = styled.View({
-  marginLeft: widthPercentage(12),
-});
-
-export const Title = styled(Headline2)({
+export const BoothName = styled(SubHeadline1)({
   color: theme.colors.grayscale[10],
-  paddingVertical: heightPercentage(10),
 });
 
-export const Contents = styled(BodyText4)({
+export const List = styled.View({
+  paddingTop: heightPercentage(16),
+  paddingBottom: heightPercentage(8),
+});
+
+export const ListRow = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+});
+
+export const TextElement = styled(BodyText4)({
   color: theme.colors.grayscale[8],
-  paddingVertical: heightPercentage(4),
 });
 
-export const ButtonWrapper = styled.View({
-  marginVertical: heightPercentage(50),
+export const Distance = styled(SubHeadline4)({
+  color: theme.colors.primary[1].normal,
 });
