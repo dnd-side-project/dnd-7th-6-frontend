@@ -7,5 +7,5 @@ export const PreviewFourCardView = styled.View({
   flex: 1,
   flexWrap: 'wrap',
   flexDirection: 'row',
-  height: heightPercentage(472),
+  height: heightPercentage(830),
 });

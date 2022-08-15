@@ -1,13 +1,21 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 
-import PreviewFourCard from '../PreviewFourCard';
-import {ButtonWrapper, OrganismView, TitleText, TitleWrapper} from './PoseOrganism.styles';
+import PreviewFourCard from '../PreviewSixCard';
+import {
+  ButtonPressable,
+  ButtonText,
+  OrganismView,
+  SubTitleText,
+  TextnIconWrapper,
+  TitleIcon,
+  TitleText,
+  TitleWrapper,
+} from './PoseOrganism.styles';
 
-import PressableAddition from 'src/components/PressableAddition';
 import {TestData} from 'src/TestData';
 
-const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
+const PoseRecommendOrganism = () => {
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -18,14 +26,16 @@ const PoseRecommendOrganism = ({children}: PropsWithChildren) => {
   return (
     <OrganismView>
       <TitleWrapper>
-        <TitleText>{children}</TitleText>
+        <TextnIconWrapper>
+          <TitleIcon />
+          <TitleText>지금 핫한 사진</TitleText>
+        </TextnIconWrapper>
+        <SubTitleText>인기있는 포톡커의 사진을 확인해보세요</SubTitleText>
       </TitleWrapper>
       <PreviewFourCard data={TestData} onPress={handlePressCard} />
-      <ButtonWrapper>
-        <PressableAddition onPress={() => navigation.navigate('PostListDetail' as never)}>
-          사진 더보기
-        </PressableAddition>
-      </ButtonWrapper>
+      <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
+        <ButtonText>인기 사진 더보기</ButtonText>
+      </ButtonPressable>
     </OrganismView>
   );
 };

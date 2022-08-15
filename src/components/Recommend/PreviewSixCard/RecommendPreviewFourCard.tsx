@@ -13,7 +13,7 @@ interface Props {
 type onPressFeedCardHandler = (id: number) => () => void;
 
 const RecommendPreviewFourCard = ({data, onPress}: Props) => {
-  const fourPosts = useMemo(() => data.slice(0, 4), [data]);
+  const fourPosts = useMemo(() => data.slice(0, 6), [data]);
 
   return (
     <PreviewFourCardView>
