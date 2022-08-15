@@ -71,4 +71,10 @@ export const style = StyleSheet.create({
     right: widthPercentage(16),
     top: heightPercentage(16),
   },
+  dropdown: {
+    position: 'absolute',
+    right: widthPercentage(16),
+    top: heightPercentage(48),
+    zIndex: 10,
+  },
 });

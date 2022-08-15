@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
+import DropdownMenu from '../DropdownMenu';
 import {PressableMeetBallIcon} from '../Pressables/PressableIcons';
 import ReviewTagChip from '../ReviewTagChip';
 import StarBox from '../StarBox';
@@ -22,9 +23,15 @@ import {
 import {Review} from 'src/types';
 import toDateFormat from 'src/utils/toDateFormat';
 
-type Props = Review & {isMenu?: boolean};
+interface MenuItem {
+  name: string;
+  onPressItem: () => void;
+}
 
-const ReviewSummary = ({isMenu = false, ...props}: Props) => {
+type Props = Review & {menuItems?: MenuItem[]};
+
+const ReviewSummary = ({menuItems, ...props}: Props) => {
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const [visibleLine, setVisibleLine] = useState(props.content.length < 100);
   const [visibleTag, setVisibleTag] = useState(props.reviewTagSet.length < 5);
   const [content, setContent] = useState(props.content.slice(0, 100));
@@ -41,7 +48,15 @@ const ReviewSummary = ({isMenu = false, ...props}: Props) => {
         <StarBox score={props.starScore} />
         <CreatedAt>{toDateFormat(new Date(props.createdAt))}</CreatedAt>
       </RowView>
-      {!isMenu || <PressableMeetBallIcon style={style.menu} />}
+      {!menuItems || (
+        <PressableMeetBallIcon
+          style={style.menu}
+          onPress={() => setIsOpenDropdown(prev => !prev)}
+        />
+      )}
+      {!(!!menuItems && isOpenDropdown) || (
+        <DropdownMenu items={menuItems} style={style.dropdown} />
+      )}
       <TextContainer>
         <Content ref={contentRef}>{content}</Content>
         {visibleLine || (
