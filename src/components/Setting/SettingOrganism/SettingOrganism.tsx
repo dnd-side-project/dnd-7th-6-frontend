@@ -52,7 +52,7 @@ const SettingOrganism = () => {
             </LogOutPressable>
           </ListContainer>
         )}
-        <ListContainer>
+        <ListContainer onPress={() => navigation.navigate('PersonalProcess' as never)}>
           <ListTitle>개인정보처리방침</ListTitle>
         </ListContainer>
 
