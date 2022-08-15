@@ -13,9 +13,15 @@ export const Container = styled.View({
   borderBottomWidth: 1,
 });
 
+export const TextContainer = styled.Text({
+  paddingTop: heightPercentage(10),
+  paddingBottom: heightPercentage(12),
+});
+
 export const RowView = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  paddingTop: heightPercentage(2),
 });
 
 export const UserName = styled(BodyText4)({
@@ -59,5 +65,10 @@ export const style = StyleSheet.create({
     width: widthPercentage(80),
     height: widthPercentage(80),
     marginRight: widthPercentage(6),
+  },
+  menu: {
+    position: 'absolute',
+    right: widthPercentage(16),
+    top: heightPercentage(16),
   },
 });

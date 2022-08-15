@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Text} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
+import {PressableMeetBallIcon} from '../Pressables/PressableIcons';
 import ReviewTagChip from '../ReviewTagChip';
 import StarBox from '../StarBox';
 import {
@@ -13,6 +14,7 @@ import {
   style,
   TagContainer,
   TagWrapper,
+  TextContainer,
   UserName,
   ViewMore,
 } from './ReviewSummary.styles';
@@ -20,7 +22,9 @@ import {
 import {Review} from 'src/types';
 import toDateFormat from 'src/utils/toDateFormat';
 
-const ReviewSummary = (props: Review) => {
+type Props = Review & {isMenu?: boolean};
+
+const ReviewSummary = ({isMenu = false, ...props}: Props) => {
   const [visibleLine, setVisibleLine] = useState(props.content.length < 100);
   const [visibleTag, setVisibleTag] = useState(props.reviewTagSet.length < 5);
   const [content, setContent] = useState(props.content.slice(0, 100));
@@ -37,7 +41,8 @@ const ReviewSummary = (props: Review) => {
         <StarBox score={props.starScore} />
         <CreatedAt>{toDateFormat(new Date(props.createdAt))}</CreatedAt>
       </RowView>
-      <Text>
+      {!isMenu || <PressableMeetBallIcon style={style.menu} />}
+      <TextContainer>
         <Content ref={contentRef}>{content}</Content>
         {visibleLine || (
           <ViewMore
@@ -48,7 +53,7 @@ const ReviewSummary = (props: Review) => {
             <Content>...</Content> 더보기
           </ViewMore>
         )}
-      </Text>
+      </TextContainer>
       {isExistImage || (
         <ImageContainer>
           {props.reviewImageSet.map(({id, imageUrl}) => (
