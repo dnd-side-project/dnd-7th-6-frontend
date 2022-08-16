@@ -28,7 +28,7 @@ interface MenuItem {
   onPressItem: () => void;
 }
 
-type Props = Review & {menuItems?: MenuItem[]};
+type Props = Review & {menuItems?: MenuItem[]; isLast?: boolean};
 
 const ReviewSummary = ({menuItems, ...props}: Props) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -42,7 +42,7 @@ const ReviewSummary = ({menuItems, ...props}: Props) => {
   const isExistTag = props.reviewTagSet.length <= 0;
 
   return (
-    <Container>
+    <Container isLast={props.isLast}>
       <UserName>@{props.user.name}</UserName>
       <RowView>
         <StarBox score={props.starScore} />
@@ -94,6 +94,7 @@ const ReviewSummary = ({menuItems, ...props}: Props) => {
                   postCount: 0,
                   reviewCount: 0,
                   tagType: 'CUSTOM',
+                  tagIconImageUrl: '',
                 }}
                 props={{
                   onPress: () => {

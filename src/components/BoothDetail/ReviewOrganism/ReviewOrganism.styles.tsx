@@ -26,5 +26,6 @@ export const ReviewContainer = styled.View({
 });
 
 export const ButtonWrapper = styled.View({
-  paddingVertical: heightPercentage(16),
+  paddingVertical: heightPercentage(24),
+  paddingHorizontal: widthPercentage(16),
 });
