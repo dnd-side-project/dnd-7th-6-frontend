@@ -21,6 +21,7 @@ const filterState = {
     situation: {},
   },
   filteredFrame: {},
+  filteredCustom: {},
 };
 const initialState = {
   isOpenFilterSheet: false,
@@ -42,6 +43,8 @@ const postReducer: Reducer = (state = initialState, action) => {
       return {...state, filteredBrand: toggleTag(state.filteredBrand, payload.target)};
     case CHANGE_FILTER.FRAME:
       return {...state, filteredFrame: toggleTag(state.filteredFrame, payload.target)};
+    case CHANGE_FILTER.CUSTOM:
+      return {...state, filteredCustom: toggleTag(state.filteredCustom, payload.target)};
     case CHANGE_FILTER.HEADCOUNT.NUMBER:
       return {
         ...state,
@@ -83,6 +86,11 @@ const postReducer: Reducer = (state = initialState, action) => {
       return {
         ...state,
         filteredBrand: {},
+      };
+    case CLEAR_FILTER.CUSTOM:
+      return {
+        ...state,
+        filteredCustom: {},
       };
     case CLEAR_FILTER.HEADCOUNT:
       return {

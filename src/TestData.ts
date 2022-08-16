@@ -78,14 +78,33 @@ export const TestData: Array<Post> = [
     user: {email: 'asdf', status: 'ACTIVE', upwd: 'ASDF', userRole: 'user'},
   },
   {
-    id: 1,
+    id: 5,
     title: '내 사진 1',
     postImageSet: [
       {
         id: 1,
         imageOrder: 1,
         imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEX7G8-sgp2THgvgbzQIU_bZUfD17tCnPkXQ&usqp=CAU',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlCw67OgAmch9lhLwh5yvwOvaTZy35S27Bdw&usqp=CAU',
+      },
+    ],
+    content: 'asdf',
+    createdAt: '',
+    likeCount: 0,
+    postTagSet: [],
+    updatedAt: '',
+    status: '',
+    user: {email: 'asdf', status: 'ACTIVE', upwd: 'ASDF', userRole: 'user'},
+  },
+  {
+    id: 6,
+    title: '내 사진 1',
+    postImageSet: [
+      {
+        id: 1,
+        imageOrder: 1,
+        imageUrl:
+          'https://file.mk.co.kr/meet/neds/2022/04/image_readtop_2022_334951_16499145915009612.jpg',
       },
     ],
     content: 'asdf',

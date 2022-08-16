@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 
+import RouteKeywordSearchScreen from './KeywordSearchScreen';
 import PostListDetailScreen from './PostListDetailScreen';
 import RoutePostWriteScreen from './PostWriteScreen';
 import RecommendDetailScreen from './RecommendDetailScreen';
@@ -16,9 +17,10 @@ export type RecommendParamList = {
 
 const RouteRecommendScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="Recommend">
+    <Stack.Navigator initialRouteName="Recommend" screenOptions={{headerShown: false}}>
       <Stack.Screen name="Recommend" component={RecommendScreen} />
       <Stack.Screen name="RecommendDetail" component={RecommendDetailScreen} />
+      <Stack.Screen name="RouteKeywordSearch" component={RouteKeywordSearchScreen} />
       <Stack.Screen name="PostListDetail" component={PostListDetailScreen} />
       <Stack.Screen
         name="RoutePostWrite"

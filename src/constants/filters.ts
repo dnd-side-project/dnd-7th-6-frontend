@@ -4,4 +4,5 @@ export const FILTER = {
   HEADCOUNT: 1,
   POSE: 2,
   FRAME: 3,
+  CUSTOM: 4,
 };

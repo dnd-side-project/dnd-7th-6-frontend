@@ -26,6 +26,11 @@ export const changeFilteredBrand = (target: number) => ({
   payload: {target},
 });
 
+export const changeFilteredCustom = (target: number) => ({
+  type: CHANGE_FILTER.CUSTOM,
+  payload: {target},
+});
+
 export const changeFilteredHeadcountNumber = (target: number) => ({
   type: CHANGE_FILTER.HEADCOUNT.NUMBER,
   payload: {target},
@@ -63,6 +68,8 @@ export const clearFilter = (type?: number) => {
       return {type: CLEAR_FILTER.POSE};
     case FILTER.FRAME:
       return {type: CLEAR_FILTER.FRAME};
+    case FILTER.CUSTOM:
+      return {type: CLEAR_FILTER.CUSTOM};
     default:
       return {type: CLEAR_FILTER.ALL};
   }
