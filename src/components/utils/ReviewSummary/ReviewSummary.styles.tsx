@@ -6,12 +6,12 @@ import {BodyText4, BodyText6} from '../Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-export const Container = styled.View({
+export const Container = styled.View<{isLast?: boolean}>(({isLast}) => ({
   paddingVertical: heightPercentage(16),
   paddingHorizontal: widthPercentage(16),
   borderColor: theme.colors.grayscale[3],
-  borderBottomWidth: 1,
-});
+  borderBottomWidth: isLast ? 0 : 1,
+}));
 
 export const TextContainer = styled.Text({
   paddingTop: heightPercentage(10),

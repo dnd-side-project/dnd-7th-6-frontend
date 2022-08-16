@@ -5,11 +5,12 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
-  paddingHorizontal: widthPercentage(16),
+  paddingVertical: heightPercentage(24),
 });
 
 export const TextContainer = styled.Text({
   paddingVertical: heightPercentage(8),
+  paddingHorizontal: widthPercentage(16),
 });
 
 export const Headline = styled(SubHeadline2)({
@@ -25,5 +26,6 @@ export const ReviewContainer = styled.View({
 });
 
 export const ButtonWrapper = styled.View({
-  paddingVertical: heightPercentage(16),
+  paddingVertical: heightPercentage(24),
+  paddingHorizontal: widthPercentage(16),
 });

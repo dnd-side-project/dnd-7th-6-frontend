@@ -1,30 +1,38 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {LayoutChangeEvent} from 'react-native';
 
-import {Container, Count, Headline, ReviewContainer, TextContainer} from './ReviewOrganism.styles';
+import {ButtonWrapper, Container, Count, Headline, TextContainer} from './ReviewOrganism.styles';
 
-import BoothDetailData from 'src/BoothDetailData';
 import PressableAddition from 'src/components/PressableAddition';
-import UserReviewView from 'src/components/utils/UserReviewView';
+import ReviewSummary from 'src/components/utils/ReviewSummary';
+import useGetInfiniteReviews from 'src/querys/useGetInfiniteReviews';
+import {Review} from 'src/types';
+import toLocaleString from 'src/utils/toLocaleString';
 
-const ReviewOrganism = () => {
-  const [data] = useState(BoothDetailData);
+interface Props {
+  id: number;
+  onLayout?: (event: LayoutChangeEvent) => void;
+}
+
+const ReviewOrganism = ({id, onLayout}: Props) => {
+  const {data} = useGetInfiniteReviews(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
-    <Container>
+    <Container onLayout={onLayout}>
       <TextContainer>
-        <Headline>리뷰 </Headline>
-        <Count> {data.review.total}</Count>
+        <Headline>포톡커들의 상세 리뷰 </Headline>
+        <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      {data.review.elements.slice(0, 3).map((reviewData, i) => (
-        <ReviewContainer key={i}>
-          <UserReviewView
-            writer={reviewData.writer}
-            contents={reviewData.contents}
-            date={new Date(reviewData.date)}
-          />
-        </ReviewContainer>
+      {data.pages[0].content.map((review: Review, i: number) => (
+        <ReviewSummary key={review.id} {...review} isLast={i >= data.pages[0].content.length - 1} />
       ))}
-      <PressableAddition>리뷰 더보기</PressableAddition>
+      <ButtonWrapper>
+        <PressableAddition>리뷰 모두보기</PressableAddition>
+      </ButtonWrapper>
     </Container>
   );
 };
