@@ -5,7 +5,8 @@ import {ButtonWrapper, Container, Count, Headline, TextContainer} from './Review
 
 import PressableAddition from 'src/components/PressableAddition';
 import ReviewSummary from 'src/components/utils/ReviewSummary';
-import useGetInfiniteReviewsMock from 'src/querys/useGetInfiniteReviews';
+import useGetInfiniteReviews from 'src/querys/useGetInfiniteReviews';
+import {Review} from 'src/types';
 import toLocaleString from 'src/utils/toLocaleString';
 
 interface Props {
@@ -14,16 +15,20 @@ interface Props {
 }
 
 const ReviewOrganism = ({id, onLayout}: Props) => {
-  const data = useGetInfiniteReviewsMock(id);
+  const {data} = useGetInfiniteReviews(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <Container onLayout={onLayout}>
       <TextContainer>
         <Headline>포톡커들의 상세 리뷰 </Headline>
-        <Count> {toLocaleString(data.totalElements)}</Count>
+        <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      {data.content.map((review, i) => (
-        <ReviewSummary key={review.id} {...review} isLast={i >= data.content.length - 1} />
+      {data.pages[0].content.map((review: Review, i: number) => (
+        <ReviewSummary key={review.id} {...review} isLast={i >= data.pages[0].content.length - 1} />
       ))}
       <ButtonWrapper>
         <PressableAddition>리뷰 모두보기</PressableAddition>

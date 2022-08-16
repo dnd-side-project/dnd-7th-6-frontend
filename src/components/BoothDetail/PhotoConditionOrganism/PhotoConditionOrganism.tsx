@@ -2,14 +2,18 @@ import React from 'react';
 
 import KeywordTagSection from '../KeywordTagSection';
 
-import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
+import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 
 interface Props {
   id: number;
 }
 
 const PhotoConditionOrganism = ({id}: Props) => {
-  const data = useGetPhotoBoothMock(id);
+  const {data} = useGetPhotoBooth(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <KeywordTagSection

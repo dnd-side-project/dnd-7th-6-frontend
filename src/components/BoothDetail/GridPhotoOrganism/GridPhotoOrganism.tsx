@@ -11,7 +11,7 @@ import {
   TotalPhoto,
 } from './GridPhotoOrganism.styles';
 
-import useGetReviewImagesMock from 'src/querys/useGetReviewImages';
+import useGetReviewImages from 'src/querys/useGetReviewImages';
 import toLocaleString from 'src/utils/toLocaleString';
 
 interface Props {
@@ -20,7 +20,11 @@ interface Props {
 }
 
 const GridPhotoOrganism = ({id, onLayout}: Props) => {
-  const data = useGetReviewImagesMock(id);
+  const {data} = useGetReviewImages(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <Container onLayout={onLayout}>

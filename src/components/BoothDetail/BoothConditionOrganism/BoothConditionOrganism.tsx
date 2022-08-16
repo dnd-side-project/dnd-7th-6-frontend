@@ -3,7 +3,7 @@ import {LayoutChangeEvent} from 'react-native';
 
 import KeywordTagSection from '../KeywordTagSection';
 
-import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
+import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 
 interface Props {
   id: number;
@@ -11,7 +11,11 @@ interface Props {
 }
 
 const BoothConditionOrganism = ({id, onLayout}: Props) => {
-  const data = useGetPhotoBoothMock(id);
+  const {data} = useGetPhotoBooth(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <KeywordTagSection

@@ -2,7 +2,6 @@ import {AxiosError} from 'axios';
 import {useQuery} from 'react-query';
 
 import getPhotoBooth from 'src/apis/getPhotoBooth';
-import BoothDetailData from 'src/BoothDetailData';
 import {PhotoBoothResponse} from 'src/types';
 
 const useGetPhotoBooth = (id: number) => {
@@ -12,8 +11,4 @@ const useGetPhotoBooth = (id: number) => {
   );
 };
 
-const useGetPhotoBoothMock = (id: number) => {
-  return BoothDetailData;
-};
-
-export default useGetPhotoBoothMock;
+export default useGetPhotoBooth;

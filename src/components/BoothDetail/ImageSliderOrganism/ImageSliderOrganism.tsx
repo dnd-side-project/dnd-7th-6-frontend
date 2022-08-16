@@ -5,7 +5,7 @@ import * as Swiper from 'react-native-swiper';
 
 import {Container, style} from './ImageSliderOrganism.styles';
 
-import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
+import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 import theme from 'src/styles/Theme';
 
 interface Props {
@@ -13,7 +13,11 @@ interface Props {
 }
 
 const ImageSliderOrganism = ({id}: Props) => {
-  const data = useGetPhotoBoothMock(id);
+  const {data} = useGetPhotoBooth(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <Container>

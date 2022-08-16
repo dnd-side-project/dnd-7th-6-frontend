@@ -13,7 +13,7 @@ import {
 import {PressableGeneralHeartIcon} from 'src/components/utils/Pressables/PressableIcons';
 import NavigationIcon from 'src/icons/NavigationIcon';
 import PinIcon from 'src/icons/PinIcon';
-import useGetPhotoBoothMock from 'src/querys/useGetPhotoBooth';
+import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 
 interface Props {
   id: number;
@@ -21,7 +21,11 @@ interface Props {
 }
 
 const DescriptionOrganism = ({id, distance}: Props) => {
-  const data = useGetPhotoBoothMock(id);
+  const {data} = useGetPhotoBooth(id);
+
+  if (!data) {
+    return <></>;
+  }
 
   return (
     <Container>
