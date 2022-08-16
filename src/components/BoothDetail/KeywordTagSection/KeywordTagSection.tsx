@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {LayoutChangeEvent, Text} from 'react-native';
 
 import {
   Container,
@@ -16,11 +16,12 @@ interface Props {
   id: number;
   title: string;
   keywords: {tag: Tag; reviewCount: number}[];
+  onLayout?: (event: LayoutChangeEvent) => void;
 }
 
 const KeywordTagSection = (props: Props) => {
   return (
-    <Container>
+    <Container onLayout={props.onLayout}>
       <TextContainer>
         <Text>
           <Headline>{props.title}</Headline>

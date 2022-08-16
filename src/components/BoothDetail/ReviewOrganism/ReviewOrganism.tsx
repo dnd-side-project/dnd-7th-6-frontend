@@ -1,4 +1,5 @@
 import React from 'react';
+import {LayoutChangeEvent} from 'react-native';
 
 import {ButtonWrapper, Container, Count, Headline, TextContainer} from './ReviewOrganism.styles';
 
@@ -9,13 +10,14 @@ import toLocaleString from 'src/utils/toLocaleString';
 
 interface Props {
   id: number;
+  onLayout?: (event: LayoutChangeEvent) => void;
 }
 
-const ReviewOrganism = ({id}: Props) => {
+const ReviewOrganism = ({id, onLayout}: Props) => {
   const data = useGetInfiniteReviewsMock(id);
 
   return (
-    <Container>
+    <Container onLayout={onLayout}>
       <TextContainer>
         <Headline>포톡커들의 상세 리뷰 </Headline>
         <Count> {toLocaleString(data.totalElements)}</Count>

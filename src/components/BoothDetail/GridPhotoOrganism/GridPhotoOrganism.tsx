@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, LayoutChangeEvent} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import {
@@ -16,13 +16,14 @@ import toLocaleString from 'src/utils/toLocaleString';
 
 interface Props {
   id: number;
+  onLayout?: (event: LayoutChangeEvent) => void;
 }
 
-const GridPhotoOrganism = ({id}: Props) => {
+const GridPhotoOrganism = ({id, onLayout}: Props) => {
   const data = useGetReviewImagesMock(id);
 
   return (
-    <Container>
+    <Container onLayout={onLayout}>
       <TextContainer>
         <Headline>이 매장에서 찍은 사진 </Headline>
         <Count> {toLocaleString(data.totalElements)}</Count>
