@@ -9,6 +9,7 @@ import GridPhotoOrganism from '../GridPhotoOrganism';
 import ImageSliderOrganism from '../ImageSliderOrganism';
 import PhotoConditionOrganism from '../PhotoConditionOrganism';
 import ReviewOrganism from '../ReviewOrganism';
+import StarScoreOrganism from '../StarScoreOrganism/StarScoreOrganism';
 import {ScrollContainer} from './OuterScrollView.styles';
 
 import Boundary from 'src/components/PostWrite/Boundary';
@@ -45,6 +46,7 @@ const OuterScrollView = ({id, distance}: Props) => {
       <ImageSliderOrganism id={id} />
       <DescriptionOrganism id={id} distance={distance} />
       <BoothDetailNavigation index={scrollIndex} setIndex={setScrollIndex} />
+      <StarScoreOrganism id={id} />
       <BoothConditionOrganism id={id} onLayout={setScrollTarget(0)} />
       <PhotoConditionOrganism id={id} />
       <Boundary />
