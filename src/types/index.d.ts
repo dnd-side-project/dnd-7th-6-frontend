@@ -33,7 +33,8 @@ export interface Recommendation {
 export interface ServerResponse<T> {
   content: T[];
   totalPages: number;
-  numberOfElement: number;
+  totalElements: number;
+  numberOfElements: number;
   size: number;
   number: number;
   sort: any;
@@ -69,8 +70,8 @@ export interface User {
   name: string;
   status: string;
   userRole: string;
-  userProvider: null;
-  providerId: null;
+  provider: 'NAVER' | 'KAKAO' | 'GOOGLE' | 'APPLE';
+  providerId: string;
 }
 
 export interface BoothSummary {
@@ -146,12 +147,11 @@ export interface Review {
   id: number;
   title: string;
   content: string;
-  likeCount: 0;
-  status: string;
   starScore: number;
+  status: string;
   createdAt: string;
   updatedAt: string;
   reviewTagSet: Array<{tag: Tag}>;
-  reviewImageSet: Array<PostImage>;
+  reviewImageSet: Array<ReviewImage>;
   user: User;
 }

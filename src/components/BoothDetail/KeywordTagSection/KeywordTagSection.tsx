@@ -28,7 +28,7 @@ const KeywordTagSection = (props: Props) => {
       </TextContainer>
       <KeywordContainer>
         {props.keywords.slice(0, 4).map(({tag, reviewCount}) => (
-          <KeywordWrapper>
+          <KeywordWrapper key={tag.id}>
             <KeywordBox
               key={tag.id}
               keyword={tag.title}

@@ -20,7 +20,7 @@ const InnerScrollView = ({id}: Props) => {
       <Boundary />
       <GridPhotoOrganism id={id} />
       <Boundary />
-      <ReviewOrganism />
+      <ReviewOrganism id={id} />
     </ScrollView>
   );
 };
