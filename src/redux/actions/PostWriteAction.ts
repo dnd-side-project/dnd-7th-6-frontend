@@ -10,12 +10,14 @@ import {
   TOGGLE_TAG_CHIP,
 } from '../types/PostWriteActionType';
 
+import {FormImage} from 'src/types';
+
 export const inputPostContents = (text: string) => ({
   type: INPUT_POST_CONTENTS,
   payload: {text},
 });
 
-export const addPostWriteImage = (image: string) => ({
+export const addPostWriteImage = (image: FormImage) => ({
   type: ADD_POST_WRITE_IMAGE,
   payload: {image},
 });

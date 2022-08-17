@@ -7,12 +7,15 @@ import theme from 'src/styles/Theme';
 
 interface Props {
   selected: boolean;
+  isExistDelete?: boolean;
 }
 
-export const Container = styled.Pressable<Props>(({selected}) => ({
-  paddingHorizontal: heightPercentage(12),
-  paddingVertical: heightPercentage(10),
+export const Container = styled.Pressable<Props>(({selected, isExistDelete}) => ({
+  paddingVertical: isExistDelete ? heightPercentage(7) : heightPercentage(10),
+  paddingLeft: widthPercentage(12),
+  paddingRight: isExistDelete ? widthPercentage(7) : widthPercentage(10),
   flexDirection: 'row',
+  alignItems: 'center',
   borderRadius: 40,
   borderWidth: 1,
   borderColor: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[3],

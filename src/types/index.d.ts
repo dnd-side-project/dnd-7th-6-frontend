@@ -155,3 +155,9 @@ export interface Review {
   reviewImageSet: Array<ReviewImage>;
   user: User;
 }
+
+export interface FormImage {
+  uri: string;
+  type: string;
+  name: string | undefined;
+}
