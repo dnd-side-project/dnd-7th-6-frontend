@@ -6,12 +6,13 @@ interface Parameter {
   page?: number;
   pageSize?: number;
   tagIdSet: number[];
+  order: string;
 }
 
-const useGetInfinitePosts = ({tagIdSet}: Parameter) => {
+const useGetInfinitePosts = ({tagIdSet, order}: Parameter) => {
   return useInfiniteQuery(
     ['posts'],
-    ({pageParam = 0}) => getInfinitePosts({page: pageParam, tagIdSet}),
+    ({pageParam = 0}) => getInfinitePosts({page: pageParam, tagIdSet, order}),
     {
       getNextPageParam: lastPage => {
         return lastPage.nextPage;

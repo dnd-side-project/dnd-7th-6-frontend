@@ -3,13 +3,13 @@ import {Reducer} from 'redux';
 import {
   CHANGE_FILTER,
   CHANGE_FOCUS,
-  CHANGE_SORTING,
+  CHANGE_ORDER,
   CLEAR_FILTER,
   CLOSE_FILTER_SHEET,
   OPEN_FILTER_SHEET,
 } from '../types/PostActionType';
 
-import {SORT} from 'src/constants/filters';
+import {POST_LIST_ORDER} from 'src/constants/filters';
 import toggleTag from 'src/utils/toggleTag';
 
 const filterState = {
@@ -28,7 +28,7 @@ const filterState = {
 const initialState = {
   isOpenFilterSheet: false,
   focusedFilter: 0,
-  sort: SORT.POPULAR,
+  sort: POST_LIST_ORDER.POPULAR,
   ...filterState,
 };
 
@@ -36,7 +36,7 @@ const postReducer: Reducer = (state = initialState, action) => {
   const {payload} = action;
 
   switch (action.type) {
-    case CHANGE_SORTING:
+    case CHANGE_ORDER:
       return {...state, sort: payload.sorting};
     case OPEN_FILTER_SHEET:
       return {...state, isOpenFilterSheet: true};
