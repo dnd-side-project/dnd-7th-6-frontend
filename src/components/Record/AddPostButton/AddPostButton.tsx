@@ -14,6 +14,7 @@ const AddPostButton = () => {
       'RouteRecommendScreen' as never,
       {
         screen: 'RoutePostWrite',
+        initial: false,
       } as never,
     );
   };
