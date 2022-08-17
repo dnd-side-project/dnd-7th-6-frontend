@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Text} from 'react-native';
 
@@ -22,15 +23,22 @@ import {PhotoBoothContentData} from 'src/types';
 const data = ['#넓은 촬영공간', '#홀수출력 가능'];
 
 const BoothSummaryView = (item: PhotoBoothContentData) => {
+  const navigation = useNavigation();
+  const boothOnPress = () => {
+    navigation.navigate(
+      'BoothDetail' as never,
+      {id: item.photoBooth.id, distance: item.distance.toFixed(2)} as never,
+    );
+  };
   return (
-    <Container>
+    <Container onPress={boothOnPress}>
       <DescriptionContainer>
         <Title>{item.photoBooth.name}</Title>
         <SubText>
-          <Distance>{item.distance.toFixed(2)}km</Distance>
+          <Distance>{item.distance.toFixed(1)}km</Distance>
           <Text> | </Text>
           <ColorStarIcon14 />
-          <Rating>4.9</Rating>
+          <Rating>{item.photoBooth.starCount ? item.photoBooth.starCount : '-'}</Rating>
         </SubText>
         <TagContainer>
           {data.map(tag => (

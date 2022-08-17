@@ -1,12 +1,19 @@
 import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import {useHeaderHeight} from '@react-navigation/elements';
-import React, {useEffect, useMemo, useRef} from 'react';
+import React, {useMemo, useRef} from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 import {useSelector} from 'react-redux';
 
 import BoothSummaryView from '../BoothSummaryView';
 import MapNaverMapOrganism from '../MapNaverMapOrganism';
-import {BottomSheetConatiner, bottomSheetStyle, handleStyle} from './MapBottomSheetOrganism.styles';
+import {
+  BottomSheetConatiner,
+  bottomSheetStyle,
+  handleStyle,
+  NoDataContainer,
+  NoDataText,
+} from './MapBottomSheetOrganism.styles';
 
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
 import {RootState} from 'src/redux/store';
@@ -22,8 +29,8 @@ const MapBottomSheetOrganism = () => {
     () => [
       heightPercentage(130),
       valueOfPlatform({
-        ios: heightPercentage(630),
-        android: heightPercentage(640) - headerHeight,
+        ios: heightPercentage(680) - getStatusBarHeight(true),
+        android: heightPercentage(680) - headerHeight,
       }),
     ],
     [],
@@ -31,14 +38,6 @@ const MapBottomSheetOrganism = () => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
 
   const {data} = useGetPhotoBoothLocation({longitude: 0, latitude: 0});
-  useEffect(() => {
-    // if (data?.data.content.length) {
-    //   dispatch(changeBottomSheetHeight(1));
-    // } else {
-    //   dispatch(changeBottomSheetHeight(0));
-    // }
-  }, [data]);
-
   return (
     <BottomSheetConatiner>
       <BottomSheet
@@ -48,22 +47,28 @@ const MapBottomSheetOrganism = () => {
         backdropComponent={MapNaverMapOrganism}
         handleIndicatorStyle={handleStyle}
         index={sheetIndex}>
-        <BottomSheetFlatList
-          data={data?.data.content}
-          renderItem={({item, index}: {item: PhotoBoothContentData; index: number}) =>
-            index === 0 ? (
-              focusedBooth !== null ? (
-                <BoothSummaryView {...focusedBooth} />
-              ) : (
+        {data?.data.content.length > 0 ? (
+          <BottomSheetFlatList
+            data={data?.data.content}
+            renderItem={({item, index}: {item: PhotoBoothContentData; index: number}) =>
+              index === 0 ? (
+                focusedBooth !== null ? (
+                  <BoothSummaryView {...focusedBooth} />
+                ) : (
+                  <BoothSummaryView {...item} />
+                )
+              ) : item.photoBooth.id !== focusedBooth?.photoBooth.id ? (
                 <BoothSummaryView {...item} />
+              ) : (
+                <></>
               )
-            ) : item.photoBooth.id !== focusedBooth?.photoBooth.id ? (
-              <BoothSummaryView {...item} />
-            ) : (
-              <></>
-            )
-          }
-        />
+            }
+          />
+        ) : (
+          <NoDataContainer>
+            <NoDataText>검색 결과가 없어요. 다시 검색해 주세요.</NoDataText>
+          </NoDataContainer>
+        )}
       </BottomSheet>
     </BottomSheetConatiner>
   );

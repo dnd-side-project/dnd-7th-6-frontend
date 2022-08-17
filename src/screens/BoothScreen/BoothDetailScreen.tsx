@@ -12,7 +12,7 @@ import OuterScrollView from 'src/components/BoothDetail/OuterScrollView';
 export type DetailScreenProps = NativeStackScreenProps<BoothParamList, 'BoothDetailScreen'>;
 
 const BoothDetailScreen = ({navigation, route}: DetailScreenProps) => {
-  const {id, distance} = {id: 1, distance: 17.7};
+  const {id, distance} = route.params;
 
   useLayoutEffect(() => {
     DetailHeaderStyle({navigation, route});

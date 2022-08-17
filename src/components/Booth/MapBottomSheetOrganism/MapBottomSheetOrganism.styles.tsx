@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 
+import {BodyText5} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -20,3 +21,13 @@ export const handleStyle = {
   height: heightPercentage(4),
   backgroundColor: theme.colors.grayscale[6],
 };
+
+export const NoDataContainer = styled.View({
+  height: heightPercentage(118),
+  justifyContent: 'center',
+});
+
+export const NoDataText = styled(BodyText5)({
+  alignSelf: 'center',
+  color: theme.colors.grayscale[4],
+});

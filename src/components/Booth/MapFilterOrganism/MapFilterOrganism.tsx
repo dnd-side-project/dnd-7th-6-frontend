@@ -66,7 +66,7 @@ const MapFilterOrganism = () => {
               key={tag.id}
               selected={filteredTag[tag.id]}
               onPress={handlePressChip(tag.id)}>
-              #{tag.keyword}
+              {tag.keyword}
             </MapFilterChip>
           );
         })
