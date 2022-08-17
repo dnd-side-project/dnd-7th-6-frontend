@@ -5,17 +5,20 @@ import {Container} from './PhotoOrganism.styles';
 
 import FeedCard from 'src/components/Recommend/FeedCard';
 import {heightPercentage} from 'src/styles/ScreenResponse';
+import {UserLikeImage} from 'src/types';
 
-const PhotoOrganism = () => {
-  const data = [{}, {}, {}, {}, {}, {}, {}, {}];
+interface Props {
+  photoList: UserLikeImage[];
+}
 
+const PhotoOrganism = ({photoList}: Props) => {
   return (
     <Container>
       <FlatList
-        data={data}
+        data={photoList}
         numColumns={2}
         style={{height: Dimensions.get('window').height - heightPercentage(215)}}
-        renderItem={({index}) => <FeedCard key={index} imgUrl="" />}
+        renderItem={({index, item}) => <FeedCard key={index} imgUrl={item.imageUrl} />}
       />
     </Container>
   );

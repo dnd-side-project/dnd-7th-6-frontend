@@ -161,3 +161,32 @@ export interface FormImage {
   type: string;
   name: string | undefined;
 }
+
+export interface UserLike {
+  imageList: UserLikeImage[];
+  photoBoothList: UserLikeBooth[];
+}
+
+export interface UserLikeImage {
+  id: 3;
+  type: 'REVIEW' | 'POST';
+  imageUrl: string;
+  createdAt: string;
+  like: true;
+}
+
+export interface UserLikeBooth {
+  id: number;
+  name: string;
+  jibunAddress: string;
+  roadAddress: string;
+  latitude: number;
+  longitude: number;
+  likeCount: number;
+  reviewCount: number;
+  starScore: number;
+  status: string;
+  imageUrl: string;
+  createdAt: string;
+  like: true;
+}
