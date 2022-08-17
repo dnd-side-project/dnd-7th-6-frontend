@@ -27,8 +27,8 @@ const EditNickNameOrganism = () => {
   const [isServerValid, setIsServerValid] = useState(false);
 
   useEffect(() => {
-    const NickNameValid = async () => {
-      const regexp = /^[0-9a-zA-Z.;-_]*$/;
+    const nickNameValid = async () => {
+      const regexp = /^[0-9a-zA-Z._]*$/;
       if (value.length > 20) {
         setMessage('닉네임은 20자 이하로 입력해 주세요.');
         setIsSuccess(false);
@@ -48,14 +48,16 @@ const EditNickNameOrganism = () => {
         setIsSuccess(true);
       }
     };
-    NickNameValid();
+    nickNameValid();
   }, [value]);
 
   useEffect(() => {
     if (isSuccess) {
       if (data === 500) {
-        setMessage('동일한 닉네임이 있어요.');
-        setIsSuccess(false);
+        if (value !== userInfo.name) {
+          setMessage('동일한 닉네임이 있어요.');
+          setIsSuccess(false);
+        }
       } else {
         setIsServerValid(true);
         setMessage('사용 가능한 닉네임이에요.');
