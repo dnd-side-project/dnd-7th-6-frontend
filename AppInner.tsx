@@ -52,7 +52,7 @@ const AppInner = () => {
         options={{tabBarLabel: '위치'}}
       />
       <Tab.Screen
-        name={'RecommendScreen'}
+        name={'RouteRecommendScreen'}
         component={RouteRecommendScreen}
         options={{tabBarLabel: '추천'}}
       />

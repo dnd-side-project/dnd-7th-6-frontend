@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {Alert, SafeAreaView} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage/';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -13,11 +13,13 @@ import {
 } from './SettingOrganism.styles';
 
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
+import useDeleteUser from 'src/querys/useDeleteUser';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 const SettingOrganism = () => {
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const userInfo = useSelector((state: RootState) => state.userReducer.userInfo);
+  const {mutate} = useDeleteUser();
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -28,6 +30,30 @@ const SettingOrganism = () => {
     dispatch(loginAction(false));
     navigation.goBack();
   };
+
+  const handleDeleteUser = () => {
+    Alert.alert(
+      '회원탈퇴',
+      '회원탈퇴 이후에 제보했던 가게와 작성한 댓글을 더이상 볼 수 없어요.\n정말로 탈퇴하시겠어요?',
+      [
+        {
+          text: '취소',
+          style: 'cancel',
+        },
+        {
+          text: '확인',
+          onPress: async () => {
+            await mutate();
+            dispatch(setAccessToken(''));
+            dispatch(changeUserInfo({}));
+            dispatch(loginAction(false));
+            navigation.reset({routes: [{name: 'AppInner' as never}]});
+          },
+        },
+      ],
+    );
+  };
+
   const showProvider = (): string => {
     const provider = userInfo?.provider;
     if (provider === 'GOOGLE') {
@@ -57,7 +83,7 @@ const SettingOrganism = () => {
         </ListContainer>
 
         {isLoggedIn && (
-          <ListContainer>
+          <ListContainer onPress={handleDeleteUser}>
             <ListTitle>회원탈퇴</ListTitle>
           </ListContainer>
         )}

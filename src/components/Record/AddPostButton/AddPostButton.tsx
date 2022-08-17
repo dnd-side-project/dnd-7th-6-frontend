@@ -10,7 +10,12 @@ const AddPostButton = () => {
   const navigation = useNavigation();
 
   const handlePressAddPostButton = () => {
-    navigation.navigate('RoutePostWrite' as never);
+    navigation.navigate(
+      'RouteRecommendScreen' as never,
+      {
+        screen: 'RoutePostWrite',
+      } as never,
+    );
   };
 
   return (
