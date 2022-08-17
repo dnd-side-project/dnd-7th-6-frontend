@@ -5,7 +5,6 @@ const getUser = async () => {
     const result = await AxiosInstance.get('/api/v1/user');
     return result.data;
   } catch (error) {
-    console.error(error);
     return Promise.reject(error);
   }
 };

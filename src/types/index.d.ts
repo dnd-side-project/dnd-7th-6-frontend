@@ -19,6 +19,7 @@ export interface Post {
   postTagSet: PostTag[];
   postImageSet: PostImage[];
   user: User;
+  like: boolean;
 }
 
 export interface Recommendation {
@@ -189,4 +190,9 @@ export interface UserLikeBooth {
   imageUrl: string;
   createdAt: string;
   like: true;
+}
+
+export interface UserList {
+  reviewList: Review[];
+  postList: Post[];
 }
