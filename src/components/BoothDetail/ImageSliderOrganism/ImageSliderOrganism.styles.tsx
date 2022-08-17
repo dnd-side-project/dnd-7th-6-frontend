@@ -1,14 +1,19 @@
 import styled from '@emotion/native';
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
-import {heightPercentage} from 'src/styles/ScreenResponse';
+const {width} = Dimensions.get('window');
 
 export const Container = styled.View({
-  height: heightPercentage(281),
+  width,
+  height: width,
 });
 
 export const style = StyleSheet.create({
   fastImage: {
     height: '100%',
+  },
+  dot: {
+    width: 6,
+    height: 6,
   },
 });

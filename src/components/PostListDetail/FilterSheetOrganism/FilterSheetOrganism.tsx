@@ -12,12 +12,12 @@ import FilterSheetBackdrop from '../FilterSheetBackdrop';
 import FilterSheetFooter from '../FilterSheetFooter';
 import FilterSheetNavigator from '../FilterSheetNavigator';
 
-import {closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
+import {changeFocus, closeFilterSheet, openFilterSheet} from 'src/redux/actions/PostAction';
 import {RootState} from 'src/redux/store';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-const FilterSheetOrganism = () => {
+const FilterSheetOrganism = ({title}: {title?: string}) => {
   const isOpenFilterSheet = useSelector((state: RootState) => state.postReducer.isOpenFilterSheet);
   const focused = useSelector((state: RootState) => state.postReducer.focusedFilter);
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -32,7 +32,7 @@ const FilterSheetOrganism = () => {
     if (!swiperRef.current) {
       return;
     }
-    swiperRef.current.scrollTo(focused + 1);
+    swiperRef.current.scrollTo(focused);
   }, [focused]);
 
   return (
@@ -42,14 +42,19 @@ const FilterSheetOrganism = () => {
         index={isOpenFilterSheet ? 1 : 0}
         ref={bottomSheetRef}
         onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
-        backdropComponent={() => <FilterSheetBackdrop />}
+        backdropComponent={() => <FilterSheetBackdrop title={title} />}
         footerComponent={FilterSheetFooter}
         handleIndicatorStyle={{
           width: widthPercentage(80),
           backgroundColor: theme.colors.grayscale[5],
         }}>
         <FilterSheetNavigator />
-        <Swiper.default horizontal={true} ref={swiperRef} showsPagination={false}>
+        <Swiper.default
+          horizontal={true}
+          ref={swiperRef}
+          showsPagination={false}
+          loop={false}
+          onIndexChanged={idx => dispatch(changeFocus(idx))}>
           <BrandFilter />
           <HeadcountFilter />
           <PoseFilter />

@@ -30,6 +30,23 @@ export interface Recommendation {
   sort: any;
 }
 
+export interface ServerResponse<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  numberOfElements: number;
+  size: number;
+  number: number;
+  sort: any;
+}
+
+export interface ReviewImage {
+  id: number;
+  imageUrl: string;
+  imageOrder: number;
+  like: boolean;
+}
+
 export interface Tag {
   id: number;
   title: string;
@@ -38,6 +55,7 @@ export interface Tag {
   reviewCount: number;
   postCount: number;
   tagType: string;
+  tagIconImageUrl: string;
 }
 
 export interface PostImage {
@@ -52,8 +70,8 @@ export interface User {
   name: string;
   status: string;
   userRole: string;
-  userProvider: null;
-  providerId: null;
+  provider: 'NAVER' | 'KAKAO' | 'GOOGLE' | 'APPLE';
+  providerId: string;
 }
 
 export interface BoothSummary {
@@ -83,20 +101,35 @@ export interface SearchLocationDatas {
   y: string;
 }
 
+export interface PhotoBooth {
+  id: number;
+  jibunAddress: string;
+  latitude: number;
+  likeCount: number;
+  longitude: number;
+  reviewCount: number;
+  starCount: number | null;
+  name: string;
+  roadAddress: string;
+  status: string;
+}
+
+export interface PhotoBoothResponse {
+  photoBooth: PhotoBooth;
+  like: boolean;
+  distance?: number;
+  reviewImageList: string[];
+  tagSummary: {
+    BOOTH_CONDITION: {tag: Tag; reviewCount: number}[];
+    PHOTO_CONDITION: {tag: Tag; reviewCount: number}[];
+  };
+}
+
 export interface PhotoBoothContentData {
   distance: number;
   firstReview: null;
   like: boolean;
-  photoBooth: {
-    id: number;
-    jibunAddress: string;
-    latitude: number;
-    likeCount: number;
-    longitude: number;
-    name: string;
-    roadAddress: string;
-    status: string;
-  };
+  photoBooth: PhotoBooth;
   tagSet: null;
 }
 
@@ -114,12 +147,17 @@ export interface Review {
   id: number;
   title: string;
   content: string;
-  likeCount: 0;
-  status: string;
   starScore: number;
+  status: string;
   createdAt: string;
   updatedAt: string;
   reviewTagSet: Array<{tag: Tag}>;
-  reviewImageSet: Array<PostImage>;
+  reviewImageSet: Array<ReviewImage>;
   user: User;
+}
+
+export interface FormImage {
+  uri: string;
+  type: string;
+  name: string | undefined;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {GestureResponderEvent, PressableProps} from 'react-native';
 
-import {PressableDeleteIcon} from '../utils/Pressables/PressableIcons';
+import {PressableCancelIcon} from '../utils/Pressables/PressableIcons';
 import {Container, Count, Title} from './FilterChip.styles';
 
 interface Props {
@@ -19,10 +19,10 @@ const FilterChip = ({
   ...props
 }: Props & PressableProps) => {
   return (
-    <Container selected={selected} {...props}>
+    <Container selected={selected} isExistDelete={!!onPressDeleteIcon} {...props}>
       <Title selected={selected}>{title}</Title>
       {count === undefined || <Count selected={selected}>{count}</Count>}
-      {onPressDeleteIcon && <PressableDeleteIcon onPress={onPressDeleteIcon} />}
+      {onPressDeleteIcon && <PressableCancelIcon onPress={onPressDeleteIcon} />}
     </Container>
   );
 };

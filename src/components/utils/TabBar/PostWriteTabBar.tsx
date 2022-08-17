@@ -7,7 +7,9 @@ import PressableSubmit from '../Pressables/PressableSubmit';
 import ProgressBar from '../ProgressBar';
 import {Container, ProgressBarWrapper} from './PostWriteTabBar.styles';
 
+import useFilteredItem from 'src/hooks/useFilteredItem';
 import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
+import useMutatePost from 'src/querys/useMutatePost';
 import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
 import {hideTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
@@ -16,6 +18,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   const {screenIndex, isModifyMode} = useSelector((state: RootState) => state.postWriteReducer);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const inputPostData = useSelector((state: RootState) => state.postWriteReducer);
+  const {tagIdSet} = useFilteredItem();
+  const post = useMutatePost();
   const {getDisabled} = usePostWriteCondition();
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
 
@@ -27,6 +32,16 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
       navigation.navigate(screens[screenIndex + 1] as never);
     }
     dispatch(hideTabBar());
+    if (screenIndex === 3) {
+      post.mutate({
+        title: '',
+        content: inputPostData.contents,
+        tagIdList: tagIdSet,
+        isPublic: inputPostData.isPublic,
+        newTagList: inputPostData.customTags,
+        postImageList: [inputPostData.image],
+      });
+    }
     if (screenIndex === 4) {
       dispatch(clearPostWrite());
     }

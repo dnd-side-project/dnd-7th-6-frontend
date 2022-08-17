@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import {StyleSheet} from 'react-native';
 
 import {BodyText1} from '../Text';
 
@@ -17,10 +18,30 @@ export const TextWrapper = styled.View({
   justifyContent: 'space-between',
 });
 
+export const Degree = styled.View<{degree: number}>(({degree}) => ({
+  backgroundColor: 'rgba(244,242,255,1)',
+  width: `${degree}%`,
+  position: 'absolute',
+  borderRadius: 8,
+  top: 0,
+  bottom: 0,
+}));
+
+export const RowBox = styled.View({
+  flexDirection: 'row',
+});
+
 export const Keyword = styled(BodyText1)({
   color: theme.colors.grayscale[8],
 });
 
 export const Count = styled(BodyText1)({
-  color: theme.colors.grayscale[10],
+  color: theme.colors.primary[1].normal,
+});
+
+export const style = StyleSheet.create({
+  fastImage: {
+    marginRight: widthPercentage(8),
+    width: 24,
+  },
 });

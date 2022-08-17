@@ -5,7 +5,7 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 export const FeedCardContainer = styled.Pressable({
   width: widthPercentage(166),
-  height: heightPercentage(220),
+  height: heightPercentage(250),
   backgroundColor: '#F6F6F6',
   marginHorizontal: widthPercentage(5.5),
   borderRadius: 4,
