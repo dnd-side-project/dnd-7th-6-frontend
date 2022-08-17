@@ -1,6 +1,7 @@
 import {
   CHANGE_FILTER,
   CHANGE_FOCUS,
+  CHANGE_SORTING,
   CLEAR_FILTER,
   CLOSE_FILTER_SHEET,
   OPEN_FILTER_SHEET,
@@ -14,6 +15,11 @@ export const openFilterSheet = () => ({
 
 export const closeFilterSheet = () => ({
   type: CLOSE_FILTER_SHEET,
+});
+
+export const changeSorting = (sorting: number) => ({
+  type: CHANGE_SORTING,
+  payload: {sorting},
 });
 
 export const changeFocus = (focus: number) => ({

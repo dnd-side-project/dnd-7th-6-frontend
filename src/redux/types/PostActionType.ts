@@ -1,5 +1,6 @@
 export const OPEN_FILTER_SHEET = 'OPEN_FILTER_SHEET';
 export const CLOSE_FILTER_SHEET = 'CLOSE_FILTER_SHEET';
+export const CHANGE_SORTING = 'CHANGE_SORTING';
 export const CHANGE_FOCUS = 'CHANGE_FOCUS';
 export const CHANGE_SCREEN = 'CHANGE_SCREEN';
 export const CHANGE_FILTER = {

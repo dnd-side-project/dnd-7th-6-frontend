@@ -45,7 +45,7 @@ const CardListOrganism = () => {
           renderItem={({item}: any) => <RecommendFeedCard imgUrl={item.imgUrl} />}
           onScroll={handleScroll}
           onEndReached={() => fetchNextPage()}
-          ListHeaderComponent={<SortingListHeader>인기순</SortingListHeader>}
+          ListHeaderComponent={<SortingListHeader />}
         />
       </FlatListWrapper>
     </Container>

@@ -6,3 +6,7 @@ export const FILTER = {
   FRAME: 3,
   CUSTOM: 4,
 };
+export const SORT = {
+  POPULAR: 0,
+  LATEST: 1,
+};
