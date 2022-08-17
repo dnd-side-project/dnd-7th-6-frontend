@@ -2,6 +2,7 @@ import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import {useHeaderHeight} from '@react-navigation/elements';
 import React, {useMemo, useRef} from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
+import {type Coord} from 'react-native-nmap';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import {useSelector} from 'react-redux';
 
@@ -36,8 +37,8 @@ const MapBottomSheetOrganism = () => {
     [],
   );
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
-
-  const {data} = useGetPhotoBoothLocation({longitude: 0, latitude: 0});
+  const initCoord: Coord = {longitude: 0, latitude: 0};
+  const {data} = useGetPhotoBoothLocation({coord: initCoord});
   return (
     <BottomSheetConatiner>
       <BottomSheet

@@ -24,11 +24,12 @@ const MapNaverMapOrganism = () => {
   const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.mapCoord);
+  const [selectTagArr, setSelectTagArr] = useState<(number | undefined)[]>([]);
   const [screenCenterPos, setScreenCenterPos] = useState<Coord>({
     latitude: 0,
     longitude: 0,
   });
-  const {data, refetch} = useGetPhotoBoothLocation({...screenCenterPos});
+  const {data, refetch} = useGetPhotoBoothLocation({coord: screenCenterPos, selectTagArr});
   const dispatch = useDispatch();
   const refetchOnPress = () => {
     refetch();
@@ -81,6 +82,43 @@ const MapNaverMapOrganism = () => {
       longitude: searchedCoord.longitude,
     });
   }, [searchedCoord]);
+
+  //태그 데이터 모아서 보내기
+  const filteredTag = useSelector((state: RootState) => state.mapReducer.filteredTag);
+  const filteredBrand = useSelector((state: RootState) => state.mapReducer.filteredBrand);
+  useEffect(() => {
+    const nextTagData = Object.entries(filteredTag)
+      .map(item => {
+        if (item[1]) {
+          return parseInt(item[0], 10);
+        }
+        return;
+      })
+      .filter(item => {
+        if (item) {
+          return item;
+        }
+      });
+    const nextBrandData = Object.entries(filteredBrand)
+      .map(item => {
+        if (item[1]) {
+          return parseInt(item[0], 10);
+        }
+        return;
+      })
+      .filter(item => {
+        if (item) {
+          return item;
+        }
+      });
+    if (nextTagData || nextBrandData) {
+      setSelectTagArr([...nextTagData, ...nextBrandData]);
+    }
+  }, [filteredTag, filteredBrand]);
+
+  useEffect(() => {
+    refetch();
+  }, [selectTagArr]);
 
   const currentPositionOnPress = () => {
     const getDataOnMap = async () => {

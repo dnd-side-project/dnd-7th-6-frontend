@@ -5,6 +5,7 @@ import {
   CHANGE_BOTTOMSHEET_HEIGHT,
   CHANGE_FILTER,
   CHANGE_MAP_COORD,
+  COMPLETE_SEARCH_KEYWORD,
   FOCUS_BOOTH,
   INPUT_SEARCH_KEYWORD,
 } from '../types/MapActionType';
@@ -14,6 +15,7 @@ import toggleTag from 'src/utils/toggleTag';
 const initialState = {
   focusBooth: null,
   searchKeyword: '',
+  completeKeyword: '',
   mapCoord: {latitude: 0, longitude: 0},
   bottomSheetHeightIndex: 0,
   boothData: [],
@@ -29,6 +31,8 @@ const mapReducer: Reducer = (state = initialState, action) => {
       return {...state, focusBooth: payload.booth};
     case INPUT_SEARCH_KEYWORD:
       return {...state, searchKeyword: payload.keyword};
+    case COMPLETE_SEARCH_KEYWORD:
+      return {...state, completeKeyword: payload.keyword};
     case CHANGE_MAP_COORD:
       return {...state, mapCoord: payload.coord};
     case CHANGE_BOTTOMSHEET_HEIGHT:
