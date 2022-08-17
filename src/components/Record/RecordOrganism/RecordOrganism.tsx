@@ -25,7 +25,8 @@ const RecordOrganism = () => {
   return (
     <View>
       <RecordHeader />
-      <AddPostButton />
+      {isLoggedIn && <AddPostButton />}
+
       {isLoggedIn ? (
         <>
           <NickNameView />
