@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+import AddPostButton from '../AddPostButton';
 import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
 import {PostFlatList, ReviewFlatList, SlideViewContainer} from './RecordOrganism.styles';
@@ -24,6 +25,8 @@ const RecordOrganism = () => {
   return (
     <View>
       <RecordHeader />
+      {isLoggedIn && <AddPostButton />}
+
       {isLoggedIn ? (
         <>
           <NickNameView />

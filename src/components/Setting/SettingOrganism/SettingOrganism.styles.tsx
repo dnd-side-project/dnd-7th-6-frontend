@@ -10,7 +10,7 @@ export const Container = styled.View({
   marginTop: heightPercentage(8),
 });
 
-export const ListContainer = styled.View({
+export const ListContainer = styled.Pressable({
   width: '100%',
   height: heightPercentage(52),
   alignContent: 'center',

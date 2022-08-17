@@ -13,7 +13,6 @@ const login = async (loginBridge: () => Promise<LoginParam>) => {
     const {email, provider, providerId} = await loginBridge();
     const params = `email=${email}&providerId=${providerId}&provider=${provider}`;
     const result = await axios.get(`${getApiServer}/api/v1/user/login?${params}`);
-
     return result.data;
   } catch (error) {
     return Promise.reject(error);

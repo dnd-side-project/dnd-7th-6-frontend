@@ -453,6 +453,13 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		064CF23B28AAB1F400B7648E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DF63376066E2275FF26820B3A512A9B;
+			remoteInfo = "react-native-webview";
+		};
 		0658B66B28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -659,7 +666,7 @@
 		06305251287C4EC600DDFD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0602CD1D28A8F1B600684958 /* libAlamofire.a */,
+				0602CD1D28A8F1B600684958 /* Alamofire */,
 				0658B66C28A898D300BF5CC4 /* AppAuth */,
 				066C199828A27BDA006E14DB /* BVLinearGradient */,
 				0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */,
@@ -694,7 +701,7 @@
 				06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */,
 				06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */,
 				06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */,
-				063052A3287C4EC600DDFD03 /* libPods-hot6.a */,
+				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
 				063052A9287C4EC600DDFD03 /* RCTTypeSafety */,
@@ -714,6 +721,7 @@
 				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
+				064CF23C28AAB1F400B7648E /* react-native-webview */,
 				063052C5287C4EC600DDFD03 /* React-perflogger */,
 				063052C7287C4EC600DDFD03 /* React-RCTAnimation */,
 				063052C9287C4EC600DDFD03 /* React-RCTBlob */,
@@ -902,9 +910,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0602CD1D28A8F1B600684958 /* libAlamofire.a */ = {
+		0602CD1D28A8F1B600684958 /* Alamofire */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
+			name = Alamofire;
 			path = libAlamofire.a;
 			remoteRef = 0602CD1C28A8F1B600684958 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1141,9 +1150,10 @@
 			remoteRef = 063052A0287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		063052A3287C4EC600DDFD03 /* libPods-hot6.a */ = {
+		063052A3287C4EC600DDFD03 /* Pods-hot6 */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
+			name = "Pods-hot6";
 			path = "libPods-hot6.a";
 			remoteRef = 063052A2287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1386,6 +1396,14 @@
 			name = YogaKit;
 			path = libYogaKit.a;
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		064CF23C28AAB1F400B7648E /* react-native-webview */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-webview";
+			path = "libreact-native-webview.a";
+			remoteRef = 064CF23B28AAB1F400B7648E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0658B66C28A898D300BF5CC4 /* AppAuth */ = {
@@ -1892,7 +1910,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1964,7 +1982,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
