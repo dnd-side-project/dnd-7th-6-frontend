@@ -29,23 +29,17 @@ const PoseFilter = () => {
   return (
     <Container>
       <NestedFilterOrganism type="감정">
-        {(tags[0] || []).map(({id, title, postCount}) => (
+        {(tags[0] || []).map(({id, title}) => (
           <ChipWrapper key={id}>
-            <FilterChip
-              title={title}
-              count={postCount}
-              selected={emotion[id]}
-              onPress={handlePressEmotionChip(id)}
-            />
+            <FilterChip title={title} selected={emotion[id]} onPress={handlePressEmotionChip(id)} />
           </ChipWrapper>
         ))}
       </NestedFilterOrganism>
       <NestedFilterOrganism type="상황">
-        {(tags[1] || []).map(({id, title, postCount}) => (
+        {(tags[1] || []).map(({id, title}) => (
           <ChipWrapper key={id}>
             <FilterChip
               title={title}
-              count={postCount}
               selected={situation[id]}
               onPress={handlePressSituationChip(id)}
             />

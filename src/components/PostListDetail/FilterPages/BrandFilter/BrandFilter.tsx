@@ -24,14 +24,9 @@ const BrandFilter = () => {
 
   return (
     <Container>
-      {(tags[0] || []).map(({id, title, postCount}) => (
+      {(tags[0] || []).map(({id, title}) => (
         <ChipWrapper key={id}>
-          <FilterChip
-            title={title}
-            count={postCount}
-            selected={filteredItems[id]}
-            onPress={handlePressChip(id)}
-          />
+          <FilterChip title={title} selected={filteredItems[id]} onPress={handlePressChip(id)} />
         </ChipWrapper>
       ))}
     </Container>
