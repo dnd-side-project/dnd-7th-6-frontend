@@ -1,10 +1,12 @@
 import React, {useMemo} from 'react';
 import {useQueryClient} from 'react-query';
+import {useSelector} from 'react-redux';
 
 import RecommendFeedCard from '../FeedCard';
 import {PreviewFourCardView} from './RecommendPreviewFourCard.styles';
 
 import useMutatePostLike from 'src/querys/useMutatePostLike';
+import {RootState} from 'src/redux/store';
 import {Post} from 'src/types';
 
 interface Props {
@@ -17,12 +19,13 @@ type onPressFeedCardHandler = (id: number) => () => void;
 const RecommendPreviewFourCard = ({data, onPress}: Props) => {
   const queryClient = useQueryClient();
   const {mutate} = useMutatePostLike();
+  const {userInfo} = useSelector((state: RootState) => state.userReducer);
   const fourPosts = useMemo(() => data.slice(0, 6), [data]);
 
   return (
     <PreviewFourCardView>
       {fourPosts.flatMap(
-        ({id, postImageSet, like}) =>
+        ({id, postImageSet, like, user}) =>
           !!id && (
             <RecommendFeedCard
               key={id}
@@ -36,6 +39,7 @@ const RecommendPreviewFourCard = ({data, onPress}: Props) => {
                   },
                 });
               }}
+              isMine={user.id === userInfo.id}
               {...(onPress ? {onPress: onPress(id)} : {})}
             />
           ),

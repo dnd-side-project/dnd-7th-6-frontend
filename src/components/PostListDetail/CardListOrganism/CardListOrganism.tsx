@@ -19,6 +19,7 @@ const CardListOrganism = () => {
   const queryClient = useQueryClient();
   const {tagIdSet} = useFilteredItem();
   const {order} = useSelector((state: RootState) => state.postReducer);
+  const {userInfo} = useSelector((state: RootState) => state.userReducer);
   const {data, fetchNextPage} = useGetInfinitePosts({tagIdSet, order});
   const {mutate: likePost} = useMutatePostLike();
   const posts = data?.pages.flatMap(({content}) => content);
@@ -57,6 +58,7 @@ const CardListOrganism = () => {
               imgUrl={item.postImageSet[0].imageUrl}
               isLike={item.like}
               onLike={handleLikePost(item.id)}
+              isMine={item.user.id === userInfo.id}
             />
           )}
           onScroll={handleScroll}
