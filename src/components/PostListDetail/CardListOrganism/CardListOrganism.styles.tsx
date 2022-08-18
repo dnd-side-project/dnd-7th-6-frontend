@@ -20,18 +20,17 @@ export const PostDetailFlatList = styled.FlatList({
 });
 
 export const SortButtonWrapper = styled.Pressable({
-  paddingHorizontal: widthPercentage(10),
-  paddingVertical: heightPercentage(8),
+  paddingHorizontal: widthPercentage(8),
+  paddingVertical: heightPercentage(6),
 });
 
 export const ListHeader = styled.View({
-  paddingHorizontal: widthPercentage(16),
-  paddingVertical: heightPercentage(4),
+  paddingVertical: heightPercentage(2),
   marginBottom: heightPercentage(-12),
-  alignItems: 'flex-end',
+  flexDirection: 'row',
 });
 
-export const SortingButton = styled(BodyText3)({
-  textDecorationLine: 'underline',
-  color: theme.colors.grayscale[8],
-});
+export const SortingButton = styled(BodyText3)<{selected: boolean}>(({selected}) => ({
+  textDecorationLine: selected ? 'underline' : 'none',
+  color: selected ? theme.colors.grayscale[8] : theme.colors.grayscale[5],
+}));

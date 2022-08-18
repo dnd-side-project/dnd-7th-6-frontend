@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 
 import {FeedCardContainer, IconContainer, styles} from './RecommendFeedCard.styles';
 
+import {style} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import LikeButton from 'src/components/utils/Button/LikeButton/LikeButton';
 import {RootState} from 'src/redux/store';
 
@@ -12,9 +13,10 @@ interface Props extends PressableProps {
   imgUrl: string;
   onLike: () => void;
   isLike: boolean;
+  isMine?: boolean;
 }
 
-const RecommendFeedCard = ({imgUrl, onLike, isLike, ...props}: Props) => {
+const RecommendFeedCard = ({imgUrl, onLike, isLike, isMine, ...props}: Props) => {
   const data = useSelector((state: RootState) => state.userReducer);
   const handleLike = () => {
     if (!data.isLoggedIn) {
@@ -22,6 +24,14 @@ const RecommendFeedCard = ({imgUrl, onLike, isLike, ...props}: Props) => {
     }
     onLike();
   };
+
+  if (isMine) {
+    return (
+      <FeedCardContainer>
+        <FastImage style={style.recordFeedCard} resizeMode="cover" source={{uri: imgUrl}} />
+      </FeedCardContainer>
+    );
+  }
 
   return (
     <FeedCardContainer {...props}>

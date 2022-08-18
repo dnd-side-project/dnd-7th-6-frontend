@@ -1,25 +1,28 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useQueryClient} from 'react-query';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Container, FlatListWrapper, PostDetailFlatList} from './CardListOrganism.styles';
 import ListEmptyComponent from './ListEmptyComponent';
 import SortingListHeader from './SortingListHeader';
 
 import RecommendFeedCard from 'src/components/Recommend/FeedCard/RecommendFeedCard';
+import useFilteredItem from 'src/hooks/useFilteredItem';
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
+import useMutatePostLike from 'src/querys/useMutatePostLike';
 import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
+import {RootState} from 'src/redux/store';
 
 const CardListOrganism = () => {
   const dispatch = useDispatch();
-  const {data, fetchNextPage} = useGetInfinitePosts({
-    tagIdSet: [],
-  });
-  const posts = useMemo(() => {
-    return data?.pages.reduce((allOfPosts: any, page: any) => {
-      return [...allOfPosts, ...page.result.content];
-    }, []);
-  }, [data]);
+  const queryClient = useQueryClient();
+  const {tagIdSet} = useFilteredItem();
+  const {order} = useSelector((state: RootState) => state.postReducer);
+  const {userInfo} = useSelector((state: RootState) => state.userReducer);
+  const {data, fetchNextPage} = useGetInfinitePosts({tagIdSet, order});
+  const {mutate: likePost} = useMutatePostLike();
+  const posts = data?.pages.flatMap(({content}) => content);
 
   const handleScroll = ({nativeEvent}: NativeSyntheticEvent<NativeScrollEvent>) => {
     const curY = nativeEvent.velocity?.y;
@@ -27,6 +30,14 @@ const CardListOrganism = () => {
       return;
     }
     dispatch(curY > 0 ? hideTabBar() : showTabBar());
+  };
+  const handleLikePost = (id: number) => () => {
+    likePost(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['post']);
+        queryClient.invalidateQueries(['userLike']);
+      },
+    });
   };
 
   useEffect(() => {
@@ -41,11 +52,20 @@ const CardListOrganism = () => {
         <PostDetailFlatList
           ListEmptyComponent={ListEmptyComponent}
           numColumns={2}
-          data={posts?.map(post => ({imgUrl: post.postImageSet[0].imageUrl}))}
-          renderItem={({item}: any) => <RecommendFeedCard imgUrl={item.imgUrl} />}
+          data={posts || []}
+          renderItem={({item}: any) => (
+            <RecommendFeedCard
+              imgUrl={item.postImageSet[0].imageUrl}
+              isLike={item.like}
+              onLike={handleLikePost(item.id)}
+              isMine={item.user.id === userInfo.id}
+            />
+          )}
           onScroll={handleScroll}
-          onEndReached={() => fetchNextPage()}
-          ListHeaderComponent={<SortingListHeader>인기순</SortingListHeader>}
+          onEndReached={() => {
+            fetchNextPage();
+          }}
+          ListHeaderComponent={<SortingListHeader />}
         />
       </FlatListWrapper>
     </Container>

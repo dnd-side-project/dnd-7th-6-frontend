@@ -18,8 +18,10 @@ const useGetInfinitePosts = ({tagIdSet, order}: Parameter) => {
     ServerResponse<Post>,
     [string, string, string]
   >(
-    ['posts', tagIdSet.join(','), order],
-    ({pageParam = 0}) => getPostsByTag({page: pageParam, tagIdSet, order}),
+    ['post', tagIdSet.join(','), order],
+    ({pageParam = 0}) => {
+      return getPostsByTag({page: pageParam, tagIdSet, order});
+    },
     {
       getNextPageParam: lastPage => lastPage.number + 1,
     },
