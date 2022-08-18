@@ -47,14 +47,14 @@ const AppInner = () => {
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
       <Tab.Screen
-        name={'BoothScreen'}
-        component={RouteBoothScreen}
-        options={{tabBarLabel: '위치'}}
-      />
-      <Tab.Screen
         name={'RouteRecommendScreen'}
         component={RouteRecommendScreen}
         options={{tabBarLabel: '추천'}}
+      />
+      <Tab.Screen
+        name={'BoothScreen'}
+        component={RouteBoothScreen}
+        options={{tabBarLabel: '위치'}}
       />
       <Tab.Screen name={'StorageScreen'} component={StorageScreen} options={{tabBarLabel: '찜'}} />
       <Tab.Screen
