@@ -1,5 +1,5 @@
 import {AxiosError} from 'axios';
-import {useInfiniteQuery} from 'react-query';
+import {QueryKey, useInfiniteQuery, UseInfiniteQueryOptions} from 'react-query';
 
 import getPostsByTag from 'src/apis/getPostsByTag';
 import {Post, ServerResponse} from 'src/types';
@@ -11,19 +11,26 @@ interface Parameter {
   order: string;
 }
 
-const useGetInfinitePosts = ({tagIdSet, order}: Parameter) => {
-  return useInfiniteQuery<
-    ServerResponse<Post>,
-    AxiosError,
-    ServerResponse<Post>,
-    [string, string, string]
-  >(
+const useGetInfinitePosts = (
+  {tagIdSet, order}: Parameter,
+  options?: Omit<
+    UseInfiniteQueryOptions<
+      ServerResponse<Post>,
+      AxiosError<unknown, any>,
+      ServerResponse<Post>,
+      ServerResponse<Post>
+    >,
+    'queryKey' | 'queryFn'
+  >,
+) => {
+  return useInfiniteQuery<ServerResponse<Post>, AxiosError, ServerResponse<Post>, QueryKey>(
     ['post', tagIdSet.join(','), order],
     ({pageParam = 0}) => {
       return getPostsByTag({page: pageParam, tagIdSet, order});
     },
     {
       getNextPageParam: lastPage => lastPage.number + 1,
+      ...options,
     },
   );
 };
