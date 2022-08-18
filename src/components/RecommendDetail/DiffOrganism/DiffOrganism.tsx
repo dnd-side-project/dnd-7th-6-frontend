@@ -27,6 +27,18 @@ const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
   const handlePressCard = (postId: number) => () => {
     navigation.push('RecommendDetail' as never, {postId} as never);
   };
+  const navigateDiffUserPost = () => {
+    if (!thisPost) {
+      return;
+    }
+    navigation.push(
+      'DiffUserPost' as never,
+      {
+        userId: thisPost.user.id,
+        username: thisPost.user.name,
+      } as never,
+    );
+  };
 
   return (
     <Container>
@@ -39,7 +51,7 @@ const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
           )}
         </SubHeadline2>
         <IconWrapper>
-          <PressableRightArrowIcon />
+          <PressableRightArrowIcon onPress={navigateDiffUserPost} />
         </IconWrapper>
       </TitleContainer>
       {!!diffUserPost && (
