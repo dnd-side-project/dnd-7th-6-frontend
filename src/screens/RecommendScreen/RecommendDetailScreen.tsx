@@ -19,7 +19,7 @@ const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
       <ScrollView style={{height: Dimensions.get('window').height - heightPercentage(125)}}>
         <RecommendDetailMainFrame id={route.params.postId} />
         <RecommendDetailContentsOrganism id={route.params.postId} />
-        <RecommendDetailDiffOrganism id={route.params.postId} />
+        <RecommendDetailDiffOrganism id={route.params.postId} navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,3 +1,4 @@
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 
 import {Container, IconWrapper, Title, TitleContainer} from './DiffOrganism.styles';
@@ -6,22 +7,34 @@ import RecommendPreviewFourCard from 'src/components/Recommend/PreviewSixCard';
 import {PressableRightArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
 import {SubHeadline2} from 'src/components/utils/Text';
 import useGetPost from 'src/querys/useGetPost';
-import {TestData} from 'src/TestData';
+import useGetPosts from 'src/querys/useGetPosts';
+import {RecommendParamList} from 'src/screens/RecommendScreen';
 
 interface Props {
   id: number;
+  navigation: NativeStackNavigationProp<RecommendParamList, 'RecommendDetail', undefined>;
 }
 
-const RecommendDetailDiffOrganism = ({id}: Props) => {
-  const {data} = useGetPost(id);
+const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
+  const {data: thisPost} = useGetPost(id);
+  const {data: diffUserPost} = useGetPosts(
+    {userId: thisPost?.user.id},
+    {
+      enabled: !!thisPost,
+    },
+  );
+
+  const handlePressCard = (postId: number) => () => {
+    navigation.push('RecommendDetail' as never, {postId} as never);
+  };
 
   return (
     <Container>
       <TitleContainer>
         <SubHeadline2>
-          {!!data && (
+          {!!thisPost && (
             <>
-              <Title>@{data.user.name}님의 다른 사진 </Title>
+              <Title>@{thisPost.user.name}님의 다른 사진 </Title>
             </>
           )}
         </SubHeadline2>
@@ -29,7 +42,12 @@ const RecommendDetailDiffOrganism = ({id}: Props) => {
           <PressableRightArrowIcon />
         </IconWrapper>
       </TitleContainer>
-      <RecommendPreviewFourCard data={TestData} />
+      {!!diffUserPost && (
+        <RecommendPreviewFourCard
+          data={diffUserPost.pages.flatMap(({content}) => content)}
+          onPress={handlePressCard}
+        />
+      )}
     </Container>
   );
 };
