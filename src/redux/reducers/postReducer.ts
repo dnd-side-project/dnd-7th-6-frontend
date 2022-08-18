@@ -28,7 +28,7 @@ const filterState = {
 const initialState = {
   isOpenFilterSheet: false,
   focusedFilter: 0,
-  sort: POST_LIST_ORDER.POPULAR,
+  order: POST_LIST_ORDER.POPULAR,
   ...filterState,
 };
 
@@ -37,7 +37,7 @@ const postReducer: Reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case CHANGE_ORDER:
-      return {...state, sort: payload.sorting};
+      return {...state, order: payload.sorting};
     case OPEN_FILTER_SHEET:
       return {...state, isOpenFilterSheet: true};
     case CLOSE_FILTER_SHEET:

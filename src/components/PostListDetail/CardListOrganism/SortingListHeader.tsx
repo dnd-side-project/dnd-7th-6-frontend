@@ -9,10 +9,10 @@ import {RootState} from 'src/redux/store';
 
 const SortingListHeader = () => {
   const dispatch = useDispatch();
-  const {sort} = useSelector((state: RootState) => state.postReducer);
+  const {order} = useSelector((state: RootState) => state.postReducer);
   const labels = {[POST_LIST_ORDER.POPULAR]: '인기순', [POST_LIST_ORDER.LATEST]: '최신순'};
 
-  const handleSelectSorting = (target: string) => () => {
+  const handleSelectOrder = (target: string) => () => {
     dispatch(changeOrder(target));
   };
 
@@ -20,15 +20,15 @@ const SortingListHeader = () => {
     <ListHeader>
       <SortButtonWrapper>
         <SortingButton
-          onPress={handleSelectSorting(POST_LIST_ORDER.POPULAR)}
-          selected={sort === POST_LIST_ORDER.POPULAR}>
+          onPress={handleSelectOrder(POST_LIST_ORDER.POPULAR)}
+          selected={order === POST_LIST_ORDER.POPULAR}>
           {labels[POST_LIST_ORDER.POPULAR]}
         </SortingButton>
       </SortButtonWrapper>
       <SortButtonWrapper>
         <SortingButton
-          onPress={handleSelectSorting(POST_LIST_ORDER.LATEST)}
-          selected={sort === POST_LIST_ORDER.LATEST}>
+          onPress={handleSelectOrder(POST_LIST_ORDER.LATEST)}
+          selected={order === POST_LIST_ORDER.LATEST}>
           {labels[POST_LIST_ORDER.LATEST]}
         </SortingButton>
       </SortButtonWrapper>
