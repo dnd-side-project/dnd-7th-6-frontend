@@ -3,10 +3,16 @@ import {useQuery} from 'react-query';
 
 import getPhotoBoothLocation from 'src/apis/getPhotoBoothLocation';
 
-const useGetPhotoBoothLocation = (coord: Coord) => {
+const useGetPhotoBoothLocation = ({
+  coord,
+  selectTagArr = [],
+}: {
+  coord: Coord;
+  selectTagArr?: (number | undefined)[];
+}) => {
   return useQuery(
     ['photo-booth'],
-    async () => await getPhotoBoothLocation({...coord, distance: 3}),
+    () => getPhotoBoothLocation({...coord, distance: 3, tagIdSet: selectTagArr}),
     {
       onError: error => console.log(error),
       enabled: false,

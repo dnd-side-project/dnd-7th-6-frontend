@@ -14,6 +14,6 @@ const BoothHeaderStyle = ({navigation}: BoothScreenProps) => {
 };
 
 const HeaderMapSearchBar = () => {
-  return <MapSearchBar>서울 마포구 홍익로 6길 21(서교동)</MapSearchBar>;
+  return <MapSearchBar />;
 };
 export default BoothHeaderStyle;

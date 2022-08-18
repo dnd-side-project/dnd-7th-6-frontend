@@ -11,6 +11,7 @@ import {
 
 import MapFilterBrandChip from 'src/components/Chip/MapFilterBrandChip';
 import MapFilterChip from 'src/components/Chip/MapFilterChip';
+import DismissDropDownView from 'src/components/utils/DismissDropDownView';
 import useGetPhotoBoothFilter from 'src/querys/useGetPhotoBoothFilter';
 import {changeFilteredBrandonMap, changeFilteredTagonMap} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
@@ -30,48 +31,50 @@ const MapFilterOrganism = () => {
     dispatch(changeFilteredBrandonMap(id));
   };
   return (
-    <FilterScollView
-      horizontal={true}
-      scrollEnabled
-      showsHorizontalScrollIndicator={false}
-      nestedScrollEnabled>
-      <BrandContainer>
-        <MapFilterBrandChip onTouchStart={brandChipOnPress} selected={brandDropdown} key={null}>
-          브랜드
-        </MapFilterBrandChip>
-        {brandDropdown && (
-          <DropdownContainer>
-            {
-              //@ts-ignore
-              data?.data.brandTagList.slice(0, 5).map(tag => {
-                return (
-                  <DropdownObject
-                    key={tag.id}
-                    selected={filteredBrand[tag.id]}
-                    onPress={handlePressDropdown(tag.id)}>
-                    <DropdownText selected={filteredBrand[tag.id]}>{tag.keyword}</DropdownText>
-                  </DropdownObject>
-                );
-              })
-            }
-          </DropdownContainer>
-        )}
-      </BrandContainer>
+    <DismissDropDownView setBrandDropdown={setBrandDropdown}>
+      <FilterScollView
+        horizontal={true}
+        scrollEnabled
+        showsHorizontalScrollIndicator={false}
+        nestedScrollEnabled>
+        <BrandContainer>
+          <MapFilterBrandChip onTouchStart={brandChipOnPress} selected={brandDropdown} key={null}>
+            브랜드
+          </MapFilterBrandChip>
+          {brandDropdown && (
+            <DropdownContainer>
+              {
+                //@ts-ignore
+                data?.data.brandTagList.slice(0, 5).map(tag => {
+                  return (
+                    <DropdownObject
+                      key={tag.id}
+                      selected={filteredBrand[tag.id]}
+                      onPress={handlePressDropdown(tag.id)}>
+                      <DropdownText selected={filteredBrand[tag.id]}>{tag.keyword}</DropdownText>
+                    </DropdownObject>
+                  );
+                })
+              }
+            </DropdownContainer>
+          )}
+        </BrandContainer>
 
-      {
-        //@ts-ignore
-        data?.data.tagList.map(tag => {
-          return (
-            <MapFilterChip
-              key={tag.id}
-              selected={filteredTag[tag.id]}
-              onPress={handlePressChip(tag.id)}>
-              #{tag.keyword}
-            </MapFilterChip>
-          );
-        })
-      }
-    </FilterScollView>
+        {
+          //@ts-ignore
+          data?.data.tagList.map(tag => {
+            return (
+              <MapFilterChip
+                key={tag.id}
+                selected={filteredTag[tag.id]}
+                onPress={handlePressChip(tag.id)}>
+                {tag.keyword}
+              </MapFilterChip>
+            );
+          })
+        }
+      </FilterScollView>
+    </DismissDropDownView>
   );
 };
 
