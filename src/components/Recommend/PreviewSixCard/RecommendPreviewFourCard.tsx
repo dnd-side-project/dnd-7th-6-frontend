@@ -32,6 +32,7 @@ const RecommendPreviewFourCard = ({data, onPress}: Props) => {
                 mutate(id, {
                   onSuccess: () => {
                     queryClient.invalidateQueries(['post']);
+                    queryClient.invalidateQueries(['userLike']);
                   },
                 });
               }}
