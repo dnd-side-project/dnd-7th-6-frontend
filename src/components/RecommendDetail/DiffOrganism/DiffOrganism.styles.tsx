@@ -13,17 +13,12 @@ export const TitleContainer = styled.View({
   width: widthPercentage(343),
   height: heightPercentage(56),
   marginHorizontal: widthPercentage(16),
-  backgroundColor: theme.colors.grayscale[2],
   alignItems: 'center',
   justifyContent: 'space-between',
 });
 
 export const Title = styled.Text({
   color: theme.colors.grayscale[10],
-});
-
-export const NumOfDiff = styled.Text({
-  color: theme.colors.grayscale[7],
 });
 
 export const IconWrapper = styled.View({

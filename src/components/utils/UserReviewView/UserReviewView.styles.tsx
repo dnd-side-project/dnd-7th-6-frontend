@@ -1,11 +1,14 @@
 import styled from '@emotion/native';
 
+import {BodyText6} from '../Text';
+import {SubHeadline4} from '../Text/SubHeadline';
+
 import {fontPercentage, heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
-  paddingVertical: heightPercentage(31),
-  paddingHorizontal: widthPercentage(18),
+  paddingVertical: heightPercentage(14),
+  paddingHorizontal: widthPercentage(16),
   backgroundColor: 'white',
 });
 
@@ -16,35 +19,20 @@ export const Header = styled.View({
 });
 
 export const Contents = styled.Text({
-  paddingVertical: heightPercentage(16),
+  paddingBottom: heightPercentage(40),
   lineHeight: heightPercentage(19.6),
   fontSize: fontPercentage(14),
   color: theme.colors.grayscale[8],
 });
 
-export const Username = styled.Text({
-  fontSize: fontPercentage(14),
-  lineHeight: heightPercentage(19.6),
+export const Username = styled(SubHeadline4)({
   color: theme.colors.grayscale[7],
+  paddingVertical: heightPercentage(8),
   textAlignVertical: 'center',
+  fontWeight: '600',
 });
 
-export const DateText = styled.Text({
-  fontSize: fontPercentage(12),
-  lineHeight: heightPercentage(16.8),
+export const DateText = styled(BodyText6)({
   color: theme.colors.grayscale[5],
-  marginHorizontal: widthPercentage(6),
   textAlignVertical: 'center',
-});
-
-export const IconWrapper = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-});
-
-export const IconContainer = styled.View({
-  width: widthPercentage(32),
-  height: heightPercentage(32),
-  justifyContent: 'center',
-  alignItems: 'center',
 });

@@ -15,12 +15,7 @@ const ContentsOrganism = ({id}: Props) => {
 
   return (
     <Container>
-      <UserReviewView
-        writer={data?.user.email || ''}
-        date={new Date(data?.createdAt || '')}
-        contents={data?.content || ''}
-        hasIcon={true}
-      />
+      {data && <UserReviewView post={data} />}
       <ChipWrapper>
         {data?.postTagSet.map(({tag}) => (
           <ChipContainer key={tag.id}>

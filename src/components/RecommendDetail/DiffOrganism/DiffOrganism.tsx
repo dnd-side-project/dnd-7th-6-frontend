@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Container, IconWrapper, NumOfDiff, Title, TitleContainer} from './DiffOrganism.styles';
+import {Container, IconWrapper, Title, TitleContainer} from './DiffOrganism.styles';
 
 import RecommendPreviewFourCard from 'src/components/Recommend/PreviewSixCard';
 import {PressableRightArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
@@ -21,8 +21,7 @@ const RecommendDetailDiffOrganism = ({id}: Props) => {
         <SubHeadline2>
           {!!data && (
             <>
-              <Title>{data?.user.email}님의 다른 사진 </Title>
-              <NumOfDiff> 33</NumOfDiff>
+              <Title>@{data.user.name}님의 다른 사진 </Title>
             </>
           )}
         </SubHeadline2>

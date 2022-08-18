@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {Dimensions, SafeAreaView, ScrollView} from 'react-native';
 
 import {RecommendParamList} from '.';
 
@@ -16,7 +16,7 @@ const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
   return (
     <SafeAreaView>
       <LeftBackHeader onPressBack={() => navigation.goBack()} />
-      <ScrollView style={{paddingTop: heightPercentage(8)}}>
+      <ScrollView style={{height: Dimensions.get('window').height - heightPercentage(125)}}>
         <RecommendDetailMainFrame id={route.params.postId} />
         <RecommendDetailContentsOrganism id={route.params.postId} />
         <RecommendDetailDiffOrganism id={route.params.postId} />
