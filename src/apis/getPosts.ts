@@ -1,27 +1,24 @@
-import axios from 'axios';
-
+import AxiosInstance from 'src/components/utils/Interceptor';
 import getApiServer from 'src/utils/getApiServer';
 
 interface Parameter {
   page?: number;
   pageSize?: number;
-  tagIdSet: number[];
+  userId?: string;
+  order: string;
 }
 
-/*
-  page 파라미터 없을 시 전체 데이터 가져옴
-*/
-const getPosts = async ({page = 0, pageSize = 10, tagIdSet}: Parameter) => {
-  const url = `${getApiServer}/api/v1/post/recommendation?`;
-  const params = `page=${page}&pageSize=${pageSize}&tagIdSet=${tagIdSet.join(',')}`;
-  const response = await axios.get(url + params);
-  const result = response.data;
+const getPosts = async ({page = 0, pageSize = 10, order, userId}: Parameter) => {
+  try {
+    const url = `${getApiServer}/api/v1/post?`;
+    const params =
+      `page=${page}&pageSize=${pageSize}&order=${order}` + (userId ? `&userId=${userId}` : '');
+    const response = await AxiosInstance.get(url + params);
 
-  return {
-    result,
-    nextPage: page + 1,
-    isLast: false,
-  };
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export default getPosts;

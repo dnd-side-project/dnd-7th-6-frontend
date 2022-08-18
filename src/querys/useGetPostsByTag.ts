@@ -7,7 +7,7 @@ import {Post, ServerResponse} from 'src/types';
 const useGetPostsByTag = (tagIdSet: number[]) => {
   return useQuery<ServerResponse<Post>, AxiosError, ServerResponse<Post>, [string, number[]]>(
     ['post', tagIdSet],
-    ({queryKey}) => getPostsByTag(queryKey[1]),
+    ({queryKey}) => getPostsByTag({tagIdSet: queryKey[1], order: 'popular'}),
   );
 };
 

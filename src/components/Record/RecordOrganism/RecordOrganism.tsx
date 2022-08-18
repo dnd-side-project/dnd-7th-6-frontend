@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 import {useSelector} from 'react-redux';
 
 import AddPostButton from '../AddPostButton';
 import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
-import {PostFlatList, ReviewFlatList, SlideViewContainer} from './RecordOrganism.styles';
+import {
+  CardWrapper,
+  PostFlatList,
+  ReviewFlatList,
+  SlideViewContainer,
+  style,
+} from './RecordOrganism.styles';
 
-import RecommendFeedCard from 'src/components/Recommend/FeedCard/RecommendFeedCard';
 import LineSlideView from 'src/components/utils/LineSlideView';
 import NotLoginContainer from 'src/components/utils/NotLoginContainer';
 import ReviewSummary from 'src/components/utils/ReviewSummary';
@@ -19,8 +25,8 @@ const RecordOrganism = () => {
   const [focus, setFocus] = useState(0);
   const {data} = useGetUserList();
   const slideViewItems = [
-    {name: '사진', count: data?.postList.length},
-    {name: '부스 리뷰', count: data?.reviewList.length},
+    {name: '사진', count: !data ? 0 : data.postList.length},
+    {name: '부스 리뷰', count: !data ? 0 : data.reviewList.length},
   ];
   return (
     <View>
@@ -36,7 +42,12 @@ const RecordOrganism = () => {
                 numColumns={2}
                 data={data?.postList}
                 renderItem={({item}: any) => (
-                  <RecommendFeedCard imgUrl={item.postImageSet[0].imageUrl} key={item.id} />
+                  <CardWrapper>
+                    <FastImage
+                      source={{uri: item.postImageSet[0].imageUrl}}
+                      style={style.recordFeedCard}
+                    />
+                  </CardWrapper>
                 )}
               />
               <ReviewFlatList
