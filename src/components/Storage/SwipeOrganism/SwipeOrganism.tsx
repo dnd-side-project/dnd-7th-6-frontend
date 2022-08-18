@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+import BoothOrganism from '../BoothOrganism';
 import PhotoOrganism from '../PhotoOrganism';
 
 import LineSlideView from 'src/components/utils/LineSlideView';
@@ -20,10 +20,10 @@ const SwipeOrganism = () => {
   return isLoggedIn ? (
     <LineSlideView items={items} index={index} setIndex={setIndex}>
       {!!data && <PhotoOrganism photoList={data.imageList} />}
-      <View />
+      {!!data && <BoothOrganism photoBoothList={data.photoBoothList} />}
     </LineSlideView>
   ) : (
-    <LineSlideView items={items} index={index} setIndex={setIndex}>
+    <LineSlideView items={items} index={index} setIndex={setIndex} disable>
       <NotLoginContainer>좋아하거나 가보고 싶은 부스를 찜해보세요.</NotLoginContainer>
     </LineSlideView>
   );

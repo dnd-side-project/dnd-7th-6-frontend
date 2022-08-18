@@ -1,4 +1,5 @@
 import React from 'react';
+import {useQueryClient} from 'react-query';
 
 import {
   BoothName,
@@ -10,10 +11,11 @@ import {
   TitleSection,
 } from './DescriptionOrganism.styles';
 
-import {PressableGeneralHeartIcon} from 'src/components/utils/Pressables/PressableIcons';
+import OnlyLikeButton from 'src/components/utils/Button/OnlyLikeButton';
 import NavigationIcon from 'src/icons/NavigationIcon';
 import PinIcon from 'src/icons/PinIcon';
 import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
+import useMutatePhotoBoothLike from 'src/querys/useMutatePhotoBoothLike';
 
 interface Props {
   id: number;
@@ -22,16 +24,24 @@ interface Props {
 
 const DescriptionOrganism = ({id, distance}: Props) => {
   const {data} = useGetPhotoBooth(id);
-
+  const {mutate: likePhotoBooth} = useMutatePhotoBoothLike();
+  const queryClient = useQueryClient();
   if (!data) {
     return <></>;
   }
-
+  const handleLike = () => {
+    likePhotoBooth(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['photo-booth']);
+        queryClient.invalidateQueries(['userLike']);
+      },
+    });
+  };
   return (
     <Container>
       <TitleSection>
         <BoothName>{data.photoBooth.name}</BoothName>
-        <PressableGeneralHeartIcon />
+        <OnlyLikeButton onPress={handleLike} isActive={data.like} />
       </TitleSection>
       <List>
         <ListRow>
