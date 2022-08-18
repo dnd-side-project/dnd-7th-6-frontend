@@ -17,6 +17,17 @@ export const Container = styled.Pressable({
 
 export const DescriptionContainer = styled.View({});
 
+export const TitlenIconWrapper = styled.View({
+  flexDirection: 'row',
+});
+
+export const IconConatiner = styled.Image({
+  height: heightPercentage(26),
+  width: heightPercentage(26),
+  resizeMode: 'contain',
+  marginRight: widthPercentage(6),
+});
+
 export const TagContainer = styled.View({
   flexDirection: 'row',
   paddingVertical: heightPercentage(4),

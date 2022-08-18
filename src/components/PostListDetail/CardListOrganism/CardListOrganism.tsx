@@ -46,7 +46,10 @@ const CardListOrganism = () => {
           data={posts?.map(post => ({imgUrl: post.postImageSet[0].imageUrl}))}
           renderItem={({item}: any) => <RecommendFeedCard imgUrl={item.imgUrl} />}
           onScroll={handleScroll}
-          onEndReached={() => fetchNextPage()}
+          onEndReached={() => {
+            fetchNextPage();
+            console.log('end');
+          }}
           ListHeaderComponent={<SortingListHeader />}
         />
       </FlatListWrapper>

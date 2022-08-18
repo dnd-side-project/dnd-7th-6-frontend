@@ -29,7 +29,6 @@ const googleLoginBridge = async (): Promise<LoginParam> => {
     } else {
       Alert.alert('로그인 도중 오류가 발생했습니다.');
     }
-    console.log(statusCodes);
     return Promise.reject(error);
   }
 };

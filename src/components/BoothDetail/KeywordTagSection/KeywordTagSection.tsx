@@ -28,21 +28,22 @@ const KeywordTagSection = (props: Props) => {
         </Text>
       </TextContainer>
       <KeywordContainer>
-        {props.keywords.slice(0, 4).map(({tag, reviewCount}) => (
-          <KeywordWrapper key={tag.id}>
-            <KeywordBox
-              key={tag.id}
-              keyword={tag.title}
-              count={reviewCount}
-              degree={
-                (reviewCount /
-                  props.keywords.reduce((sum, keyword) => sum + keyword.reviewCount, 0)) *
-                150
-              }
-              iconUri={tag.tagIconImageUrl}
-            />
-          </KeywordWrapper>
-        ))}
+        {!!props.keywords &&
+          props.keywords.slice(0, 4).map(({tag, reviewCount}) => (
+            <KeywordWrapper key={tag.id}>
+              <KeywordBox
+                key={tag.id}
+                keyword={tag.title}
+                count={reviewCount}
+                degree={
+                  (reviewCount /
+                    props.keywords.reduce((sum, keyword) => sum + keyword.reviewCount, 0)) *
+                  150
+                }
+                iconUri={tag.tagIconImageUrl}
+              />
+            </KeywordWrapper>
+          ))}
       </KeywordContainer>
     </Container>
   );

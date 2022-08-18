@@ -13,16 +13,18 @@ import {
   TitleWrapper,
 } from './PoseOrganism.styles';
 
-import {TestData} from 'src/TestData';
+import useGetPosts from 'src/querys/useGetPosts';
 
 const PoseRecommendOrganism = () => {
+  const {data} = useGetPosts({order: 'popular'});
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };
 
-  //TO-DO data fetching
+  // console.log(data?.pages.flatMap(response => response.content).map(v => v.id));
+
   return (
     <OrganismView>
       <TitleWrapper>
@@ -32,7 +34,12 @@ const PoseRecommendOrganism = () => {
         </TextnIconWrapper>
         <SubTitleText>인기있는 포톡커의 사진을 확인해보세요</SubTitleText>
       </TitleWrapper>
-      <PreviewFourCard data={TestData} onPress={handlePressCard} />
+      {!!data && (
+        <PreviewFourCard
+          data={data.pages.flatMap(response => response.content) as any}
+          onPress={handlePressCard}
+        />
+      )}
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>인기 사진 더보기</ButtonText>
       </ButtonPressable>

@@ -55,7 +55,7 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
         return Promise.reject(error);
       },
     );
-  }, []);
+  }, [accessToken]);
 
   return <>{children}</>;
 };

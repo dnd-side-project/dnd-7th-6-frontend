@@ -19,8 +19,12 @@ const RecommendDetailDiffOrganism = ({id}: Props) => {
     <Container>
       <TitleContainer>
         <SubHeadline2>
-          <Title>{data?.user.email}님의 다른 사진 </Title>
-          <NumOfDiff> 33</NumOfDiff>
+          {!!data && (
+            <>
+              <Title>{data?.user.email}님의 다른 사진 </Title>
+              <NumOfDiff> 33</NumOfDiff>
+            </>
+          )}
         </SubHeadline2>
         <IconWrapper>
           <PressableRightArrowIcon />

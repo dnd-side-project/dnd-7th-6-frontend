@@ -5,6 +5,7 @@ import {
   CHANGE_BOTTOMSHEET_HEIGHT,
   CHANGE_FILTER,
   CHANGE_MAP_COORD,
+  COMPLETE_SEARCH_KEYWORD,
   FOCUS_BOOTH,
   INPUT_SEARCH_KEYWORD,
 } from '../types/MapActionType';
@@ -16,6 +17,11 @@ export const focusBooth = (booth: any) => ({
 
 export const inputSearchKeyword = (keyword: string) => ({
   type: INPUT_SEARCH_KEYWORD,
+  payload: {keyword},
+});
+
+export const setCompleteSearchKeyword = (keyword: string) => ({
+  type: COMPLETE_SEARCH_KEYWORD,
   payload: {keyword},
 });
 

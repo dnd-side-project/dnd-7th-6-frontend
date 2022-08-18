@@ -7,7 +7,10 @@ import {styles} from './NaverMap.styles';
 
 import {focusBooth} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
+import {fontPercentage, heightPercentage} from 'src/styles/ScreenResponse';
 import {PhotoBoothContentData} from 'src/types';
+import {getIconMarker} from 'src/utils/getIconMarker';
+import {getMarkerColor} from 'src/utils/getMarkerColor';
 
 const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressable}: any) => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
@@ -30,15 +33,23 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressabl
       scaleBar={false}
       showsMyLocationButton={false}
       mapType={1}>
-      {focusedBooth !== null && (
+      {focusedBooth && data?.content.length > 0 && (
         <Marker
           coordinate={{
             latitude: focusedBooth?.photoBooth.latitude,
             longitude: focusedBooth?.photoBooth.longitude,
           }}
           key={focusedBooth.photoBooth.id}
-          caption={{text: focusedBooth.photoBooth.name, textSize: 10}}
-          image={require('src/assets/images/focusedMarker.png')}
+          zIndex={10}
+          width={heightPercentage(70)}
+          height={heightPercentage(70)}
+          caption={{
+            align: 3,
+            text: focusedBooth.photoBooth.name,
+            textSize: fontPercentage(12),
+            color: getMarkerColor(focusedBooth.photoBooth.name),
+          }}
+          image={getIconMarker(focusedBooth.photoBooth.name)}
         />
       )}
 
@@ -60,10 +71,11 @@ const MarkersOnMap = ({data}: {data: PhotoBoothContentData}) => {
   };
   return (
     <Marker
+      width={heightPercentage(52)}
+      height={heightPercentage(52)}
       coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
       onClick={markerOnClick}
-      caption={{text: data.photoBooth.name, textSize: 10}}
-      image={require('src/assets/images/marker.png')}
+      image={getIconMarker(data.photoBooth.name)}
     />
   );
 };

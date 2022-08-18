@@ -9,7 +9,11 @@ import {
   SearchPlaceName,
 } from './MapLocationSearchList.styles';
 
-import {changeMapCoord, inputSearchKeyword} from 'src/redux/actions/MapAction';
+import {
+  changeMapCoord,
+  inputSearchKeyword,
+  setCompleteSearchKeyword,
+} from 'src/redux/actions/MapAction';
 import {SearchLocationDatas} from 'src/types';
 
 interface Props {
@@ -23,6 +27,7 @@ const MapLocationSearchList = ({item}: Props) => {
     <SearchListWrapper
       onPress={() => {
         dispatch(inputSearchKeyword(''));
+        dispatch(setCompleteSearchKeyword(item?.place_name));
         dispatch(changeMapCoord({latitude: parseFloat(item.y), longitude: parseFloat(item.x)}));
         navigation.goBack();
       }}>
