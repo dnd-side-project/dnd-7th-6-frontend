@@ -1,10 +1,11 @@
 import React from 'react';
-import {FlatList, LayoutChangeEvent} from 'react-native';
+import {LayoutChangeEvent} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import {
   Container,
   Count,
+  GridView,
   Headline,
   style,
   TextContainer,
@@ -32,18 +33,16 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
         <Headline>이 매장에서 찍은 사진 </Headline>
         <Count> {toLocaleString(data.totalElements)}</Count>
       </TextContainer>
-      <FlatList
-        data={data.content.slice(0, 6)}
-        numColumns={3}
-        renderItem={uri => (
+      <GridView>
+        {data.content.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
           <FastImage
-            key={uri.item.id}
-            source={{uri: uri.item.imageUrl}}
-            style={{...style.fastImage, ...{opacity: uri.index === 5 ? 0.5 : 1}}}>
-            {uri.index !== 5 || <TotalPhoto>{data.totalElements}</TotalPhoto>}
+            key={reviewId}
+            source={{uri: imageUrl}}
+            style={{...style.fastImage, ...{opacity: i === 5 ? 0.5 : 1}}}>
+            {i !== 5 || <TotalPhoto>{data.totalElements}</TotalPhoto>}
           </FastImage>
-        )}
-      />
+        ))}
+      </GridView>
     </Container>
   );
 };

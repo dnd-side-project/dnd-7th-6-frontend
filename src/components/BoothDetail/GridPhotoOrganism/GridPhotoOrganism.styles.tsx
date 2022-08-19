@@ -30,6 +30,13 @@ export const TotalPhoto = styled(BodyText3)({
   color: theme.colors.grayscale[8],
 });
 
+export const GridView = styled.View({
+  width: widthPercentage(343),
+  height: heightPercentage(230),
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+});
+
 export const style = StyleSheet.create({
   fastImage: {
     justifyContent: 'center',
