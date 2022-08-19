@@ -79,7 +79,7 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
 
   return (
     <SafeAreaView>
-      <Animated.View style={{height: slideUpAnimation, flexDirection: 'row'}}>
+      <Animated.View style={{height: slideUpAnimation, flexDirection: 'row', overflow: 'hidden'}}>
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
           const label = options.tabBarLabel as string;

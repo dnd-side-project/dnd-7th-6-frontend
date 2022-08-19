@@ -32,14 +32,9 @@ const HeadcountFilter = () => {
   return (
     <Container>
       <NestedFilterOrganism type="인원 수">
-        {(tags[0] || []).map(({id, title, postCount}) => (
+        {(tags[0] || []).map(({id, title}) => (
           <ChipWrapper key={id}>
-            <FilterChip
-              title={title}
-              count={postCount}
-              selected={number[id]}
-              onPress={handlePressNumberChip(id)}
-            />
+            <FilterChip title={title} selected={number[id]} onPress={handlePressNumberChip(id)} />
           </ChipWrapper>
         ))}
       </NestedFilterOrganism>

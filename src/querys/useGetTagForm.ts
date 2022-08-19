@@ -8,6 +8,7 @@ const useGetTagForm = (tagType: number) => {
   return useQuery<Promise<Tag[][]>, AxiosError, Promise<Tag[][]>, [string, number]>(
     ['tag', tagType],
     ({queryKey}) => getTagForm(queryKey[1]),
+    {staleTime: Infinity},
   );
 };
 

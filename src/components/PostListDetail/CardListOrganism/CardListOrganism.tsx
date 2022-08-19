@@ -20,9 +20,14 @@ const CardListOrganism = () => {
   const navigation = useNavigation();
   const queryClient = useQueryClient();
   const {tagIdSet} = useFilteredItem();
-  const {order} = useSelector((state: RootState) => state.postReducer);
+  const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const {data, fetchNextPage} = useGetInfinitePosts({tagIdSet, order});
+  const {data, fetchNextPage} = useGetInfinitePosts(
+    {tagIdSet, order},
+    {
+      enabled: !isOpenFilterSheet,
+    },
+  );
   const {mutate: likePost} = useMutatePostLike();
   const posts = data?.pages.flatMap(({content}) => content);
 

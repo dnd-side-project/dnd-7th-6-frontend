@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {PressableProps} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -17,9 +18,11 @@ interface Props extends PressableProps {
 }
 
 const RecommendFeedCard = ({imgUrl, onLike, isLike, isMine, ...props}: Props) => {
+  const navigation = useNavigation();
   const data = useSelector((state: RootState) => state.userReducer);
   const handleLike = () => {
     if (!data.isLoggedIn) {
+      navigation.navigate('RouteLoginScreen' as never);
       return;
     }
     onLike();
