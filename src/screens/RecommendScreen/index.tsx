@@ -21,7 +21,11 @@ const RouteRecommendScreen = () => {
   return (
     <Stack.Navigator initialRouteName="Recommend">
       <Stack.Screen name="Recommend" component={RecommendScreen} options={{headerShown: false}} />
-      <Stack.Screen name="RecommendDetail" component={RecommendDetailScreen} />
+      <Stack.Screen
+        name="RecommendDetail"
+        component={RecommendDetailScreen}
+        options={{headerShown: false}}
+      />
       <Stack.Screen name="RouteKeywordSearch" component={RouteKeywordSearchScreen} />
       <Stack.Screen name="PostListDetail" component={PostListDetailScreen} />
       <Stack.Screen name="DiffUserPost" component={DiffUserPostScreen} />
