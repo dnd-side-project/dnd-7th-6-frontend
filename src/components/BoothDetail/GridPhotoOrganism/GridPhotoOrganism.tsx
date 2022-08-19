@@ -7,6 +7,7 @@ import {
   Count,
   GridView,
   Headline,
+  OpacityView,
   style,
   TextContainer,
   TotalPhoto,
@@ -35,12 +36,20 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
       </TextContainer>
       <GridView>
         {data.content.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
-          <FastImage
-            key={reviewId}
-            source={{uri: imageUrl}}
-            style={{...style.fastImage, ...{opacity: i === 5 ? 0.5 : 1}}}>
-            {i !== 5 || <TotalPhoto>{data.totalElements}</TotalPhoto>}
-          </FastImage>
+          <>
+            <FastImage
+              key={reviewId}
+              source={{uri: imageUrl}}
+              style={{
+                ...style.fastImage,
+              }}
+            />
+            {i === 5 && data.content.length > 6 && (
+              <OpacityView>
+                <TotalPhoto>{data.totalElements - 6}+</TotalPhoto>
+              </OpacityView>
+            )}
+          </>
         ))}
       </GridView>
     </Container>
