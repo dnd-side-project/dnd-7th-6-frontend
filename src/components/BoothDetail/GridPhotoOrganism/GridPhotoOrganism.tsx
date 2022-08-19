@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -22,7 +23,9 @@ interface Props {
 }
 
 const GridPhotoOrganism = ({id, onLayout}: Props) => {
+  const navigation = useNavigation();
   const {data} = useGetReviewImages(id);
+  const reviewImages = !data ? [] : data.pages.flatMap(({content}) => content);
 
   if (!data) {
     return <></>;
@@ -32,10 +35,10 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
     <Container onLayout={onLayout}>
       <TextContainer>
         <Headline>이 매장에서 찍은 사진 </Headline>
-        <Count> {toLocaleString(data.totalElements)}</Count>
+        <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      <GridView>
-        {data.content.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
+      <GridView onPress={() => navigation.navigate('BoothImage' as never, {reviewId: id} as never)}>
+        {reviewImages.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
           <>
             <FastImage
               key={reviewId}
@@ -44,9 +47,9 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
                 ...style.fastImage,
               }}
             />
-            {i === 5 && data.content.length > 6 && (
+            {i === 5 && reviewImages.length > 6 && (
               <OpacityView>
-                <TotalPhoto>{data.totalElements - 6}+</TotalPhoto>
+                <TotalPhoto>{data.pages[0].totalElements - 6}+</TotalPhoto>
               </OpacityView>
             )}
           </>

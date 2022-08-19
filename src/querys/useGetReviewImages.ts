@@ -1,16 +1,22 @@
 import {AxiosError} from 'axios';
-import {useQuery} from 'react-query';
+import {useInfiniteQuery} from 'react-query';
 
 import getReviewImages from 'src/apis/getReviewImages';
 import {ReviewImage, ServerResponse} from 'src/types';
 
 const useGetReviewImages = (photoBoothId: number) => {
-  return useQuery<
+  return useInfiniteQuery<
     ServerResponse<ReviewImage>,
     AxiosError,
     ServerResponse<ReviewImage>,
     [string, number]
-  >(['review-images', photoBoothId], ({queryKey}) => getReviewImages(queryKey[1]));
+  >(
+    ['review-images', photoBoothId],
+    ({queryKey, pageParam = 0}) => getReviewImages({photoBoothId: queryKey[1], page: pageParam}),
+    {
+      getNextPageParam: lastPage => lastPage.number + 1,
+    },
+  );
 };
 
 export default useGetReviewImages;

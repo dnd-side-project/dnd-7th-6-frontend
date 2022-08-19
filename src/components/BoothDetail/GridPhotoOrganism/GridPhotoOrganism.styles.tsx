@@ -30,7 +30,7 @@ export const TotalPhoto = styled(BodyText1)({
   color: theme.colors.grayscale[1],
 });
 
-export const GridView = styled.View({
+export const GridView = styled.Pressable({
   width: widthPercentage(343),
   height: heightPercentage(230),
   flexWrap: 'wrap',
