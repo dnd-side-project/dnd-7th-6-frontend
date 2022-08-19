@@ -26,9 +26,21 @@ const RouteRecommendScreen = () => {
         component={RecommendDetailScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="RouteKeywordSearch" component={RouteKeywordSearchScreen} />
-      <Stack.Screen name="PostListDetail" component={PostListDetailScreen} />
-      <Stack.Screen name="DiffUserPost" component={DiffUserPostScreen} />
+      <Stack.Screen
+        name="RouteKeywordSearch"
+        component={RouteKeywordSearchScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PostListDetail"
+        component={PostListDetailScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DiffUserPost"
+        component={DiffUserPostScreen}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="RoutePostWrite"
         component={RoutePostWriteScreen}

@@ -17,7 +17,10 @@ const Tab = createBottomTabNavigator();
 
 const AppInner = () => {
   const dispatch = useDispatch();
-  const newToken = useSelector((state: RootState) => state.userReducer.accessToken);
+  const {accessToken: newToken, isSettingInterceptor} = useSelector(
+    (state: RootState) => state.userReducer,
+  );
+
   useEffect(() => {
     const getToken = async () => {
       try {
@@ -25,6 +28,7 @@ const AppInner = () => {
         if (!token) {
           return;
         }
+        dispatch(loginAction(true));
         const newAccessToken = await getAccessToken(token);
         dispatch(setAccessToken(newAccessToken));
       } catch (error) {
@@ -35,15 +39,19 @@ const AppInner = () => {
   }, []);
 
   useEffect(() => {
+    if (!newToken) {
+      return;
+    }
+    if (!isSettingInterceptor) {
+      return;
+    }
     const getUserData = async () => {
-      if (newToken) {
-        const user = await getUser();
-        dispatch(changeUserInfo(user));
-        dispatch(loginAction(true));
-      }
+      const user = await getUser();
+      dispatch(changeUserInfo(user));
     };
     getUserData();
-  }, [newToken]);
+  }, [newToken, isSettingInterceptor]);
+
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
       <Tab.Screen
