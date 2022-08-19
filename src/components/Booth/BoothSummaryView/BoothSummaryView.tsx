@@ -21,7 +21,7 @@ import {
 import RoundChip from 'src/components/Chip/RoundChip';
 import ColorStarIcon14 from 'src/icons/ColorStarIcon14';
 import {PhotoBoothContentData} from 'src/types';
-import {getIconMarker} from 'src/utils/getIconMarker';
+import {getIconCube} from 'src/utils/getIconCube';
 
 const data = ['#넓은 촬영공간', '#홀수출력 가능'];
 
@@ -37,7 +37,7 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
     <Container onPress={boothOnPress}>
       <DescriptionContainer>
         <TitlenIconWrapper>
-          <IconConatiner source={getIconMarker(item.photoBooth.name)} />
+          <IconConatiner source={getIconCube(item.photoBooth.name)} />
           <View>
             <Title>{item.photoBooth.name}</Title>
             <SubText>

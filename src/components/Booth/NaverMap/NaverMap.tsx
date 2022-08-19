@@ -41,8 +41,8 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressabl
           }}
           key={focusedBooth.photoBooth.id}
           zIndex={10}
-          width={heightPercentage(70)}
-          height={heightPercentage(70)}
+          width={heightPercentage(60)}
+          height={heightPercentage(60)}
           caption={{
             align: 3,
             text: focusedBooth.photoBooth.name,
@@ -71,8 +71,8 @@ const MarkersOnMap = ({data}: {data: PhotoBoothContentData}) => {
   };
   return (
     <Marker
-      width={heightPercentage(52)}
-      height={heightPercentage(52)}
+      width={heightPercentage(45)}
+      height={heightPercentage(45)}
       coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
       onClick={markerOnClick}
       image={getIconMarker(data.photoBooth.name)}
