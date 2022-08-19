@@ -5,6 +5,7 @@ import PreviewFourCard from '../PreviewSixCard';
 import {
   ButtonPressable,
   ButtonText,
+  ListWrapper,
   OrganismView,
   SubTitleText,
   TextnIconWrapper,
@@ -32,12 +33,14 @@ const PoseRecommendOrganism = () => {
         </TextnIconWrapper>
         <SubTitleText>인기있는 포톡커의 사진을 확인해보세요</SubTitleText>
       </TitleWrapper>
-      {!!data && (
-        <PreviewFourCard
-          data={data.pages.flatMap(response => response.content) as any}
-          onPress={handlePressCard}
-        />
-      )}
+      <ListWrapper>
+        {!!data && (
+          <PreviewFourCard
+            data={data.pages.flatMap(response => response.content) as any}
+            onPress={handlePressCard}
+          />
+        )}
+      </ListWrapper>
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>인기 사진 더보기</ButtonText>
       </ButtonPressable>

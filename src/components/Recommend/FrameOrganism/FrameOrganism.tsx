@@ -10,6 +10,7 @@ import {
   ButtonPressable,
   TitleIcon,
   SubTitleText,
+  ListWrapper,
 } from './FrameOrganism.styles';
 
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
@@ -31,12 +32,14 @@ const FrameRecommendOrganism = () => {
         </TextnIconWrapper>
         <SubTitleText>요즘 포톡커들이 많이 찾는 프레임이에요</SubTitleText>
       </TitleWrapper>
-      {!!data && (
-        <RecommendPreviewFourCard
-          data={data.pages.flat().map(response => response.content) as any}
-          onPress={handlePressCard}
-        />
-      )}
+      <ListWrapper>
+        {!!data && (
+          <RecommendPreviewFourCard
+            data={data.pages.flat().map(response => response.content) as any}
+            onPress={handlePressCard}
+          />
+        )}
+      </ListWrapper>
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>캐릭터 프레임 더보기</ButtonText>
       </ButtonPressable>
