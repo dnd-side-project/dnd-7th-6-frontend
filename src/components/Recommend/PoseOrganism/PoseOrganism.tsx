@@ -23,8 +23,6 @@ const PoseRecommendOrganism = () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };
 
-  // console.log(data?.pages.flatMap(response => response.content).map(v => v.id));
-
   return (
     <OrganismView>
       <TitleWrapper>

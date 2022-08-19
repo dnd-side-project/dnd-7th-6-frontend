@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Chip from '../../Chip';
 import UserReviewView from '../../utils/UserReviewView';
 import {ChipContainer, ChipWrapper, Container} from './ContentsOrganism.styles';
 
+import FilterChip from 'src/components/Chip/FilterChip';
 import useGetPost from 'src/querys/useGetPost';
 
 interface Props {
@@ -15,18 +15,11 @@ const ContentsOrganism = ({id}: Props) => {
 
   return (
     <Container>
-      <UserReviewView
-        writer={data?.user.email || ''}
-        date={new Date(data?.createdAt || '')}
-        contents={data?.content || ''}
-        hasIcon={true}
-      />
+      {data && <UserReviewView post={data} />}
       <ChipWrapper>
         {data?.postTagSet.map(({tag}) => (
           <ChipContainer key={tag.id}>
-            <Chip mode="bright" key={tag.id}>
-              {tag.title}
-            </Chip>
+            <FilterChip title={tag.title} selected={false} />
           </ChipContainer>
         ))}
       </ChipWrapper>

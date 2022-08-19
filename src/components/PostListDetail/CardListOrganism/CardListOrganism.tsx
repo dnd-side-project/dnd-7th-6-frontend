@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {useQueryClient} from 'react-query';
@@ -16,6 +17,7 @@ import {RootState} from 'src/redux/store';
 
 const CardListOrganism = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const queryClient = useQueryClient();
   const {tagIdSet} = useFilteredItem();
   const {order} = useSelector((state: RootState) => state.postReducer);
@@ -39,6 +41,9 @@ const CardListOrganism = () => {
       },
     });
   };
+  const handlePressPost = (id: number) => () => {
+    navigation.navigate('RecommendDetail' as never, {postId: id} as never);
+  };
 
   useEffect(() => {
     return () => {
@@ -59,6 +64,7 @@ const CardListOrganism = () => {
               isLike={item.like}
               onLike={handleLikePost(item.id)}
               isMine={item.user.id === userInfo.id}
+              onPress={handlePressPost(item.id)}
             />
           )}
           onScroll={handleScroll}

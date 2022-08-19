@@ -27,7 +27,7 @@ const RecommendFeedCard = ({imgUrl, onLike, isLike, isMine, ...props}: Props) =>
 
   if (isMine) {
     return (
-      <FeedCardContainer>
+      <FeedCardContainer {...props}>
         <FastImage style={style.recordFeedCard} resizeMode="cover" source={{uri: imgUrl}} />
       </FeedCardContainer>
     );

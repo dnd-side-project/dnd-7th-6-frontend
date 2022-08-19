@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useMemo} from 'react';
 import {PressableProps} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -7,7 +7,6 @@ import PressableSubmit from '../Pressables/PressableSubmit';
 import ProgressBar from '../ProgressBar';
 import {Container, ProgressBarWrapper} from './PostWriteTabBar.styles';
 
-import useFilteredItem from 'src/hooks/useFilteredItem';
 import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
 import useMutatePost from 'src/querys/useMutatePost';
 import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
@@ -19,9 +18,15 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const inputPostData = useSelector((state: RootState) => state.postWriteReducer);
-  const {tagIdSet} = useFilteredItem();
   const post = useMutatePost();
   const {getDisabled} = usePostWriteCondition();
+  const tagIdSet = useMemo(
+    () =>
+      inputPostData.tags.reduce((list: string[], tag: {[key: string]: boolean}) => {
+        return [...list, ...Object.keys(tag).filter(key => tag[key])];
+      }, []),
+    [inputPostData],
+  );
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
 
   const handlePressSubmit = () => {
