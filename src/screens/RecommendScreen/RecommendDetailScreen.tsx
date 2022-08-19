@@ -2,12 +2,13 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Dimensions, SafeAreaView, ScrollView} from 'react-native';
 
+import RecommendDetailScreenHeader from './RecommendDetailScreen.header';
+
 import {RecommendParamList} from '.';
 
 import RecommendDetailContentsOrganism from 'src/components/RecommendDetail/ContentsOrganism';
 import RecommendDetailDiffOrganism from 'src/components/RecommendDetail/DiffOrganism';
 import RecommendDetailMainFrame from 'src/components/RecommendDetail/MainFrame';
-import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type DetailScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendDetail'>;
@@ -15,7 +16,7 @@ export type DetailScreenProps = NativeStackScreenProps<RecommendParamList, 'Reco
 const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
   return (
     <SafeAreaView>
-      <LeftBackHeader onPressBack={() => navigation.goBack()} />
+      <RecommendDetailScreenHeader navigation={navigation} postId={route.params.postId} />
       <ScrollView style={{height: Dimensions.get('window').height - heightPercentage(125)}}>
         <RecommendDetailMainFrame id={route.params.postId} />
         <RecommendDetailContentsOrganism id={route.params.postId} />
