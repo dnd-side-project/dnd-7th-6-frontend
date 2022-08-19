@@ -5,7 +5,6 @@ const mutatePostLike = async (id: number) => {
     const result = await AxiosInstance.post(`/api/v1/post/${id}/like`);
     return result.data;
   } catch (error) {
-    console.error(error.response);
     return Promise.reject(error);
   }
 };
