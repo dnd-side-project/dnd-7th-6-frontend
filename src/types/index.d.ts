@@ -189,7 +189,7 @@ export interface UserLikeBooth {
   status: string;
   imageUrl: string;
   createdAt: string;
-  like: true;
+  like: boolean;
 }
 
 export interface UserList {

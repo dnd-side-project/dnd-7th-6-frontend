@@ -17,8 +17,8 @@ export type RecommendParamList = {
 
 const RouteRecommendScreen = () => {
   return (
-    <Stack.Navigator initialRouteName="Recommend" screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Recommend" component={RecommendScreen} />
+    <Stack.Navigator initialRouteName="Recommend">
+      <Stack.Screen name="Recommend" component={RecommendScreen} options={{headerShown: false}} />
       <Stack.Screen name="RecommendDetail" component={RecommendDetailScreen} />
       <Stack.Screen name="RouteKeywordSearch" component={RouteKeywordSearchScreen} />
       <Stack.Screen name="PostListDetail" component={PostListDetailScreen} />
