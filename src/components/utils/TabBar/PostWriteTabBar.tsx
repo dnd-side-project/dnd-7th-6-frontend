@@ -8,17 +8,21 @@ import ProgressBar from '../ProgressBar';
 import {Container, ProgressBarWrapper} from './PostWriteTabBar.styles';
 
 import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
+import useModifyPost from 'src/querys/useModifyPost';
 import useMutatePost from 'src/querys/useMutatePost';
 import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
 import {hideTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 
 const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
-  const {screenIndex, isModifyMode} = useSelector((state: RootState) => state.postWriteReducer);
+  const {screenIndex, isModifyMode, isPostModifyMode} = useSelector(
+    (state: RootState) => state.postWriteReducer,
+  );
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const inputPostData = useSelector((state: RootState) => state.postWriteReducer);
-  const post = useMutatePost();
+  const {mutate: mutatePost} = useMutatePost();
+  const {mutate: modifyPost} = useModifyPost();
   const {getDisabled} = usePostWriteCondition();
   const tagIdSet = useMemo(
     () =>
@@ -38,14 +42,29 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
     }
     dispatch(hideTabBar());
     if (screenIndex === 3) {
-      post.mutate({
-        title: '',
-        content: inputPostData.contents,
-        tagIdList: tagIdSet,
-        isPublic: inputPostData.isPublic,
-        newTagList: inputPostData.customTags,
-        postImageList: [inputPostData.image],
-      });
+      if (isPostModifyMode) {
+        modifyPost({
+          postId: inputPostData.postId,
+          postCreateRequest: {
+            title: '',
+            content: inputPostData.contents,
+            tagIdList: tagIdSet,
+            isPublic: inputPostData.isPublic,
+            deleteImageList: [inputPostData.deleteImageIdList],
+            newTagList: [],
+            postImageList: [inputPostData.image],
+          },
+        });
+      } else {
+        mutatePost({
+          title: '',
+          content: inputPostData.contents,
+          tagIdList: tagIdSet,
+          isPublic: inputPostData.isPublic,
+          newTagList: inputPostData.customTags,
+          postImageList: [inputPostData.image],
+        });
+      }
     }
     if (screenIndex === 4) {
       dispatch(clearPostWrite());

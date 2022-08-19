@@ -15,6 +15,7 @@ export type RecommendParamList = {
   RecommendDetail: {postId: number};
   PostListDetail: undefined;
   DiffUserPost: {userId: number; username: string};
+  RoutePostWrite: {isModifyMode?: boolean};
 };
 
 const RouteRecommendScreen = () => {

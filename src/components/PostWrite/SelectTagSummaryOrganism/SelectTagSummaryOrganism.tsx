@@ -27,6 +27,7 @@ const SelectTagSummaryOrganism = ({navigation}: Props) => {
       <ContentSection title="선택 태그" onPressRightIcon={handlePressModifyButton}>
         <ChipContainer>
           {tags
+            .slice(0, 6)
             .reduce((chips: [], tagMap: any) => {
               const tag = Object.keys(tagMap).filter(key => tagMap[key]);
               return [...chips, ...tag];
