@@ -63,6 +63,7 @@ export const startModifyPost = (post: Post) => {
   const tags: {[key: number]: boolean}[] = [{}, {}, {}, {}, {}, {}, {}];
   const customTags: {id: number; name: string}[] = [];
   const image = {
+    id: postImageSet[0].id,
     uri: postImageSet[0].imageUrl,
     type: 'image/jpeg',
     name: `${Date.now()}.jpg`,

@@ -9,12 +9,12 @@ export interface PostCreateRequest {
   postImageList: FormImage[];
 }
 
-export interface PostModifyRequest {
+export interface PostUpdateRequest {
   title: string;
   content: string;
   tagIdList: number[];
   isPublic: boolean;
-  newTagList: string[];
-  deleteImageList: number[];
+  newTagKeywordList: string[];
+  deleteImageIdList: number[];
   postImageList: FormImage[];
 }

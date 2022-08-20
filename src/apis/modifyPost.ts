@@ -1,13 +1,13 @@
 import AxiosInstance from 'src/components/utils/Interceptor';
-import {PostCreateRequest} from 'src/types/post';
+import {PostUpdateRequest} from 'src/types/post';
 
-const modifyPost = async (postId: number, postCreateRequest: PostCreateRequest) => {
+const modifyPost = async (postId: number, postUpdateRequest: PostUpdateRequest) => {
   try {
     const formData = new FormData();
-    const {postImageList, ...restData} = postCreateRequest;
-
+    const {postImageList, ...restData} = postUpdateRequest;
+    console.log(restData);
     formData.append('postImageList', postImageList[0]);
-    formData.append('postCreateRequest', {
+    formData.append('postUpdateRequest', {
       string: JSON.stringify(restData),
       type: 'application/json',
     });

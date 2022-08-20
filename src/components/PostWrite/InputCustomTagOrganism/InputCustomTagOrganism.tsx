@@ -10,12 +10,6 @@ const InputCustomTagOrganism = () => {
   const [inputWord, setInputWord] = useState('');
   const dispatch = useDispatch();
   const {customTags} = useSelector((state: RootState) => state.postWriteReducer);
-  const displayTag =
-    customTags.length <= 0
-      ? []
-      : typeof customTags[0] === 'string'
-      ? [...customTags]
-      : customTags.map(({name}: {name: string}) => name);
 
   const handleDelete = (index?: number) => {
     if (!index) {
@@ -39,13 +33,13 @@ const InputCustomTagOrganism = () => {
         changeTagData={changeCustomTag}
         inputWord={inputWord}
         setInputWord={setInputWord}
-        tagData={displayTag}
+        tagData={customTags}
         onDelete={handleDelete}
       />
       <TagSearchList
         inputWord={inputWord}
         setInputWord={setInputWord}
-        tagData={displayTag}
+        tagData={customTags}
         changeTagData={changeCustomTag}
       />
     </>

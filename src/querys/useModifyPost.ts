@@ -1,16 +1,16 @@
 import {useMutation} from 'react-query';
 
 import modifyPost from 'src/apis/modifyPost';
-import {PostCreateRequest, PostModifyRequest} from 'src/types/post';
+import {PostUpdateRequest} from 'src/types/post';
 
 interface Parameter {
   postId: number;
-  postCreateRequest: PostCreateRequest | PostModifyRequest;
+  postUpdateRequest: PostUpdateRequest;
 }
 
 const useModifyPost = () => {
-  return useMutation(({postId, postCreateRequest}: Parameter) =>
-    modifyPost(postId, postCreateRequest),
+  return useMutation(({postId, postUpdateRequest}: Parameter) =>
+    modifyPost(postId, postUpdateRequest),
   );
 };
 

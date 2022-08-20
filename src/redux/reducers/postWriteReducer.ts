@@ -37,7 +37,6 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
     case TOGGLE_TAG_CHIP:
       const nextState = [...state.tags];
       nextState[payload.index] = {
-        ...state.tags[payload.index],
         [payload.tagId]: !nextState[payload.index][payload.tagId],
       };
       return {...state, tags: nextState};

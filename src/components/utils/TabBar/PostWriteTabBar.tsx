@@ -43,16 +43,19 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
     dispatch(hideTabBar());
     if (screenIndex === 3) {
       if (isPostModifyMode) {
+        const {id, ...image} = inputPostData.image;
         modifyPost({
-          postId: inputPostData.postId,
-          postCreateRequest: {
+          postId: inputPostData.modifyPostId,
+          postUpdateRequest: {
             title: '',
             content: inputPostData.contents,
-            tagIdList: tagIdSet,
+            tagIdList: tagIdSet.map((v: string) => parseInt(v, 10)),
             isPublic: inputPostData.isPublic,
-            deleteImageList: [inputPostData.deleteImageIdList],
-            newTagList: [],
-            postImageList: [inputPostData.image],
+            deleteImageIdList: inputPostData.deleteImageIdList,
+            newTagKeywordList: inputPostData.customTags.filter(
+              (tag: any) => typeof tag === 'string',
+            ),
+            postImageList: id ? [] : [image],
           },
         });
       } else {

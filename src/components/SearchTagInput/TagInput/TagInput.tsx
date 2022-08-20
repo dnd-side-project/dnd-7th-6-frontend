@@ -79,7 +79,7 @@ const TagInput = ({
             tagData.map((item: any, index: number) => {
               return (
                 <TagInputChip active key={index} index={index} deleteOnPress={onDelete}>
-                  {item}
+                  {typeof item === 'string' ? item : item.name}
                 </TagInputChip>
               );
             })
