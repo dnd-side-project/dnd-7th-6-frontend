@@ -10,6 +10,7 @@ import {
   NickNameText,
 } from './NickNameView.styles';
 
+import EclipseStarIcon from 'src/icons/EclipseStarIcon';
 import EditIcon from 'src/icons/EditIcon';
 import {RootState} from 'src/redux/store';
 
@@ -18,7 +19,9 @@ const NickNameView = () => {
   const navigation = useNavigation();
   return (
     <NickNameContainer>
-      <NickNameImageWrapper />
+      <NickNameImageWrapper>
+        <EclipseStarIcon />
+      </NickNameImageWrapper>
       <NickNamenIconWrapper
         onPress={() => {
           navigation.navigate('EditNameScreen' as never);
