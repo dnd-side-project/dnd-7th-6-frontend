@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Alert} from 'react-native';
 
 import getApiServer from 'src/utils/getApiServer';
 
@@ -15,6 +16,10 @@ const login = async (loginBridge: () => Promise<LoginParam>) => {
     const result = await axios.get(`${getApiServer}/api/v1/user/login?${params}`);
     return result.data;
   } catch (error) {
+    //@ts-ignore
+    if (error.response.data.code === -100010) {
+      Alert.alert('탈퇴된 회원이거나 접근 할 수 없는 계정입니다.');
+    }
     return Promise.reject(error);
   }
 };

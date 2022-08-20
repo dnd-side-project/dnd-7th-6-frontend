@@ -7,20 +7,13 @@ interface Props {
 
 const PlusIcon32 = ({color = '#F9F9F9'}: Props) => {
   return (
-    <Svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <Svg width={36} height={36} fill="none">
       <Path
-        d="M8 16H24"
+        d="M9 18h18M18 27V9"
         stroke={color}
-        stroke-width="1.86667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <Path
-        d="M16 24L16 8"
-        stroke={color}
-        stroke-width="1.86667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth={2.362}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
