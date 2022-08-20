@@ -44,9 +44,6 @@ const SettingOrganism = () => {
           text: '확인',
           onPress: async () => {
             await mutate();
-            dispatch(setAccessToken(''));
-            dispatch(changeUserInfo({}));
-            dispatch(loginAction(false));
             navigation.reset({routes: [{name: 'AppInner' as never}]});
           },
         },

@@ -27,33 +27,8 @@ const EditNickNameOrganism = () => {
   const [isServerValid, setIsServerValid] = useState(false);
 
   useEffect(() => {
-    const nickNameValid = async () => {
-      const regexp = /^[0-9a-zA-Z._]*$/;
-      if (value.length > 20) {
-        setMessage('닉네임은 20자 이하로 입력해 주세요.');
-        setIsSuccess(false);
-      } else if (value.length < 2) {
-        setMessage('닉네임은 2자 이상으로 입력해 주세요.');
-        setIsSuccess(false);
-      } else if (!regexp.test(value)) {
-        setMessage('닉네임은 띄어쓰기 없이 영문, 숫자, 일부 특수문자만 가능해요.');
-        setIsSuccess(false);
-      } else if (value === userInfo.name) {
-        setIsSuccess(false);
-        setMessage(' ');
-      } else {
-        setIsServerValid(false);
-        debounce();
-        setMessage(' ');
-        setIsSuccess(true);
-      }
-    };
-    nickNameValid();
-  }, [value]);
-
-  useEffect(() => {
     if (isSuccess) {
-      if (data === 500) {
+      if (data === -100012) {
         if (value !== userInfo.name) {
           setMessage('동일한 닉네임이 있어요.');
           setIsSuccess(false);
@@ -79,6 +54,28 @@ const EditNickNameOrganism = () => {
           autoFocus
           value={value}
           onChangeText={text => {
+            const nickNameValid = async () => {
+              const regexp = /^[0-9a-zA-Z._]*$/;
+              if (text.length > 20) {
+                setMessage('닉네임은 20자 이하로 입력해 주세요.');
+                setIsSuccess(false);
+              } else if (text.length < 2) {
+                setMessage('닉네임은 2자 이상으로 입력해 주세요.');
+                setIsSuccess(false);
+              } else if (!regexp.test(text)) {
+                setMessage('닉네임은 띄어쓰기 없이 영문, 숫자, 일부 특수문자만 가능해요.');
+                setIsSuccess(false);
+              } else if (text === userInfo.name) {
+                setIsSuccess(false);
+                setMessage(' ');
+              } else {
+                setIsServerValid(false);
+                debounce();
+                setMessage(' ');
+                setIsSuccess(true);
+              }
+            };
+            nickNameValid();
             setValue(text);
           }}
         />

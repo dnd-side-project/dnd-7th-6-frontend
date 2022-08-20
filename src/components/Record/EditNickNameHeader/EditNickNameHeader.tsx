@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
+import {useDispatch} from 'react-redux';
 
 import {
   BackButtonWrapper,
@@ -9,8 +10,10 @@ import {
   Title,
 } from './EditNickNameHeader.styles';
 
+import getUser from 'src/apis/getUser';
 import {PressableLeftArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
 import usePatchNickName from 'src/querys/usePatchNickName';
+import {changeUserInfo} from 'src/redux/actions/UserAction';
 
 interface Props {
   onPressBack: () => void;
@@ -21,8 +24,11 @@ interface Props {
 const EditNickNameHeader = ({children, onPressBack, isSuccess, name}: PropsWithChildren<Props>) => {
   const {mutate} = usePatchNickName();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const onPressSuccess = async () => {
     await mutate(name);
+    const user = await getUser();
+    dispatch(changeUserInfo(user));
     navigation.goBack();
   };
   return (
