@@ -5,6 +5,7 @@ import {PressableProps} from 'react-native';
 import BottomArrowIcon from 'src/icons/BottomArrowIcon';
 import CancelIcon from 'src/icons/CancelIcon';
 import CancelIconWhite from 'src/icons/CancelIconWhite';
+import CloseIcon from 'src/icons/CloseIcon';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import LeftArrowIcon from 'src/icons/LeftArrowIcon';
 import LikeHeartIcon from 'src/icons/LikeHeartIcon';
@@ -45,3 +46,4 @@ export const PressableRecordUploadIcon = makePressableComponent(RecordUploadIcon
 export const PressableSettingIcon = makePressableComponent(SettingIcon);
 export const PressableMeetBallIcon = makePressableComponent(MeetBallIcon);
 export const PressableGeneralHeartIcon = makePressableComponent(LikeIcon);
+export const PressableCloseIcon = makePressableComponent(CloseIcon);

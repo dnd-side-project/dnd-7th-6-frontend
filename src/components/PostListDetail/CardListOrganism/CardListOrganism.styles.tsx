@@ -31,6 +31,6 @@ export const ListHeader = styled.View({
 });
 
 export const SortingButton = styled(BodyText3)<{selected: boolean}>(({selected}) => ({
-  textDecorationLine: selected ? 'underline' : 'none',
+  textDecorationLine: 'underline',
   color: selected ? theme.colors.grayscale[8] : theme.colors.grayscale[5],
 }));

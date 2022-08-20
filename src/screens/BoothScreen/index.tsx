@@ -2,9 +2,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 
 import BoothDetailScreen from './BoothDetailScreen';
+import BoothImageScreen from './BoothImageScreen';
 import BoothScreen from './BoothScreen';
 import BoothSearchScreen from './BoothSearchScreen';
 import RoutePostReviewScreen from './PostReviewScreen';
+import ReviewDetailScreen from './ReviewDetailScreen';
+import ReviewImageDetailScreen from './ReviewImageDetailScreen';
+
+import {ReviewImage} from 'src/types';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +18,9 @@ export type BoothParamList = {
   BoothSearchScreen: undefined;
   BoothDetailScreen: {id: number; distance: number};
   BoothReviewScreen: {placeName: string; boothId: string};
+  BoothImageScreen: {boothId: number};
+  ReviewImageDetailScreen: {boothId?: number; targetImage: ReviewImage};
+  ReviewDetailScreen: {boothId: number};
 };
 
 const RouteBoothScreen = () => {
@@ -25,6 +33,17 @@ const RouteBoothScreen = () => {
         name="BoothReview"
         component={RoutePostReviewScreen}
         options={{headerShown: false, gestureEnabled: false}}
+      />
+      <Stack.Screen name="BoothImage" component={BoothImageScreen} options={{headerShown: false}} />
+      <Stack.Screen
+        name="ReviewImageDetail"
+        component={ReviewImageDetailScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ReviewDetail"
+        component={ReviewDetailScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
