@@ -6,6 +6,7 @@ import BoothImageScreen from './BoothImageScreen';
 import BoothScreen from './BoothScreen';
 import BoothSearchScreen from './BoothSearchScreen';
 import RoutePostReviewScreen from './PostReviewScreen';
+import ReviewDetailScreen from './ReviewDetailScreen';
 import ReviewImageDetailScreen from './ReviewImageDetailScreen';
 
 import {ReviewImage} from 'src/types';
@@ -19,6 +20,7 @@ export type BoothParamList = {
   BoothReviewScreen: {placeName: string; boothId: string};
   BoothImageScreen: {boothId: number};
   ReviewImageDetailScreen: {boothId?: number; targetImage: ReviewImage};
+  ReviewDetailScreen: {boothId: number};
 };
 
 const RouteBoothScreen = () => {
@@ -36,6 +38,11 @@ const RouteBoothScreen = () => {
       <Stack.Screen
         name="ReviewImageDetail"
         component={ReviewImageDetailScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ReviewDetail"
+        component={ReviewDetailScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

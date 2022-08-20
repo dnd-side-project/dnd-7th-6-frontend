@@ -15,6 +15,7 @@ const useGetReviewImages = (photoBoothId: number, options?: any) => {
     ({queryKey, pageParam = 0}) => getReviewImages({photoBoothId: queryKey[1], page: pageParam}),
     {
       getNextPageParam: lastPage => lastPage.number + 1,
+      enabled: !!photoBoothId,
       ...options,
     },
   );

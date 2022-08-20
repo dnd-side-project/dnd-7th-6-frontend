@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useEffect} from 'react';
 import {BackHandler} from 'react-native';
+import FastImage from 'react-native-fast-image';
 import {useDispatch} from 'react-redux';
 
 import {
@@ -12,11 +13,11 @@ import {
 
 import {BoothParamList} from '.';
 
-import ImageSliderOrganism from 'src/components/ReviewImageDetail/ImageSliderOrganism/ImageSliderOrganism';
 import {PressableCloseIcon} from 'src/components/utils/Pressables/PressableIcons';
 import useFocus from 'src/hooks/useFocus';
 import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 interface HeaderProps {
   boothId?: number;
@@ -66,7 +67,10 @@ const ReviewImageDetailScreen = ({navigation, route}: ReviewImageDetailScreenPro
         }}
         boothId={route.params.boothId}
       />
-      <ImageSliderOrganism boothId={route.params.boothId} targetImage={route.params.targetImage} />
+      <FastImage
+        source={{uri: route.params.targetImage.imageUrl}}
+        style={{height: heightPercentage(514)}}
+      />
     </Background>
   );
 };

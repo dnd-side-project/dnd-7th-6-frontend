@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {LayoutChangeEvent} from 'react-native';
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const ReviewOrganism = ({id, onLayout}: Props) => {
+  const navigation = useNavigation();
   const {data} = useGetInfiniteReviews(id);
 
   if (!data) {
@@ -31,7 +33,10 @@ const ReviewOrganism = ({id, onLayout}: Props) => {
         <ReviewSummary key={review.id} {...review} isLast={i >= data.pages[0].content.length - 1} />
       ))}
       <ButtonWrapper>
-        <PressableAddition>리뷰 모두보기</PressableAddition>
+        <PressableAddition
+          onPress={() => navigation.navigate('ReviewDetail' as never, {boothId: id} as never)}>
+          리뷰 모두보기
+        </PressableAddition>
       </ButtonWrapper>
     </Container>
   );
