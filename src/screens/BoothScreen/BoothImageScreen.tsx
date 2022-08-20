@@ -15,7 +15,7 @@ const BoothImageScreen = ({route}: BoothImageScreenProps) => {
   return (
     <>
       <LeftBackHeader onPressBack={() => navigation.goBack()}>이 매장에서 찍은 사진</LeftBackHeader>
-      <BoothImageOrganism reviewId={route.params?.reviewId} />
+      <BoothImageOrganism boothId={route.params?.boothId} />
     </>
   );
 };

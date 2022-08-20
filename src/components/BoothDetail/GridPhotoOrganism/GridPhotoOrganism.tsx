@@ -37,7 +37,7 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
         <Headline>이 매장에서 찍은 사진 </Headline>
         <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      <GridView onPress={() => navigation.navigate('BoothImage' as never, {reviewId: id} as never)}>
+      <GridView onPress={() => navigation.navigate('BoothImage' as never, {boothId: id} as never)}>
         {reviewImages.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
           <>
             <FastImage

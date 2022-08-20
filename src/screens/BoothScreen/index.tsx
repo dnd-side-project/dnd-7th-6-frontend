@@ -6,6 +6,9 @@ import BoothImageScreen from './BoothImageScreen';
 import BoothScreen from './BoothScreen';
 import BoothSearchScreen from './BoothSearchScreen';
 import RoutePostReviewScreen from './PostReviewScreen';
+import ReviewImageDetailScreen from './ReviewImageDetailScreen';
+
+import {ReviewImage} from 'src/types';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +17,8 @@ export type BoothParamList = {
   BoothSearchScreen: undefined;
   BoothDetailScreen: {id: number; distance: number};
   BoothReviewScreen: {placeName: string; boothId: string};
-  BoothImageScreen: {reviewId: number};
+  BoothImageScreen: {boothId: number};
+  ReviewImageDetailScreen: {boothId?: number; targetImage: ReviewImage};
 };
 
 const RouteBoothScreen = () => {
@@ -29,6 +33,11 @@ const RouteBoothScreen = () => {
         options={{headerShown: false, gestureEnabled: false}}
       />
       <Stack.Screen name="BoothImage" component={BoothImageScreen} options={{headerShown: false}} />
+      <Stack.Screen
+        name="ReviewImageDetail"
+        component={ReviewImageDetailScreen}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

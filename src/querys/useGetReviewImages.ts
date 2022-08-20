@@ -4,7 +4,7 @@ import {useInfiniteQuery} from 'react-query';
 import getReviewImages from 'src/apis/getReviewImages';
 import {ReviewImage, ServerResponse} from 'src/types';
 
-const useGetReviewImages = (photoBoothId: number) => {
+const useGetReviewImages = (photoBoothId: number, options?: any) => {
   return useInfiniteQuery<
     ServerResponse<ReviewImage>,
     AxiosError,
@@ -15,6 +15,7 @@ const useGetReviewImages = (photoBoothId: number) => {
     ({queryKey, pageParam = 0}) => getReviewImages({photoBoothId: queryKey[1], page: pageParam}),
     {
       getNextPageParam: lastPage => lastPage.number + 1,
+      ...options,
     },
   );
 };
