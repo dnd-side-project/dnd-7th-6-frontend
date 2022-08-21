@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
+import {ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -22,7 +22,7 @@ const CardListOrganism = () => {
   const {tagIdSet} = useFilteredItem();
   const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const {data, fetchNextPage} = useGetInfinitePosts(
+  const {data, fetchNextPage, isLoading} = useGetInfinitePosts(
     {tagIdSet, order},
     {
       enabled: !isOpenFilterSheet,
@@ -59,25 +59,30 @@ const CardListOrganism = () => {
   return (
     <Container>
       <FlatListWrapper>
-        <PostDetailFlatList
-          ListEmptyComponent={ListEmptyComponent}
-          numColumns={2}
-          data={posts || []}
-          renderItem={({item}: any) => (
-            <RecommendFeedCard
-              imgUrl={item.postImageSet[0].imageUrl}
-              isLike={item.like}
-              onLike={handleLikePost(item.id)}
-              isMine={item.user.id === userInfo.id}
-              onPress={handlePressPost(item.id)}
-            />
-          )}
-          onScroll={handleScroll}
-          onEndReached={() => {
-            fetchNextPage();
-          }}
-          ListHeaderComponent={<SortingListHeader />}
-        />
+        {isLoading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <PostDetailFlatList
+            ListEmptyComponent={ListEmptyComponent}
+            numColumns={2}
+            data={posts || []}
+            renderItem={({item}: any) => (
+              <RecommendFeedCard
+                imgUrl={item.postImageSet[0].imageUrl}
+                isLike={item.like}
+                onLike={handleLikePost(item.id)}
+                isMine={item.user.id === userInfo.id}
+                onPress={handlePressPost(item.id)}
+              />
+            )}
+            onScroll={handleScroll}
+            onEndReached={() => {
+              fetchNextPage();
+            }}
+            alwaysBounceVertical={true}
+            ListHeaderComponent={<SortingListHeader />}
+          />
+        )}
       </FlatListWrapper>
     </Container>
   );

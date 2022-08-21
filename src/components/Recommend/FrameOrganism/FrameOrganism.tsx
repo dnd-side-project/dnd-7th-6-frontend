@@ -15,7 +15,7 @@ import {
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 
 const FrameRecommendOrganism = () => {
-  const {data} = useGetInfinitePosts({tagIdSet: [41], order: 'popular'});
+  const {data, isLoading} = useGetInfinitePosts({tagIdSet: [41], order: 'popular'});
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -33,6 +33,7 @@ const FrameRecommendOrganism = () => {
       </TitleWrapper>
       {!!data && (
         <RecommendPreviewFourCard
+          isLoading={isLoading}
           data={data.pages.flat().map(response => response.content) as any}
           onPress={handlePressCard}
         />

@@ -15,13 +15,17 @@ export const SlideViewContainer = styled.View({
 });
 
 export const PostFlatList = styled.FlatList({
-  marginBottom: heightPercentage(170),
   alignSelf: 'center',
+  marginBottom: heightPercentage(160),
+});
+
+export const FlatListWrapper = styled.View({
+  marginBottom: heightPercentage(160),
 });
 
 export const ReviewFlatList = styled.FlatList({
   width: '100%',
-  marginBottom: heightPercentage(170),
+  marginBottom: heightPercentage(160),
   alignSelf: 'center',
 });
 
