@@ -8,7 +8,6 @@ import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
 import {
   CardWrapper,
-  FlatListWrapper,
   PostFlatList,
   ReviewFlatList,
   SlideViewContainer,
@@ -40,35 +39,31 @@ const RecordOrganism = () => {
           <NickNameView />
           <SlideViewContainer>
             <LineSlideView items={slideViewItems} index={focus} setIndex={setFocus}>
-              <FlatListWrapper>
-                {isLoading ? (
-                  <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
-                ) : (
-                  <PostFlatList
-                    numColumns={2}
-                    data={data?.postList}
-                    renderItem={({item}: any) => (
-                      <CardWrapper>
-                        <FastImage
-                          source={{uri: item.postImageSet[0].imageUrl}}
-                          style={style.recordFeedCard}
-                        />
-                      </CardWrapper>
-                    )}
-                  />
-                )}
-              </FlatListWrapper>
-              <FlatListWrapper>
-                {isLoading ? (
-                  <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
-                ) : (
-                  <ReviewFlatList
-                    numColumns={1}
-                    data={data?.reviewList}
-                    renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
-                  />
-                )}
-              </FlatListWrapper>
+              {isLoading ? (
+                <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+              ) : (
+                <PostFlatList
+                  numColumns={2}
+                  data={data?.postList}
+                  renderItem={({item}: any) => (
+                    <CardWrapper>
+                      <FastImage
+                        source={{uri: item.postImageSet[0].imageUrl}}
+                        style={style.recordFeedCard}
+                      />
+                    </CardWrapper>
+                  )}
+                />
+              )}
+              {isLoading ? (
+                <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+              ) : (
+                <ReviewFlatList
+                  numColumns={1}
+                  data={data?.reviewList}
+                  renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
+                />
+              )}
             </LineSlideView>
           </SlideViewContainer>
         </>
