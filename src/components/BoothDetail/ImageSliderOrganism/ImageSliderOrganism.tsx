@@ -21,16 +21,23 @@ const ImageSliderOrganism = ({id}: Props) => {
 
   return (
     <Container>
-      <Swiper.default
-        activeDotColor={theme.colors.grayscale[1]}
-        dotColor={theme.colors.grayscale[0] + '66'}
-        dotStyle={style.dot}>
-        {data.reviewImageList.map(uri => (
-          <View key={uri}>
-            <FastImage source={{uri}} style={style.fastImage} />
-          </View>
-        ))}
-      </Swiper.default>
+      {data.reviewImageList.length <= 0 ? (
+        <FastImage
+          source={require('src/assets/images/boothDetailBanner/empty_booth_image.png')}
+          style={style.fastImage}
+        />
+      ) : (
+        <Swiper.default
+          activeDotColor={theme.colors.grayscale[1]}
+          dotColor={theme.colors.grayscale[0] + '66'}
+          dotStyle={style.dot}>
+          {data.reviewImageList.map(uri => (
+            <View key={uri}>
+              <FastImage source={{uri}} style={style.fastImage} />
+            </View>
+          ))}
+        </Swiper.default>
+      )}
     </Container>
   );
 };
