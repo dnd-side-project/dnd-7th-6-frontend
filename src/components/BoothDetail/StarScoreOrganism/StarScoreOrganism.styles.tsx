@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText1, Headline1} from 'src/components/utils/Text';
+import {Headline1, SubHeadline3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -11,9 +11,9 @@ export const Container = styled.View({
 });
 
 export const StarContainer = styled.View({
-  paddingLeft: widthPercentage(29),
+  paddingLeft: widthPercentage(57),
   paddingTop: heightPercentage(40),
-  paddingBottom: heightPercentage(31),
+  paddingBottom: heightPercentage(40),
   alignSelf: 'flex-start',
 });
 
@@ -24,10 +24,10 @@ export const StarScoreBox = styled.View({
 });
 
 export const StarScore = styled(Headline1)({
-  color: theme.colors.primary[1].dark,
+  color: theme.colors.grayscale[1],
   paddingHorizontal: widthPercentage(2),
 });
 
-export const StarDescription = styled(BodyText1)({
-  color: theme.colors.grayscale[7],
+export const StarDescription = styled(SubHeadline3)({
+  color: theme.colors.grayscale[1],
 });
