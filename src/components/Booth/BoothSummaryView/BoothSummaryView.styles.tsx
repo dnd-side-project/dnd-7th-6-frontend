@@ -22,8 +22,8 @@ export const TitlenIconWrapper = styled.View({
 });
 
 export const IconConatiner = styled.Image({
-  height: heightPercentage(26),
-  width: heightPercentage(26),
+  height: heightPercentage(32),
+  width: heightPercentage(32),
   resizeMode: 'contain',
   marginRight: widthPercentage(6),
 });
