@@ -64,7 +64,7 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           content: inputPostData.contents,
           tagIdList: tagIdSet,
           isPublic: inputPostData.isPublic,
-          newTagList: inputPostData.customTags,
+          newTagKeywordList: inputPostData.customTags,
           postImageList: [inputPostData.image],
         });
       }

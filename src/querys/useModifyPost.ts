@@ -1,6 +1,6 @@
 import {useMutation} from 'react-query';
 
-import modifyPost from 'src/apis/modifyPost';
+import patchPost from 'src/apis/patchPost';
 import {PostUpdateRequest} from 'src/types/post';
 
 interface Parameter {
@@ -10,7 +10,7 @@ interface Parameter {
 
 const useModifyPost = () => {
   return useMutation(({postId, postUpdateRequest}: Parameter) =>
-    modifyPost(postId, postUpdateRequest),
+    patchPost(postId, postUpdateRequest),
   );
 };
 

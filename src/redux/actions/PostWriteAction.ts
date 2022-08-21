@@ -61,7 +61,7 @@ export const changeCustomTag = (customTags: string[]) => ({
 export const startModifyPost = (post: Post) => {
   const {content, postImageSet, postTagSet, id, isPublic} = post;
   const tags: {[key: number]: boolean}[] = [{}, {}, {}, {}, {}, {}, {}];
-  const customTags: {id: number; name: string}[] = [];
+  const customTags: string[] = [];
   const image = {
     id: postImageSet[0].id,
     uri: postImageSet[0].imageUrl,
@@ -83,8 +83,7 @@ export const startModifyPost = (post: Post) => {
     } else if (tag.tagType === 'FRAME') {
       tags[5][tag.id] = true;
     } else if (tag.tagType === 'CUSTOM') {
-      tags[6][tag.id] = true;
-      customTags.push({id: tag.id, name: tag.title});
+      customTags.push(tag.title);
     }
   });
 
