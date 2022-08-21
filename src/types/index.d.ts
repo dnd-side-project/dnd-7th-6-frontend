@@ -109,10 +109,12 @@ export interface PhotoBooth {
   likeCount: number;
   longitude: number;
   reviewCount: number;
+  reviewImageCount: number;
   starCount: number | null;
   name: string;
   roadAddress: string;
   status: string;
+  imageUrl: string | null;
 }
 
 export interface PhotoBoothResponse {
@@ -131,7 +133,7 @@ export interface PhotoBoothContentData {
   firstReview: null;
   like: boolean;
   photoBooth: PhotoBooth;
-  tagSet: null;
+  tagSet: PhotoBoothBrandTag[] | null;
 }
 
 export interface PhotoBoothBrandTag {
