@@ -1,14 +1,15 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage/';
+import FastImage from 'react-native-fast-image';
 import {useDispatch} from 'react-redux';
 
 import LoginHeader from '../LoginHeader/LoginHeader';
 import {
+  Container,
   GoogleLoginContainer,
   KakaoLoginContainer,
   LoginContainer,
-  LoginImage,
   LoginTitle,
   LogoImage,
 } from './LoginOrganism.styles';
@@ -18,6 +19,7 @@ import googleLoginBridge from 'src/apis/googleLoginBridge';
 import kakaoLoginBridge from 'src/apis/kakaoLoginBridge';
 import login from 'src/apis/login';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 const LoginOrganism = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -33,14 +35,21 @@ const LoginOrganism = () => {
   };
 
   return (
-    <>
+    <Container>
       <LoginHeader
         onPressBack={() => {
           navigation.goBack();
         }}
       />
       <LoginContainer>
-        <LoginImage />
+        <FastImage
+          source={require('src/assets/images/logo/word_logo.png')}
+          style={{
+            height: heightPercentage(230),
+            width: heightPercentage(230),
+            marginBottom: heightPercentage(80),
+          }}
+        />
         <KakaoLoginContainer onPress={handleLogin(kakaoLoginBridge)}>
           <LogoImage source={require('src/assets/images/kakaoImage.png')} resizeMode="contain" />
           <LoginTitle>카카오로 계속하기</LoginTitle>
@@ -50,7 +59,7 @@ const LoginOrganism = () => {
           <LoginTitle>구글로 계속하기</LoginTitle>
         </GoogleLoginContainer>
       </LoginContainer>
-    </>
+    </Container>
   );
 };
 

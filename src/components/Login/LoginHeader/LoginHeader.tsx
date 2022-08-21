@@ -1,9 +1,10 @@
 import React, {PropsWithChildren} from 'react';
-import {SafeAreaView} from 'react-native';
+import {Pressable, SafeAreaView} from 'react-native';
 
 import {BackButtonWrapper, Container} from './LoginHeader.styles';
 
-import {PressableCancelIcon} from 'src/components/utils/Pressables/PressableIcons';
+import CloseIcon from 'src/icons/CloseIcon';
+import theme from 'src/styles/Theme';
 
 interface Props {
   onPressBack: () => void;
@@ -14,7 +15,9 @@ const LoginHeader = ({onPressBack}: PropsWithChildren<Props>) => {
     <SafeAreaView>
       <Container>
         <BackButtonWrapper>
-          <PressableCancelIcon onPress={onPressBack} />
+          <Pressable onPress={onPressBack}>
+            <CloseIcon color={theme.colors.grayscale[8]} />
+          </Pressable>
         </BackButtonWrapper>
       </Container>
     </SafeAreaView>
