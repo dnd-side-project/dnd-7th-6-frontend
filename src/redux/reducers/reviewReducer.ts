@@ -14,6 +14,7 @@ import toggleTag from 'src/utils/toggleTag';
 
 const initialState = {
   currentStar: 0,
+  tagData: [],
   imageData: [],
   storeDescription: '',
   pauseModal: false,

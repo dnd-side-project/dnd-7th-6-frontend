@@ -14,7 +14,6 @@ const BoothTagInputScreen = ({navigation}: BoothTagInputScreenProps) => {
   return (
     <>
       <BoothReviewHeader onPress={() => navigation.goBack()}>부스 리뷰 작성</BoothReviewHeader>
-
       <ReviewTagOrganism />
     </>
   );

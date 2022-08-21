@@ -1,6 +1,7 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
 
+import {BoothParamList} from '..';
 import BoothImageReviewScreen from './BoothImageReviewScreen';
 import BoothResultReviewScreen from './BoothResultReviewScreen';
 import BoothReviewCompleteScreen from './BoothReviewCompleteScreen';
@@ -10,21 +11,42 @@ import BoothTagInputScreen from './BoothTagInputScreen';
 const Stack = createNativeStackNavigator();
 
 export type PostReviewParamList = {
-  BoothStoreReviewScreen: undefined;
+  BoothStoreReviewScreen: {placeName: string; boothId: number};
   BoothTagInputScreen: undefined;
-  BoothResultReviewScreen: undefined;
-  BoothImageReviewScreen: undefined;
-  BoothReviewCompleteScreen: undefined;
+  BoothResultReviewScreen: {placeName: string; boothId: number};
+  BoothImageReviewScreen: {placeName: string; boothId: number};
+  BoothReviewCompleteScreen: {placeName: string; boothId: number};
 };
+type Props = NativeStackScreenProps<BoothParamList, 'BoothReviewScreen'>;
 
-const RoutePostReviewScreen = () => {
+const RoutePostReviewScreen = (props: Props) => {
   return (
     <Stack.Navigator initialRouteName="BoothStoreReview" screenOptions={{headerShown: false}}>
-      <Stack.Screen name="BoothStoreReview" component={BoothStoreReviewScreen} />
-      <Stack.Screen name="BoothTagInput" component={BoothTagInputScreen} />
-      <Stack.Screen name="BoothResultReview" component={BoothResultReviewScreen} />
-      <Stack.Screen name="BoothImageReview" component={BoothImageReviewScreen} />
-      <Stack.Screen name="BoothReviewComplete" component={BoothReviewCompleteScreen} />
+      <Stack.Screen
+        name="BoothStoreReview"
+        component={BoothStoreReviewScreen}
+        initialParams={props.route.params}
+      />
+      <Stack.Screen
+        name="BoothTagInput"
+        component={BoothTagInputScreen}
+        initialParams={props.route.params}
+      />
+      <Stack.Screen
+        name="BoothResultReview"
+        component={BoothResultReviewScreen}
+        initialParams={props.route.params}
+      />
+      <Stack.Screen
+        name="BoothImageReview"
+        component={BoothImageReviewScreen}
+        initialParams={props.route.params}
+      />
+      <Stack.Screen
+        name="BoothReviewComplete"
+        component={BoothReviewCompleteScreen}
+        initialParams={props.route.params}
+      />
     </Stack.Navigator>
   );
 };
