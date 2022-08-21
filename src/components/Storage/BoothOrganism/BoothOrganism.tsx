@@ -6,11 +6,13 @@ import {useQueryClient} from 'react-query';
 import StorageBoothCard from '../StorageBoothCard';
 import {Container} from './BoothOrganism.styles';
 
+import {FlatListWrapper} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import useMutatePhotoBoothLike from 'src/querys/useMutatePhotoBoothLike';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 import {UserLikeBooth} from 'src/types';
 
 interface Props {
-  photoBoothList: UserLikeBooth[];
+  photoBoothList?: UserLikeBooth[];
   isLoading: boolean;
 }
 
@@ -39,26 +41,28 @@ const BoothOrganism = ({photoBoothList, isLoading}: Props) => {
 
   return (
     <Container>
-      {isLoading ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <FlatList
-          data={photoBoothList}
-          numColumns={2}
-          renderItem={({index, item}) => (
-            <StorageBoothCard
-              key={index}
-              name={item.name}
-              starScore={item.starScore}
-              reviewCount={item.reviewCount}
-              imgUrl={item.imageUrl}
-              isLike={item.like}
-              onPress={handleCard(item.id)}
-              onLike={handleLike(item.id)}
-            />
-          )}
-        />
-      )}
+      <FlatListWrapper>
+        {isLoading ? (
+          <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+        ) : (
+          <FlatList
+            data={photoBoothList}
+            numColumns={2}
+            renderItem={({index, item}) => (
+              <StorageBoothCard
+                key={index}
+                name={item.name}
+                starScore={item.starScore}
+                reviewCount={item.reviewCount}
+                imgUrl={item.imageUrl}
+                isLike={item.like}
+                onPress={handleCard(item.id)}
+                onLike={handleLike(item.id)}
+              />
+            )}
+          />
+        )}
+      </FlatListWrapper>
     </Container>
   );
 };

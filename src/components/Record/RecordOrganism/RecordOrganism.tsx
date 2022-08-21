@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {useSelector} from 'react-redux';
 
@@ -8,6 +8,7 @@ import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
 import {
   CardWrapper,
+  FlatListWrapper,
   PostFlatList,
   ReviewFlatList,
   SlideViewContainer,
@@ -19,11 +20,12 @@ import NotLoginContainer from 'src/components/utils/NotLoginContainer';
 import ReviewSummary from 'src/components/utils/ReviewSummary';
 import useGetUserList from 'src/querys/useGetUserList';
 import {RootState} from 'src/redux/store';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const RecordOrganism = () => {
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const [focus, setFocus] = useState(0);
-  const {data} = useGetUserList();
+  const {data, isLoading} = useGetUserList();
   const slideViewItems = [
     {name: '사진', count: !data ? 0 : data.postList.length},
     {name: '부스 리뷰', count: !data ? 0 : data.reviewList.length},
@@ -38,23 +40,35 @@ const RecordOrganism = () => {
           <NickNameView />
           <SlideViewContainer>
             <LineSlideView items={slideViewItems} index={focus} setIndex={setFocus}>
-              <PostFlatList
-                numColumns={2}
-                data={data?.postList}
-                renderItem={({item}: any) => (
-                  <CardWrapper>
-                    <FastImage
-                      source={{uri: item.postImageSet[0].imageUrl}}
-                      style={style.recordFeedCard}
-                    />
-                  </CardWrapper>
+              <FlatListWrapper>
+                {isLoading ? (
+                  <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+                ) : (
+                  <PostFlatList
+                    numColumns={2}
+                    data={data?.postList}
+                    renderItem={({item}: any) => (
+                      <CardWrapper>
+                        <FastImage
+                          source={{uri: item.postImageSet[0].imageUrl}}
+                          style={style.recordFeedCard}
+                        />
+                      </CardWrapper>
+                    )}
+                  />
                 )}
-              />
-              <ReviewFlatList
-                numColumns={1}
-                data={data?.reviewList}
-                renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
-              />
+              </FlatListWrapper>
+              <FlatListWrapper>
+                {isLoading ? (
+                  <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+                ) : (
+                  <ReviewFlatList
+                    numColumns={1}
+                    data={data?.reviewList}
+                    renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
+                  />
+                )}
+              </FlatListWrapper>
             </LineSlideView>
           </SlideViewContainer>
         </>

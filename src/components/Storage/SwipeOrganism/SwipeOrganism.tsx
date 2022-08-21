@@ -19,8 +19,8 @@ const SwipeOrganism = () => {
   ];
   return isLoggedIn ? (
     <LineSlideView items={items} index={index} setIndex={setIndex}>
-      {!!data && <PhotoOrganism photoList={data.imageList} isLoading={isLoading} />}
-      {!!data && <BoothOrganism photoBoothList={data.photoBoothList} isLoading={isLoading} />}
+      <PhotoOrganism photoList={data?.imageList} isLoading={isLoading} />
+      <BoothOrganism photoBoothList={data?.photoBoothList} isLoading={isLoading} />
     </LineSlideView>
   ) : (
     <LineSlideView items={items} index={index} setIndex={setIndex} disable>

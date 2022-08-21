@@ -6,12 +6,14 @@ import {useQueryClient} from 'react-query';
 import {Container, style} from './PhotoOrganism.styles';
 
 import FeedCard from 'src/components/Recommend/FeedCard';
+import {FlatListWrapper} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import useMutatePostLike from 'src/querys/useMutatePostLike';
 import useMutateReviewImageLike from 'src/querys/useMutateReviewImageLike';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 import {ReviewImage, UserLikeImage} from 'src/types';
 
 interface Props {
-  photoList: UserLikeImage[];
+  photoList?: UserLikeImage[];
   isLoading: boolean;
 }
 
@@ -61,24 +63,26 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
 
   return (
     <Container>
-      {isLoading ? (
-        <ActivityIndicator size="large" />
-      ) : (
-        <FlatList
-          data={photoList}
-          numColumns={2}
-          style={style.flatList}
-          renderItem={({index, item}) => (
-            <FeedCard
-              key={index}
-              imgUrl={item.imageUrl}
-              onPress={handleCard(item.type, item.id, item)}
-              onLike={handleLike(item.type, item.id)}
-              isLike={item.like}
-            />
-          )}
-        />
-      )}
+      <FlatListWrapper>
+        {isLoading ? (
+          <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+        ) : (
+          <FlatList
+            data={photoList}
+            numColumns={2}
+            style={style.flatList}
+            renderItem={({index, item}) => (
+              <FeedCard
+                key={index}
+                imgUrl={item.imageUrl}
+                onPress={handleCard(item.type, item.id, item)}
+                onLike={handleLike(item.type, item.id)}
+                isLike={item.like}
+              />
+            )}
+          />
+        )}
+      </FlatListWrapper>
     </Container>
   );
 };
