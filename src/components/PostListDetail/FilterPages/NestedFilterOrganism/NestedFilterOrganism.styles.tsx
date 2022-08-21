@@ -14,7 +14,7 @@ export const TypeOfFilter = styled(SubHeadline3)({
 
 export const ChipWrapper = styled.View({
   marginRight: widthPercentage(8),
-  marginTop: heightPercentage(10),
+  marginBottom: heightPercentage(12),
 });
 
 export const ChipContainer = styled.View({

@@ -24,7 +24,7 @@ const SelectTagSummaryOrganism = ({navigation}: Props) => {
 
   return (
     <>
-      <ContentSection title="선택 태그" onPressRightIcon={handlePressModifyButton}>
+      <ContentSection title="선택된 태그" onPressRightIcon={handlePressModifyButton}>
         <ChipContainer>
           {tags
             .reduce((chips: [], tagMap: any) => {
@@ -33,7 +33,7 @@ const SelectTagSummaryOrganism = ({navigation}: Props) => {
             }, [])
             .map((tag: string) => (
               <ChipWrapper key={tag}>
-                <FilterChip selected title={getFilterTagById(parseInt(tag, 10))} />
+                <FilterChip selected title={getFilterTagById(parseInt(tag, 10))} isGray={true} />
               </ChipWrapper>
             ))}
         </ChipContainer>

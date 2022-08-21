@@ -37,7 +37,7 @@ const DirectTagSummaryOrganism = ({navigation}: Props) => {
         <ChipContainer>
           {customTags.map((tag: string, i: number) => (
             <ChipWrapper key={tag}>
-              <FilterChip selected title={tag} onPressDeleteIcon={handleDelete(i)} />
+              <FilterChip selected title={tag} onPressDeleteIcon={handleDelete(i)} isGray={true} />
             </ChipWrapper>
           ))}
         </ChipContainer>
