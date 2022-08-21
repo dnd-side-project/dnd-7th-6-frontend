@@ -63,10 +63,10 @@ const RecommendKeywordQuest = () => {
     <Container>
       <TitleWrapper>
         <TextnIconWrapper>
-          <TitleIcon />
-          <TitleText>키워드로 찾기</TitleText>
+          <TitleIcon source={require('src/assets/images/RecommendScreen/Icon_Home_Tag.png')} />
+          <TitleText>키워드로 빠르게 찾아보세요</TitleText>
         </TextnIconWrapper>
-        <SubTitleText>키워드로 빠르게 포즈를 확인해보세요</SubTitleText>
+        <SubTitleText>키워드로 빠르게 포즈를 찾을 수 있어요!</SubTitleText>
       </TitleWrapper>
       <ScrollView horizontal>
         <KeywordSearchList

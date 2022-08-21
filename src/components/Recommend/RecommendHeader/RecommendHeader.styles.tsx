@@ -11,7 +11,7 @@ export const HeaderContainer = styled.View({
 export const HeaderImage = styled.Image({
   marginLeft: widthPercentage(16),
   resizeMode: 'contain',
-  width: widthPercentage(95),
+  width: widthPercentage(115),
 });
 
 export const IconContainer = styled.View({
