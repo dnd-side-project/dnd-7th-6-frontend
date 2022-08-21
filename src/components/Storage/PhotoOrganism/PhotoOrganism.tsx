@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {FlatList} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
 
 import {Container, style} from './PhotoOrganism.styles';
@@ -12,9 +12,10 @@ import {ReviewImage, UserLikeImage} from 'src/types';
 
 interface Props {
   photoList: UserLikeImage[];
+  isLoading: boolean;
 }
 
-const PhotoOrganism = ({photoList}: Props) => {
+const PhotoOrganism = ({photoList, isLoading}: Props) => {
   const navigation = useNavigation();
   const queryClient = useQueryClient();
   const {mutate: likePost} = useMutatePostLike();
@@ -60,20 +61,24 @@ const PhotoOrganism = ({photoList}: Props) => {
 
   return (
     <Container>
-      <FlatList
-        data={photoList}
-        numColumns={2}
-        style={style.flatList}
-        renderItem={({index, item}) => (
-          <FeedCard
-            key={index}
-            imgUrl={item.imageUrl}
-            onPress={handleCard(item.type, item.id, item)}
-            onLike={handleLike(item.type, item.id)}
-            isLike={item.like}
-          />
-        )}
-      />
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <FlatList
+          data={photoList}
+          numColumns={2}
+          style={style.flatList}
+          renderItem={({index, item}) => (
+            <FeedCard
+              key={index}
+              imgUrl={item.imageUrl}
+              onPress={handleCard(item.type, item.id, item)}
+              onLike={handleLike(item.type, item.id)}
+              isLike={item.like}
+            />
+          )}
+        />
+      )}
     </Container>
   );
 };

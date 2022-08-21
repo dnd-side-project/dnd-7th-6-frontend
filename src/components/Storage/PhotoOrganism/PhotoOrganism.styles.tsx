@@ -7,11 +7,12 @@ const {width, height} = Dimensions.get('window');
 
 export const Container = styled.View({
   alignItems: 'center',
+  height: height - heightPercentage(200),
 });
 
 export const style = StyleSheet.create({
   flatList: {
-    height: height - heightPercentage(215),
+    height: height - heightPercentage(200),
     width: width - widthPercentage(21),
   },
 });
