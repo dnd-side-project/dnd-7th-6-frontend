@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React, {useEffect} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
+import SplashScreen from 'react-native-splash-screen';
 import {useDispatch, useSelector} from 'react-redux';
 
 import getAccessToken from 'src/apis/getAccessToken';
@@ -48,6 +49,7 @@ const AppInner = () => {
     const getUserData = async () => {
       const user = await getUser();
       dispatch(changeUserInfo(user));
+      SplashScreen.hide();
     };
     getUserData();
   }, [newToken, isSettingInterceptor]);
