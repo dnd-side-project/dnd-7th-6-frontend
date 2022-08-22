@@ -27,6 +27,7 @@ const AppInner = () => {
       try {
         const token = await EncryptedStorage.getItem('refreshToken');
         if (!token) {
+          SplashScreen.hide();
           return;
         }
         dispatch(loginAction(true));

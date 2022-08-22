@@ -24,9 +24,9 @@ const LoginOrganism = () => {
 
   const handleLogin = (bridge: any) => async () => {
     const token = await login(bridge);
-    await EncryptedStorage.setItem('refreshToken', token.refreshToken);
+    EncryptedStorage.setItem('refreshToken', token.refreshToken);
     dispatch(setAccessToken(token.accessToken));
-    const user = await getUser();
+    const user = await getUser(token.token);
     dispatch(changeUserInfo(user));
     dispatch(loginAction(true));
     navigation.goBack();
