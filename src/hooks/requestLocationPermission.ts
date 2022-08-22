@@ -1,25 +1,49 @@
-import {PermissionsAndroid, Platform} from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+import {Alert, Linking, Platform} from 'react-native';
+import {check, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const requestLocationPermission = async () => {
   try {
     if (Platform.OS === 'ios') {
-      return await Geolocation.requestAuthorization('always');
-    } else if (Platform.OS === 'android') {
-      const hasPermission = await PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      );
-
-      if (hasPermission) {
-        return 'granted';
-      } else {
-        const status = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      const permission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS);
+      if (permission === RESULTS.GRANTED) {
+        return permission;
+      }
+      if (permission === RESULTS.BLOCKED || RESULTS.DENIED) {
+        Alert.alert(
+          'Photalks 앱은 백그라운드 위치 권한 허용이 필요합니다.',
+          '앱 설정 화면을 열어서 항상 허용으로 바꿔주세요.',
+          [
+            {
+              text: '네',
+              onPress: () => Linking.openSettings(),
+            },
+            {
+              text: '아니오',
+              style: 'cancel',
+            },
+          ],
         );
-
-        if (status === 'granted') {
-          return status;
-        }
+      }
+    } else if (Platform.OS === 'android') {
+      const permission = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      if (permission === RESULTS.GRANTED) {
+        return permission;
+      }
+      if (permission === RESULTS.BLOCKED || RESULTS.DENIED) {
+        Alert.alert(
+          'Photalks 앱은 백그라운드 위치 권한 허용이 필요합니다.',
+          '앱 설정 화면을 열어서 항상 허용으로 바꿔주세요.',
+          [
+            {
+              text: '네',
+              onPress: () => Linking.openSettings(),
+            },
+            {
+              text: '아니오',
+              style: 'cancel',
+            },
+          ],
+        );
       }
     }
   } catch (e) {

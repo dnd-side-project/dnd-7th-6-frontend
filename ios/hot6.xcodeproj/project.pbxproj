@@ -502,6 +502,13 @@
 			remoteGlobalIDString = 97CE6A3FA04F0B3C1E0418A227804309;
 			remoteInfo = RNGoogleSignin;
 		};
+		065C899F28B3B4E80039707C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5737DDB4BC95AD399B3206838AB97095;
+			remoteInfo = RNCAsyncStorage;
+		};
 		066C199728A27BDA006E14DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -740,6 +747,7 @@
 				063052D3287C4EC600DDFD03 /* React-RCTText */,
 				063052D5287C4EC600DDFD03 /* React-RCTVibration */,
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
+				065C89A028B3B4E80039707C /* RNCAsyncStorage */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
 				06C92A5828996D04009267C3 /* RNGestureHandler */,
 				0658B67628A898D300BF5CC4 /* RNGoogleSignin */,
@@ -1460,6 +1468,14 @@
 			name = RNGoogleSignin;
 			path = libRNGoogleSignin.a;
 			remoteRef = 0658B67528A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		065C89A028B3B4E80039707C /* RNCAsyncStorage */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNCAsyncStorage;
+			path = libRNCAsyncStorage.a;
+			remoteRef = 065C899F28B3B4E80039707C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		066C199828A27BDA006E14DB /* BVLinearGradient */ = {
