@@ -509,6 +509,13 @@
 			remoteGlobalIDString = 3501832F51E21BCD681DC315B3424B43;
 			remoteInfo = BVLinearGradient;
 		};
+		068EC0CC28B2EE3C004D239F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B923B5A106791D9D52196A67E572B3;
+			remoteInfo = "react-native-splash-screen";
+		};
 		06C92A5728996D04009267C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -721,6 +728,7 @@
 				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
+				068EC0CD28B2EE3C004D239F /* react-native-splash-screen */,
 				064CF23C28AAB1F400B7648E /* react-native-webview */,
 				063052C5287C4EC600DDFD03 /* React-perflogger */,
 				063052C7287C4EC600DDFD03 /* React-RCTAnimation */,
@@ -1460,6 +1468,14 @@
 			name = BVLinearGradient;
 			path = libBVLinearGradient.a;
 			remoteRef = 066C199728A27BDA006E14DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		068EC0CD28B2EE3C004D239F /* react-native-splash-screen */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-splash-screen";
+			path = "libreact-native-splash-screen.a";
+			remoteRef = 068EC0CC28B2EE3C004D239F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		06C92A5828996D04009267C3 /* RNGestureHandler */ = {
