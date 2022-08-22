@@ -69,6 +69,7 @@ const LineSlideView = ({
       <Swiper.default
         showsPagination={false}
         loop={false}
+        scrollEnabled={false}
         onIndexChanged={disable ? () => {} : handleChangeSwiperIndex}
         horizontal={true}
         ref={swiperRef}>
