@@ -6,7 +6,7 @@ import {Container, Headline, Style} from './ExitCenterOrganism.styles';
 const ExitCenterOrganism = () => {
   return (
     <Container>
-      <FastImage source={{uri: ''}} style={Style.fastImage} />
+      <FastImage source={require('src/assets/images/end/end_post.png')} style={Style.fastImage} />
       <Headline>공유 완료!</Headline>
     </Container>
   );

@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import FastImage from 'react-native-fast-image';
 
 import ReviewNextPressable from '../ReviewNextPressable';
 import {
@@ -11,6 +12,8 @@ import {
   IllustWrapper,
   ReviewCompleteContainer,
 } from './ReviewCompleteOrganism.styles';
+
+import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 const ReviewCompleteOrganism = () => {
   const navigation = useNavigation();
   const gotoBoothDetailOnPress = () =>
@@ -28,7 +31,12 @@ const ReviewCompleteOrganism = () => {
   return (
     <ReviewCompleteContainer>
       <IllustnTitleWrapper>
-        <IllustWrapper />
+        <IllustWrapper>
+          <FastImage
+            source={require('src/assets/images/end/end_review.png')}
+            style={{width: widthPercentage(343), height: heightPercentage(230)}}
+          />
+        </IllustWrapper>
         <CompleteTitle>부스 리뷰 작성 완료!</CompleteTitle>
         <CompleteSubTitle>
           {'알려주신 정보가 의미있게 될거에요!\n작성해 주셔서 감사합니다:)'}

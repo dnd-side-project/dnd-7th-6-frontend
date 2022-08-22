@@ -11,11 +11,8 @@ export const Container = styled.View({
 });
 
 export const ImageWrapper = styled.View({
-  height: heightPercentage(160),
-  width: heightPercentage(160),
-  backgroundColor: theme.colors.grayscale[2],
   alignSelf: 'center',
-  marginTop: heightPercentage(46),
+  marginTop: heightPercentage(71),
 });
 
 export const Title = styled(BodyText4)({

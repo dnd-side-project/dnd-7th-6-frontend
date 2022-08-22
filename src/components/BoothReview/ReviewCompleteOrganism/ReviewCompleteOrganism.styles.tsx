@@ -17,10 +17,7 @@ export const IllustnTitleWrapper = styled.View({
 });
 
 export const IllustWrapper = styled.View({
-  height: heightPercentage(160),
-  width: heightPercentage(160),
   alignSelf: 'center',
-  backgroundColor: theme.colors.grayscale[2],
 });
 
 export const CompleteTitle = styled(Headline3)({
