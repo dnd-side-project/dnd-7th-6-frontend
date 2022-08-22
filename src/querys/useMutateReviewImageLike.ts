@@ -1,9 +1,35 @@
-import {useMutation} from 'react-query';
+import {useMutation, useQueryClient} from 'react-query';
 
 import mutatePostLike from 'src/apis/mutatePostLike';
+import {ReviewImage} from 'src/types';
 
 const useMutateReviewImageLike = () => {
-  return useMutation((id: number) => mutatePostLike(id));
+  const queryClient = useQueryClient();
+
+  return useMutation((id: number) => mutatePostLike(id), {
+    onMutate: (targetId: number) => {
+      const oldReviewImages = queryClient.getQueryData(['review-images']);
+      queryClient.cancelQueries(['review-images']);
+      queryClient.setQueryData(['review-images'], (oldData: any) => ({
+        ...oldData,
+        pages: oldData.pages.map((page: any) => ({
+          ...page,
+          content: page.content.map((reviewImage: ReviewImage) =>
+            reviewImage.id === targetId
+              ? {...reviewImage, like: !reviewImage.like}
+              : {...reviewImage},
+          ),
+        })),
+      }));
+      return () => queryClient.setQueryData(['review-images'], oldReviewImages);
+    },
+    onError: (err, values, rollback) => {
+      if (rollback) {
+        rollback();
+      }
+      return Promise.reject(err);
+    },
+  });
 };
 
 export default useMutateReviewImageLike;
