@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -13,7 +14,11 @@ import StarScoreOrganism from '../StarScoreOrganism/StarScoreOrganism';
 import {ScrollContainer} from './OuterScrollView.styles';
 
 import Boundary from 'src/components/PostWrite/Boundary';
+import {Button} from 'src/components/Recommend/AddPostButton/AddPostButton.styles';
+import PlusIcon32 from 'src/icons/PlusIcon32';
+import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 import {heightPercentage} from 'src/styles/ScreenResponse';
+import theme from 'src/styles/Theme';
 
 interface Props {
   id: number;
@@ -21,6 +26,8 @@ interface Props {
 }
 
 const OuterScrollView = ({id, distance}: Props) => {
+  const navigation = useNavigation();
+  const {data: photoBooth} = useGetPhotoBooth(id);
   const scrollRef = useRef<ScrollView>(null);
   const [scrollIndex, setScrollIndex] = useState(0);
   const [scrollTargets, setScrollTargets] = useState([0, 0, 0]);
@@ -34,6 +41,18 @@ const OuterScrollView = ({id, distance}: Props) => {
       return next;
     });
   };
+  const handleReviewWrite = () => {
+    if (!photoBooth) {
+      return;
+    }
+    navigation.navigate(
+      'BoothReview' as never,
+      {
+        placeName: photoBooth.photoBooth.name,
+        boothId: photoBooth.photoBooth.id,
+      } as never,
+    );
+  };
 
   useEffect(() => {
     scrollRef.current?.scrollTo({
@@ -44,18 +63,23 @@ const OuterScrollView = ({id, distance}: Props) => {
   }, [scrollIndex]);
 
   return (
-    <ScrollContainer ref={scrollRef} stickyHeaderIndices={[2]}>
-      <ImageSliderOrganism id={id} />
-      <DescriptionOrganism id={id} distance={distance} />
-      <BoothDetailNavigation index={scrollIndex} setIndex={setScrollIndex} />
-      <StarScoreOrganism id={id} />
-      <BoothConditionOrganism id={id} onLayout={setScrollTarget(0)} />
-      <PhotoConditionOrganism id={id} />
-      <Boundary />
-      <GridPhotoOrganism id={id} onLayout={setScrollTarget(1)} />
-      <Boundary />
-      <ReviewOrganism id={id} onLayout={setScrollTarget(2)} />
-    </ScrollContainer>
+    <>
+      <ScrollContainer ref={scrollRef} stickyHeaderIndices={[2]}>
+        <ImageSliderOrganism booth={photoBooth} />
+        <DescriptionOrganism booth={photoBooth} distance={distance} />
+        <BoothDetailNavigation index={scrollIndex} setIndex={setScrollIndex} />
+        <StarScoreOrganism booth={photoBooth} />
+        <BoothConditionOrganism booth={photoBooth} onLayout={setScrollTarget(0)} />
+        <PhotoConditionOrganism booth={photoBooth} />
+        <Boundary />
+        <GridPhotoOrganism id={id} onLayout={setScrollTarget(1)} />
+        <Boundary />
+        <ReviewOrganism id={id} onLayout={setScrollTarget(2)} />
+      </ScrollContainer>
+      <Button onPress={handleReviewWrite}>
+        <PlusIcon32 color={theme.colors.grayscale[2]} />
+      </Button>
+    </>
   );
 };
 
