@@ -26,8 +26,10 @@ const FrameRecommendOrganism = () => {
     <OrganismView>
       <TitleWrapper>
         <TextnIconWrapper>
-          <TitleIcon />
-          <TitleText>인기있는 캐릭터 프레임!</TitleText>
+          <TitleIcon
+            source={require('src/assets/images/RecommendScreen/Icon_Home__Character.png')}
+          />
+          <TitleText>요즘 인기있는 캐릭터 프레임!</TitleText>
         </TextnIconWrapper>
         <SubTitleText>요즘 포톡커들이 많이 찾는 프레임이에요</SubTitleText>
       </TitleWrapper>
