@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText3} from 'src/components/utils/Text';
+import {SubHeadline3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -14,20 +14,20 @@ export const NickNameContainer = styled.View({
 
 export const NickNameImageWrapper = styled.View({
   marginLeft: widthPercentage(16),
-  alignItems: 'center',
+  marginRight: widthPercentage(4),
 });
 
 export const NickNamenIconWrapper = styled.Pressable({
   height: heightPercentage(24),
-  flexDirection: 'row',
   marginTop: heightPercentage(4),
+  flexDirection: 'row',
 });
 
-export const NickNameText = styled(BodyText3)({
+export const NickNameText = styled(SubHeadline3)({
   color: theme.colors.grayscale[8],
   textDecorationLine: 'underline',
 });
 
 export const IconWrapper = styled.View({
-  marginLeft: widthPercentage(4),
+  marginLeft: widthPercentage(2),
 });
