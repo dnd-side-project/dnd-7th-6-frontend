@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import {StyleSheet} from 'react-native';
 
 import {BodyText4} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
@@ -34,3 +35,10 @@ export const SelectPressableText = styled(BodyText4)(({selected}: SelectPressabl
   alignSelf: 'center',
   color: selected ? '#8048F8' : theme.colors.grayscale[7],
 }));
+
+export const styles = StyleSheet.create({
+  iconImage: {
+    width: 18,
+    height: 18,
+  },
+});

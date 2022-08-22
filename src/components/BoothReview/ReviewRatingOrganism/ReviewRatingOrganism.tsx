@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {BackHandler} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -21,23 +21,14 @@ import {
 } from './ReviewRatingOrganism.styles';
 
 import Alert from 'src/components/utils/Alert';
+import useGetReviewTag from 'src/querys/useGetReviewTag';
 import {changeSpecificTags, clearData} from 'src/redux/actions/ReviewAction';
 import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
+import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
 const ReviewRatingOrganism = () => {
-  const boothName = '포토시그니처 대구 교동카페 거리점';
-  const specificData = [
-    {id: 0, title: '소품 상태가 깔끔해요'},
-    {id: 1, title: '파우더룸이 잘 되어있어요'},
-    {id: 2, title: '부스 공간이 넓어요'},
-    {id: 3, title: '부스가 청결해요'},
-    {id: 4, title: 'QR 코드를 제공해요'},
-    {id: 5, title: '대기 공간이 넓어요'},
-    {id: 6, title: '카드결제가 가능해요'},
-    {id: 7, title: '홀수출력이 가능해요'},
-    {id: 8, title: '예쁜 셀프존이 있어요'},
-    {id: 9, title: '배경색이 다양해요'},
-  ];
+  const route = useRoute<RouteProp<PostReviewParamList, 'BoothStoreReviewScreen'>>();
+  const {placeName} = route.params;
   const boothRatingTextData = [
     ' ',
     '별로에요',
@@ -48,6 +39,7 @@ const ReviewRatingOrganism = () => {
   ];
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {data} = useGetReviewTag();
   const currentStars: number = useSelector((state: RootState) => state.reviewReducer.currentStar);
   const specificTags = useSelector((state: RootState) => state.reviewReducer.specificTags);
   const specificNext = useSelector((state: RootState) => state.reviewReducer.specificNext);
@@ -87,7 +79,7 @@ const ReviewRatingOrganism = () => {
           }}
         />
       )}
-      <ReviewBoothName>{boothName}</ReviewBoothName>
+      <ReviewBoothName>{placeName}</ReviewBoothName>
       <RatingnTextWrapper>
         <BoothRatingDescription>이 매장은 어떠셨나요?</BoothRatingDescription>
         <ReviewStarRating />
@@ -100,12 +92,13 @@ const ReviewRatingOrganism = () => {
       <SpecificListWrapper>
         <SpecificFlatList
           scrollEnabled={true}
-          data={specificData}
+          data={data?.reviewTagMap.BOOTH_CONDITION}
           bounces={false}
           numColumns={2}
           renderItem={({item}: any) => {
             return (
               <ReviewSelectPressable
+                imageUrl={item.tagIconImageUrl}
                 selected={specificTags[item.id]}
                 onPress={tagsOnPress(item.id)}>
                 {item.title}

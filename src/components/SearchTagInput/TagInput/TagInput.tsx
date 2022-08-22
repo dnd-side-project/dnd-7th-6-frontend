@@ -67,6 +67,9 @@ const TagInput = ({
   };
   const chipTextEventOnPress = () => {
     let prevData = [...tagData];
+    if (prevData.find(item => inputWord === item)) {
+      return;
+    }
     prevData.push(inputWord);
     dispatch(changeTagData(prevData));
     setInputWord('');
