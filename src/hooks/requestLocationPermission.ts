@@ -1,12 +1,11 @@
 import {Alert, Linking, Platform} from 'react-native';
-import {check, PERMISSIONS, RESULTS} from 'react-native-permissions';
-
+import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 const requestLocationPermission = async () => {
   try {
     if (Platform.OS === 'ios') {
-      const permission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS);
+      const permission = await request(PERMISSIONS.IOS.LOCATION_ALWAYS);
       if (permission === RESULTS.GRANTED) {
-        return permission;
+        return await permission;
       }
       if (permission === RESULTS.BLOCKED || RESULTS.DENIED) {
         Alert.alert(
@@ -25,9 +24,9 @@ const requestLocationPermission = async () => {
         );
       }
     } else if (Platform.OS === 'android') {
-      const permission = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      const permission = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
       if (permission === RESULTS.GRANTED) {
-        return permission;
+        return await permission;
       }
       if (permission === RESULTS.BLOCKED || RESULTS.DENIED) {
         Alert.alert(

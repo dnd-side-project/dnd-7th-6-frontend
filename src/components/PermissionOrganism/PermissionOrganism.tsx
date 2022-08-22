@@ -25,8 +25,8 @@ import PermissionPhoneIcon from 'src/icons/Permission/PhoneIcon';
 const PermissionOrganism = () => {
   const navigation = useNavigation();
   const nextHandler = () => {
-    requestLocationPermission().then(() =>
-      requestcameraPermission().then(() => navigation.navigate('AppInner' as never)),
+    requestcameraPermission().then(() =>
+      requestLocationPermission().then(() => navigation.navigate('AppInner' as never)),
     );
   };
   return (

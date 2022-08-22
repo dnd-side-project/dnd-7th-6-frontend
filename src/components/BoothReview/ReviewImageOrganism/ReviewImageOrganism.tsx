@@ -24,6 +24,7 @@ import {
 } from './ReviewImageOrganism.styles';
 
 import ActivityIndicator from 'src/components/utils/ActivityIndicator';
+import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import useMutateReview from 'src/querys/useMutateReview';
 import {addImage, addStoreDescription} from 'src/redux/actions/ReviewAction';
@@ -47,6 +48,7 @@ const ReviewImageOrganism = () => {
 
   const onChangeFile = useCallback(async () => {
     try {
+      await requestcameraPermission();
       const imageResponse = await openPicker({
         includeBase64: true,
         includeExif: true,
