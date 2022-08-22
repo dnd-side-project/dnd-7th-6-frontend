@@ -11,7 +11,7 @@ import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
 import useModifyPost from 'src/querys/useModifyPost';
 import useMutatePost from 'src/querys/useMutatePost';
 import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
-import {hideTabBar} from 'src/redux/actions/TabBarAction';
+import {closePostWrite, hideTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 
 const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
@@ -54,8 +54,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
-              dispatch(clearPostWrite());
               navigation.navigate(screens[screenIndex + 1] as never);
+              dispatch(clearPostWrite());
+              dispatch(closePostWrite());
             },
           },
         );
@@ -72,8 +73,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
-              dispatch(clearPostWrite());
               navigation.navigate(screens[screenIndex + 1] as never);
+              dispatch(clearPostWrite());
+              dispatch(closePostWrite());
             },
           },
         );
