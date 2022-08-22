@@ -8,7 +8,9 @@ import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
 import {
   CardWrapper,
+  FlatListWrapper,
   PostFlatList,
+  PostFlatListWrapper,
   ReviewFlatList,
   SlideViewContainer,
   style,
@@ -42,27 +44,31 @@ const RecordOrganism = () => {
               {isLoading ? (
                 <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
               ) : (
-                <PostFlatList
-                  numColumns={2}
-                  data={data?.postList}
-                  renderItem={({item}: any) => (
-                    <CardWrapper>
-                      <FastImage
-                        source={{uri: item.postImageSet[0].imageUrl}}
-                        style={style.recordFeedCard}
-                      />
-                    </CardWrapper>
-                  )}
-                />
+                <PostFlatListWrapper>
+                  <PostFlatList
+                    numColumns={2}
+                    data={data?.postList}
+                    renderItem={({item}: any) => (
+                      <CardWrapper>
+                        <FastImage
+                          source={{uri: item.postImageSet[0].imageUrl}}
+                          style={style.recordFeedCard}
+                        />
+                      </CardWrapper>
+                    )}
+                  />
+                </PostFlatListWrapper>
               )}
               {isLoading ? (
                 <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
               ) : (
-                <ReviewFlatList
-                  numColumns={1}
-                  data={data?.reviewList}
-                  renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
-                />
+                <FlatListWrapper>
+                  <ReviewFlatList
+                    numColumns={1}
+                    data={data?.reviewList}
+                    renderItem={({item}: any) => <ReviewSummary {...item} key={item.id} />}
+                  />
+                </FlatListWrapper>
               )}
             </LineSlideView>
           </SlideViewContainer>

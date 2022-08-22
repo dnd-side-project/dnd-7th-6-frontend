@@ -24,7 +24,7 @@ export const Container = styled.Pressable<{selected: boolean}>(({selected}) => (
 }));
 
 export const Title = styled(BodyText4)<{selected: boolean}>(({selected}) => ({
-  color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[8],
+  color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[9],
 }));
 
 export const IconContainer = styled.Image({

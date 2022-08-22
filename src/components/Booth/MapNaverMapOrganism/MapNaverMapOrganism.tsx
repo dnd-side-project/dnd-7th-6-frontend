@@ -23,7 +23,6 @@ import theme from 'src/styles/Theme';
 import getGeolocation from 'src/utils/getGeolocation';
 const MapNaverMapOrganism = () => {
   const mapRef = useRef<NaverMapView>(null);
-  const [onInitialize, setOnInitialize] = useState<Boolean>(true);
   const [showRefreshPressable, setShowRefreshPressable] = useState<Boolean>(false);
   const searchedCoord: Coord = useSelector((state: RootState) => state.mapReducer.mapCoord);
   const [selectTagArr, setSelectTagArr] = useState<(number | undefined)[]>([]);
@@ -31,14 +30,17 @@ const MapNaverMapOrganism = () => {
     latitude: 0,
     longitude: 0,
   });
+  const [refetchPos, setRetchPos] = useState<Coord>({
+    latitude: 0,
+    longitude: 0,
+  });
   const {data, refetch, isLoading} = useGetPhotoBoothLocation({
-    coord: screenCenterPos,
+    coord: refetchPos,
     selectTagArr,
   });
   const dispatch = useDispatch();
   const refetchOnPress = () => {
-    refetch();
-    setShowRefreshPressable(false);
+    setRetchPos(screenCenterPos);
   };
 
   //첫 로딩시 현재 사용자 위치 가져오기
@@ -50,22 +52,33 @@ const MapNaverMapOrganism = () => {
         return;
       }
       const {longitude, latitude} = await getGeolocation();
-      setScreenCenterPos({latitude: latitude, longitude: longitude});
       if (Platform.OS === 'android') {
         mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});
       }
+      setRetchPos({latitude: latitude, longitude: longitude});
     };
-    initMap().then(() => setOnInitialize(false));
+    initMap();
   }, []);
 
-  //첫 로딩시 data refetching
   useEffect(() => {
-    const initData = async () => {
-      setShowRefreshPressable(false);
-      await refetch();
-    };
-    initData();
-  }, [onInitialize]);
+    if (refetchPos.latitude === 0 || refetchPos.longitude === 0) {
+      return;
+    }
+    refetch();
+    setShowRefreshPressable(false);
+  }, [refetchPos]);
+
+  useEffect(() => {
+    if (
+      screenCenterPos.latitude === 0 ||
+      screenCenterPos.longitude === 0 ||
+      screenCenterPos.longitude === parseFloat(refetchPos.longitude.toFixed(4)) ||
+      screenCenterPos.latitude === parseFloat(refetchPos.latitude.toFixed(4))
+    ) {
+      return;
+    }
+    setShowRefreshPressable(true);
+  }, [screenCenterPos]);
 
   //가장 가까이 있는 marker focused로 변경
   useEffect(() => {
@@ -122,6 +135,7 @@ const MapNaverMapOrganism = () => {
   }, [filteredTag, filteredBrand]);
 
   useEffect(() => {
+    setRetchPos(screenCenterPos);
     refetch();
   }, [selectTagArr]);
 
@@ -143,10 +157,10 @@ const MapNaverMapOrganism = () => {
       <NaverMap
         mapRef={mapRef}
         centerPos={screenCenterPos}
+        refetchPos={refetchPos}
         setScreenPos={setScreenCenterPos}
         data={data?.data}
         setShowRefreshPressable={setShowRefreshPressable}
-        onInitialize={onInitialize}
       />
       <FilterWrapper>
         <MapFilterOrganism />

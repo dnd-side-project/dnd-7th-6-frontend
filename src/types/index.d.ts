@@ -111,7 +111,7 @@ export interface PhotoBooth {
   longitude: number;
   reviewCount: number;
   reviewImageCount: number;
-  starCount: number | null;
+  starScore: number;
   name: string;
   roadAddress: string;
   status: string;
@@ -163,7 +163,7 @@ export interface Review {
 export interface FormImage {
   uri: string;
   type: string;
-  name: string | undefined;
+  name: string;
 }
 
 export interface UserLike {

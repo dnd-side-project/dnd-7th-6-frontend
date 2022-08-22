@@ -11,15 +11,15 @@ export const BottomSheetConatiner = styled.View({
 });
 
 export const bottomSheetStyle = {
-  borderRadius: 16,
+  borderRadius: 24,
   zIndex: 2,
   elevation: 2,
 };
 
 export const handleStyle = {
-  width: widthPercentage(70),
+  width: widthPercentage(50),
   height: heightPercentage(4),
-  backgroundColor: theme.colors.grayscale[6],
+  backgroundColor: theme.colors.grayscale[8],
 };
 
 export const NoDataContainer = styled.View({

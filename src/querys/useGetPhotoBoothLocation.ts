@@ -15,8 +15,6 @@ const useGetPhotoBoothLocation = ({
     () => getPhotoBoothLocation({...coord, distance: 2, tagIdSet: selectTagArr}),
     {
       onError: error => console.log(error),
-      enabled: false,
-      staleTime: Infinity,
     },
   );
 };

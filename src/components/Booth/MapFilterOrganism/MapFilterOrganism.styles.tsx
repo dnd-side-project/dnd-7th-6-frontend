@@ -16,17 +16,19 @@ export const BrandContainer = styled.View({
   flexDirection: 'column',
 });
 
-export const DropdownContainer = styled.View({
+export const DropdownContainer = styled.View(({isSelected}: {isSelected: boolean}) => ({
   shadowOffset: {width: 0, height: 4},
   shadowRadius: 8,
   shadowOpacity: 0.1,
   width: widthPercentage(100),
   height: heightPercentage(208),
   backgroundColor: theme.colors.grayscale[1],
+  borderColor: isSelected ? '#A87EFF' : theme.colors.grayscale[5],
+  borderWidth: 1,
   borderRadius: 8,
   marginLeft: widthPercentage(16),
   marginTop: heightPercentage(4),
-});
+}));
 
 export const DropdownObject = styled.Pressable(({selected}: Props) => ({
   marginHorizontal: widthPercentage(6),

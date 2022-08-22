@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {
@@ -19,6 +19,7 @@ import {RootState} from 'src/redux/store';
 const MapFilterOrganism = () => {
   const {data} = useGetPhotoBoothFilter();
   const [brandDropdown, setBrandDropdown] = useState(false);
+  const [brandOnPress, setBrandOnPress] = useState<any>();
   const dispatch = useDispatch();
   const brandChipOnPress = () => setBrandDropdown(!brandDropdown);
   const filteredTag = useSelector((state: RootState) => state.mapReducer.filteredTag);
@@ -30,6 +31,14 @@ const MapFilterOrganism = () => {
   const handlePressDropdown = (id: number) => () => {
     dispatch(changeFilteredBrandonMap(id));
   };
+  useEffect(() => {
+    const value = Object.values(filteredBrand).filter((item: any) => {
+      if (item) {
+        return true;
+      }
+    });
+    setBrandOnPress(value);
+  }, [filteredBrand]);
   return (
     <DismissDropDownView setBrandDropdown={setBrandDropdown}>
       <FilterScollView
@@ -42,7 +51,7 @@ const MapFilterOrganism = () => {
             브랜드
           </MapFilterBrandChip>
           {brandDropdown && (
-            <DropdownContainer>
+            <DropdownContainer isSelected={brandOnPress.length > 0}>
               {
                 //@ts-ignore
                 data?.data.brandTagList.slice(0, 5).map(tag => {

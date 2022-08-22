@@ -22,7 +22,6 @@ const FrameRecommendOrganism = () => {
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };
-
   return (
     <OrganismView>
       <TitleWrapper>
@@ -39,7 +38,7 @@ const FrameRecommendOrganism = () => {
           <ListWrapper>
             <RecommendPreviewFourCard
               isLoading={isLoading}
-              data={data.pages.flat().map(response => response.content) as any}
+              data={data.pages.flatMap(response => response.content) as any}
               onPress={handlePressCard}
             />
           </ListWrapper>

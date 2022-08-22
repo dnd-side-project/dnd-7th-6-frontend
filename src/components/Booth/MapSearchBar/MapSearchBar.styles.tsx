@@ -6,10 +6,14 @@ import theme from 'src/styles/Theme';
 
 export const SearchBarCotainer = styled.Pressable({
   flexDirection: 'row',
-  backgroundColor: theme.colors.grayscale[2],
+  backgroundColor: theme.colors.grayscale[1],
   borderRadius: 8,
   width: widthPercentage(343),
   height: heightPercentage(40),
+  shadowOffset: {width: 0, height: 4},
+  shadowRadius: 8,
+  shadowOpacity: 0.1,
+  elevation: 2,
   alignItems: 'center',
 });
 

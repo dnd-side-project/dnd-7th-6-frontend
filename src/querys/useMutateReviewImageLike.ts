@@ -1,9 +1,9 @@
 import {useMutation} from 'react-query';
 
-import mutatePostLike from 'src/apis/mutatePostLike';
+import mutateReviewImageLike from 'src/apis/mutateReviewImageLike';
 
 const useMutateReviewImageLike = () => {
-  return useMutation((id: number) => mutatePostLike(id));
+  return useMutation((id: number) => mutateReviewImageLike(id));
 };
 
 export default useMutateReviewImageLike;

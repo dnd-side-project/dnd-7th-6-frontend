@@ -46,20 +46,25 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
               <Distance>{item.distance.toFixed(1)}km</Distance>
               <Text> | </Text>
               <ColorStarIcon14 />
-              <Rating>{item.photoBooth.starCount ? item.photoBooth.starCount : '-'}</Rating>
+              <Rating>{item.photoBooth.starScore.toFixed(1)}</Rating>
               <ReviewCount>{item.photoBooth.reviewCount}</ReviewCount>
             </SubText>
           </View>
         </TitlenIconWrapper>
 
-        {/*이 부분 명세가 제대로 안되어 있어서 임의로 비슷한 명세 찾아서 입력 해놨습니다.*/}
-        {item.tagSet && (
+        {item.tagSet ? (
           <TagContainer>
-            {item.tagSet.map(tag => (
+            {item.tagSet.slice(0, 2).map(tag => (
               <ChipWrapper key={tag.id}>
-                <RoundChip mode="gray">{tag.title}</RoundChip>
+                <RoundChip mode="gray">#{tag.title}</RoundChip>
               </ChipWrapper>
             ))}
+          </TagContainer>
+        ) : (
+          <TagContainer>
+            <ChipWrapper>
+              <RoundChip mode="gray">#아직 리뷰가 없어요!</RoundChip>
+            </ChipWrapper>
           </TagContainer>
         )}
       </DescriptionContainer>
