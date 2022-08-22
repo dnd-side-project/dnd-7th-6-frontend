@@ -2,24 +2,22 @@ import React from 'react';
 
 import KeywordTagSection from '../KeywordTagSection';
 
-import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
+import {PhotoBoothResponse} from 'src/types';
 
 interface Props {
-  id: number;
+  booth?: PhotoBoothResponse;
 }
 
-const PhotoConditionOrganism = ({id}: Props) => {
-  const {data} = useGetPhotoBooth(id);
-
-  if (!data) {
+const PhotoConditionOrganism = ({booth}: Props) => {
+  if (!booth) {
     return <></>;
   }
 
   return (
     <KeywordTagSection
-      id={id}
+      id={booth.photoBooth.id}
       title="결과물은 이런 느낌이었어요"
-      keywords={data.tagSummary.PHOTO_CONDITION}
+      keywords={booth.tagSummary.PHOTO_CONDITION}
     />
   );
 };

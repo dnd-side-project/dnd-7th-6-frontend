@@ -14,23 +14,22 @@ import {
 import OnlyLikeButton from 'src/components/utils/Button/OnlyLikeButton';
 import NavigationIcon from 'src/icons/NavigationIcon';
 import PinIcon from 'src/icons/PinIcon';
-import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 import useMutatePhotoBoothLike from 'src/querys/useMutatePhotoBoothLike';
+import {PhotoBoothResponse} from 'src/types';
 
 interface Props {
-  id: number;
+  booth?: PhotoBoothResponse;
   distance: number;
 }
 
-const DescriptionOrganism = ({id, distance}: Props) => {
-  const {data} = useGetPhotoBooth(id);
+const DescriptionOrganism = ({booth, distance}: Props) => {
   const {mutate: likePhotoBooth} = useMutatePhotoBoothLike();
   const queryClient = useQueryClient();
-  if (!data) {
+  if (!booth) {
     return <></>;
   }
   const handleLike = () => {
-    likePhotoBooth(id, {
+    likePhotoBooth(booth.photoBooth.id, {
       onSuccess: () => {
         queryClient.invalidateQueries(['photo-booth']);
         queryClient.invalidateQueries(['userLike']);
@@ -40,13 +39,13 @@ const DescriptionOrganism = ({id, distance}: Props) => {
   return (
     <Container>
       <TitleSection>
-        <BoothName>{data.photoBooth.name}</BoothName>
-        <OnlyLikeButton onPress={handleLike} isActive={data.like} />
+        <BoothName>{booth.photoBooth.name}</BoothName>
+        <OnlyLikeButton onPress={handleLike} isActive={booth.like} />
       </TitleSection>
       <List>
         <ListRow>
           <PinIcon />
-          <TextElement>{data.photoBooth.jibunAddress}</TextElement>
+          <TextElement>{booth.photoBooth.jibunAddress}</TextElement>
         </ListRow>
         <ListRow>
           <NavigationIcon />

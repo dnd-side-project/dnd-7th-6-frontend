@@ -5,23 +5,21 @@ import * as Swiper from 'react-native-swiper';
 
 import {Container, style} from './ImageSliderOrganism.styles';
 
-import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
 import theme from 'src/styles/Theme';
+import {PhotoBoothResponse} from 'src/types';
 
 interface Props {
-  id: number;
+  booth?: PhotoBoothResponse;
 }
 
-const ImageSliderOrganism = ({id}: Props) => {
-  const {data} = useGetPhotoBooth(id);
-
-  if (!data) {
+const ImageSliderOrganism = ({booth}: Props) => {
+  if (!booth) {
     return <></>;
   }
 
   return (
     <Container>
-      {data.reviewImageList.length <= 0 ? (
+      {booth.reviewImageList.length <= 0 ? (
         <FastImage
           source={require('src/assets/images/boothDetailBanner/empty_booth_image.png')}
           style={style.fastImage}
@@ -31,7 +29,7 @@ const ImageSliderOrganism = ({id}: Props) => {
           activeDotColor={theme.colors.grayscale[1]}
           dotColor={theme.colors.grayscale[0] + '66'}
           dotStyle={style.dot}>
-          {data.reviewImageList.map(uri => (
+          {booth.reviewImageList.map(uri => (
             <View key={uri}>
               <FastImage source={{uri}} style={style.fastImage} />
             </View>

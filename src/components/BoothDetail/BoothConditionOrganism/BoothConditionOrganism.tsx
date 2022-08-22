@@ -3,25 +3,23 @@ import {LayoutChangeEvent} from 'react-native';
 
 import KeywordTagSection from '../KeywordTagSection';
 
-import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
+import {PhotoBoothResponse} from 'src/types';
 
 interface Props {
-  id: number;
+  booth?: PhotoBoothResponse;
   onLayout: (event: LayoutChangeEvent) => void;
 }
 
-const BoothConditionOrganism = ({id, onLayout}: Props) => {
-  const {data} = useGetPhotoBooth(id);
-
-  if (!data) {
+const BoothConditionOrganism = ({booth, onLayout}: Props) => {
+  if (!booth) {
     return <></>;
   }
 
   return (
     <KeywordTagSection
-      id={id}
+      id={booth.photoBooth.id}
       title="이 부스를 경험한 의견이에요"
-      keywords={data.tagSummary.BOOTH_CONDITION}
+      keywords={booth.tagSummary.BOOTH_CONDITION}
       onLayout={onLayout}
     />
   );
