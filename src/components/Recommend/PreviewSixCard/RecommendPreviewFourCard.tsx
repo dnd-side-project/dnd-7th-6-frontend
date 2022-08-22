@@ -22,6 +22,7 @@ const RecommendPreviewFourCard = ({data, isLoading, onPress}: Props) => {
   const queryClient = useQueryClient();
   const {mutate} = useMutatePostLike();
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
+
   const fourPosts = useMemo(() => data?.slice(0, 6) || [], [data]);
 
   if (isLoading) {
@@ -30,7 +31,7 @@ const RecommendPreviewFourCard = ({data, isLoading, onPress}: Props) => {
 
   return (
     <PreviewFourCardView>
-      {fourPosts.flatMap(
+      {fourPosts.map(
         ({id, postImageSet, like, user}) =>
           !!id && (
             <RecommendFeedCard

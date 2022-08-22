@@ -20,6 +20,7 @@ export interface Post {
   postImageSet: PostImage[];
   user: User;
   like: boolean;
+  isPublic: boolean;
 }
 
 export interface Recommendation {

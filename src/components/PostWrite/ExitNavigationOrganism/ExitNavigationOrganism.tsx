@@ -18,10 +18,17 @@ const ExitNavigationOrganism = () => {
     });
     dispatch(clearPostWrite());
   };
+  const handlePressRecord = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'RouteRecordScreen' as never}],
+    });
+    dispatch(clearPostWrite());
+  };
 
   return (
     <Container>
-      <PressableSubmit>내가 쓴 사진 리뷰 보기</PressableSubmit>
+      <PressableSubmit onPress={handlePressRecord}>내가 쓴 사진 기록 보기</PressableSubmit>
       <ReturnButton onPress={handlePressReturnButton}>
         <ReturnButtonTitle>추천으로 돌아가기</ReturnButtonTitle>
       </ReturnButton>

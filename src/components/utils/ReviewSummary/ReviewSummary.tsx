@@ -10,6 +10,7 @@ import {
   Container,
   Content,
   CreatedAt,
+  DropdownWrapper,
   ImageContainer,
   RowView,
   style,
@@ -55,7 +56,9 @@ const ReviewSummary = ({menuItems, ...props}: Props) => {
         />
       )}
       {!(!!menuItems && isOpenDropdown) || (
-        <DropdownMenu items={menuItems} style={style.dropdown} />
+        <DropdownWrapper>
+          <DropdownMenu items={menuItems} />
+        </DropdownWrapper>
       )}
       <TextContainer>
         <Content ref={contentRef}>{content}</Content>

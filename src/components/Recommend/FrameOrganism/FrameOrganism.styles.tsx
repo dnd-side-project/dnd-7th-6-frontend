@@ -21,6 +21,10 @@ export const TitleIcon = styled.Image({
   height: heightPercentage(24),
 });
 
+export const ListWrapper = styled.View({
+  paddingHorizontal: widthPercentage(10.5),
+});
+
 export const ButtonPressable = styled.Pressable({
   marginTop: heightPercentage(24),
   width: widthPercentage(166),
