@@ -29,8 +29,8 @@ const PoseRecommendOrganism = () => {
     <OrganismView>
       <TitleWrapper>
         <TextnIconWrapper>
-          <TitleIcon />
-          <TitleText>지금 핫한 사진</TitleText>
+          <TitleIcon source={require('src/assets/images/RecommendScreen/Icon_Home_Hot.png')} />
+          <TitleText>지금 이 사진이 핫해요</TitleText>
         </TextnIconWrapper>
         <SubTitleText>인기있는 포톡커의 사진을 확인해보세요</SubTitleText>
       </TitleWrapper>

@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText3, BodyText4, SubHeadline2} from 'src/components/utils/Text';
+import {BodyText3, BodyText4, SubHeadline1} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -22,11 +22,10 @@ export const ListWrapper = styled.View({
   paddingHorizontal: widthPercentage(10.5),
 });
 
-export const TitleIcon = styled.View({
-  marginRight: widthPercentage(8),
+export const TitleIcon = styled.Image({
+  marginRight: widthPercentage(4),
   width: heightPercentage(24),
   height: heightPercentage(24),
-  backgroundColor: theme.colors.grayscale[3],
 });
 
 export const ButtonPressable = styled.Pressable({
@@ -48,5 +47,5 @@ export const CardContainer = styled.View({
 });
 
 export const ButtonText = styled(BodyText3)({color: theme.colors.grayscale[7]});
-export const TitleText = styled(SubHeadline2)({color: theme.colors.grayscale[9]});
+export const TitleText = styled(SubHeadline1)({color: theme.colors.grayscale[9]});
 export const SubTitleText = styled(BodyText4)({color: theme.colors.grayscale[7]});

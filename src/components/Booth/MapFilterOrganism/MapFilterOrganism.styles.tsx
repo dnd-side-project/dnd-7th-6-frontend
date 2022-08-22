@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 
-import {BodyText3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -40,6 +39,9 @@ export const DropdownObject = styled.Pressable(({selected}: Props) => ({
   backgroundColor: selected ? '#F6F2FF' : theme.colors.grayscale[1],
 }));
 
-export const DropdownText = styled(BodyText3)(({selected}: Props) => ({
+export const DropdownText = styled.Text(({selected}: Props) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[8],
+  fontSize: selected ? theme.fonts.SubHeadline[3].size : theme.fonts.Body[2].size,
+  fontFamily: selected ? theme.fonts.SubHeadline[3].fontFamily : theme.fonts.Body[2].fontFamily,
+  lineHeight: theme.fonts.Body[2].lineHeight,
 }));

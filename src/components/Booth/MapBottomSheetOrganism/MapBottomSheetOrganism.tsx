@@ -51,8 +51,8 @@ const MapBottomSheetOrganism = () => {
         {data?.data.content.length > 0 ? (
           <BottomSheetFlatList
             data={data?.data.content}
-            renderItem={({item, index}: {item: PhotoBoothContentData; index: number}) =>
-              index === 0 ? (
+            renderItem={({item, index}: {item: PhotoBoothContentData; index: number}) => {
+              return index === 0 ? (
                 focusedBooth !== null ? (
                   <BoothSummaryView {...focusedBooth} />
                 ) : (
@@ -62,8 +62,8 @@ const MapBottomSheetOrganism = () => {
                 <BoothSummaryView {...item} />
               ) : (
                 <></>
-              )
-            }
+              );
+            }}
           />
         ) : (
           <NoDataContainer>
