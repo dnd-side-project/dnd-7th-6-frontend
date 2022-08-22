@@ -17,7 +17,7 @@ const MapFilterBrandChip = ({
 }: PropsWithChildren<PressableProps & Props>) => {
   return (
     <Container {...props} selected={selected}>
-      <IconContainer />
+      <IconContainer source={require('src/assets/images/Booth/brandDropdown.png')} />
       <Title selected={selected}>{children}</Title>
 
       <PressableBottomArrowIcon onPress={onPressIcon} />
