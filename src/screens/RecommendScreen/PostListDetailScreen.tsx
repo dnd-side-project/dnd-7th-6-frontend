@@ -1,7 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useLayoutEffect} from 'react';
-
-import {PostListDetailHeaderStyle} from './PostListDetailScreen.header';
+import React from 'react';
 
 import {RecommendParamList} from '.';
 
@@ -12,11 +10,7 @@ export type PostListDetailScreenProps = NativeStackScreenProps<
   'PostListDetail'
 >;
 
-const PostListDetailScreen = (props: PostListDetailScreenProps) => {
-  useLayoutEffect(() => {
-    PostListDetailHeaderStyle(props);
-  });
-
+const PostListDetailScreen = () => {
   return <FilterSheetOrganism />;
 };
 

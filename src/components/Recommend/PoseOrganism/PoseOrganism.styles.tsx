@@ -41,7 +41,12 @@ export const ButtonPressable = styled.Pressable({
   justifyContent: 'center',
 });
 
-export const ButtonText = styled(BodyText3)({color: theme.colors.grayscale[7]});
+export const CardContainer = styled.View({
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: heightPercentage(830),
+});
 
+export const ButtonText = styled(BodyText3)({color: theme.colors.grayscale[7]});
 export const TitleText = styled(SubHeadline2)({color: theme.colors.grayscale[9]});
 export const SubTitleText = styled(BodyText4)({color: theme.colors.grayscale[7]});

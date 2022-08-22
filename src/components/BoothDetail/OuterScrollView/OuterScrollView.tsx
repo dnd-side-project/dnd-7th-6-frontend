@@ -26,9 +26,11 @@ const OuterScrollView = ({id, distance}: Props) => {
   const [scrollTargets, setScrollTargets] = useState([0, 0, 0]);
 
   const setScrollTarget = (idx: number) => (e: LayoutChangeEvent) => {
+    const {layout} = e.nativeEvent;
+
     setScrollTargets(prev => {
       const next = [...prev];
-      next[idx] = e.nativeEvent.layout.y;
+      next[idx] = layout.y;
       return next;
     });
   };

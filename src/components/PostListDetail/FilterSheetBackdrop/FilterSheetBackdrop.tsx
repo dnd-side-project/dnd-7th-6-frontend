@@ -12,7 +12,6 @@ import {FILTER} from 'src/constants/filters';
 import {clearFilter, closeFilterSheet} from 'src/redux/actions/PostAction';
 import {setCustomTagKeyword} from 'src/redux/actions/RecommendAction';
 import {RootState} from 'src/redux/store';
-import {Header} from 'src/screens/RecommendScreen/PostListDetailScreen.header';
 
 const FilterSheetBackdrop = ({title}: {title?: string}) => {
   const {isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
@@ -45,7 +44,13 @@ const FilterSheetBackdrop = ({title}: {title?: string}) => {
           </TitleContainer>
         </HeaderContainer>
       ) : (
-        <Header />
+        <LeftBackHeader
+          onPressBack={() => {
+            navigation.goBack();
+            dispatch(clearFilter());
+          }}>
+          포스트
+        </LeftBackHeader>
       )}
 
       <FilterOrganism />

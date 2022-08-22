@@ -36,32 +36,30 @@ const FilterSheetOrganism = ({title}: {title?: string}) => {
   }, [focused]);
 
   return (
-    <>
-      <BottomSheet
-        snapPoints={snapPoints}
-        index={isOpenFilterSheet ? 1 : 0}
-        ref={bottomSheetRef}
-        onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
-        backdropComponent={() => <FilterSheetBackdrop title={title} />}
-        footerComponent={FilterSheetFooter}
-        handleIndicatorStyle={{
-          width: widthPercentage(80),
-          backgroundColor: theme.colors.grayscale[5],
-        }}>
-        <FilterSheetNavigator />
-        <Swiper.default
-          horizontal={true}
-          ref={swiperRef}
-          showsPagination={false}
-          loop={false}
-          onIndexChanged={idx => dispatch(changeFocus(idx))}>
-          <BrandFilter />
-          <HeadcountFilter />
-          <PoseFilter />
-          <FrameFilter />
-        </Swiper.default>
-      </BottomSheet>
-    </>
+    <BottomSheet
+      snapPoints={snapPoints}
+      index={isOpenFilterSheet ? 1 : 0}
+      ref={bottomSheetRef}
+      onChange={i => dispatch(!i ? closeFilterSheet() : openFilterSheet())}
+      backdropComponent={() => <FilterSheetBackdrop title={title} />}
+      footerComponent={FilterSheetFooter}
+      handleIndicatorStyle={{
+        width: widthPercentage(80),
+        backgroundColor: theme.colors.grayscale[5],
+      }}>
+      <FilterSheetNavigator />
+      <Swiper.default
+        horizontal={true}
+        ref={swiperRef}
+        showsPagination={false}
+        loop={false}
+        onIndexChanged={idx => dispatch(changeFocus(idx))}>
+        <BrandFilter />
+        <HeadcountFilter />
+        <PoseFilter />
+        <FrameFilter />
+      </Swiper.default>
+    </BottomSheet>
   );
 };
 

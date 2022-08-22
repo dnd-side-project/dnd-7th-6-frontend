@@ -4,7 +4,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {useDispatch, useSelector} from 'react-redux';
 
 import getAccessToken from 'src/apis/getAccessToken';
-import {loginAction, setAccessToken} from 'src/redux/actions/UserAction';
+import {loginAction, setAccessToken, setInterceptor} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 import getApiServer from 'src/utils/getApiServer';
 
@@ -17,6 +17,9 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
   const {accessToken} = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
+    if (!accessToken) {
+      return;
+    }
     AxiosInstance.interceptors.request.use(
       config => {
         if (!config.headers) {
@@ -55,6 +58,7 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
         return Promise.reject(error);
       },
     );
+    dispatch(setInterceptor());
   }, [accessToken]);
 
   return <>{children}</>;

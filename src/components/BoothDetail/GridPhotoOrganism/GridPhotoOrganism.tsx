@@ -1,11 +1,14 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {FlatList, LayoutChangeEvent} from 'react-native';
+import {LayoutChangeEvent} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import {
   Container,
   Count,
+  GridView,
   Headline,
+  OpacityView,
   style,
   TextContainer,
   TotalPhoto,
@@ -20,7 +23,9 @@ interface Props {
 }
 
 const GridPhotoOrganism = ({id, onLayout}: Props) => {
+  const navigation = useNavigation();
   const {data} = useGetReviewImages(id);
+  const reviewImages = !data ? [] : data.pages.flatMap(({content}) => content);
 
   if (!data) {
     return <></>;
@@ -30,20 +35,26 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
     <Container onLayout={onLayout}>
       <TextContainer>
         <Headline>이 매장에서 찍은 사진 </Headline>
-        <Count> {toLocaleString(data.totalElements)}</Count>
+        <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      <FlatList
-        data={data.content.slice(0, 6)}
-        numColumns={3}
-        renderItem={uri => (
-          <FastImage
-            key={uri.item.id}
-            source={{uri: uri.item.imageUrl}}
-            style={{...style.fastImage, ...{opacity: uri.index === 5 ? 0.5 : 1}}}>
-            {uri.index !== 5 || <TotalPhoto>{data.totalElements}</TotalPhoto>}
-          </FastImage>
-        )}
-      />
+      <GridView onPress={() => navigation.navigate('BoothImage' as never, {boothId: id} as never)}>
+        {reviewImages.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
+          <>
+            <FastImage
+              key={reviewId}
+              source={{uri: imageUrl}}
+              style={{
+                ...style.fastImage,
+              }}
+            />
+            {i === 5 && reviewImages.length > 6 && (
+              <OpacityView>
+                <TotalPhoto>{data.pages[0].totalElements - 6}+</TotalPhoto>
+              </OpacityView>
+            )}
+          </>
+        ))}
+      </GridView>
     </Container>
   );
 };

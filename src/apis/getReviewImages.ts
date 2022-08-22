@@ -1,11 +1,16 @@
-import axios from 'axios';
-
+import AxiosInstance from 'src/components/utils/Interceptor';
 import getApiServer from 'src/utils/getApiServer';
 
-const getReviewImages = async (photoBoothId: number) => {
+interface Parameter {
+  page?: number;
+  pageSize?: number;
+  photoBoothId: number;
+}
+
+const getReviewImages = async ({page = 0, pageSize = 10, photoBoothId}: Parameter) => {
   try {
-    const params = `photoBoothId/${photoBoothId}`;
-    const result = await axios.get(`${getApiServer}/api/v1/review/images?${params}`);
+    const params = `photoBoothId=${photoBoothId}&page=${page}&pageSize=${pageSize}`;
+    const result = await AxiosInstance.get(`${getApiServer}/api/v1/review/images?${params}`);
 
     return result.data;
   } catch (error) {

@@ -5,6 +5,7 @@ import PreviewFourCard from '../PreviewSixCard';
 import {
   ButtonPressable,
   ButtonText,
+  CardContainer,
   ListWrapper,
   OrganismView,
   SubTitleText,
@@ -17,7 +18,7 @@ import {
 import useGetPosts from 'src/querys/useGetPosts';
 
 const PoseRecommendOrganism = () => {
-  const {data} = useGetPosts({order: 'popular'});
+  const {data, isLoading} = useGetPosts({order: 'popular'});
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -33,14 +34,15 @@ const PoseRecommendOrganism = () => {
         </TextnIconWrapper>
         <SubTitleText>인기있는 포톡커의 사진을 확인해보세요</SubTitleText>
       </TitleWrapper>
-      <ListWrapper>
-        {!!data && (
+      <CardContainer>
+        <ListWrapper>
           <PreviewFourCard
-            data={data.pages.flatMap(response => response.content) as any}
+            isLoading={isLoading}
+            data={data?.pages.flatMap(response => response.content) as any}
             onPress={handlePressCard}
           />
-        )}
-      </ListWrapper>
+        </ListWrapper>
+      </CardContainer>
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>인기 사진 더보기</ButtonText>
       </ButtonPressable>

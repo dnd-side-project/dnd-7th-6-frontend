@@ -19,9 +19,10 @@ interface Props extends PressableProps {
 
 const RecommendFeedCard = ({imgUrl, onLike, isLike, isMine, ...props}: Props) => {
   const navigation = useNavigation();
-  const data = useSelector((state: RootState) => state.userReducer);
+  const {isLoggedIn} = useSelector((state: RootState) => state.userReducer);
+
   const handleLike = () => {
-    if (!data.isLoggedIn) {
+    if (!isLoggedIn) {
       navigation.navigate('RouteLoginScreen' as never);
       return;
     }

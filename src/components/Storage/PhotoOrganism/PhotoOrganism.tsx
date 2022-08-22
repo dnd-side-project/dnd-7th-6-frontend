@@ -1,25 +1,32 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {FlatList} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
 
 import {Container, style} from './PhotoOrganism.styles';
 
 import FeedCard from 'src/components/Recommend/FeedCard';
+import {FlatListWrapper} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import useMutatePostLike from 'src/querys/useMutatePostLike';
 import useMutateReviewImageLike from 'src/querys/useMutateReviewImageLike';
-import {UserLikeImage} from 'src/types';
+import {heightPercentage} from 'src/styles/ScreenResponse';
+import {ReviewImage, UserLikeImage} from 'src/types';
 
 interface Props {
-  photoList: UserLikeImage[];
+  photoList?: UserLikeImage[];
+  isLoading: boolean;
 }
 
-const PhotoOrganism = ({photoList}: Props) => {
+const PhotoOrganism = ({photoList, isLoading}: Props) => {
   const navigation = useNavigation();
   const queryClient = useQueryClient();
   const {mutate: likePost} = useMutatePostLike();
   const {mutate: likeReview} = useMutateReviewImageLike();
 
+  const reviewImageAdapter = (reviewImage: UserLikeImage): ReviewImage => {
+    const {id, imageUrl, like} = reviewImage;
+    return {id, imageUrl, imageOrder: 0, like};
+  };
   const handleLike = (type: string, id: number) => () => {
     if (type === 'POST') {
       likePost(id, {
@@ -33,13 +40,13 @@ const PhotoOrganism = ({photoList}: Props) => {
       likeReview(id);
     }
   };
-
-  const handleCard = (type: string, id: number) => () => {
+  const handleCard = (type: string, id: number, reviewImage: UserLikeImage) => () => {
     if (type === 'REVIEW') {
       navigation.navigate(
         'BoothScreen' as never,
         {
-          screen: 'BoothDetail' as never,
+          screen: 'ReviewDetail' as never,
+          targetImage: reviewImageAdapter(reviewImage),
         } as never,
       );
     }
@@ -48,7 +55,7 @@ const PhotoOrganism = ({photoList}: Props) => {
         'RouteRecommendScreen' as never,
         {
           screen: 'RecommendDetail' as never,
-          params: {id: id, distance: 0} as never,
+          params: {postId: id, distance: 0} as never,
         } as never,
       );
     }
@@ -56,20 +63,26 @@ const PhotoOrganism = ({photoList}: Props) => {
 
   return (
     <Container>
-      <FlatList
-        data={photoList}
-        numColumns={2}
-        style={style.flatList}
-        renderItem={({index, item}) => (
-          <FeedCard
-            key={index}
-            imgUrl={item.imageUrl}
-            onPress={handleCard(item.type, item.id)}
-            onLike={handleLike(item.type, item.id)}
-            isLike={item.like}
+      <FlatListWrapper>
+        {isLoading ? (
+          <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+        ) : (
+          <FlatList
+            data={photoList}
+            numColumns={2}
+            style={style.flatList}
+            renderItem={({index, item}) => (
+              <FeedCard
+                key={index}
+                imgUrl={item.imageUrl}
+                onPress={handleCard(item.type, item.id, item)}
+                onLike={handleLike(item.type, item.id)}
+                isLike={item.like}
+              />
+            )}
           />
         )}
-      />
+      </FlatListWrapper>
     </Container>
   );
 };
