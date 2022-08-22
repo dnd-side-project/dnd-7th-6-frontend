@@ -6,8 +6,8 @@ import {heightPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
-  paddingBottom: heightPercentage(252),
-  paddingTop: heightPercentage(92),
+  paddingBottom: heightPercentage(184),
+  paddingTop: heightPercentage(88),
   alignItems: 'center',
 });
 
@@ -19,8 +19,7 @@ export const Headline = styled(Headline3)({
 
 export const Style = StyleSheet.create({
   fastImage: {
-    backgroundColor: '#f9f9f9',
-    height: heightPercentage(160),
-    width: heightPercentage(160),
+    height: heightPercentage(230),
+    width: heightPercentage(345),
   },
 });

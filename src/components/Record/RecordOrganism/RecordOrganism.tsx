@@ -71,7 +71,9 @@ const RecordOrganism = () => {
         <>
           <SlideViewContainer>
             <LineSlideView items={slideViewItems} index={focus} setIndex={setFocus} disable>
-              <NotLoginContainer>오늘 하루를 기억해보세요</NotLoginContainer>
+              <NotLoginContainer image={require('src/assets/images/login/before_login_record.png')}>
+                오늘 하루를 기억해보세요
+              </NotLoginContainer>
             </LineSlideView>
           </SlideViewContainer>
         </>

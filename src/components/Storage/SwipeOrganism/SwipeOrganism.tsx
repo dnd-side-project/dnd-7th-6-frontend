@@ -24,7 +24,9 @@ const SwipeOrganism = () => {
     </LineSlideView>
   ) : (
     <LineSlideView items={items} index={index} setIndex={setIndex} disable>
-      <NotLoginContainer>좋아하거나 가보고 싶은 부스를 찜해보세요.</NotLoginContainer>
+      <NotLoginContainer image={require('src/assets/images/login/before_login_storage.png')}>
+        좋아하거나 가보고 싶은 부스를 찜해보세요.
+      </NotLoginContainer>
     </LineSlideView>
   );
 };

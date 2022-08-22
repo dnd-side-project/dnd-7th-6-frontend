@@ -11,7 +11,7 @@ const ExitCenterOrganism = () => {
 
   return (
     <Container>
-      <FastImage source={{uri: ''}} style={Style.fastImage} />
+      <FastImage source={require('src/assets/images/end/end_post.png')} style={Style.fastImage} />
       <Headline>{isPostModifyMode ? '수정 완료 !' : '작성 완료 !'}</Headline>
     </Container>
   );
