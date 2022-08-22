@@ -34,6 +34,52 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
 
   const handlePressSubmit = () => {
+    if (screenIndex === 3) {
+      if (isPostModifyMode) {
+        const {id, ...image} = inputPostData.image;
+        modifyPost(
+          {
+            postId: inputPostData.modifyPostId,
+            postUpdateRequest: {
+              title: '',
+              content: inputPostData.contents,
+              tagIdList: tagIdSet.map((v: string) => parseInt(v, 10)),
+              isPublic: inputPostData.isPublic,
+              deleteImageIdList: inputPostData.deleteImageIdList,
+              newTagKeywordList: inputPostData.customTags.filter(
+                (tag: any) => typeof tag === 'string',
+              ),
+              postImageList: id ? [] : [image],
+            },
+          },
+          {
+            onSuccess: () => {
+              dispatch(clearPostWrite());
+              navigation.navigate(screens[screenIndex + 1] as never);
+            },
+          },
+        );
+        return;
+      } else {
+        mutatePost(
+          {
+            title: '',
+            content: inputPostData.contents,
+            tagIdList: tagIdSet,
+            isPublic: inputPostData.isPublic,
+            newTagKeywordList: inputPostData.customTags,
+            postImageList: [inputPostData.image],
+          },
+          {
+            onSuccess: () => {
+              dispatch(clearPostWrite());
+              navigation.navigate(screens[screenIndex + 1] as never);
+            },
+          },
+        );
+        return;
+      }
+    }
     if (isModifyMode) {
       navigation.navigate('Summary' as never);
       dispatch(changeModifyMode(false));
@@ -41,37 +87,6 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
       navigation.navigate(screens[screenIndex + 1] as never);
     }
     dispatch(hideTabBar());
-    if (screenIndex === 3) {
-      if (isPostModifyMode) {
-        const {id, ...image} = inputPostData.image;
-        modifyPost({
-          postId: inputPostData.modifyPostId,
-          postUpdateRequest: {
-            title: '',
-            content: inputPostData.contents,
-            tagIdList: tagIdSet.map((v: string) => parseInt(v, 10)),
-            isPublic: inputPostData.isPublic,
-            deleteImageIdList: inputPostData.deleteImageIdList,
-            newTagKeywordList: inputPostData.customTags.filter(
-              (tag: any) => typeof tag === 'string',
-            ),
-            postImageList: id ? [] : [image],
-          },
-        });
-      } else {
-        mutatePost({
-          title: '',
-          content: inputPostData.contents,
-          tagIdList: tagIdSet,
-          isPublic: inputPostData.isPublic,
-          newTagKeywordList: inputPostData.customTags,
-          postImageList: [inputPostData.image],
-        });
-      }
-    }
-    if (screenIndex === 4) {
-      dispatch(clearPostWrite());
-    }
   };
 
   return (

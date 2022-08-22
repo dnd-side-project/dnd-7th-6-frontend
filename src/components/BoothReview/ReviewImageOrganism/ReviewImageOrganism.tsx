@@ -4,6 +4,7 @@ import {Alert} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {type Image, openPicker} from 'react-native-image-crop-picker';
 import ImageResizer from 'react-native-image-resizer';
+import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
 import ImageSelectPressable from '../../ImageSelectPressable/ImageSelectPressable';
@@ -31,6 +32,7 @@ import {RootState} from 'src/redux/store';
 import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
 
 const ReviewImageOrganism = () => {
+  const queryClient = useQueryClient();
   const route = useRoute<RouteProp<PostReviewParamList, 'BoothImageReviewScreen'>>();
   const dispatch = useDispatch();
   const post = useMutateReview();
@@ -124,6 +126,7 @@ const ReviewImageOrganism = () => {
       {
         onSuccess: () => {
           dispatch(clearData());
+          queryClient.invalidateQueries(['userList']);
           navigation.navigate('BoothReviewComplete' as never, {} as never);
         },
       },
