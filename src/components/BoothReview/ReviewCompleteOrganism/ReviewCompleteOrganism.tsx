@@ -1,6 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
+import {useDispatch} from 'react-redux';
 
 import ReviewNextPressable from '../ReviewNextPressable';
 import {
@@ -14,18 +15,27 @@ import {
 } from './ReviewCompleteOrganism.styles';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
+import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
+
 const ReviewCompleteOrganism = () => {
+  const route = useRoute<RouteProp<PostReviewParamList, 'BoothReviewCompleteScreen'>>();
   const navigation = useNavigation();
-  const gotoBoothDetailOnPress = () =>
+  const dispatch = useDispatch();
+  const {boothId} = route.params;
+  const gotoBoothDetailOnPress = () => {
     navigation.reset({
       index: 1,
-      routes: [{name: 'Booth' as never}, {name: 'BoothDetail' as never}],
+      routes: [{name: 'Booth' as never}, {name: 'BoothDetail' as never, params: {id: boothId}}],
     });
+    dispatch(showTabBar());
+  };
+
   const gotoMyScreenOnPress = () => {
     navigation.reset({
-      index: 0,
-      routes: [{name: 'MyScreen' as never}],
+      routes: [{name: 'RouteRecordScreen' as never}],
     });
+    dispatch(showTabBar());
   };
 
   return (

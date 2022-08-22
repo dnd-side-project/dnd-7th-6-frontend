@@ -16,7 +16,7 @@ const RecommendHeader = () => {
   return (
     <SafeAreaView>
       <HeaderContainer>
-        <HeaderImage source={require('src/assets/images/logoImage.png')} />
+        <HeaderImage source={require('src/assets/images/RecommendScreen/Wordmark.png')} />
         <IconContainer>
           <SpecIconWrapper>
             <PressableSearchIcon

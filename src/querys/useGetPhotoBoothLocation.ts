@@ -12,7 +12,7 @@ const useGetPhotoBoothLocation = ({
 }) => {
   return useQuery(
     ['photo-booth'],
-    () => getPhotoBoothLocation({...coord, distance: 3, tagIdSet: selectTagArr}),
+    () => getPhotoBoothLocation({...coord, distance: 2, tagIdSet: selectTagArr}),
     {
       onError: error => console.log(error),
       enabled: false,

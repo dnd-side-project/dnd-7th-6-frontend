@@ -7,6 +7,7 @@ import theme from 'src/styles/Theme';
 export const Container = styled.View({
   flexDirection: 'row',
   paddingHorizontal: widthPercentage(16),
+  paddingBottom: heightPercentage(32),
 });
 
 export const LabelWrapper = styled.View({

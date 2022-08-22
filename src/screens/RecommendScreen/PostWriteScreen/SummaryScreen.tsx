@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useRef} from 'react';
 import {
@@ -7,7 +8,7 @@ import {
   TextInputFocusEventData,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {PostWriteParamList} from '.';
 
@@ -20,10 +21,26 @@ import TextFieldOrganism from 'src/components/PostWrite/TextFieldOrganism';
 import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useFocus from 'src/hooks/useFocus';
-import {changeModifyMode, changeScreen} from 'src/redux/actions/PostWriteAction';
+import {changeModifyMode, changeScreen, clearPostWrite} from 'src/redux/actions/PostWriteAction';
+import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type SummaryScreenProps = NativeStackScreenProps<PostWriteParamList, 'Summary'>;
+
+const Header = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {isPostModifyMode} = useSelector((state: RootState) => state.postWriteReducer);
+
+  const handleBack = () => {
+    if (isPostModifyMode) {
+      dispatch(clearPostWrite());
+    }
+    navigation.goBack();
+  };
+
+  return <LeftBackHeader onPressBack={handleBack}>새 게시물</LeftBackHeader>;
+};
 
 const SummaryScreen = ({navigation}: SummaryScreenProps) => {
   const dispatch = useDispatch();
@@ -40,7 +57,7 @@ const SummaryScreen = ({navigation}: SummaryScreenProps) => {
 
   return (
     <SafeAreaView>
-      <LeftBackHeader onPressBack={() => navigation.goBack()}>새 게시물</LeftBackHeader>
+      <Header />
       <KeyboardAwareScrollView
         ref={scrollRef}
         style={{height: Dimensions.get('window').height - heightPercentage(220)}}>

@@ -10,6 +10,7 @@ import {
   ContainerView,
   CurrentPositionPressable,
   FilterWrapper,
+  MapIndicator,
   RefreshPressableWrapper,
 } from './MapNaverMapOrganism.styles';
 
@@ -18,6 +19,7 @@ import CrosshairIcon from 'src/icons/CrosshairIcon';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
 import {focusBooth} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
+import theme from 'src/styles/Theme';
 import getGeolocation from 'src/utils/getGeolocation';
 const MapNaverMapOrganism = () => {
   const mapRef = useRef<NaverMapView>(null);
@@ -29,7 +31,10 @@ const MapNaverMapOrganism = () => {
     latitude: 0,
     longitude: 0,
   });
-  const {data, refetch} = useGetPhotoBoothLocation({coord: screenCenterPos, selectTagArr});
+  const {data, refetch, isLoading} = useGetPhotoBoothLocation({
+    coord: screenCenterPos,
+    selectTagArr,
+  });
   const dispatch = useDispatch();
   const refetchOnPress = () => {
     refetch();
@@ -56,8 +61,8 @@ const MapNaverMapOrganism = () => {
   //첫 로딩시 data refetching
   useEffect(() => {
     const initData = async () => {
-      await refetch();
       setShowRefreshPressable(false);
+      await refetch();
     };
     initData();
   }, [onInitialize]);
@@ -134,6 +139,7 @@ const MapNaverMapOrganism = () => {
 
   return (
     <ContainerView>
+      {isLoading && <MapIndicator size="large" color={theme.colors.primary[1].normal} />}
       <NaverMap
         mapRef={mapRef}
         centerPos={screenCenterPos}
@@ -150,7 +156,7 @@ const MapNaverMapOrganism = () => {
       </CurrentPositionPressable>
 
       <RefreshPressableWrapper>
-        {showRefreshPressable && (
+        {showRefreshPressable && !isLoading && (
           <MapRefreshSearchPressable onPress={refetchOnPress}>
             이 지역 재검색
           </MapRefreshSearchPressable>

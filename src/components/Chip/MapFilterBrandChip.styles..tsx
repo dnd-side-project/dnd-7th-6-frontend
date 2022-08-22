@@ -27,9 +27,8 @@ export const Title = styled(BodyText4)<{selected: boolean}>(({selected}) => ({
   color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[8],
 }));
 
-export const IconContainer = styled.View({
+export const IconContainer = styled.Image({
   width: widthPercentage(20),
   height: widthPercentage(20),
   marginRight: widthPercentage(6),
-  backgroundColor: theme.colors.grayscale[3],
 });

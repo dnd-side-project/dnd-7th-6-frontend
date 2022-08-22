@@ -29,7 +29,9 @@ const useGetInfinitePosts = (
       return getPostsByTag({page: pageParam, tagIdSet, order});
     },
     {
-      getNextPageParam: lastPage => lastPage.number + 1,
+      getNextPageParam: lastPage => {
+        return lastPage.totalPages - 1 <= lastPage.number ? undefined : lastPage.number + 1;
+      },
       ...options,
     },
   );

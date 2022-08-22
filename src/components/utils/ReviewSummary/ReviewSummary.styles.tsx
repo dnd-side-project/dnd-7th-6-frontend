@@ -60,6 +60,13 @@ export const ViewMore = styled(BodyText4)({
   paddingHorizontal: widthPercentage(10),
 });
 
+export const DropdownWrapper = styled.View({
+  position: 'absolute',
+  right: widthPercentage(16),
+  top: heightPercentage(48),
+  zIndex: 10,
+});
+
 export const style = StyleSheet.create({
   fastImage: {
     width: widthPercentage(80),
@@ -70,11 +77,5 @@ export const style = StyleSheet.create({
     position: 'absolute',
     right: widthPercentage(16),
     top: heightPercentage(16),
-  },
-  dropdown: {
-    position: 'absolute',
-    right: widthPercentage(16),
-    top: heightPercentage(48),
-    zIndex: 10,
   },
 });

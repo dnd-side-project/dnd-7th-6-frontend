@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 
-import {ButtonText, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
+import {ButtonText, CardContainer, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
 import RecommendPreviewFourCard from '../PreviewSixCard';
 import {
   OrganismView,
@@ -10,12 +10,13 @@ import {
   ButtonPressable,
   TitleIcon,
   SubTitleText,
+  ListWrapper,
 } from './FrameOrganism.styles';
 
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 
 const FrameRecommendOrganism = () => {
-  const {data} = useGetInfinitePosts({tagIdSet: [41], order: 'popular'});
+  const {data, isLoading} = useGetInfinitePosts({tagIdSet: [41], order: 'popular'});
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -26,17 +27,24 @@ const FrameRecommendOrganism = () => {
     <OrganismView>
       <TitleWrapper>
         <TextnIconWrapper>
-          <TitleIcon />
-          <TitleText>인기있는 캐릭터 프레임!</TitleText>
+          <TitleIcon
+            source={require('src/assets/images/RecommendScreen/Icon_Home__Character.png')}
+          />
+          <TitleText>요즘 인기있는 캐릭터 프레임!</TitleText>
         </TextnIconWrapper>
         <SubTitleText>요즘 포톡커들이 많이 찾는 프레임이에요</SubTitleText>
       </TitleWrapper>
-      {!!data && (
-        <RecommendPreviewFourCard
-          data={data.pages.flat().map(response => response.content) as any}
-          onPress={handlePressCard}
-        />
-      )}
+      <CardContainer>
+        {!!data && (
+          <ListWrapper>
+            <RecommendPreviewFourCard
+              isLoading={isLoading}
+              data={data.pages.flat().map(response => response.content) as any}
+              onPress={handlePressCard}
+            />
+          </ListWrapper>
+        )}
+      </CardContainer>
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>캐릭터 프레임 더보기</ButtonText>
       </ButtonPressable>

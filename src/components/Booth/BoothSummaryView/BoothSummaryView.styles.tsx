@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import {StyleSheet} from 'react-native';
 
 import {SubHeadline3, BodyText4, BodyText5, BodyText6} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
@@ -22,8 +23,8 @@ export const TitlenIconWrapper = styled.View({
 });
 
 export const IconConatiner = styled.Image({
-  height: heightPercentage(26),
-  width: heightPercentage(26),
+  height: heightPercentage(32),
+  width: heightPercentage(32),
   resizeMode: 'contain',
   marginRight: widthPercentage(6),
 });
@@ -53,6 +54,13 @@ export const ReviewCountContainer = styled.View({
   justifyContent: 'center',
 });
 
+export const ExeptImage = styled.Image({
+  width: '100%',
+  height: '100%',
+  resizeMode: 'contain',
+  borderRadius: 8,
+});
+
 export const ChipWrapper = styled.View({
   paddingRight: widthPercentage(4),
 });
@@ -77,6 +85,18 @@ export const Rating = styled(BodyText6)({
   marginLeft: widthPercentage(4),
 });
 
-export const ReviewCount = styled(BodyText5)({
+export const ReviewCount = styled(BodyText6)({
+  color: theme.colors.grayscale[5],
+  marginLeft: widthPercentage(6),
+});
+
+export const ReviewImageCount = styled(BodyText5)({
   color: theme.colors.grayscale[1],
+});
+
+export const styles = StyleSheet.create({
+  image: {
+    height: heightPercentage(76),
+    width: heightPercentage(76),
+  },
 });

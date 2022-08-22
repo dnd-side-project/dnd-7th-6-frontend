@@ -12,11 +12,13 @@ export const Container = styled.View({
 });
 
 export const FlatListWrapper = styled.View({
+  justifyContent: 'center',
   paddingBottom: heightPercentage(54),
+  height: height - heightPercentage(80),
 });
 
 export const PostDetailFlatList = styled.FlatList({
-  height: height - heightPercentage(145),
+  height: height - heightPercentage(80),
 });
 
 export const SortButtonWrapper = styled.Pressable({

@@ -11,7 +11,7 @@ import {RootState} from 'src/redux/store';
 
 const SwipeOrganism = () => {
   const [index, setIndex] = useState(0);
-  const {data} = useGetUserLike();
+  const {data, isLoading} = useGetUserLike();
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const items = [
     {name: '사진', count: !data ? 0 : data.imageList.length},
@@ -19,8 +19,8 @@ const SwipeOrganism = () => {
   ];
   return isLoggedIn ? (
     <LineSlideView items={items} index={index} setIndex={setIndex}>
-      {!!data && <PhotoOrganism photoList={data.imageList} />}
-      {!!data && <BoothOrganism photoBoothList={data.photoBoothList} />}
+      <PhotoOrganism photoList={data?.imageList} isLoading={isLoading} />
+      <BoothOrganism photoBoothList={data?.photoBoothList} isLoading={isLoading} />
     </LineSlideView>
   ) : (
     <LineSlideView items={items} index={index} setIndex={setIndex} disable>

@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import {ActivityIndicator} from 'react-native';
 import {useQueryClient} from 'react-query';
 import {useSelector} from 'react-redux';
 
@@ -10,21 +11,27 @@ import {RootState} from 'src/redux/store';
 import {Post} from 'src/types';
 
 interface Props {
-  data: Array<Post>;
+  data?: Array<Post>;
+  isLoading: boolean;
   onPress?: onPressFeedCardHandler;
 }
 
 type onPressFeedCardHandler = (id: number) => () => void;
 
-const RecommendPreviewFourCard = ({data, onPress}: Props) => {
+const RecommendPreviewFourCard = ({data, isLoading, onPress}: Props) => {
   const queryClient = useQueryClient();
   const {mutate} = useMutatePostLike();
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const fourPosts = useMemo(() => data.slice(0, 6), [data]);
+
+  const fourPosts = useMemo(() => data?.slice(0, 6) || [], [data]);
+
+  if (isLoading) {
+    return <ActivityIndicator size="large" />;
+  }
 
   return (
     <PreviewFourCardView>
-      {fourPosts.flatMap(
+      {fourPosts.map(
         ({id, postImageSet, like, user}) =>
           !!id && (
             <RecommendFeedCard
@@ -44,6 +51,8 @@ const RecommendPreviewFourCard = ({data, onPress}: Props) => {
             />
           ),
       )}
+
+      {isLoading && <ActivityIndicator size="large" />}
     </PreviewFourCardView>
   );
 };

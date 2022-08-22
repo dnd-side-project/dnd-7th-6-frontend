@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Container, style} from './AddPhotoOrganism.styles';
 
 import PlusIcon from 'src/icons/PlusIcon';
-import {addPostWriteImage} from 'src/redux/actions/PostWriteAction';
+import {addDeleteImage, addPostWriteImage} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
 import valueOfPlatform from 'src/utils/valueOfPlatform';
 
@@ -15,8 +15,14 @@ const AddPhotoOrganism = () => {
   const dispatch = useDispatch();
   const {image} = useSelector((state: RootState) => state.postWriteReducer);
 
-  const takePhoto = async () => {
+  const takePhoto = (isModify: boolean) => async () => {
     try {
+      if (isModify) {
+        const isFront = image.name.startsWith('front_');
+        if (!isFront) {
+          dispatch(addDeleteImage(image.id));
+        }
+      }
       const imageResponse = await openPicker({
         includeBase64: true,
         includeExif: true,
@@ -28,8 +34,8 @@ const AddPhotoOrganism = () => {
         uri: path,
         type: mime,
         name: valueOfPlatform({
-          ios: filename,
-          android: `my_profile_${Date.now()}.${mime === 'image/jpeg' ? 'jpg' : 'png'}`,
+          ios: `front_${filename}`,
+          android: `front_${Date.now()}.${mime === 'image/jpeg' ? 'jpg' : 'png'}`,
         }),
       }));
       if (preview.length > 1) {
@@ -40,12 +46,17 @@ const AddPhotoOrganism = () => {
       console.error(error);
     }
   };
+
   if (image.uri) {
-    return <FastImage source={{uri: image.uri}} style={style.fastImage} />;
+    return (
+      <Container onPress={takePhoto(true)}>
+        <FastImage source={{uri: image.uri}} style={style.fastImage} />
+      </Container>
+    );
   }
 
   return (
-    <Container onPress={takePhoto}>
+    <Container onPress={takePhoto(false)}>
       <PlusIcon />
     </Container>
   );
