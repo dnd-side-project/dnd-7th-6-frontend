@@ -5,7 +5,7 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Button = styled.Pressable({
-  backgroundColor: theme.colors.grayscale[10],
+  backgroundColor: theme.colors.grayscale[8],
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: 90,
@@ -14,4 +14,8 @@ export const Button = styled.Pressable({
   position: 'absolute',
   right: widthPercentage(16),
   top: heightPercentage(590) + getStatusBarHeight(true),
+  elevation: 3,
+  shadowOffset: {width: 0, height: 8},
+  shadowRadius: 16,
+  shadowColor: 'rgba(0, 0, 0, 0.12)',
 });

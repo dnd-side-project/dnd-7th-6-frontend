@@ -9,6 +9,7 @@ interface Props {
   selected: boolean;
   count?: number;
   onPressDeleteIcon?: (event?: GestureResponderEvent) => void;
+  isGray?: boolean;
 }
 
 const FilterChip = ({
@@ -16,11 +17,14 @@ const FilterChip = ({
   count,
   selected,
   onPressDeleteIcon,
+  isGray,
   ...props
 }: Props & PressableProps) => {
   return (
-    <Container selected={selected} isExistDelete={!!onPressDeleteIcon} {...props}>
-      <Title selected={selected}>{title}</Title>
+    <Container selected={selected} isExistDelete={!!onPressDeleteIcon} isGray={isGray} {...props}>
+      <Title selected={selected} isGray={isGray}>
+        {title}
+      </Title>
       {count === undefined || <Count selected={selected}>{count}</Count>}
       {onPressDeleteIcon && <PressableCancelIcon onPress={onPressDeleteIcon} />}
     </Container>

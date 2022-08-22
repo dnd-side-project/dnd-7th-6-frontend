@@ -39,25 +39,11 @@ const DirectTagSummaryOrganism = ({navigation}: Props) => {
         subTitle=" (최대 4개)"
         onPressRightIcon={handlePressModifyButton}>
         <ChipContainer>
-          {customTags.map((tag: string | {id: number; name: string}, i: number) => {
-            if (typeof tag === 'string') {
-              return (
-                <ChipWrapper key={tag}>
-                  <FilterChip selected title={tag} onPressDeleteIcon={handleDelete(i)} />
-                </ChipWrapper>
-              );
-            } else {
-              return (
-                <ChipWrapper key={tag.id}>
-                  <FilterChip
-                    selected
-                    title={tag.name}
-                    onPressDeleteIcon={handleDelete(i, tag.id)}
-                  />
-                </ChipWrapper>
-              );
-            }
-          })}
+          {customTags.map((tag: string, i: number) => (
+            <ChipWrapper key={tag}>
+              <FilterChip selected title={tag} onPressDeleteIcon={handleDelete(i)} isGray={true} />
+            </ChipWrapper>
+          ))}
         </ChipContainer>
       </ContentSection>
     </>

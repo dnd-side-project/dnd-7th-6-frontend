@@ -4,6 +4,10 @@ import {SubHeadline3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
+export const Container = styled.View({
+  backgroundColor: 'rgba(243, 244, 255, 1)',
+});
+
 export const LoginContainer = styled.View({
   width: '100%',
   height: '100%',

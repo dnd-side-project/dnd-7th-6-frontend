@@ -39,11 +39,10 @@ const HeadcountFilter = () => {
         ))}
       </NestedFilterOrganism>
       <NestedFilterOrganism type="관계">
-        {(tags[1] || []).map(({id, title, postCount}) => (
+        {(tags[1] || []).map(({id, title}) => (
           <ChipWrapper key={id}>
             <FilterChip
               title={title}
-              count={postCount}
               selected={relation[id]}
               onPress={handlePressRelationChip(id)}
             />
