@@ -18,7 +18,7 @@ export const changeTagData = (tagData: string[]) => ({
   payload: {tagData},
 });
 
-export const addImage = (image: {uri: string}[]) => ({
+export const addImage = (image: {uri: string; name: string; type: string}[]) => ({
   type: ADD_IMAGE,
   payload: {image},
 });

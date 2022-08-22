@@ -9,7 +9,7 @@ import {
 } from '../SelectTagSummaryOrganism/SelectTagSummaryOrganism.styles';
 
 import FilterChip from 'src/components/Chip/FilterChip';
-import {changeCustomTag} from 'src/redux/actions/PostWriteAction';
+import {changeCustomTag, changeScreen, toggleTagChip} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
 import {PostWriteParamList} from 'src/screens/RecommendScreen/PostWriteScreen';
 
@@ -23,9 +23,13 @@ const DirectTagSummaryOrganism = ({navigation}: Props) => {
 
   const handlePressModifyButton = () => {
     navigation.push('CustomTag' as never, {isModifyMode: true} as never);
+    dispatch(changeScreen(2));
   };
-  const handleDelete = (target: number) => () => {
+  const handleDelete = (target: number, tagId?: number) => () => {
     dispatch(changeCustomTag([...customTags].filter((_, i) => i !== target)));
+    if (tagId) {
+      dispatch(toggleTagChip(6, tagId));
+    }
   };
 
   return (

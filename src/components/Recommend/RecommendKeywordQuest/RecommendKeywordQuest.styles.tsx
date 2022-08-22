@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 
-import {BodyText4, SubHeadline2} from 'src/components/utils/Text';
+import {BodyText4, SubHeadline1} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
@@ -8,7 +8,7 @@ export const Container = styled.View({
   marginBottom: heightPercentage(52),
 });
 
-export const TitleText = styled(SubHeadline2)({color: theme.colors.grayscale[9]});
+export const TitleText = styled(SubHeadline1)({color: theme.colors.grayscale[9]});
 
 export const SubTitleText = styled(BodyText4)({color: theme.colors.grayscale[7]});
 

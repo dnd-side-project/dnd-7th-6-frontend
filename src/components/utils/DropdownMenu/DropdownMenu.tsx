@@ -1,11 +1,9 @@
 import React from 'react';
-import {StyleProp, ViewStyle} from 'react-native';
 
 import {Element, Label, List} from './DropdownMenu.styles';
 
 interface Props {
   items: Item[];
-  style?: StyleProp<ViewStyle>;
 }
 
 interface Item {
@@ -13,11 +11,11 @@ interface Item {
   onPressItem: () => void;
 }
 
-const DropdownMenu = ({items, style}: Props) => {
+const DropdownMenu = ({items}: Props) => {
   return (
-    <List style={style}>
+    <List>
       {items.map(({name, onPressItem}, i) => (
-        <Element onPress={onPressItem} isLast={i === items.length - 1}>
+        <Element key={name} onPress={onPressItem} isLast={i === items.length - 1}>
           <Label>{name}</Label>
         </Element>
       ))}

@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Container, IconWrapper, Title, TitleContainer} from './DiffOrganism.styles';
 
+import {ListWrapper} from 'src/components/Recommend/PoseOrganism/PoseOrganism.styles';
 import RecommendPreviewFourCard from 'src/components/Recommend/PreviewSixCard';
 import {PressableRightArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
 import {SubHeadline2} from 'src/components/utils/Text';
@@ -54,12 +55,14 @@ const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
           <PressableRightArrowIcon onPress={navigateDiffUserPost} />
         </IconWrapper>
       </TitleContainer>
-      {!!diffUserPost && (
-        <RecommendPreviewFourCard
-          data={diffUserPost.pages.flatMap(({content}) => content)}
-          onPress={handlePressCard}
-        />
-      )}
+      <ListWrapper>
+        {!!diffUserPost && (
+          <RecommendPreviewFourCard
+            data={diffUserPost.pages.flatMap(({content}) => content)}
+            onPress={handlePressCard}
+          />
+        )}
+      </ListWrapper>
     </Container>
   );
 };

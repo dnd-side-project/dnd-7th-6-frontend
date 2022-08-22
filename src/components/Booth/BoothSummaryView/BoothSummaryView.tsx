@@ -1,17 +1,21 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Text, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import {
   ChipWrapper,
   Container,
   DescriptionContainer,
   Distance,
+  ExeptImage,
   IconConatiner,
   ImageContainer,
   Rating,
   ReviewCount,
   ReviewCountContainer,
+  ReviewImageCount,
+  styles,
   SubText,
   TagContainer,
   Title,
@@ -21,9 +25,7 @@ import {
 import RoundChip from 'src/components/Chip/RoundChip';
 import ColorStarIcon14 from 'src/icons/ColorStarIcon14';
 import {PhotoBoothContentData} from 'src/types';
-import {getIconMarker} from 'src/utils/getIconMarker';
-
-const data = ['#넓은 촬영공간', '#홀수출력 가능'];
+import {getIconCube} from 'src/utils/getIconCube';
 
 const BoothSummaryView = (item: PhotoBoothContentData) => {
   const navigation = useNavigation();
@@ -37,7 +39,7 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
     <Container onPress={boothOnPress}>
       <DescriptionContainer>
         <TitlenIconWrapper>
-          <IconConatiner source={getIconMarker(item.photoBooth.name)} />
+          <IconConatiner source={getIconCube(item.photoBooth.name)} />
           <View>
             <Title>{item.photoBooth.name}</Title>
             <SubText>
@@ -45,22 +47,36 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
               <Text> | </Text>
               <ColorStarIcon14 />
               <Rating>{item.photoBooth.starCount ? item.photoBooth.starCount : '-'}</Rating>
+              <ReviewCount>{item.photoBooth.reviewCount}</ReviewCount>
             </SubText>
           </View>
         </TitlenIconWrapper>
 
-        <TagContainer>
-          {data.map(tag => (
-            <ChipWrapper key={tag}>
-              <RoundChip mode="gray">{tag}</RoundChip>
-            </ChipWrapper>
-          ))}
-        </TagContainer>
+        {/*이 부분 명세가 제대로 안되어 있어서 임의로 비슷한 명세 찾아서 입력 해놨습니다.*/}
+        {item.tagSet && (
+          <TagContainer>
+            {item.tagSet.map(tag => (
+              <ChipWrapper key={tag.id}>
+                <RoundChip mode="gray">{tag.title}</RoundChip>
+              </ChipWrapper>
+            ))}
+          </TagContainer>
+        )}
       </DescriptionContainer>
       <ImageContainer>
-        <ReviewCountContainer>
-          <ReviewCount>999+</ReviewCount>
-        </ReviewCountContainer>
+        {item.photoBooth.imageUrl ? (
+          <FastImage source={{uri: item.photoBooth.imageUrl}} style={styles.image} />
+        ) : (
+          <ExeptImage
+            source={require('src/assets/images/Booth/Except_Image.png')}
+            resizeMode="contain"
+          />
+        )}
+        {item.photoBooth.reviewImageCount > 0 && (
+          <ReviewCountContainer>
+            <ReviewImageCount>{item.photoBooth.reviewImageCount}</ReviewImageCount>
+          </ReviewCountContainer>
+        )}
       </ImageContainer>
     </Container>
   );

@@ -1,8 +1,9 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useCallback} from 'react';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {Alert} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {type Image, openPicker} from 'react-native-image-crop-picker';
+import ImageResizer from 'react-native-image-resizer';
 import {useDispatch, useSelector} from 'react-redux';
 
 import ImageSelectPressable from '../../ImageSelectPressable/ImageSelectPressable';
@@ -22,18 +23,29 @@ import {
   TextFieldWrapper,
 } from './ReviewImageOrganism.styles';
 
+import ActivityIndicator from 'src/components/utils/ActivityIndicator';
 import DeleteIcon from 'src/icons/DeleteIcon';
+import useMutateReview from 'src/querys/useMutateReview';
 import {addImage, addStoreDescription} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
+import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
+
 const ReviewImageOrganism = () => {
+  const route = useRoute<RouteProp<PostReviewParamList, 'BoothImageReviewScreen'>>();
   const dispatch = useDispatch();
-  const imageData: {uri: string}[] = useSelector(
+  const post = useMutateReview();
+  const [uiLoading, setUiLoading] = useState(false);
+  const {boothId} = route.params;
+  const userInfo = useSelector((state: RootState) => state.userReducer.userInfo);
+  const imageData: {uri: string; name: string; type: string}[] = useSelector(
     (state: RootState) => state.reviewReducer.imageData,
   );
   const descriptionText: string = useSelector(
     (state: RootState) => state.reviewReducer.storeDescription,
   );
-  const onTakePhoto = useCallback(async () => {
+  const inputPostReviewData = useSelector((state: RootState) => state.reviewReducer);
+
+  const onChangeFile = useCallback(async () => {
     try {
       const imageResponse = await openPicker({
         includeBase64: true,
@@ -47,15 +59,48 @@ const ReviewImageOrganism = () => {
   }, []);
 
   const onImageResponse = useCallback(async (response: Image[]) => {
-    const preview = response.map(item => {
-      return {uri: `data:${item.mime};base64,${item.data}`};
-    });
-    if (preview.length > 4) {
-      Alert.alert('4장 이상 안됩니다.');
+    if (response.length > 4) {
+      Alert.alert('사진은 총 4장까지 선택한 순서대로 등록돼요!');
       //TO-DO UI변경
     }
-    dispatch(addImage(preview.splice(0, 4)));
+
+    const takeResizeImages = (res: Image[]) => {
+      return Promise.all(
+        res.splice(0, 4).map(item =>
+          ImageResizer.createResizedImage(
+            item.path,
+            600,
+            600,
+            item.mime.includes('jpeg') ? 'JPEG' : 'PNG',
+            100,
+            0,
+          ).then(r => {
+            return {uri: r.uri, name: r.name, type: item.mime};
+          }),
+        ),
+      );
+    };
+    const images = await takeResizeImages(response);
+    dispatch(addImage(images));
   }, []);
+
+  const tagIdSet = useMemo(
+    () => [
+      ...[inputPostReviewData.specificTags].reduce(
+        (list: string[], tag: {[key: string]: boolean}) => {
+          return [...list, ...Object.keys(tag).filter(key => tag[key])];
+        },
+        [],
+      ),
+      ...[inputPostReviewData.resultTags].reduce(
+        (list: string[], tag: {[key: string]: boolean}) => {
+          return [...list, ...Object.keys(tag).filter(key => tag[key])];
+        },
+        [],
+      ),
+    ],
+    [inputPostReviewData],
+  );
 
   const imageDeleteOnPress = (index: number) => {
     const nextData = [...imageData].filter((item, i) => {
@@ -65,55 +110,73 @@ const ReviewImageOrganism = () => {
   };
 
   const navigation = useNavigation();
-  const nextOnPress = () => navigation.navigate('BoothReviewComplete' as never, {} as never);
+  const nextOnPress = () => {
+    post.mutate({
+      title: '',
+      content: inputPostReviewData.storeDescription,
+      tagIdList: tagIdSet,
+      photoBoothId: boothId,
+      userId: userInfo.id,
+      starScore: inputPostReviewData.currentStar,
+      postImageList: [...inputPostReviewData.imageData],
+    });
+    navigation.navigate('BoothReviewComplete' as never, {} as never);
+  };
+
+  useEffect(() => {
+    setUiLoading(false);
+  }, [imageData]);
 
   return (
     <DismissKeyboardView>
       <ReviewSectionContainer>
-        <CameranImageWrapper horizontal bounces={false} showsHorizontalScrollIndicator={false}>
-          <ImageSelectPressable
-            onPress={() => {
-              onTakePhoto();
-            }}
-            imageSelectCount={imageData?.length}
-          />
-          {imageData &&
-            imageData.map((src, index) => {
-              return (
-                <ImageWrapper key={index}>
-                  <DeletePressable onPress={() => imageDeleteOnPress(index)}>
-                    <DeleteIcon />
-                  </DeletePressable>
-                  <FastImage
-                    source={src}
-                    // eslint-disable-next-line react-native/no-inline-styles
-                    style={{height: '100%', borderRadius: 8}}
-                  />
-                </ImageWrapper>
-              );
-            })}
-        </CameranImageWrapper>
-        <BoothDescribeWrapper>
-          <BoothDescribeTitle>이 매장에 대해 설명해주세요</BoothDescribeTitle>
-          <BoothSelectTitle>(선택)</BoothSelectTitle>
-        </BoothDescribeWrapper>
-        <TextFieldWrapper>
-          <TextField
-            isBorder={true}
-            style={ReviewTextInput}
-            multiline={true}
-            placeholder="이 매장을 이용하면서 느꼈던 느낌을 알려주세요."
-            textAlignVertical="top"
-            value={descriptionText}
-            maxLength={300}
-            onChangeText={value => {
-              dispatch(addStoreDescription(value));
-            }}
-          />
-        </TextFieldWrapper>
-        <ReviewNextPressableWrapper>
-          <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
-        </ReviewNextPressableWrapper>
+        <ActivityIndicator loading={uiLoading}>
+          <CameranImageWrapper horizontal bounces={false} showsHorizontalScrollIndicator={false}>
+            <ImageSelectPressable
+              onPress={() => {
+                setUiLoading(true);
+                onChangeFile();
+              }}
+              imageSelectCount={imageData?.length}
+            />
+            {imageData &&
+              imageData.map((src, index) => {
+                return (
+                  <ImageWrapper key={index}>
+                    <DeletePressable onPress={() => imageDeleteOnPress(index)}>
+                      <DeleteIcon />
+                    </DeletePressable>
+                    <FastImage
+                      source={src}
+                      // eslint-disable-next-line react-native/no-inline-styles
+                      style={{height: '100%', borderRadius: 8}}
+                    />
+                  </ImageWrapper>
+                );
+              })}
+          </CameranImageWrapper>
+          <BoothDescribeWrapper>
+            <BoothDescribeTitle>이 매장에 대해 설명해주세요</BoothDescribeTitle>
+            <BoothSelectTitle>(선택)</BoothSelectTitle>
+          </BoothDescribeWrapper>
+          <TextFieldWrapper>
+            <TextField
+              isBorder={true}
+              style={ReviewTextInput}
+              multiline={true}
+              placeholder="이 매장을 이용하면서 느꼈던 느낌을 알려주세요."
+              textAlignVertical="top"
+              value={descriptionText}
+              maxLength={300}
+              onChangeText={value => {
+                dispatch(addStoreDescription(value));
+              }}
+            />
+          </TextFieldWrapper>
+          <ReviewNextPressableWrapper>
+            <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
+          </ReviewNextPressableWrapper>
+        </ActivityIndicator>
       </ReviewSectionContainer>
     </DismissKeyboardView>
   );
