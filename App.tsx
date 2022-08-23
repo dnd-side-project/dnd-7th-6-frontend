@@ -9,6 +9,7 @@ import AppInner from 'AppInner';
 import {Interceptor} from 'src/components/utils/Interceptor';
 import store from 'src/redux/store';
 import RouteLoginScreen from 'src/screens/LoginScreen';
+import PermissionScreen from 'src/screens/PermissionScreen';
 import GlobalStyle from 'src/styles/GlobalStyle';
 import theme from 'src/styles/Theme';
 
@@ -31,6 +32,7 @@ const App = () => {
               <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="AppInner">
                 <Stack.Screen name="AppInner" component={AppInner} />
                 <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
+                <Stack.Screen name="InitPermissionScreen" component={PermissionScreen} />
               </Stack.Navigator>
             </NavigationContainer>
           </Interceptor>
