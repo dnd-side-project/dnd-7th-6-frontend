@@ -14,8 +14,8 @@ const SwipeOrganism = () => {
   const {data, isLoading} = useGetUserLike();
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const items = [
-    {name: '사진', count: !data ? 0 : data.imageList.length},
-    {name: '부스', count: !data ? 0 : data.photoBoothList.length},
+    {name: '사진', count: !data || !isLoggedIn ? 0 : data.imageList.length},
+    {name: '부스', count: !data || !isLoggedIn ? 0 : data.photoBoothList.length},
   ];
   return isLoggedIn ? (
     <LineSlideView items={items} index={index} setIndex={setIndex}>

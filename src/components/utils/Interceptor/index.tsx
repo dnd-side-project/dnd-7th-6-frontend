@@ -20,11 +20,13 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
     if (!accessToken) {
       return;
     }
-    AxiosInstance.interceptors.request.use(
+
+    const requestInterceptor = AxiosInstance.interceptors.request.use(
       config => {
         if (!config.headers) {
           return config;
         }
+
         if (accessToken) {
           config.headers.Authorization = `Bearer ${accessToken}`;
         }
@@ -34,7 +36,7 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
         return Promise.reject(error);
       },
     );
-    AxiosInstance.interceptors.response.use(
+    const responseInterceptor = AxiosInstance.interceptors.response.use(
       response => {
         return response;
       },
@@ -59,6 +61,10 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
       },
     );
     dispatch(setInterceptor());
+    return () => {
+      AxiosInstance.interceptors.request.eject(requestInterceptor);
+      AxiosInstance.interceptors.response.eject(responseInterceptor);
+    };
   }, [accessToken]);
 
   return <>{children}</>;

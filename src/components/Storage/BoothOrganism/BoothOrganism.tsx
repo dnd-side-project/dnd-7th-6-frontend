@@ -4,9 +4,8 @@ import {ActivityIndicator, FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
 
 import StorageBoothCard from '../StorageBoothCard';
-import {Container} from './BoothOrganism.styles';
+import {Container, FlatListWrapper} from './BoothOrganism.styles';
 
-import {FlatListWrapper} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import useMutatePhotoBoothLike from 'src/querys/useMutatePhotoBoothLike';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 import {UserLikeBooth} from 'src/types';
