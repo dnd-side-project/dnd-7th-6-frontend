@@ -40,9 +40,10 @@ const ReviewRatingOrganism = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {data} = useGetReviewTag();
-  const currentStars: number = useSelector((state: RootState) => state.reviewReducer.currentStar);
-  const specificTags = useSelector((state: RootState) => state.reviewReducer.specificTags);
-  const specificNext = useSelector((state: RootState) => state.reviewReducer.specificNext);
+  const {currentStar, specificTags, specificNext} = useSelector(
+    (state: RootState) => state.reviewReducer,
+  );
+
   const [alertOpen, setAlertOpen] = useState(false);
   const tagsOnPress = (id: number) => () => {
     dispatch(changeSpecificTags(id));
@@ -83,7 +84,7 @@ const ReviewRatingOrganism = () => {
       <RatingnTextWrapper>
         <BoothRatingDescription>이 매장은 어떠셨나요?</BoothRatingDescription>
         <ReviewStarRating />
-        <BoothRatingText>{boothRatingTextData[currentStars]}</BoothRatingText>
+        <BoothRatingText>{boothRatingTextData[currentStar]}</BoothRatingText>
       </RatingnTextWrapper>
       <SpecificWrapper>
         <BoothRatingDescription>매장의 추천 포인트는 무엇인가요?</BoothRatingDescription>
@@ -108,7 +109,7 @@ const ReviewRatingOrganism = () => {
         />
       </SpecificListWrapper>
       <ReviewNextPressableWrapper>
-        <ReviewNextPressable onPress={nextOnPress} disable={!(currentStars > 0 && specificNext)} />
+        <ReviewNextPressable onPress={nextOnPress} disable={!(currentStar > 0 && specificNext)} />
       </ReviewNextPressableWrapper>
     </ReviewSectionContainer>
   );

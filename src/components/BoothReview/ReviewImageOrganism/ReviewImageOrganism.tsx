@@ -28,24 +28,33 @@ import ActivityIndicator from 'src/components/utils/ActivityIndicator';
 import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import useMutateReview from 'src/querys/useMutateReview';
-import {addImage, addStoreDescription, clearData} from 'src/redux/actions/ReviewAction';
+import usePatchReview from 'src/querys/usePatchReview';
+import {
+  addDeleteImage,
+  addImage,
+  addStoreDescription,
+  changeDeleteImage,
+  clearData,
+} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
 import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
+import {FormImage} from 'src/types';
 
 const ReviewImageOrganism = () => {
   const queryClient = useQueryClient();
   const route = useRoute<RouteProp<PostReviewParamList, 'BoothImageReviewScreen'>>();
   const dispatch = useDispatch();
   const post = useMutateReview();
+  const {mutate: updateReview} = usePatchReview();
   const [uiLoading, setUiLoading] = useState(false);
   const {boothId} = route.params;
   const userInfo = useSelector((state: RootState) => state.userReducer.userInfo);
-  const imageData: {uri: string; name: string; type: string}[] = useSelector(
-    (state: RootState) => state.reviewReducer.imageData,
-  );
+  const imageData: FormImage[] = useSelector((state: RootState) => state.reviewReducer.imageData);
   const descriptionText: string = useSelector(
     (state: RootState) => state.reviewReducer.storeDescription,
   );
+  const isUpdateMode = useSelector((state: RootState) => state.reviewReducer.isUpdateMode);
+  const reviewId = useSelector((state: RootState) => state.reviewReducer.reviewId);
   const inputPostReviewData = useSelector((state: RootState) => state.reviewReducer);
 
   const onChangeFile = useCallback(async () => {
@@ -85,6 +94,9 @@ const ReviewImageOrganism = () => {
       );
     };
     const images = await takeResizeImages(response);
+    dispatch(
+      changeDeleteImage(imageData.filter((image: any) => !!image.id).map((image: any) => image.id)),
+    );
     dispatch(addImage(images));
   }, []);
 
@@ -107,6 +119,9 @@ const ReviewImageOrganism = () => {
   );
 
   const imageDeleteOnPress = (index: number) => {
+    if (imageData[index]) {
+      dispatch(addDeleteImage(imageData[index].id));
+    }
     const nextData = [...imageData].filter((item, i) => {
       return index !== i;
     });
@@ -115,24 +130,51 @@ const ReviewImageOrganism = () => {
 
   const navigation = useNavigation();
   const nextOnPress = () => {
-    post.mutate(
-      {
-        title: '',
-        content: inputPostReviewData.storeDescription,
-        tagIdList: tagIdSet,
-        photoBoothId: boothId,
-        userId: userInfo.id,
-        starScore: inputPostReviewData.currentStar,
-        postImageList: [...inputPostReviewData.imageData],
-      },
-      {
-        onSuccess: () => {
-          dispatch(clearData());
-          queryClient.invalidateQueries(['userList']);
-          navigation.navigate('BoothReviewComplete' as never, {} as never);
+    if (isUpdateMode) {
+      updateReview(
+        {
+          reviewId: reviewId,
+          reviewUpdateRequest: {
+            title: '',
+            content: inputPostReviewData.storeDescription,
+            tagIdList: tagIdSet,
+            starScore: inputPostReviewData.currentStar,
+            newTagKeywordList: inputPostReviewData.tagData,
+            reviewImageList: [...inputPostReviewData.imageData.filter((image: any) => !image.id)],
+            deleteImageIdList: inputPostReviewData.deleteImageIdList,
+          },
         },
-      },
-    );
+        {
+          onSuccess: () => {
+            dispatch(clearData());
+            queryClient.invalidateQueries(['userList']);
+            queryClient.invalidateQueries(['photo-booth', boothId]);
+            navigation.navigate('BoothReviewComplete' as never, {} as never);
+          },
+        },
+      );
+    } else {
+      post.mutate(
+        {
+          title: '',
+          content: inputPostReviewData.storeDescription,
+          tagIdList: tagIdSet,
+          photoBoothId: boothId,
+          userId: userInfo.id,
+          starScore: inputPostReviewData.currentStar,
+          newTagKeywordList: inputPostReviewData.tagData,
+          postImageList: [...inputPostReviewData.imageData],
+        },
+        {
+          onSuccess: () => {
+            dispatch(clearData());
+            queryClient.invalidateQueries(['userList']);
+            queryClient.invalidateQueries(['photo-booth', boothId]);
+            navigation.navigate('BoothReviewComplete' as never, {} as never);
+          },
+        },
+      );
+    }
   };
 
   useEffect(() => {
