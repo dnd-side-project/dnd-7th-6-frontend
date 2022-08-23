@@ -5,12 +5,11 @@ import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
-  paddingHorizontal: widthPercentage(16),
   paddingVertical: heightPercentage(20),
 });
 
 export const TypeOfTag = styled(SubHeadline4)({
-  color: theme.colors.grayscale[10],
+  color: theme.colors.grayscale[7],
   paddingBottom: heightPercentage(4),
 });
 

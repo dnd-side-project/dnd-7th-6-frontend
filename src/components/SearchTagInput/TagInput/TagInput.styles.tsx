@@ -35,7 +35,8 @@ export const ChipInnerTextInput = styled.TextInput({
 });
 
 export const ChipScrollViewWrapper = styled.View({
-  paddingHorizontal: widthPercentage(2),
+  paddingLeft: widthPercentage(2),
+  paddingRight: widthPercentage(16),
   width: widthPercentage(308),
 });
 

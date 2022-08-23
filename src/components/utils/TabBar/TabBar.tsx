@@ -1,7 +1,7 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React, {useEffect, useRef} from 'react';
 import {Animated, Easing, SafeAreaView} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import PostWriteTabBar from './PostWriteTabBar';
 import {BottomBarTitle, IconWrapper, TabWrapper} from './TabBar.styles';
@@ -14,17 +14,14 @@ import BoothNavIcon from 'src/icons/Navigation/BoothNavIcon';
 import RecommendNavIcon from 'src/icons/Navigation/RecommendNavIcon';
 import RecordNavIcon from 'src/icons/Navigation/RecordNavIcon';
 import StorageNavIcon from 'src/icons/Navigation/StorageNavIcon';
-import {closePostWrite} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
-  const dispatch = useDispatch();
   const slideUpAnimation = useRef(new Animated.Value(heightPercentage(54))).current;
   const {isVisibleTabBar, isPostWriteScreen} = useSelector(
     (globalState: RootState) => globalState.tabBarReducer,
   );
-  const {screenIndex} = useSelector((globalState: RootState) => globalState.postWriteReducer);
   const slideDown = Animated.timing(slideUpAnimation, {
     toValue: 0,
     duration: 300,
@@ -66,12 +63,6 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
       slideDown.start();
     }
   }, [isVisibleTabBar]);
-
-  useEffect(() => {
-    if (screenIndex >= 4) {
-      dispatch(closePostWrite());
-    }
-  }, [screenIndex]);
 
   if (isPostWriteScreen) {
     return <PostWriteTabBar />;

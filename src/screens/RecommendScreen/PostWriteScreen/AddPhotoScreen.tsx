@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
+  BackHandler,
   Dimensions,
   NativeSyntheticEvent,
   SafeAreaView,
@@ -18,7 +19,12 @@ import Alert from 'src/components/utils/Alert';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useFocus from 'src/hooks/useFocus';
 import {changeScreen, clearPostWrite} from 'src/redux/actions/PostWriteAction';
-import {showTabBar} from 'src/redux/actions/TabBarAction';
+import {
+  closePostWrite,
+  hideTabBar,
+  openPostWrite,
+  showTabBar,
+} from 'src/redux/actions/TabBarAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 export type AddPhotoScreenProps = NativeStackScreenProps<PostWriteParamList, 'PostWriteMain'>;
@@ -39,17 +45,38 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
   const handleBlurInputField = () => {
     setFocus(false);
   };
+  const openAlert = () => {
+    dispatch(closePostWrite());
+    dispatch(hideTabBar());
+    setIsOpenAlert(true);
+  };
+  const closeAlert = () => {
+    dispatch(openPostWrite());
+    dispatch(hideTabBar());
+    setIsOpenAlert(false);
+  };
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      openAlert();
+      return true;
+    });
+    return () => backHandler.remove();
+  });
   useFocus(() => {
     dispatch(changeScreen(0));
   });
 
   return (
     <SafeAreaView style={{marginBottom: heightPercentage(54)}}>
-      <LeftBackHeader onPressBack={() => setIsOpenAlert(true)}>글 작성</LeftBackHeader>
+      <LeftBackHeader onPressBack={() => openAlert()}>글 작성</LeftBackHeader>
       <KeyboardAwareScrollView
         ref={scroll}
-        style={{height: Dimensions.get('window').height - heightPercentage(220)}}>
+        style={{
+          height:
+            Dimensions.get('window').height -
+            (isOpenAlert ? heightPercentage(50) : heightPercentage(220)),
+        }}>
         <AddPhotoOrganism />
         <TextFieldOrganism onBlur={handleBlurInputField} onFocus={handleFocusInputField} />
         {!focus || <View style={{height: 60}} />}
@@ -60,7 +87,7 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
           checkButtonText="계속 작성하기"
           title="게시물 작성을 중단하시겠어요?"
           subTitle="입력한 내용은 저장되지 않아요!"
-          onPressCheck={() => setIsOpenAlert(false)}
+          onPressCheck={() => closeAlert()}
           onPressCancel={() => {
             dispatch(showTabBar());
             dispatch(clearPostWrite());
