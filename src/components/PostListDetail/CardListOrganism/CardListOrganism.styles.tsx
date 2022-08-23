@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 import {Dimensions} from 'react-native';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 import {BodyText3} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
@@ -14,11 +15,11 @@ export const Container = styled.View({
 export const FlatListWrapper = styled.View({
   justifyContent: 'center',
   paddingBottom: heightPercentage(54),
-  height: height - heightPercentage(80),
+  height: height - heightPercentage(130) - getStatusBarHeight(true),
 });
 
 export const PostDetailFlatList = styled.FlatList({
-  height: height - heightPercentage(80),
+  height: '100%',
 });
 
 export const SortButtonWrapper = styled.Pressable({

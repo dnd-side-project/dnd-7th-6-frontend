@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {NativeSyntheticEvent, ScrollView, TextInputKeyPressEventData} from 'react-native';
 import {useDispatch} from 'react-redux';
 
@@ -8,7 +8,6 @@ import {
   ChipTextInput,
   RightCountView,
   SearchBarCotainer,
-  SearchBarTextInput,
 } from './TagInput.styles';
 
 import TagInputChip from 'src/components/Chip/TagInputChip';
@@ -28,7 +27,6 @@ const TagInput = ({
 }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const [chipMode, setChipMode] = useState(false);
 
   //태그 데이터 제거
   useEffect(
@@ -41,17 +39,6 @@ const TagInput = ({
       }),
     [navigation],
   );
-
-  useEffect(() => {
-    if (inputWord === '') {
-      setChipMode(false);
-    }
-  }, [inputWord]);
-
-  const searchTextInputOnPress = (text: string) => {
-    setInputWord(text);
-    setChipMode(true);
-  };
   const chipTextInputOnPress = (text: string) => {
     setInputWord(text);
   };
@@ -89,25 +76,20 @@ const TagInput = ({
           ) : (
             <></>
           )}
-          {chipMode ? (
+          {tagData.length >= 4 ? (
+            <></>
+          ) : (
             <TagInputChip>
               <ChipTextInput
                 autoFocus
+                blurOnSubmit={false}
                 onChangeText={chipTextInputOnPress}
                 onSubmitEditing={chipTextEventOnPress}
+                onKeyPress={searchTextEventOnPress}
                 value={inputWord}
+                placeholder="내용을 입력해주세요"
               />
             </TagInputChip>
-          ) : tagData.length >= 4 ? (
-            <></>
-          ) : (
-            <SearchBarTextInput
-              autoFocus
-              placeholder="태그를 입력해 주세요."
-              onChangeText={searchTextInputOnPress}
-              onKeyPress={searchTextEventOnPress}
-              value={inputWord}
-            />
           )}
         </ScrollView>
       </ChipScrollViewWrapper>

@@ -10,8 +10,6 @@ const patchReview = async (reviewId: number, reviewUpdateRequest: ReviewUpdateRe
       formData.append('reviewImageList', reviewImage);
     });
 
-    console.log(restData);
-
     formData.append('reviewUpdateRequest', {
       string: JSON.stringify(restData),
       type: 'application/json',

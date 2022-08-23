@@ -1,6 +1,6 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import React, {useEffect, useRef} from 'react';
-import {Animated, Easing, SafeAreaView} from 'react-native';
+import React from 'react';
+import {SafeAreaView, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import PostWriteTabBar from './PostWriteTabBar';
@@ -15,25 +15,11 @@ import RecommendNavIcon from 'src/icons/Navigation/RecommendNavIcon';
 import RecordNavIcon from 'src/icons/Navigation/RecordNavIcon';
 import StorageNavIcon from 'src/icons/Navigation/StorageNavIcon';
 import {RootState} from 'src/redux/store';
-import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
-  const slideUpAnimation = useRef(new Animated.Value(heightPercentage(54))).current;
   const {isVisibleTabBar, isPostWriteScreen} = useSelector(
     (globalState: RootState) => globalState.tabBarReducer,
   );
-  const slideDown = Animated.timing(slideUpAnimation, {
-    toValue: 0,
-    duration: 300,
-    easing: Easing.linear,
-    useNativeDriver: false,
-  });
-  const slideUp = Animated.timing(slideUpAnimation, {
-    toValue: heightPercentage(54),
-    duration: 300,
-    easing: Easing.linear,
-    useNativeDriver: false,
-  });
 
   const BottomTabIconSelector = ({
     routeName,
@@ -56,39 +42,33 @@ const TabBar = ({descriptors, state, navigation}: BottomTabBarProps) => {
     }
   };
 
-  useEffect(() => {
-    if (isVisibleTabBar) {
-      slideUp.start();
-    } else {
-      slideDown.start();
-    }
-  }, [isVisibleTabBar]);
-
   if (isPostWriteScreen) {
     return <PostWriteTabBar />;
   }
 
   return (
-    <SafeAreaView>
-      <Animated.View style={{height: slideUpAnimation, flexDirection: 'row', overflow: 'hidden'}}>
-        {state.routes.map((route, index) => {
-          const {options} = descriptors[route.key];
-          const label = options.tabBarLabel as string;
-          const routeName = route.name;
-          const handlePress = () => {
-            navigation.navigate(route.name);
-          };
-          const isFocused = state.index === index;
-          return (
-            <TabWrapper key={route.key} onPress={handlePress} isFocused={isFocused}>
-              <IconWrapper>
-                <BottomTabIconSelector routeName={routeName} isFocused={isFocused} />
-              </IconWrapper>
-              <BottomBarTitle isFocused={isFocused}>{label}</BottomBarTitle>
-            </TabWrapper>
-          );
-        })}
-      </Animated.View>
+    <SafeAreaView style={{zIndex: 1}}>
+      {isVisibleTabBar && (
+        <View style={{flexDirection: 'row', overflow: 'hidden'}}>
+          {state.routes.map((route, index) => {
+            const {options} = descriptors[route.key];
+            const label = options.tabBarLabel as string;
+            const routeName = route.name;
+            const handlePress = () => {
+              navigation.navigate(route.name);
+            };
+            const isFocused = state.index === index;
+            return (
+              <TabWrapper key={route.key} onPress={handlePress} isFocused={isFocused}>
+                <IconWrapper>
+                  <BottomTabIconSelector routeName={routeName} isFocused={isFocused} />
+                </IconWrapper>
+                <BottomBarTitle isFocused={isFocused}>{label}</BottomBarTitle>
+              </TabWrapper>
+            );
+          })}
+        </View>
+      )}
     </SafeAreaView>
   );
 };

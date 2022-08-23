@@ -20,6 +20,7 @@ export const OrganismView = styled.View({
 
 export const ListWrapper = styled.View({
   paddingHorizontal: widthPercentage(10.5),
+  marginBottom: heightPercentage(16),
 });
 
 export const TitleIcon = styled.Image({

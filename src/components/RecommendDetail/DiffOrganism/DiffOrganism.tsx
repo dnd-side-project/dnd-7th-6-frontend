@@ -18,7 +18,7 @@ interface Props {
 
 const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
   const {data: thisPost} = useGetPost(id);
-  const {data: diffUserPost} = useGetPosts(
+  const {data: diffUserPost, isLoading} = useGetPosts(
     {userId: thisPost?.user.id},
     {
       enabled: !!thisPost,
@@ -58,6 +58,7 @@ const RecommendDetailDiffOrganism = ({id, navigation}: Props) => {
       <ListWrapper>
         {!!diffUserPost && (
           <RecommendPreviewFourCard
+            isLoading={isLoading}
             data={diffUserPost.pages.flatMap(({content}) => content)}
             onPress={handlePressCard}
           />
