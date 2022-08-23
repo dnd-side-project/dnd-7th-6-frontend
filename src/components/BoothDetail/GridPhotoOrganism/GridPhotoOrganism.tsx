@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {LayoutChangeEvent} from 'react-native';
+import {LayoutChangeEvent, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import {
@@ -39,9 +39,8 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
       </TextContainer>
       <GridView onPress={() => navigation.navigate('BoothImage' as never, {boothId: id} as never)}>
         {reviewImages.slice(0, 6).map(({id: reviewId, imageUrl}, i) => (
-          <>
+          <View key={reviewId}>
             <FastImage
-              key={reviewId}
               source={{uri: imageUrl}}
               style={{
                 ...style.fastImage,
@@ -52,7 +51,7 @@ const GridPhotoOrganism = ({id, onLayout}: Props) => {
                 <TotalPhoto>{data.pages[0].totalElements - 6}+</TotalPhoto>
               </OpacityView>
             )}
-          </>
+          </View>
         ))}
       </GridView>
     </Container>

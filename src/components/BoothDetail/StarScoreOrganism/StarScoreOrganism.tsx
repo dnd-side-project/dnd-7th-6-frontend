@@ -25,10 +25,12 @@ const StarScoreOrganism = ({booth}: Props) => {
               <Count> {booth?.photoBooth.reviewCount}</Count>
             </Text>
           )}
-          <StarScoreBox>
-            <StarIcon20 color={theme.colors.grayscale[1]} />
-            <StarScore>{booth?.photoBooth.starScore?.toFixed(1)}</StarScore>
-          </StarScoreBox>
+          {!!booth.photoBooth.starScore && (
+            <StarScoreBox>
+              <StarIcon20 color={theme.colors.grayscale[1]} />
+              <StarScore>{booth?.photoBooth.starScore?.toFixed(1)}</StarScore>
+            </StarScoreBox>
+          )}
         </FastImage>
       )}
     </>
