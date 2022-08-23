@@ -22,7 +22,7 @@ const CardListOrganism = () => {
   const {tagIdSet} = useFilteredItem();
   const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const {data, fetchNextPage, isLoading, isFetching, refetch} = useGetInfinitePosts({
+  const {data, fetchNextPage, isLoading, refetch} = useGetInfinitePosts({
     tagIdSet,
     order,
     key: 'postList',
@@ -58,7 +58,7 @@ const CardListOrganism = () => {
   return (
     <Container>
       <FlatListWrapper>
-        {isLoading || isFetching ? (
+        {isLoading ? (
           <ActivityIndicator size="large" />
         ) : (
           <PostDetailFlatList
