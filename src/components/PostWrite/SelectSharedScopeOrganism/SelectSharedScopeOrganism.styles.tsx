@@ -17,14 +17,13 @@ export const Button = styled.Pressable<Props>(({selected = false}) => ({
   paddingVertical: heightPercentage(14),
   marginRight: widthPercentage(8),
   width: widthPercentage(168),
-  backgroundColor: selected ? theme.colors.grayscale[3] : theme.colors.grayscale[0],
-  borderRadius: 4,
-  borderColor: theme.colors.grayscale[3],
-  borderWidth: selected ? 0 : 1,
+  borderRadius: 8,
+  borderColor: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[3],
+  borderWidth: 1,
 }));
 
 export const ButtonTitle = styled(BodyText4)<Props>(({selected = false}) => ({
   textAlign: 'center',
   textDecorationLine: 'underline',
-  color: selected ? theme.colors.grayscale[7] : theme.colors.grayscale[5],
+  color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[7],
 }));

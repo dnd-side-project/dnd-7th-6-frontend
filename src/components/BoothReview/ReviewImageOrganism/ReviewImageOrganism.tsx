@@ -4,6 +4,7 @@ import {Alert} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {type Image, openPicker} from 'react-native-image-crop-picker';
 import ImageResizer from 'react-native-image-resizer';
+import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
 import ImageSelectPressable from '../../ImageSelectPressable/ImageSelectPressable';
@@ -24,13 +25,15 @@ import {
 } from './ReviewImageOrganism.styles';
 
 import ActivityIndicator from 'src/components/utils/ActivityIndicator';
+import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import DeleteIcon from 'src/icons/DeleteIcon';
 import useMutateReview from 'src/querys/useMutateReview';
-import {addImage, addStoreDescription} from 'src/redux/actions/ReviewAction';
+import {addImage, addStoreDescription, clearData} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
 import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
 
 const ReviewImageOrganism = () => {
+  const queryClient = useQueryClient();
   const route = useRoute<RouteProp<PostReviewParamList, 'BoothImageReviewScreen'>>();
   const dispatch = useDispatch();
   const post = useMutateReview();
@@ -47,6 +50,7 @@ const ReviewImageOrganism = () => {
 
   const onChangeFile = useCallback(async () => {
     try {
+      await requestcameraPermission();
       const imageResponse = await openPicker({
         includeBase64: true,
         includeExif: true,
@@ -111,16 +115,24 @@ const ReviewImageOrganism = () => {
 
   const navigation = useNavigation();
   const nextOnPress = () => {
-    post.mutate({
-      title: '',
-      content: inputPostReviewData.storeDescription,
-      tagIdList: tagIdSet,
-      photoBoothId: boothId,
-      userId: userInfo.id,
-      starScore: inputPostReviewData.currentStar,
-      postImageList: [...inputPostReviewData.imageData],
-    });
-    navigation.navigate('BoothReviewComplete' as never, {} as never);
+    post.mutate(
+      {
+        title: '',
+        content: inputPostReviewData.storeDescription,
+        tagIdList: tagIdSet,
+        photoBoothId: boothId,
+        userId: userInfo.id,
+        starScore: inputPostReviewData.currentStar,
+        postImageList: [...inputPostReviewData.imageData],
+      },
+      {
+        onSuccess: () => {
+          dispatch(clearData());
+          queryClient.invalidateQueries(['userList']);
+          navigation.navigate('BoothReviewComplete' as never, {} as never);
+        },
+      },
+    );
   };
 
   useEffect(() => {

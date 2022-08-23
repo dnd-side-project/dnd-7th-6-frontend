@@ -14,9 +14,9 @@ import {
   ReviewCompleteContainer,
 } from './ReviewCompleteOrganism.styles';
 
-import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
+import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 const ReviewCompleteOrganism = () => {
   const route = useRoute<RouteProp<PostReviewParamList, 'BoothReviewCompleteScreen'>>();

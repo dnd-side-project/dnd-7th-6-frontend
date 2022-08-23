@@ -7,7 +7,7 @@ export const Container = styled.Pressable<{active: boolean; index: number | unde
   ({active, index}) => ({
     paddingRight: active ? widthPercentage(6) : widthPercentage(12),
     paddingLeft: widthPercentage(12),
-    marginHorizontal: widthPercentage(2),
+    marginHorizontal: widthPercentage(3),
     marginLeft: index === 0 ? widthPercentage(10) : 0,
     flexDirection: 'row',
     borderRadius: 20,

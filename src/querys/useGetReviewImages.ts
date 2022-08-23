@@ -9,16 +9,12 @@ const useGetReviewImages = (photoBoothId: number, options?: any) => {
     ServerResponse<ReviewImage>,
     AxiosError,
     ServerResponse<ReviewImage>,
-    [string, number]
-  >(
-    ['review-images', photoBoothId],
-    ({queryKey, pageParam = 0}) => getReviewImages({photoBoothId: queryKey[1], page: pageParam}),
-    {
-      getNextPageParam: lastPage => lastPage.number + 1,
-      enabled: !!photoBoothId,
-      ...options,
-    },
-  );
+    [string]
+  >(['review-images'], ({pageParam = 0}) => getReviewImages({photoBoothId, page: pageParam}), {
+    getNextPageParam: lastPage => lastPage.number + 1,
+    enabled: !!photoBoothId,
+    ...options,
+  });
 };
 
 export default useGetReviewImages;

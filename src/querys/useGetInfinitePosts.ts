@@ -24,7 +24,7 @@ const useGetInfinitePosts = (
   >,
 ) => {
   return useInfiniteQuery<ServerResponse<Post>, AxiosError, ServerResponse<Post>, QueryKey>(
-    ['post', tagIdSet.join(','), order],
+    ['post'],
     ({pageParam = 0}) => {
       return getPostsByTag({page: pageParam, tagIdSet, order});
     },

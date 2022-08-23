@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import SplashScreen from 'react-native-splash-screen';
@@ -18,6 +20,7 @@ const Tab = createBottomTabNavigator();
 
 const AppInner = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const {accessToken: newToken, isSettingInterceptor} = useSelector(
     (state: RootState) => state.userReducer,
   );
@@ -38,6 +41,12 @@ const AppInner = () => {
       }
     };
     getToken();
+    AsyncStorage.getItem('alreadyLaunched').then(value => {
+      if (value == null) {
+        AsyncStorage.setItem('alreadyLaunched', 'true');
+        navigation.navigate('InitPermissionScreen' as never);
+      }
+    });
   }, []);
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {Container, style} from './AddPhotoOrganism.styles';
 
+import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import PlusIcon from 'src/icons/PlusIcon';
 import {addDeleteImage, addPostWriteImage} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
@@ -23,6 +24,7 @@ const AddPhotoOrganism = () => {
           dispatch(addDeleteImage(image.id));
         }
       }
+      await requestcameraPermission();
       const imageResponse = await openPicker({
         includeBase64: true,
         includeExif: true,

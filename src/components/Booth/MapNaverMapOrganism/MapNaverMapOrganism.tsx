@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {Platform} from 'react-native';
 import NaverMapView, {TrackingMode, type Coord} from 'react-native-nmap';
+import {check, PERMISSIONS} from 'react-native-permissions';
 import {useDispatch, useSelector} from 'react-redux';
 
 import MapFilterOrganism from '../MapFilterOrganism';
@@ -45,12 +46,12 @@ const MapNaverMapOrganism = () => {
 
   //첫 로딩시 현재 사용자 위치 가져오기
   useEffect(() => {
-    mapRef.current?.setLocationTrackingMode(TrackingMode.Follow);
     const initMap = async () => {
-      const permission = await requestLocationPermission();
+      const permission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS);
       if (permission !== 'granted') {
         return;
       }
+      mapRef.current?.setLocationTrackingMode(TrackingMode.Follow);
       const {longitude, latitude} = await getGeolocation();
       if (Platform.OS === 'android') {
         mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});

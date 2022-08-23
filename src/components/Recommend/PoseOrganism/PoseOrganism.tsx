@@ -20,7 +20,6 @@ import useGetPosts from 'src/querys/useGetPosts';
 const PoseRecommendOrganism = () => {
   const {data, isLoading} = useGetPosts({order: 'popular'});
   const navigation = useNavigation();
-
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };

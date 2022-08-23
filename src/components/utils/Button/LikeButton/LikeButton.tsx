@@ -14,7 +14,7 @@ const LikeButton = (props: Props) => {
   return (
     <Container {...props}>
       <LikeHeartIcon
-        color={props.isActive ? theme.colors.primary[2].normal : theme.colors.grayscale[0]}
+        color={props.isActive ? theme.colors.primary[2].light : theme.colors.grayscale[0]}
       />
     </Container>
   );
