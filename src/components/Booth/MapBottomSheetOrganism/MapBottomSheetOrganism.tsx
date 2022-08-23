@@ -30,8 +30,8 @@ const MapBottomSheetOrganism = () => {
     () => [
       heightPercentage(145),
       valueOfPlatform({
-        ios: heightPercentage(680) - getStatusBarHeight(true),
-        android: heightPercentage(680) - headerHeight,
+        ios: heightPercentage(685) - getStatusBarHeight(true),
+        android: heightPercentage(685) - headerHeight,
       }),
     ],
     [],

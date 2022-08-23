@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -12,7 +12,7 @@ import RecommendFeedCard from 'src/components/Recommend/FeedCard/RecommendFeedCa
 import useFilteredItem from 'src/hooks/useFilteredItem';
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 import useMutatePostLike from 'src/querys/useMutatePostLike';
-import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 
 const CardListOrganism = () => {
@@ -30,13 +30,6 @@ const CardListOrganism = () => {
   const {mutate: likePost} = useMutatePostLike();
   const posts = data?.pages.flatMap(({content}) => content);
 
-  const handleScroll = ({nativeEvent}: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const curY = nativeEvent.velocity?.y;
-    if (!curY) {
-      return;
-    }
-    dispatch(curY > 0 ? hideTabBar() : showTabBar());
-  };
   const handleLikePost = (id: number) => () => {
     likePost(id, {
       onSuccess: () => {
@@ -81,7 +74,6 @@ const CardListOrganism = () => {
                 onPress={handlePressPost(item.id)}
               />
             )}
-            onScroll={handleScroll}
             onEndReached={() => {
               fetchNextPage();
             }}

@@ -11,7 +11,7 @@ interface Props {
 export const ReviewNextPressableContainer = styled.Pressable(({disable}: Props) => ({
   width: widthPercentage(343),
   height: heightPercentage(48),
-  backgroundColor: disable ? theme.colors.grayscale[3] : '#8048F8',
+  backgroundColor: disable ? theme.colors.grayscale[3] : theme.colors.primary[1].normal,
   borderRadius: 8,
   alignSelf: 'center',
   justifyContent: 'center',

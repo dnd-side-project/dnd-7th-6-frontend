@@ -32,7 +32,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
     [inputPostData],
   );
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
-
+  if (screenIndex === 4) {
+    return <></>;
+  }
   const handlePressSubmit = () => {
     if (screenIndex === 3) {
       if (isPostModifyMode) {

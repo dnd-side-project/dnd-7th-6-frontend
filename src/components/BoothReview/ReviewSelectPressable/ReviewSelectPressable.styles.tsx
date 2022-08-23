@@ -14,7 +14,7 @@ export const SelectPressable = styled.Pressable(({selected}: SelectPressableProp
   marginLeft: widthPercentage(6),
   marginBottom: heightPercentage(12),
   borderWidth: 1,
-  borderColor: selected ? '#8048F8' : theme.colors.grayscale[3],
+  borderColor: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[3],
   height: heightPercentage(38),
   alignSelf: 'flex-start',
   justifyContent: 'center',
@@ -33,7 +33,7 @@ export const IconWrapper = styled.View({
 
 export const SelectPressableText = styled(BodyText4)(({selected}: SelectPressableProps) => ({
   alignSelf: 'center',
-  color: selected ? '#8048F8' : theme.colors.grayscale[7],
+  color: selected ? theme.colors.primary[1].normal : theme.colors.grayscale[7],
 }));
 
 export const styles = StyleSheet.create({

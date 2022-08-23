@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {Svg, Path} from 'react-native-svg';
 
+import theme from 'src/styles/Theme';
+
 const FocusedRecommendNavIcon = () => (
   <Svg width={24} height={24} fill="none">
     <Path
       d="M3.945 19.13v-9.129c0-.555.246-1.081.673-1.437l6.685-5.567a1.87 1.87 0 0 1 2.394 0l6.685 5.567c.426.356.673.882.673 1.437v9.129a1.87 1.87 0 0 1-1.87 1.87H5.815a1.87 1.87 0 0 1-1.87-1.87Z"
-      fill="#8048F8"
-      stroke="#8048F8"
+      fill={theme.colors.primary[1].normal}
+      stroke={theme.colors.primary[1].normal}
       strokeLinecap="round"
       strokeLinejoin="round"
     />

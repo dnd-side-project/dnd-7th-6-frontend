@@ -4,6 +4,9 @@ import {GestureResponderEvent, PressableProps} from 'react-native';
 import {PressableBottomArrowIcon} from '../utils/Pressables/PressableIcons';
 import {Container, IconContainer, Title} from './MapFilterBrandChip.styles.';
 
+import BoothBrandIcon from 'src/icons/BoothBrandIcon';
+import FocusedBoothBrandIcon from 'src/icons/FocusedBoothBrandIcon';
+
 interface Props {
   selected?: boolean;
   onPressIcon?: (event: GestureResponderEvent) => void;
@@ -17,7 +20,7 @@ const MapFilterBrandChip = ({
 }: PropsWithChildren<PressableProps & Props>) => {
   return (
     <Container {...props} selected={selected}>
-      <IconContainer source={require('src/assets/images/Booth/brandDropdown.png')} />
+      <IconContainer>{selected ? <FocusedBoothBrandIcon /> : <BoothBrandIcon />}</IconContainer>
       <Title selected={selected}>{children}</Title>
 
       <PressableBottomArrowIcon onPress={onPressIcon} />

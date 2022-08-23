@@ -68,7 +68,9 @@ const ReviewImageOrganism = () => {
         maxFiles: 4,
       });
       onImageResponse(imageResponse);
-    } catch (error) {}
+    } catch (error) {
+      setUiLoading(false);
+    }
   }, []);
 
   const onImageResponse = useCallback(async (response: Image[]) => {
@@ -227,10 +229,10 @@ const ReviewImageOrganism = () => {
               }}
             />
           </TextFieldWrapper>
-          <ReviewNextPressableWrapper>
-            <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
-          </ReviewNextPressableWrapper>
         </ActivityIndicator>
+        <ReviewNextPressableWrapper>
+          <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
+        </ReviewNextPressableWrapper>
       </ReviewSectionContainer>
     </DismissKeyboardView>
   );

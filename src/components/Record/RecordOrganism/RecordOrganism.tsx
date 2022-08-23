@@ -95,11 +95,10 @@ const RecordOrganism = ({navigation}: any) => {
                   numColumns={2}
                   data={data?.postList}
                   renderItem={({item}: any) => (
-                    <CardWrapper>
+                    <CardWrapper onPress={handlePressImage(item)}>
                       <FastImage
                         source={{uri: item.postImageSet[0].imageUrl}}
                         style={style.recordFeedCard}
-                        onTouchEnd={handlePressImage(item)}
                       />
                     </CardWrapper>
                   )}

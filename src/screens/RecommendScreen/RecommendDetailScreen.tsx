@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Dimensions, SafeAreaView, ScrollView} from 'react-native';
+import {Dimensions, SafeAreaView} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import RecommendDetailScreenHeader from './RecommendDetailScreen.header';
 

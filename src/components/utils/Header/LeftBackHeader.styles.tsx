@@ -10,6 +10,7 @@ export const Container = styled.View({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
+  zIndex: 10,
 });
 
 export const BackButtonWrapper = styled.View({
