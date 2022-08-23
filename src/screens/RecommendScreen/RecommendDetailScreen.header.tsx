@@ -1,5 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {BackHandler} from 'react-native';
 import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -24,6 +25,16 @@ const RecommendDetailScreenHeader = ({navigation, postId, isRecord}: Props) => {
   const {data} = useGetPost(postId);
   const {mutate: deletePost} = useDeletePost();
 
+  const goBack = () => {
+    if (isRecord) {
+      navigation.reset({
+        routes: [{name: 'RouteRecordScreen' as never}],
+        index: 0,
+      });
+    } else {
+      navigation.goBack();
+    }
+  };
   const handleModifyPost = () => {
     if (!data) {
       return;
@@ -47,18 +58,18 @@ const RecommendDetailScreenHeader = ({navigation, postId, isRecord}: Props) => {
     {name: '삭제', onPressItem: handleDeletePost},
   ];
 
+  useEffect(() => {
+    const handler = () => {
+      goBack();
+      return true;
+    };
+    BackHandler.addEventListener('hardwareBackPress', handler);
+    return BackHandler.removeEventListener('hardwareBackPress', handler);
+  }, []);
+
   return (
     <LeftBackHeader
-      onPressBack={() => {
-        if (isRecord) {
-          navigation.reset({
-            routes: [{name: 'RouteRecordScreen' as never}],
-            index: 0,
-          });
-        } else {
-          navigation.goBack();
-        }
-      }}
+      onPressBack={goBack}
       menuItems={data?.user.id === userInfo.id ? menuItem : undefined}
     />
   );

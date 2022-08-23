@@ -14,7 +14,7 @@ export const Container = styled.View({
 export const FlatListWrapper = styled.View({
   justifyContent: 'center',
   paddingBottom: heightPercentage(54),
-  height: height - heightPercentage(80),
+  height: height - heightPercentage(130),
 });
 
 export const PostDetailFlatList = styled.FlatList({

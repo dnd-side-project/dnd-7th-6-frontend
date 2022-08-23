@@ -7,7 +7,7 @@ import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
   paddingHorizontal: widthPercentage(18),
-  paddingVertical: heightPercentage(18),
+  paddingVertical: heightPercentage(42),
 });
 
 export const TextContainer = styled.Text({
@@ -41,8 +41,8 @@ export const OpacityView = styled.View({
   height: widthPercentage(111),
   width: widthPercentage(111),
   backgroundColor: theme.colors.grayscale[10] + '88',
-  right: widthPercentage(4),
-  bottom: -heightPercentage(16),
+  right: widthPercentage(3),
+  bottom: heightPercentage(0),
   position: 'absolute',
   justifyContent: 'center',
   alignItems: 'center',

@@ -39,6 +39,7 @@ const MapBottomSheetOrganism = () => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
   const initCoord: Coord = {longitude: 0, latitude: 0};
   const {data} = useGetPhotoBoothLocation({coord: initCoord});
+
   return (
     <BottomSheetConatiner>
       <BottomSheet

@@ -22,12 +22,11 @@ const CardListOrganism = () => {
   const {tagIdSet} = useFilteredItem();
   const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const {data, fetchNextPage, isLoading} = useGetInfinitePosts(
-    {tagIdSet, order, key: 'postList'},
-    {
-      enabled: !isOpenFilterSheet,
-    },
-  );
+  const {data, fetchNextPage, isLoading, isFetching, refetch} = useGetInfinitePosts({
+    tagIdSet,
+    order,
+    key: 'postList',
+  });
   const {mutate: likePost} = useMutatePostLike();
   const posts = data?.pages.flatMap(({content}) => content);
 
@@ -51,6 +50,13 @@ const CardListOrganism = () => {
   };
 
   useEffect(() => {
+    if (isOpenFilterSheet) {
+      return;
+    }
+    refetch();
+  }, [tagIdSet]);
+
+  useEffect(() => {
     return () => {
       dispatch(showTabBar());
     };
@@ -59,7 +65,7 @@ const CardListOrganism = () => {
   return (
     <Container>
       <FlatListWrapper>
-        {isLoading ? (
+        {isLoading || isFetching ? (
           <ActivityIndicator size="large" />
         ) : (
           <PostDetailFlatList

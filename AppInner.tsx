@@ -1,7 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
+import Config from 'react-native-config';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import SplashScreen from 'react-native-splash-screen';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,6 +28,9 @@ const AppInner = () => {
   );
 
   useEffect(() => {
+    GoogleSignin.configure({
+      iosClientId: Config.IOS_GOOGLE_API_KEY,
+    });
     const getToken = async () => {
       try {
         const token = await EncryptedStorage.getItem('refreshToken');

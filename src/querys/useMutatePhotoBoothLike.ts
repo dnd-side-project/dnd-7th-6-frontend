@@ -9,10 +9,15 @@ const useMutatePhotoBoothLike = () => {
     onMutate: (targetId: number) => {
       const oldBooth = queryClient.getQueryData(['photo-booth', targetId]);
       queryClient.cancelQueries(['photo-booth', targetId]);
-      queryClient.setQueryData(['photo-booth', targetId], (oldData: any) => ({
-        ...oldData,
-        like: !oldData.like,
-      }));
+      queryClient.setQueryData(['photo-booth', targetId], (oldData: any) => {
+        if (!oldData) {
+          return;
+        }
+        return {
+          ...oldData,
+          like: !oldData.like,
+        };
+      });
       return () => queryClient.setQueryData(['photo-booth'], oldBooth);
     },
     onError: (err, values, rollback) => {
