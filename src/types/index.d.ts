@@ -155,12 +155,14 @@ export interface Review {
   status: string;
   createdAt: string;
   updatedAt: string;
+  photoBooth: PhotoBooth;
   reviewTagSet: Array<{tag: Tag}>;
   reviewImageSet: Array<ReviewImage>;
   user: User;
 }
 
 export interface FormImage {
+  id?: number;
   uri: string;
   type: string;
   name: string;

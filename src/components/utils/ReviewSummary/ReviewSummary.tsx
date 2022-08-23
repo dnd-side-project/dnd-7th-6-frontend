@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Text} from 'react-native';
+import {Text, TouchableWithoutFeedback} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import DropdownMenu from '../DropdownMenu';
@@ -43,74 +43,85 @@ const ReviewSummary = ({menuItems, ...props}: Props) => {
   const isExistTag = props.reviewTagSet.length <= 0;
 
   return (
-    <Container isLast={props.isLast}>
-      <UserName>@{props.user.name}</UserName>
-      <RowView>
-        <StarBox score={props.starScore} />
-        <CreatedAt>{toDateFormat(new Date(props.createdAt))}</CreatedAt>
-      </RowView>
-      {!menuItems || (
-        <PressableMeetBallIcon
-          style={style.menu}
-          onPress={() => setIsOpenDropdown(prev => !prev)}
-        />
-      )}
-      {!(!!menuItems && isOpenDropdown) || (
-        <DropdownWrapper>
-          <DropdownMenu items={menuItems} />
-        </DropdownWrapper>
-      )}
-      <TextContainer>
-        <Content ref={contentRef}>{content}</Content>
-        {visibleLine || (
-          <ViewMore
-            onPress={() => {
-              setVisibleLine(true);
-              setContent(props.content);
-            }}>
-            <Content>...</Content> 더보기
-          </ViewMore>
+    <TouchableWithoutFeedback onPress={() => setIsOpenDropdown(false)}>
+      <Container isLast={props.isLast}>
+        <UserName>@{props.user.name}</UserName>
+        <RowView>
+          <StarBox score={props.starScore} />
+          <CreatedAt>{toDateFormat(new Date(props.createdAt))}</CreatedAt>
+        </RowView>
+        {!menuItems || (
+          <PressableMeetBallIcon
+            style={style.menu}
+            onPress={() => setIsOpenDropdown(prev => !prev)}
+          />
         )}
-      </TextContainer>
-      {isExistImage || (
-        <ImageContainer>
-          {props.reviewImageSet.map(({id, imageUrl}) => (
-            <FastImage key={id} source={{uri: imageUrl}} style={style.fastImage} />
-          ))}
-        </ImageContainer>
-      )}
-      {isExistTag || (
-        <TagContainer>
-          {tags.map(({tag}) => (
-            <TagWrapper key={tag.id}>
-              <ReviewTagChip tag={tag} />
-            </TagWrapper>
-          ))}
-          {visibleTag || (
-            <TagWrapper key="+">
-              <ReviewTagChip
-                tag={{
-                  id: -1,
-                  keyword: `+${props.reviewTagSet.length - 4}`,
-                  title: `+${props.reviewTagSet.length - 4}`,
-                  photoBoothCount: 0,
-                  postCount: 0,
-                  reviewCount: 0,
-                  tagType: 'CUSTOM',
-                  tagIconImageUrl: '',
-                }}
-                props={{
-                  onPress: () => {
-                    setVisibleTag(true);
-                    setTags(props.reviewTagSet);
-                  },
-                }}
-              />
-            </TagWrapper>
+        {!(!!menuItems && isOpenDropdown) || (
+          <DropdownWrapper>
+            <DropdownMenu items={menuItems} />
+          </DropdownWrapper>
+        )}
+        <TextContainer>
+          <Content ref={contentRef}>{content}</Content>
+          {visibleLine || (
+            <ViewMore
+              onPress={() => {
+                setVisibleLine(true);
+                setContent(props.content);
+              }}>
+              <Content>...</Content> 더보기
+            </ViewMore>
           )}
-        </TagContainer>
-      )}
-    </Container>
+        </TextContainer>
+        {isExistImage || (
+          <ImageContainer>
+            {props.reviewImageSet.map(({id, imageUrl}) => (
+              <FastImage key={id} source={{uri: imageUrl}} style={style.fastImage} />
+            ))}
+          </ImageContainer>
+        )}
+        {isExistTag || (
+          <TagContainer>
+            {tags
+              .filter(({tag}) => tag.tagType !== 'CUSTOM')
+              .map(({tag}) => (
+                <TagWrapper key={tag.id}>
+                  <ReviewTagChip tag={tag} />
+                </TagWrapper>
+              ))}
+            {tags
+              .filter(({tag}) => tag.tagType === 'CUSTOM')
+              .map(({tag}) => (
+                <TagWrapper key={tag.id}>
+                  <ReviewTagChip tag={tag} />
+                </TagWrapper>
+              ))}
+            {visibleTag || (
+              <TagWrapper key="+">
+                <ReviewTagChip
+                  tag={{
+                    id: -1,
+                    keyword: `+${props.reviewTagSet.length - 4}`,
+                    title: `+${props.reviewTagSet.length - 4}`,
+                    photoBoothCount: 0,
+                    postCount: 0,
+                    reviewCount: 0,
+                    tagType: 'CUSTOM',
+                    tagIconImageUrl: '',
+                  }}
+                  props={{
+                    onPress: () => {
+                      setVisibleTag(true);
+                      setTags(props.reviewTagSet);
+                    },
+                  }}
+                />
+              </TagWrapper>
+            )}
+          </TagContainer>
+        )}
+      </Container>
+    </TouchableWithoutFeedback>
   );
 };
 

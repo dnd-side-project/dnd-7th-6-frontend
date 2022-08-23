@@ -26,5 +26,6 @@ export interface ReviewCreateRequest {
   photoBoothId: number;
   userId: number;
   starScore: number;
+  newTagKeywordList: string[];
   postImageList: FormImage[];
 }
