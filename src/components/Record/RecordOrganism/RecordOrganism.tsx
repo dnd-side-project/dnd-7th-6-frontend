@@ -10,9 +10,7 @@ import NickNameView from '../NickNameView';
 import RecordHeader from '../RecordHeader';
 import {
   CardWrapper,
-  FlatListWrapper,
   PostFlatList,
-  PostFlatListWrapper,
   ReviewFlatList,
   SlideViewContainer,
   style,
@@ -34,11 +32,11 @@ const RecordOrganism = () => {
   const queryClient = useQueryClient();
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const [focus, setFocus] = useState(0);
-  const {data, isLoading} = useGetUserList();
+  const {data, isFetching, isLoading} = useGetUserList();
   const {mutate: deleteReview} = useDeleteReview();
   const slideViewItems = [
-    {name: '사진', count: !data ? 0 : data.postList.length},
-    {name: '부스 리뷰', count: !data ? 0 : data.reviewList.length},
+    {name: '사진', count: !data || !isLoggedIn ? 0 : data.postList.length},
+    {name: '부스 리뷰', count: !data || !isLoggedIn ? 0 : data.reviewList.length},
   ];
 
   const reviewMenus = (review: Review) => [
@@ -80,36 +78,32 @@ const RecordOrganism = () => {
           <NickNameView />
           <SlideViewContainer>
             <LineSlideView items={slideViewItems} index={focus} setIndex={setFocus}>
-              {isLoading ? (
+              {isFetching || isLoading ? (
                 <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
               ) : (
-                <PostFlatListWrapper>
-                  <PostFlatList
-                    numColumns={2}
-                    data={data?.postList}
-                    renderItem={({item}: any) => (
-                      <CardWrapper>
-                        <FastImage
-                          source={{uri: item.postImageSet[0].imageUrl}}
-                          style={style.recordFeedCard}
-                        />
-                      </CardWrapper>
-                    )}
-                  />
-                </PostFlatListWrapper>
+                <PostFlatList
+                  numColumns={2}
+                  data={data?.postList}
+                  renderItem={({item}: any) => (
+                    <CardWrapper>
+                      <FastImage
+                        source={{uri: item.postImageSet[0].imageUrl}}
+                        style={style.recordFeedCard}
+                      />
+                    </CardWrapper>
+                  )}
+                />
               )}
-              {isLoading ? (
+              {isFetching || isLoading ? (
                 <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
               ) : (
-                <FlatListWrapper>
-                  <ReviewFlatList
-                    numColumns={1}
-                    data={data?.reviewList}
-                    renderItem={({item}: any) => (
-                      <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />
-                    )}
-                  />
-                </FlatListWrapper>
+                <ReviewFlatList
+                  numColumns={1}
+                  data={data?.reviewList}
+                  renderItem={({item}: any) => (
+                    <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />
+                  )}
+                />
               )}
             </LineSlideView>
           </SlideViewContainer>

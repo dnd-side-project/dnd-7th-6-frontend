@@ -3,10 +3,9 @@ import React from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
 
-import {Container, style} from './PhotoOrganism.styles';
+import {Container, FlatListWrapper, style} from './PhotoOrganism.styles';
 
 import FeedCard from 'src/components/Recommend/FeedCard';
-import {FlatListWrapper} from 'src/components/Record/RecordOrganism/RecordOrganism.styles';
 import useMutatePostLike from 'src/querys/useMutatePostLike';
 import useMutateReviewImageLike from 'src/querys/useMutateReviewImageLike';
 import {heightPercentage} from 'src/styles/ScreenResponse';

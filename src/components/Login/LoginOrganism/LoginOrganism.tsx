@@ -22,12 +22,13 @@ import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/Use
 import {heightPercentage} from 'src/styles/ScreenResponse';
 const LoginOrganism = () => {
   const navigation = useNavigation();
+
   const dispatch = useDispatch();
 
   const handleLogin = (bridge: any) => async () => {
     const token = await login(bridge);
     EncryptedStorage.setItem('refreshToken', token.refreshToken);
-    dispatch(setAccessToken(token.accessToken));
+    dispatch(setAccessToken(token.token));
     const user = await getUser(token.token);
     dispatch(changeUserInfo(user));
     dispatch(loginAction(true));

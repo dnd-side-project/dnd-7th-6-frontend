@@ -1,7 +1,9 @@
 import styled from '@emotion/native';
 import {StyleSheet} from 'react-native';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
+import valueOfPlatform from 'src/utils/valueOfPlatform';
 
 export const NickNameContainer = styled.View({
   width: '100%',
@@ -16,19 +18,18 @@ export const SlideViewContainer = styled.View({
 
 export const PostFlatList = styled.FlatList({
   paddingHorizontal: heightPercentage(12),
-});
-
-export const PostFlatListWrapper = styled.View({
-  marginBottom: heightPercentage(240),
-});
-
-export const FlatListWrapper = styled.View({
-  marginBottom: heightPercentage(100),
+  marginBottom: valueOfPlatform({
+    ios: heightPercentage(210) + getStatusBarHeight(true),
+    android: heightPercentage(160),
+  }),
 });
 
 export const ReviewFlatList = styled.FlatList({
   width: '100%',
-  marginBottom: heightPercentage(160),
+  marginBottom: valueOfPlatform({
+    ios: heightPercentage(210) + getStatusBarHeight(true),
+    android: heightPercentage(160),
+  }),
   alignSelf: 'center',
 });
 

@@ -4,7 +4,7 @@ import {Headline2} from 'src/components/utils/Text';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
-export const HeaderContainer = styled.SafeAreaView({
+export const HeaderContainer = styled.View({
   width: '100%',
   justifyContent: 'center',
   height: heightPercentage(54),
