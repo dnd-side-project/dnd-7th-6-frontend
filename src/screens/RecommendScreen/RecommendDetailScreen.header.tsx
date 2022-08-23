@@ -14,9 +14,10 @@ import {RootState} from 'src/redux/store';
 interface Props {
   navigation: NativeStackNavigationProp<RecommendParamList, 'RecommendDetail', undefined>;
   postId: number;
+  isRecord?: boolean;
 }
 
-const RecommendDetailScreenHeader = ({navigation, postId}: Props) => {
+const RecommendDetailScreenHeader = ({navigation, postId, isRecord}: Props) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
@@ -48,7 +49,16 @@ const RecommendDetailScreenHeader = ({navigation, postId}: Props) => {
 
   return (
     <LeftBackHeader
-      onPressBack={() => navigation.goBack()}
+      onPressBack={() => {
+        if (isRecord) {
+          navigation.reset({
+            routes: [{name: 'RouteRecordScreen' as never}],
+            index: 0,
+          });
+        } else {
+          navigation.goBack();
+        }
+      }}
       menuItems={data?.user.id === userInfo.id ? menuItem : undefined}
     />
   );

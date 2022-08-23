@@ -26,10 +26,12 @@ import {
 const RecommendKeywordQuest = () => {
   const {data} = useGetFilterTags();
   const [sortData, setSortData] = useState([]);
+  const [disabled, setDisabled] = useState(false);
   const [keywordFocus, setKeywordFocus] = useState(Array.from({length: 20}, () => false));
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const keywordOnPress = (id: number, tagType: string) => () => {
+    setDisabled(true);
     if (tagType === 'BRAND') {
       dispatch(changeFilteredBrand(id));
     } else if (tagType === 'CONCEPT') {
@@ -43,6 +45,15 @@ const RecommendKeywordQuest = () => {
     }
     navigation.navigate('PostListDetail' as never);
   };
+
+  useEffect(() => {
+    if (disabled) {
+      setTimeout(() => {
+        setDisabled(false);
+      }, 1000);
+    }
+  }, [disabled]);
+
   useEffect(() => {
     if (data) {
       const nextData: any = [
@@ -59,6 +70,7 @@ const RecommendKeywordQuest = () => {
       );
     }
   }, [data, keywordFocus]);
+
   return (
     <Container>
       <TitleWrapper>
@@ -87,6 +99,7 @@ const RecommendKeywordQuest = () => {
                     setKeywordFocus(keywordFocus.map(() => false));
                   }}
                   onPress={keywordOnPress(item.id, item.tagType)}
+                  disabled={disabled}
                 />
               </KeywordSearchView>
             );

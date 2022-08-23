@@ -33,7 +33,11 @@ const RoutePostWriteScreen = ({route}: PostWriteScreenProps) => {
       <Stack.Screen name="SelectTag" component={SelectTagScreen} />
       <Stack.Screen name="CustomTag" component={CustomTagScreen} />
       <Stack.Screen name="Summary" component={SummaryScreen} />
-      <Stack.Screen name="ExitPostWrite" component={ExitPostWriteScreen} />
+      <Stack.Screen
+        name="ExitPostWrite"
+        component={ExitPostWriteScreen}
+        options={{gestureEnabled: false}}
+      />
     </Stack.Navigator>
   );
 };

@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 
 export type RecommendParamList = {
   RecommendScreen: undefined;
-  RecommendDetail: {postId: number};
+  RecommendDetail: {postId: number; isRecord?: boolean};
   PostListDetail: undefined;
   DiffUserPost: {userId: number; username: string};
   RoutePostWrite: {isModifyMode?: boolean};

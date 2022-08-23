@@ -23,7 +23,7 @@ const CardListOrganism = () => {
   const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
   const {data, fetchNextPage, isLoading} = useGetInfinitePosts(
-    {tagIdSet, order},
+    {tagIdSet, order, key: 'postList'},
     {
       enabled: !isOpenFilterSheet,
     },

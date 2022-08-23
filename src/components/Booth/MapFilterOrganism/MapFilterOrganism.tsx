@@ -12,6 +12,7 @@ import {
 import MapFilterBrandChip from 'src/components/Chip/MapFilterBrandChip';
 import MapFilterChip from 'src/components/Chip/MapFilterChip';
 import DismissDropDownView from 'src/components/utils/DismissDropDownView';
+import useDebounce from 'src/hooks/useDebounce';
 import useGetPhotoBoothFilter from 'src/querys/useGetPhotoBoothFilter';
 import {changeFilteredBrandonMap, changeFilteredTagonMap} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
@@ -24,9 +25,10 @@ const MapFilterOrganism = () => {
   const brandChipOnPress = () => setBrandDropdown(!brandDropdown);
   const filteredTag = useSelector((state: RootState) => state.mapReducer.filteredTag);
   const filteredBrand = useSelector((state: RootState) => state.mapReducer.filteredBrand);
+  const debounce = useDebounce((id: number) => dispatch(changeFilteredTagonMap(id)), 400);
 
   const handlePressChip = (id: number) => () => {
-    dispatch(changeFilteredTagonMap(id));
+    debounce(id);
   };
   const handlePressDropdown = (id: number) => () => {
     dispatch(changeFilteredBrandonMap(id));
@@ -39,6 +41,7 @@ const MapFilterOrganism = () => {
     });
     setBrandOnPress(value);
   }, [filteredBrand]);
+
   return (
     <DismissDropDownView setBrandDropdown={setBrandDropdown}>
       <FilterScollView
