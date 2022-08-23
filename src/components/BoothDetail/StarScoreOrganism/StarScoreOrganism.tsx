@@ -18,8 +18,8 @@ const StarScoreOrganism = ({booth}: Props) => {
   return (
     <>
       {!!booth && (
-        <FastImage source={getBoothBanner(booth.photoBooth.starCount)} style={style.fastImage}>
-          {!!booth?.photoBooth.starCount && (
+        <FastImage source={getBoothBanner(booth.photoBooth.starScore)} style={style.fastImage}>
+          {!!booth?.photoBooth.starScore && (
             <Text>
               <Headline>포톡커들의 만족도 </Headline>
               <Count> {booth?.photoBooth.reviewCount}</Count>
@@ -27,7 +27,7 @@ const StarScoreOrganism = ({booth}: Props) => {
           )}
           <StarScoreBox>
             <StarIcon20 color={theme.colors.grayscale[1]} />
-            <StarScore>{booth?.photoBooth.starCount}</StarScore>
+            <StarScore>{booth?.photoBooth.starScore?.toFixed(1)}</StarScore>
           </StarScoreBox>
         </FastImage>
       )}

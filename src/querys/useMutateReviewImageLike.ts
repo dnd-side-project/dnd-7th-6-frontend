@@ -1,12 +1,12 @@
 import {useMutation, useQueryClient} from 'react-query';
 
-import mutatePostLike from 'src/apis/mutatePostLike';
+import mutateReviewImageLike from 'src/apis/mutateReviewImageLike';
 import {ReviewImage} from 'src/types';
 
 const useMutateReviewImageLike = () => {
   const queryClient = useQueryClient();
 
-  return useMutation((id: number) => mutatePostLike(id), {
+  return useMutation((id: number) => mutateReviewImageLike(id), {
     onMutate: (targetId: number) => {
       const oldReviewImages = queryClient.getQueryData(['review-images']);
       queryClient.cancelQueries(['review-images']);

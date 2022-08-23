@@ -9,9 +9,8 @@ interface SelectedItem {
 }
 
 const useFilteredItem = () => {
-  const {filteredBrand, filteredHeadcount, filteredPose, filteredFrame} = useSelector(
-    (state: RootState) => state.postReducer,
-  );
+  const {filteredBrand, filteredHeadcount, filteredPose, filteredFrame, filteredCustom} =
+    useSelector((state: RootState) => state.postReducer);
   const items = useMemo(
     () => [
       [{type: '', filtered: filteredBrand}],
@@ -24,8 +23,9 @@ const useFilteredItem = () => {
         {type: 'situation', filtered: filteredPose.situation},
       ],
       [{type: '', filtered: filteredFrame}],
+      [{type: '', filtered: filteredCustom}],
     ],
-    [filteredBrand, filteredHeadcount, filteredPose, filteredFrame],
+    [filteredBrand, filteredHeadcount, filteredPose, filteredFrame, filteredCustom],
   );
 
   const getCountOfSelected = (index: number): number => {
@@ -58,7 +58,7 @@ const useFilteredItem = () => {
   };
   const tagIdSet = useMemo(
     () => getTagIdSet(),
-    [filteredBrand, filteredHeadcount, filteredPose, filteredFrame],
+    [filteredBrand, filteredHeadcount, filteredPose, filteredFrame, filteredCustom],
   );
 
   return {getCountOfSelected, getFirstSelected, tagIdSet};

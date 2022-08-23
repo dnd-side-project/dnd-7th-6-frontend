@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 
 import BoothConditionOrganism from '../BoothConditionOrganism';
 import BoothDetailNavigation from '../BoothDetailNavigation/BoothDetailNavigation';
@@ -17,12 +18,13 @@ import Boundary from 'src/components/PostWrite/Boundary';
 import {Button} from 'src/components/Recommend/AddPostButton/AddPostButton.styles';
 import PlusIcon32 from 'src/icons/PlusIcon32';
 import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
+import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
 
 interface Props {
   id: number;
-  distance: number;
+  distance?: number;
 }
 
 const OuterScrollView = ({id, distance}: Props) => {
@@ -31,6 +33,7 @@ const OuterScrollView = ({id, distance}: Props) => {
   const scrollRef = useRef<ScrollView>(null);
   const [scrollIndex, setScrollIndex] = useState(0);
   const [scrollTargets, setScrollTargets] = useState([0, 0, 0]);
+  const {isLoggedIn} = useSelector((state: RootState) => state.userReducer);
 
   const setScrollTarget = (idx: number) => (e: LayoutChangeEvent) => {
     const {layout} = e.nativeEvent;
@@ -42,6 +45,10 @@ const OuterScrollView = ({id, distance}: Props) => {
     });
   };
   const handleReviewWrite = () => {
+    if (!isLoggedIn) {
+      navigation.navigate('RouteLoginScreen' as never);
+      return;
+    }
     if (!photoBooth) {
       return;
     }
@@ -61,7 +68,6 @@ const OuterScrollView = ({id, distance}: Props) => {
       animated: true,
     });
   }, [scrollIndex]);
-
   return (
     <>
       <ScrollContainer ref={scrollRef} stickyHeaderIndices={[2]}>

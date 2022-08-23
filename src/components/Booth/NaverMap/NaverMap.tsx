@@ -12,8 +12,9 @@ import {PhotoBoothContentData} from 'src/types';
 import {getIconMarker} from 'src/utils/getIconMarker';
 import {getMarkerColor} from 'src/utils/getMarkerColor';
 
-const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressable}: any) => {
+const NaverMap = ({mapRef, centerPos, setScreenPos, data}: any) => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
+
   return (
     // @ts-ignore: 모듈 문제
     <NaverMapView
@@ -24,8 +25,10 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data, setShowRefreshPressabl
           event.latitude.toFixed(6) !== centerPos.latitude.toFixed(6) ||
           event.longitude.toFixed(6) !== centerPos.longitude.toFixed(6)
         ) {
-          setScreenPos({latitude: event.latitude, longitude: event.longitude});
-          setShowRefreshPressable(true);
+          setScreenPos({
+            latitude: parseFloat(event.latitude.toFixed(4)),
+            longitude: parseFloat(event.longitude.toFixed(4)),
+          });
         }
       }}
       zoomControl={false}

@@ -2,6 +2,7 @@ import React from 'react';
 import {Alert} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {openPicker} from 'react-native-image-crop-picker';
+import ImageResizer from 'react-native-image-resizer';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {Container, style} from './AddPhotoOrganism.styles';
@@ -10,7 +11,6 @@ import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import PlusIcon from 'src/icons/PlusIcon';
 import {addDeleteImage, addPostWriteImage} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
-import valueOfPlatform from 'src/utils/valueOfPlatform';
 
 const AddPhotoOrganism = () => {
   const dispatch = useDispatch();
@@ -32,18 +32,22 @@ const AddPhotoOrganism = () => {
         multiple: true,
         maxFiles: 1,
       });
-      const preview = imageResponse.map(({path, mime, filename}) => ({
-        uri: path,
-        type: mime,
-        name: valueOfPlatform({
-          ios: `front_${filename}`,
-          android: `front_${Date.now()}.${mime === 'image/jpeg' ? 'jpg' : 'png'}`,
-        }),
-      }));
-      if (preview.length > 1) {
+      if (imageResponse.length > 1) {
         Alert.alert('1장 이상 안됩니다');
+        return;
       }
-      dispatch(addPostWriteImage(preview[0]));
+      imageResponse.splice(0, 1).map(item =>
+        ImageResizer.createResizedImage(
+          item.path,
+          600,
+          600,
+          item.mime.includes('jpeg') ? 'JPEG' : 'PNG',
+          100,
+          0,
+        ).then(r => {
+          dispatch(addPostWriteImage({uri: r.uri, name: r.name, type: item.mime}));
+        }),
+      );
     } catch (error) {
       console.error(error);
     }
