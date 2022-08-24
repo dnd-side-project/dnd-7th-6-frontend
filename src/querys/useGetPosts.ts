@@ -24,7 +24,9 @@ const useGetPosts = ({order, userId, key}: Parameter, options?: any) => {
     ['post', order, key],
     ({pageParam = 0, queryKey}) => getPosts({order: queryKey[1], page: pageParam, userId}),
     {
-      getNextPageParam: lastPage => lastPage.number + 1,
+      getNextPageParam: lastPage => {
+        return lastPage.totalPages - 1 <= lastPage.number ? undefined : lastPage.number + 1;
+      },
       enabled: !isLoggedIn || isSettingInterceptor,
       ...options,
     },

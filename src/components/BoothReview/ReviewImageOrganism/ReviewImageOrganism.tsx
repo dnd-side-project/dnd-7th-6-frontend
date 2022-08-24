@@ -151,6 +151,7 @@ const ReviewImageOrganism = () => {
             dispatch(clearData());
             queryClient.invalidateQueries(['userList']);
             queryClient.invalidateQueries(['photo-booth', boothId]);
+            queryClient.invalidateQueries(['reviews']);
             navigation.navigate('BoothReviewComplete' as never, {} as never);
           },
         },

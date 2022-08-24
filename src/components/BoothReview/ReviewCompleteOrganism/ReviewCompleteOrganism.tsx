@@ -1,4 +1,4 @@
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
 import {useDispatch} from 'react-redux';
@@ -15,19 +15,14 @@ import {
 } from './ReviewCompleteOrganism.styles';
 
 import {showTabBar} from 'src/redux/actions/TabBarAction';
-import {PostReviewParamList} from 'src/screens/BoothScreen/PostReviewScreen';
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 
 const ReviewCompleteOrganism = () => {
-  const route = useRoute<RouteProp<PostReviewParamList, 'BoothReviewCompleteScreen'>>();
-  const navigation = useNavigation();
+  const navigation: any = useNavigation();
   const dispatch = useDispatch();
-  const {boothId} = route.params;
   const gotoBoothDetailOnPress = () => {
-    navigation.reset({
-      index: 1,
-      routes: [{name: 'Booth' as never}, {name: 'BoothDetail' as never, params: {id: boothId}}],
-    });
+    navigation.popToTop();
+    navigation.pop();
     dispatch(showTabBar());
   };
 
