@@ -8,20 +8,20 @@ interface Parameter {
   page?: number;
   pageSize?: number;
   key?: string;
-  tagIdSet: number[];
+  tagIdSet?: number[];
   order: string;
 }
 
-const useGetInfinitePosts = ({tagIdSet, order, key}: Parameter, options?: any) => {
+const useGetInfinitePosts = ({tagIdSet = [], order, key}: Parameter, options?: any) => {
   return useInfiniteQuery<
     ServerResponse<Post>,
     AxiosError,
     ServerResponse<Post>,
-    [string, string, string | undefined]
+    [string, string, string | undefined, number[]]
   >(
-    ['post', order, key],
+    ['post', order, key, tagIdSet],
     ({pageParam = 0, queryKey}) => {
-      return getPostsByTag({page: pageParam, tagIdSet, order: queryKey[1]});
+      return getPostsByTag({page: pageParam, tagIdSet: queryKey[3], order: queryKey[1]});
     },
     {
       getNextPageParam: lastPage => {

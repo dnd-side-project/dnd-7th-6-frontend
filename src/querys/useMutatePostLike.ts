@@ -3,15 +3,22 @@ import {useMutation, useQueryClient} from 'react-query';
 import mutatePostLike from 'src/apis/mutatePostLike';
 import {Post, UserLikeImage} from 'src/types';
 
+interface MutateKey {
+  targetId: number;
+  tagIdSet?: number[];
+}
+
 const useMutatePostLike = () => {
   const queryClient = useQueryClient();
 
-  return useMutation((id: number) => mutatePostLike(id), {
-    onMutate: (targetId: number) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return useMutation(({targetId, tagIdSet = []}: MutateKey) => mutatePostLike(targetId), {
+    onMutate: ({targetId, tagIdSet = []}: MutateKey) => {
       const queryKeys = [
-        ['post', 'popular', 'pose'],
-        ['post', 'popular', 'postList'],
-        ['post', 'latest', 'postList'],
+        ['post', 'popular', 'pose', tagIdSet],
+        ['post', 'popular', 'postList', tagIdSet],
+        ['post', 'latest', 'postList', tagIdSet],
+        ['post', 'popular', 'frame', [41]],
       ];
       const oldPosts = queryKeys.map(key => queryClient.getQueryData(key));
       const oldUserLike = queryClient.getQueryData(['userLike']);

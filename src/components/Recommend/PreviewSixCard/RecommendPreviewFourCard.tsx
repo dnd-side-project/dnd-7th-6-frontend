@@ -39,12 +39,14 @@ const RecommendPreviewFourCard = ({data, isLoading, onPress}: Props) => {
               imgUrl={postImageSet[0].imageUrl}
               isLike={like}
               onLike={() => {
-                mutate(id, {
-                  onSuccess: () => {
-                    queryClient.invalidateQueries(['post']);
-                    queryClient.invalidateQueries(['userLike']);
+                mutate(
+                  {targetId: id},
+                  {
+                    onSuccess: () => {
+                      queryClient.invalidateQueries(['userLike']);
+                    },
                   },
-                });
+                );
               }}
               isMine={user.id === userInfo.id}
               {...(onPress ? {onPress: onPress(id)} : {})}

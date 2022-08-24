@@ -32,7 +32,6 @@ const BoothOrganism = ({photoBoothList, isLoading}: Props) => {
     likePhotoBooth(id, {
       onSuccess: () => {
         queryClient.invalidateQueries(['photo-booth']);
-        queryClient.invalidateQueries(['userLike']);
       },
     });
   };

@@ -28,12 +28,14 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
   };
   const handleLike = (type: string, id: number) => () => {
     if (type === 'POST') {
-      likePost(id, {
-        onSuccess: () => {
-          queryClient.invalidateQueries(['post']);
-          queryClient.invalidateQueries(['userLike']);
+      likePost(
+        {targetId: id},
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(['post']);
+          },
         },
-      });
+      );
     }
     if (type === 'REVIEW') {
       likeReview(id, {

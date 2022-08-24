@@ -19,9 +19,9 @@ const useGetPosts = ({order, userId, key}: Parameter, options?: any) => {
     ServerResponse<Post>,
     AxiosError,
     ServerResponse<Post>,
-    [string, string | undefined, string | undefined]
+    [string, string | undefined, string | undefined, []]
   >(
-    ['post', order, key],
+    ['post', order, key, []],
     ({pageParam = 0, queryKey}) => getPosts({order: queryKey[1], page: pageParam, userId}),
     {
       getNextPageParam: lastPage => {

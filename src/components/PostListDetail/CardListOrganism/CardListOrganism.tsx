@@ -33,11 +33,14 @@ const CardListOrganism = () => {
   const posts = data?.pages.flatMap(({content}) => content);
 
   const handleLikePost = (id: number) => () => {
-    likePost(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['userLike']);
+    likePost(
+      {targetId: id, tagIdSet},
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(['userLike']);
+        },
       },
-    });
+    );
   };
   const handlePressPost = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
@@ -48,7 +51,7 @@ const CardListOrganism = () => {
       return;
     }
     refetch();
-  }, [tagIdSet]);
+  }, [tagIdSet, order]);
 
   useEffect(() => {
     return () => {
