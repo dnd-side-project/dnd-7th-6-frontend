@@ -25,11 +25,14 @@ const EditNickNameHeader = ({children, onPressBack, isSuccess, name}: PropsWithC
   const {mutate} = usePatchNickName();
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const onPressSuccess = async () => {
-    await mutate(name);
-    const user = await getUser();
-    dispatch(changeUserInfo(user));
-    navigation.goBack();
+  const onPressSuccess = () => {
+    mutate(name, {
+      onSuccess: async () => {
+        const user = await getUser();
+        dispatch(changeUserInfo(user));
+        navigation.goBack();
+      },
+    });
   };
   return (
     <Container>

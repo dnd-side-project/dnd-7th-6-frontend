@@ -52,21 +52,19 @@ const BoothSummaryView = (item: PhotoBoothContentData) => {
           </View>
         </TitlenIconWrapper>
 
-        {item.tagSet ? (
-          <TagContainer>
-            {item.tagSet.slice(0, 2).map(tag => (
-              <ChipWrapper key={tag.id}>
-                <RoundChip mode="gray">#{tag.title}</RoundChip>
+        <TagContainer>
+          {item.tagSet ? (
+            item.tagSet.slice(0, 2).map((tag, i) => (
+              <ChipWrapper key={i}>
+                <RoundChip mode="gray"># {tag.title}</RoundChip>
               </ChipWrapper>
-            ))}
-          </TagContainer>
-        ) : (
-          <TagContainer>
+            ))
+          ) : (
             <ChipWrapper>
-              <RoundChip mode="gray">#아직 리뷰가 없어요!</RoundChip>
+              <RoundChip mode="gray"># 아직 리뷰가 없어요!</RoundChip>
             </ChipWrapper>
-          </TagContainer>
-        )}
+          )}
+        </TagContainer>
       </DescriptionContainer>
       <ImageContainer>
         {item.photoBooth.imageUrl ? (

@@ -10,7 +10,7 @@ const useGetInfiniteReviews = (photoBoothId: number) => {
     ({pageParam = 0}) => getInfiniteReviews({page: pageParam, photoBoothId}),
     {
       getNextPageParam: lastPage => {
-        return lastPage.number + 1;
+        return lastPage.totalPages - 1 <= lastPage.number ? undefined : lastPage.number + 1;
       },
       staleTime: 1000,
     },

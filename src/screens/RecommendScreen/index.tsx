@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 
 export type RecommendParamList = {
   RecommendScreen: undefined;
-  RecommendDetail: {postId: number};
+  RecommendDetail: {postId: number; isRecord?: boolean};
   PostListDetail: undefined;
   DiffUserPost: {userId: number; username: string};
   RoutePostWrite: {isModifyMode?: boolean};
@@ -45,7 +45,7 @@ const RouteRecommendScreen = () => {
       <Stack.Screen
         name="RoutePostWrite"
         component={RoutePostWriteScreen}
-        options={{headerShown: false}}
+        options={{headerShown: false, gestureEnabled: false}}
       />
     </Stack.Navigator>
   );

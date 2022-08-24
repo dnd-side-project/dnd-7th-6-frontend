@@ -16,6 +16,8 @@ export const Container = styled.View({
   elevation: 10,
 });
 
+export const ExitContainer = styled.View({paddingHorizontal: widthPercentage(16)});
+
 export const ProgressBarWrapper = styled.View({
   justifyContent: 'center',
   height: heightPercentage(36),

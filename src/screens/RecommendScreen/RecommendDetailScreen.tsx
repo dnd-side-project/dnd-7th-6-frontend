@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Dimensions, SafeAreaView, ScrollView} from 'react-native';
+import {Dimensions, SafeAreaView} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import RecommendDetailScreenHeader from './RecommendDetailScreen.header';
 
@@ -16,7 +17,11 @@ export type DetailScreenProps = NativeStackScreenProps<RecommendParamList, 'Reco
 const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
   return (
     <SafeAreaView>
-      <RecommendDetailScreenHeader navigation={navigation} postId={route.params.postId} />
+      <RecommendDetailScreenHeader
+        navigation={navigation}
+        postId={route.params.postId}
+        isRecord={route.params.isRecord}
+      />
       <ScrollView style={{height: Dimensions.get('window').height - heightPercentage(125)}}>
         <RecommendDetailMainFrame id={route.params.postId} />
         <RecommendDetailContentsOrganism id={route.params.postId} />

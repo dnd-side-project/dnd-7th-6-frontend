@@ -71,8 +71,8 @@ export const BoothDescribeTextLengthText = styled(BodyText4)({
 
 export const ReviewNextPressableWrapper = styled.View({
   flexDirection: 'column-reverse',
-  marginTop: heightPercentage(10),
-  marginBottom: heightPercentage(10),
+  position: 'absolute',
+  bottom: heightPercentage(10),
   alignSelf: 'center',
   flex: 1,
 });

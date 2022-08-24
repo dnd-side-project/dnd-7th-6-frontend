@@ -1,17 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren, useMemo} from 'react';
+import React, {PropsWithChildren, useEffect, useMemo, useState} from 'react';
 import {PressableProps} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import PressableSubmit from '../Pressables/PressableSubmit';
 import ProgressBar from '../ProgressBar';
-import {Container, ProgressBarWrapper} from './PostWriteTabBar.styles';
+import {Container, ExitContainer, ProgressBarWrapper} from './PostWriteTabBar.styles';
 
+import ExitNavigationOrganism from 'src/components/PostWrite/ExitNavigationOrganism';
 import usePostWriteCondition from 'src/hooks/usePostWriteCondition';
 import useModifyPost from 'src/querys/useModifyPost';
 import useMutatePost from 'src/querys/useMutatePost';
-import {changeModifyMode, clearPostWrite} from 'src/redux/actions/PostWriteAction';
-import {closePostWrite, hideTabBar} from 'src/redux/actions/TabBarAction';
+import {changeModifyMode, changeScreen, clearPostWrite} from 'src/redux/actions/PostWriteAction';
+import {hideTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
 
 const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
@@ -31,9 +32,18 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
       }, []),
     [inputPostData],
   );
-  const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
+  const [disabled, setDisabled] = useState(false);
 
+  useEffect(() => {
+    if (disabled) {
+      setTimeout(() => {
+        setDisabled(false);
+      }, 500);
+    }
+  }, [disabled]);
+  const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
   const handlePressSubmit = () => {
+    setDisabled(true);
     if (screenIndex === 3) {
       if (isPostModifyMode) {
         const {id, ...image} = inputPostData.image;
@@ -54,9 +64,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
+              dispatch(changeScreen(4));
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
-              dispatch(closePostWrite());
             },
           },
         );
@@ -73,9 +83,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
+              dispatch(changeScreen(4));
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
-              dispatch(closePostWrite());
             },
           },
         );
@@ -90,13 +100,16 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
     }
     dispatch(hideTabBar());
   };
-
-  return (
+  return screenIndex === 4 ? (
+    <ExitContainer>
+      <ExitNavigationOrganism />
+    </ExitContainer>
+  ) : (
     <Container>
       <ProgressBarWrapper>
         {isModifyMode || <ProgressBar index={screenIndex} total={3} />}
       </ProgressBarWrapper>
-      <PressableSubmit {...props} disabled={getDisabled()} onPress={handlePressSubmit}>
+      <PressableSubmit {...props} disabled={getDisabled() || disabled} onPress={handlePressSubmit}>
         {isModifyMode ? '완료' : screenIndex < 3 ? '다음' : '완료'}
       </PressableSubmit>
     </Container>

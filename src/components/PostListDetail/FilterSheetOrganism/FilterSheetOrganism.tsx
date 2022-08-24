@@ -22,7 +22,7 @@ const FilterSheetOrganism = ({title}: {title?: string}) => {
   const focused = useSelector((state: RootState) => state.postReducer.focusedFilter);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const swiperRef = useRef<Swiper.default>(null);
-  const snapPoints = useMemo(() => [1, heightPercentage(600)], []);
+  const snapPoints = useMemo(() => [1, heightPercentage(640)], []);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import {ActivityIndicator, FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
 
 import StorageBoothCard from '../StorageBoothCard';
-import {Container, FlatListWrapper} from './BoothOrganism.styles';
+import {Container, FlatListWrapper, style} from './BoothOrganism.styles';
 
 import useMutatePhotoBoothLike from 'src/querys/useMutatePhotoBoothLike';
 import {heightPercentage} from 'src/styles/ScreenResponse';
@@ -24,8 +24,7 @@ const BoothOrganism = ({photoBoothList, isLoading}: Props) => {
       'BoothScreen' as never,
       {
         screen: 'BoothDetail' as never,
-        params: {id: id} as never,
-        initial: false,
+        params: {id, isStorage: true},
       } as never,
     );
   };
@@ -33,7 +32,6 @@ const BoothOrganism = ({photoBoothList, isLoading}: Props) => {
     likePhotoBooth(id, {
       onSuccess: () => {
         queryClient.invalidateQueries(['photo-booth']);
-        queryClient.invalidateQueries(['userLike']);
       },
     });
   };
@@ -47,6 +45,7 @@ const BoothOrganism = ({photoBoothList, isLoading}: Props) => {
           <FlatList
             data={photoBoothList}
             numColumns={2}
+            style={style.flatList}
             renderItem={({index, item}) => (
               <StorageBoothCard
                 key={index}

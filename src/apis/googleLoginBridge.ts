@@ -9,7 +9,7 @@ interface LoginParam {
 }
 
 const googleLoginBridge = async (): Promise<LoginParam> => {
-  await GoogleSignin.configure({
+  GoogleSignin.configure({
     iosClientId: Config.IOS_GOOGLE_API_KEY,
   });
   try {

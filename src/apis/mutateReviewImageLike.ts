@@ -5,7 +5,7 @@ const mutateReviewImageLike = async (id: number) => {
     const result = await AxiosInstance.post(`/api/v1/review/image/${id}/like`);
     return result.data;
   } catch (error: any) {
-    return Promise.reject(error);
+    throw new Error(error);
   }
 };
 

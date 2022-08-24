@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import {StyleSheet} from 'react-native';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -16,4 +17,10 @@ export const ScrollUpWrapper = styled.View({
   position: 'absolute',
   top: heightPercentage(600),
   right: widthPercentage(20),
+});
+
+export const style = StyleSheet.create({
+  flatList: {
+    marginBottom: heightPercentage(48),
+  },
 });

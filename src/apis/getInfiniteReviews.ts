@@ -8,7 +8,7 @@ interface Parameter {
   pageSize?: number;
 }
 
-const getInfiniteReviews = async ({photoBoothId, page, pageSize = 3}: Parameter) => {
+const getInfiniteReviews = async ({photoBoothId, page, pageSize = 5}: Parameter) => {
   try {
     const params = `photoBoothId=${photoBoothId}&page=${page}&pageSize=${pageSize}`;
     const result = await axios.get(`${getApiServer}/api/v1/review?${params}`);

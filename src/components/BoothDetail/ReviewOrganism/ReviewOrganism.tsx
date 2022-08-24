@@ -29,7 +29,7 @@ const ReviewOrganism = ({id, onLayout}: Props) => {
         <Headline>포톡커들의 상세 리뷰 </Headline>
         <Count> {toLocaleString(data.pages[0].totalElements)}</Count>
       </TextContainer>
-      {data.pages[0].content.map((review: Review, i: number) => (
+      {data.pages[0].content.slice(0, 3).map((review: Review, i: number) => (
         <ReviewSummary key={review.id} {...review} isLast={i >= data.pages[0].content.length - 1} />
       ))}
       <ButtonWrapper>

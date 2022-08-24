@@ -11,8 +11,11 @@ const useGetReviewImages = (photoBoothId: number, options?: any) => {
     ServerResponse<ReviewImage>,
     [string]
   >(['review-images'], ({pageParam = 0}) => getReviewImages({photoBoothId, page: pageParam}), {
-    getNextPageParam: lastPage => lastPage.number + 1,
+    getNextPageParam: lastPage => {
+      return lastPage.totalPages - 1 <= lastPage.number ? undefined : lastPage.number + 1;
+    },
     enabled: !!photoBoothId,
+    staleTime: 1000,
     ...options,
   });
 };

@@ -16,10 +16,10 @@ const Stack = createNativeStackNavigator();
 export type BoothParamList = {
   BoothScreen: undefined;
   BoothSearchScreen: undefined;
-  BoothDetailScreen: {id: number; distance: number};
+  BoothDetailScreen: {id: number; distance: number; isStorage?: boolean};
   BoothReviewScreen: {placeName: string; boothId: string};
   BoothImageScreen: {boothId: number};
-  ReviewImageDetailScreen: {boothId?: number; targetImage: ReviewImage};
+  ReviewImageDetailScreen: {boothId?: number; targetImage: ReviewImage; isStorage?: boolean};
   ReviewDetailScreen: {boothId: number};
 };
 

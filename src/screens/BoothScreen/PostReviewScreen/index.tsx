@@ -46,6 +46,7 @@ const RoutePostReviewScreen = (props: Props) => {
         name="BoothReviewComplete"
         component={BoothReviewCompleteScreen}
         initialParams={props.route.params}
+        options={{gestureEnabled: false}}
       />
     </Stack.Navigator>
   );
