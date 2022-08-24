@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {ButtonText, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
 import RecommendPreviewFourCard from '../PreviewSixCard';
@@ -14,8 +15,10 @@ import {
 } from './FrameOrganism.styles';
 
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
+import {changeFilteredFrame} from 'src/redux/actions/PostAction';
 
 const FrameRecommendOrganism = () => {
+  const dispatch = useDispatch();
   const {data, isLoading} = useGetInfinitePosts({tagIdSet: [41], order: 'popular', key: 'frame'});
   const navigation = useNavigation();
 
@@ -42,7 +45,11 @@ const FrameRecommendOrganism = () => {
           />
         </ListWrapper>
       )}
-      <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
+      <ButtonPressable
+        onPress={() => {
+          dispatch(changeFilteredFrame(41));
+          navigation.navigate('PostListDetail' as never);
+        }}>
         <ButtonText>캐릭터 프레임 더보기</ButtonText>
       </ButtonPressable>
     </OrganismView>

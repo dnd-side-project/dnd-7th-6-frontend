@@ -20,16 +20,16 @@ const SortingListHeader = () => {
     <ListHeader>
       <SortButtonWrapper>
         <SortingButton
-          onPress={handleSelectOrder(POST_LIST_ORDER.POPULAR)}
-          selected={order === POST_LIST_ORDER.POPULAR}>
-          {labels[POST_LIST_ORDER.POPULAR]}
+          onPress={handleSelectOrder(POST_LIST_ORDER.LATEST)}
+          selected={order === POST_LIST_ORDER.LATEST}>
+          {labels[POST_LIST_ORDER.LATEST]}
         </SortingButton>
       </SortButtonWrapper>
       <SortButtonWrapper>
         <SortingButton
-          onPress={handleSelectOrder(POST_LIST_ORDER.LATEST)}
-          selected={order === POST_LIST_ORDER.LATEST}>
-          {labels[POST_LIST_ORDER.LATEST]}
+          onPress={handleSelectOrder(POST_LIST_ORDER.POPULAR)}
+          selected={order === POST_LIST_ORDER.POPULAR}>
+          {labels[POST_LIST_ORDER.POPULAR]}
         </SortingButton>
       </SortButtonWrapper>
     </ListHeader>
