@@ -41,7 +41,9 @@ const FilterOrganism = () => {
     if (!countOfSelected) {
       return labels[index];
     }
-    return `${getFilterTagById(firstSelected?.index || 0)} ${countOfSelected}`;
+    const tagById = getFilterTagById(firstSelected?.index || 0);
+
+    return tagById ? `${tagById} ${countOfSelected}` : '';
   };
 
   return (

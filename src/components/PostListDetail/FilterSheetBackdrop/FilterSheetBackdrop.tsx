@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {SafeAreaView} from 'react-native';
+import React, {useEffect} from 'react';
+import {BackHandler, SafeAreaView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import CardListOrganism from '../CardListOrganism';
@@ -33,6 +33,15 @@ const FilterSheetBackdrop = ({title}: {title?: string}) => {
     dispatch(clearFilter(FILTER.CUSTOM));
     navigation.goBack();
   };
+
+  useEffect(() => {
+    const clear = () => {
+      dispatch(clearFilter());
+      return false;
+    };
+    BackHandler.addEventListener('hardwareBackPress', clear);
+    return () => BackHandler.removeEventListener('hardwareBackPress', clear);
+  }, []);
 
   return (
     <SafeAreaView>

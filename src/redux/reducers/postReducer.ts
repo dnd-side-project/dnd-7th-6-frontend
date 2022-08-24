@@ -28,7 +28,7 @@ const filterState = {
 const initialState = {
   isOpenFilterSheet: false,
   focusedFilter: 0,
-  order: POST_LIST_ORDER.POPULAR,
+  order: POST_LIST_ORDER.LATEST,
   ...filterState,
 };
 
