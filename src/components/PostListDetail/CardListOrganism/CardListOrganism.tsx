@@ -14,6 +14,7 @@ import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 import useMutatePostLike from 'src/querys/useMutatePostLike';
 import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {RootState} from 'src/redux/store';
+import {heightPercentage} from 'src/styles/ScreenResponse';
 
 const CardListOrganism = () => {
   const dispatch = useDispatch();
@@ -22,18 +23,18 @@ const CardListOrganism = () => {
   const {tagIdSet} = useFilteredItem();
   const {order, isOpenFilterSheet} = useSelector((state: RootState) => state.postReducer);
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
-  const {data, fetchNextPage, isLoading, refetch} = useGetInfinitePosts({
-    tagIdSet,
-    order,
-    key: 'postList',
-  });
+  const {data, fetchNextPage, isLoading, isRefetching, isFetchingNextPage, refetch} =
+    useGetInfinitePosts({
+      tagIdSet,
+      order,
+      key: 'postList',
+    });
   const {mutate: likePost} = useMutatePostLike();
   const posts = data?.pages.flatMap(({content}) => content);
 
   const handleLikePost = (id: number) => () => {
     likePost(id, {
       onSuccess: () => {
-        queryClient.invalidateQueries(['post']);
         queryClient.invalidateQueries(['userLike']);
       },
     });
@@ -65,20 +66,31 @@ const CardListOrganism = () => {
             ListEmptyComponent={ListEmptyComponent}
             numColumns={2}
             data={posts || []}
-            renderItem={({item}: any) => (
-              <RecommendFeedCard
-                imgUrl={item.postImageSet[0].imageUrl}
-                isLike={item.like}
-                onLike={handleLikePost(item.id)}
-                isMine={item.user.id === userInfo.id}
-                onPress={handlePressPost(item.id)}
-              />
-            )}
+            renderItem={({item}: any) =>
+              isRefetching && !isFetchingNextPage ? (
+                <></>
+              ) : (
+                <RecommendFeedCard
+                  imgUrl={item.postImageSet[0].imageUrl}
+                  isLike={item.like}
+                  onLike={handleLikePost(item.id)}
+                  isMine={item.user.id === userInfo.id}
+                  onPress={handlePressPost(item.id)}
+                />
+              )
+            }
             onEndReached={() => {
               fetchNextPage();
             }}
             alwaysBounceVertical={true}
             ListHeaderComponent={<SortingListHeader />}
+            ListFooterComponent={
+              isRefetching ? (
+                <ActivityIndicator size="large" style={{marginTop: heightPercentage(100)}} />
+              ) : (
+                <></>
+              )
+            }
           />
         )}
       </FlatListWrapper>

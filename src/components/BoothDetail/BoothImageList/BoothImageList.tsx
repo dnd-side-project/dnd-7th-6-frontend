@@ -28,7 +28,7 @@ const BoothImageList = ({boothId, scrollTrigger}: Props) => {
   const handleLikeReviewImage = (imageId: number) => () => {
     likeReviewImage(imageId, {
       onSuccess: () => {
-        queryClient.invalidateQueries(['review-images']);
+        queryClient.invalidateQueries(['userLike']);
       },
       onError: (error: any) => {
         if (error.response.data.code) {

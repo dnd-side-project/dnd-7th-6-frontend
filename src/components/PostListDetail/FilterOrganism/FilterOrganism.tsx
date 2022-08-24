@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 
@@ -11,6 +11,7 @@ import useFilteredItem from 'src/hooks/useFilteredItem';
 import useFilterTag from 'src/hooks/useFilterTag';
 import RefreshIcon from 'src/icons/RefreshIcon';
 import {openFilterSheet, changeFocus, clearFilter} from 'src/redux/actions/PostAction';
+import {widthPercentage} from 'src/styles/ScreenResponse';
 
 const FilterOrganism = () => {
   const labels = ['브랜드', '인원', '포즈컨셉', '프레임'];
@@ -61,6 +62,7 @@ const FilterOrganism = () => {
             </ChipWrapper>
           );
         })}
+        <View style={{width: widthPercentage(30)}} />
       </ScrollView>
       <LinearGradient
         start={{x: 0.1, y: 0}}

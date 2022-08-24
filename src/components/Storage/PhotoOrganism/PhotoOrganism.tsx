@@ -39,7 +39,6 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
       likeReview(id, {
         onSuccess: () => {
           queryClient.invalidateQueries(['review-images']);
-          queryClient.invalidateQueries(['userLike']);
         },
       });
     }
