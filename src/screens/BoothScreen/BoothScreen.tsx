@@ -1,8 +1,18 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {View} from 'react-native';
+import {useLayoutEffect} from 'react';
 
-const BoothScreen = () => {
-  return <View />;
+import BoothHeaderStyle from './BoothScreen.header';
+
+import {BoothParamList} from '.';
+
+import MapBottomSheetOrganism from 'src/components/Booth/MapBottomSheetOrganism';
+export type BoothScreenProps = NativeStackScreenProps<BoothParamList, 'BoothScreen'>;
+const BoothScreen = ({navigation, route}: BoothScreenProps) => {
+  useLayoutEffect(() => {
+    BoothHeaderStyle({navigation, route});
+  }, [navigation, route]);
+  return <MapBottomSheetOrganism />;
 };
 
 export default BoothScreen;

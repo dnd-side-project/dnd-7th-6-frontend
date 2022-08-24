@@ -1,29 +1,42 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {useLayoutEffect} from 'react';
-
-import {RecommendHeaderStyle} from './RecommendScreen.header';
+import {SafeAreaView} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import {RecommendParamList} from '.';
 
 import DefaultScrollView from 'src/components/DefaultScrollView';
-import FrameRecommendOrganism from 'src/components/FrameRecommendOrganism';
-import PoseRecommendOrganism from 'src/components/PoseRecommendOrganism';
-import RecommendSituationPoseOrganism from 'src/components/RecommendSituationPoseOrganism';
+import AddPostButton from 'src/components/Recommend/AddPostButton';
+import FrameOrganism from 'src/components/Recommend/FrameOrganism';
+import PoseRecommendOrganism from 'src/components/Recommend/PoseOrganism/PoseOrganism';
+import RecommendCommonBanner from 'src/components/Recommend/RecommendCommonBanner';
+import RecommendHeader from 'src/components/Recommend/RecommendHeader';
+import RecommendKeywordQuest from 'src/components/Recommend/RecommendKeywordQuest';
+import ReviewBoothPressableBanner from 'src/components/Recommend/ReviewBoothPressableBanner';
+import useFocus from 'src/hooks/useFocus';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
 
 export type RecommendScreenProps = NativeStackScreenProps<RecommendParamList, 'RecommendScreen'>;
 
-const RecommendScreen = ({navigation, route}: RecommendScreenProps) => {
-  useLayoutEffect(() => {
-    RecommendHeaderStyle({navigation, route});
+const RecommendScreen = () => {
+  const dispatch = useDispatch();
+
+  useFocus(() => {
+    dispatch(showTabBar());
   });
 
   return (
-    <DefaultScrollView>
-      <PoseRecommendOrganism>인기 있는 포즈</PoseRecommendOrganism>
-      <RecommendSituationPoseOrganism />
-      <FrameRecommendOrganism>프레임 추천</FrameRecommendOrganism>
-    </DefaultScrollView>
+    <SafeAreaView>
+      <RecommendHeader />
+      <DefaultScrollView>
+        <PoseRecommendOrganism />
+        <ReviewBoothPressableBanner />
+        <RecommendKeywordQuest />
+        <RecommendCommonBanner />
+        <FrameOrganism />
+      </DefaultScrollView>
+      <AddPostButton />
+    </SafeAreaView>
   );
 };
 

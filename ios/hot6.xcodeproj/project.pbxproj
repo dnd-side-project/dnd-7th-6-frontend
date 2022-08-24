@@ -26,6 +26,83 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = hot6;
 		};
+		0602CD1C28A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D797E9A5C5782CE845840781FA1CC81;
+			remoteInfo = Alamofire;
+		};
+		0602CD1E28A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAC2BEFFF3169516F7AFB57AF52F66CE;
+			remoteInfo = "kakao-login";
+		};
+		0602CD2028A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9F453801F27585052F413F613C847DB2;
+			remoteInfo = KakaoSDKAuth;
+		};
+		0602CD2228A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25BDA6E824AD6CBD857358A023C694AD;
+			remoteInfo = KakaoSDKCommon;
+		};
+		0602CD2428A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C61DAFBC2F2165AB3AA00130523B904E;
+			remoteInfo = KakaoSDKLink;
+		};
+		0602CD2628A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D0E56404A234C3736519ADFC2F9CF78;
+			remoteInfo = KakaoSDKNavi;
+		};
+		0602CD2828A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A1130D1DAB31B2DFE7B4CA725878272F;
+			remoteInfo = KakaoSDKStory;
+		};
+		0602CD2A28A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AC302B35325DB24BC9CAD7752F5076BC;
+			remoteInfo = KakaoSDKTalk;
+		};
+		0602CD2C28A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 577744C58D2473190267533B410590A1;
+			remoteInfo = KakaoSDKTemplate;
+		};
+		0602CD2E28A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1353D6A467F43A6A3EA21D310BD35A31;
+			remoteInfo = KakaoSDKUser;
+		};
+		0602CD3028A8F1B600684958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 010529B54CB3EF6A20305B86A37D41BB;
+			remoteInfo = "react-native-encrypted-storage";
+		};
 		062EA275288ED9D00043B3EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -39,13 +116,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3566E29624F4738A4953CE7ABF635C5E;
 			remoteInfo = "react-native-config";
-		};
-		062EA279288ED9D00043B3EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CC9CF62342D0D8A46D8176D06AABE411;
-			remoteInfo = "react-native-image-picker";
 		};
 		062EA27B288ED9D00043B3EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -383,6 +453,167 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		064CF23B28AAB1F400B7648E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DF63376066E2275FF26820B3A512A9B;
+			remoteInfo = "react-native-webview";
+		};
+		0658B66B28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3FD1B4C1246D643E9476438C28048FA8;
+			remoteInfo = AppAuth;
+		};
+		0658B66D28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD56AB51475BC5F592781EE2692D1412;
+			remoteInfo = GoogleSignIn;
+		};
+		0658B66F28A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E5BA41B7F2E1FE47F9ABCAC27C9E4281;
+			remoteInfo = "GoogleSignIn-GoogleSignIn";
+		};
+		0658B67128A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6FD122EA0AB9AB2A8FFA5F676C795DF0;
+			remoteInfo = GTMAppAuth;
+		};
+		0658B67328A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1998E0D8085221AD87F89B614C10E52;
+			remoteInfo = GTMSessionFetcher;
+		};
+		0658B67528A898D300BF5CC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 97CE6A3FA04F0B3C1E0418A227804309;
+			remoteInfo = RNGoogleSignin;
+		};
+		065C899F28B3B4E80039707C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5737DDB4BC95AD399B3206838AB97095;
+			remoteInfo = RNCAsyncStorage;
+		};
+		066C199728A27BDA006E14DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3501832F51E21BCD681DC315B3424B43;
+			remoteInfo = BVLinearGradient;
+		};
+		068EC0CC28B2EE3C004D239F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6B923B5A106791D9D52196A67E572B3;
+			remoteInfo = "react-native-splash-screen";
+		};
+		06C92A5728996D04009267C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8F65F9361F2069CF9E9D751272968DE4;
+			remoteInfo = RNGestureHandler;
+		};
+		06C92A5928996D04009267C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C777CF2FB1E39A45CBBDB54E8693F471;
+			remoteInfo = RNReanimated;
+		};
+		06E2E0B9289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB1D7880F01CE5024CE360F0D72A6DE3;
+			remoteInfo = "Permission-Camera";
+		};
+		06E2E0BB289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 437C6E620004E36CC6D5E091AFCE2237;
+			remoteInfo = "Permission-LocationAccuracy";
+		};
+		06E2E0BD289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 11C24EA25460DA1CF59AF70D747DA5EF;
+			remoteInfo = "Permission-LocationAlways";
+		};
+		06E2E0BF289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A710801FF4681D52F3948DD170856943;
+			remoteInfo = "Permission-LocationWhenInUse";
+		};
+		06E2E0C1289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B3DD4468EF372D977659FA36E28EFD79;
+			remoteInfo = "Permission-Notifications";
+		};
+		06E2E0C3289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 440764F00D9573560E387E1B72397B42;
+			remoteInfo = "Permission-PhotoLibrary";
+		};
+		06E2E0C5289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AEA4A114C08533A2C0F8E039A4C5EB9;
+			remoteInfo = RNImageCropPicker;
+		};
+		06E2E0C7289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DCCC9C42EB3E07CFD81800EC8A2515D;
+			remoteInfo = "RNImageCropPicker-QBImagePicker";
+		};
+		06E2E0C9289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 778C1572AE22EE933ACA12594B6DF949;
+			remoteInfo = RNPermissions;
+		};
+		06E2E0CB289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7862C607B7BE0510C2D65193F9B4B4F9;
+			remoteInfo = TOCropViewController;
+		};
+		06E2E0CD289E4DB1004A3FCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE1E812071397E31AE21DFF368B781B1;
+			remoteInfo = "TOCropViewController-TOCropViewControllerBundle";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -449,6 +680,9 @@
 		06305251287C4EC600DDFD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				0602CD1D28A8F1B600684958 /* Alamofire */,
+				0658B66C28A898D300BF5CC4 /* AppAuth */,
+				066C199828A27BDA006E14DB /* BVLinearGradient */,
 				0630528B287C4EC600DDFD03 /* CocoaAsyncSocket */,
 				0630528D287C4EC600DDFD03 /* DoubleConversion */,
 				0630528F287C4EC600DDFD03 /* Flipper */,
@@ -460,8 +694,27 @@
 				0630529B287C4EC600DDFD03 /* FlipperKit */,
 				0630529D287C4EC600DDFD03 /* fmt */,
 				0630529F287C4EC600DDFD03 /* glog */,
+				0658B66E28A898D300BF5CC4 /* GoogleSignIn */,
+				0658B67028A898D300BF5CC4 /* GoogleSignIn-GoogleSignIn */,
+				0658B67228A898D300BF5CC4 /* GTMAppAuth */,
+				0658B67428A898D300BF5CC4 /* GTMSessionFetcher */,
+				0602CD1F28A8F1B600684958 /* kakao-login */,
+				0602CD2128A8F1B600684958 /* KakaoSDKAuth */,
+				0602CD2328A8F1B600684958 /* KakaoSDKCommon */,
+				0602CD2528A8F1B600684958 /* KakaoSDKLink */,
+				0602CD2728A8F1B600684958 /* KakaoSDKNavi */,
+				0602CD2928A8F1B600684958 /* KakaoSDKStory */,
+				0602CD2B28A8F1B600684958 /* KakaoSDKTalk */,
+				0602CD2D28A8F1B600684958 /* KakaoSDKTemplate */,
+				0602CD2F28A8F1B600684958 /* KakaoSDKUser */,
 				063052A1287C4EC600DDFD03 /* libevent */,
 				062EA276288ED9D00043B3EC /* libwebp */,
+				06E2E0BA289E4DB1004A3FCC /* Permission-Camera */,
+				06E2E0BC289E4DB1004A3FCC /* Permission-LocationAccuracy */,
+				06E2E0BE289E4DB1004A3FCC /* Permission-LocationAlways */,
+				06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */,
+				06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */,
+				06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */,
 				063052A3287C4EC600DDFD03 /* Pods-hot6 */,
 				063052A5287C4EC600DDFD03 /* Pods-hot6-hot6Tests */,
 				063052A7287C4EC600DDFD03 /* RCT-Folly */,
@@ -477,11 +730,13 @@
 				063052BB287C4EC600DDFD03 /* React-jsinspector */,
 				063052BD287C4EC600DDFD03 /* React-logger */,
 				062EA278288ED9D00043B3EC /* react-native-config */,
+				0602CD3128A8F1B600684958 /* react-native-encrypted-storage */,
 				063052BF287C4EC600DDFD03 /* react-native-geolocation-service */,
-				062EA27A288ED9D00043B3EC /* react-native-image-picker */,
 				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
+				068EC0CD28B2EE3C004D239F /* react-native-splash-screen */,
+				064CF23C28AAB1F400B7648E /* react-native-webview */,
 				063052C5287C4EC600DDFD03 /* React-perflogger */,
 				063052C7287C4EC600DDFD03 /* React-RCTAnimation */,
 				063052C9287C4EC600DDFD03 /* React-RCTBlob */,
@@ -492,12 +747,21 @@
 				063052D3287C4EC600DDFD03 /* React-RCTText */,
 				063052D5287C4EC600DDFD03 /* React-RCTVibration */,
 				063052D7287C4EC600DDFD03 /* ReactCommon */,
+				065C89A028B3B4E80039707C /* RNCAsyncStorage */,
 				062EA27E288ED9D00043B3EC /* RNFastImage */,
+				06C92A5828996D04009267C3 /* RNGestureHandler */,
+				0658B67628A898D300BF5CC4 /* RNGoogleSignin */,
+				06E2E0C6289E4DB1004A3FCC /* RNImageCropPicker */,
+				06E2E0C8289E4DB1004A3FCC /* RNImageCropPicker-QBImagePicker */,
+				06E2E0CA289E4DB1004A3FCC /* RNPermissions */,
+				06C92A5A28996D04009267C3 /* RNReanimated */,
 				063052D9287C4EC600DDFD03 /* RNScreens */,
 				062EA3042892DE250043B3EC /* RNSVG */,
 				062EA280288ED9D00043B3EC /* SDWebImage */,
 				062EA282288ED9D00043B3EC /* SDWebImageWebPCoder */,
 				063052DB287C4EC600DDFD03 /* SocketRocket */,
+				06E2E0CC289E4DB1004A3FCC /* TOCropViewController */,
+				06E2E0CE289E4DB1004A3FCC /* TOCropViewController-TOCropViewControllerBundle */,
 				063052DD287C4EC600DDFD03 /* Yoga */,
 				063052DF287C4EC600DDFD03 /* YogaKit */,
 			);
@@ -662,6 +926,94 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0602CD1D28A8F1B600684958 /* Alamofire */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = Alamofire;
+			path = libAlamofire.a;
+			remoteRef = 0602CD1C28A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD1F28A8F1B600684958 /* kakao-login */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "kakao-login";
+			path = "libkakao-login.a";
+			remoteRef = 0602CD1E28A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2128A8F1B600684958 /* KakaoSDKAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKAuth;
+			path = libKakaoSDKAuth.a;
+			remoteRef = 0602CD2028A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2328A8F1B600684958 /* KakaoSDKCommon */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKCommon;
+			path = libKakaoSDKCommon.a;
+			remoteRef = 0602CD2228A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2528A8F1B600684958 /* KakaoSDKLink */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKLink;
+			path = libKakaoSDKLink.a;
+			remoteRef = 0602CD2428A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2728A8F1B600684958 /* KakaoSDKNavi */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKNavi;
+			path = libKakaoSDKNavi.a;
+			remoteRef = 0602CD2628A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2928A8F1B600684958 /* KakaoSDKStory */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKStory;
+			path = libKakaoSDKStory.a;
+			remoteRef = 0602CD2828A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2B28A8F1B600684958 /* KakaoSDKTalk */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKTalk;
+			path = libKakaoSDKTalk.a;
+			remoteRef = 0602CD2A28A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2D28A8F1B600684958 /* KakaoSDKTemplate */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKTemplate;
+			path = libKakaoSDKTemplate.a;
+			remoteRef = 0602CD2C28A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD2F28A8F1B600684958 /* KakaoSDKUser */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = KakaoSDKUser;
+			path = libKakaoSDKUser.a;
+			remoteRef = 0602CD2E28A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0602CD3128A8F1B600684958 /* react-native-encrypted-storage */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-encrypted-storage";
+			path = "libreact-native-encrypted-storage.a";
+			remoteRef = 0602CD3028A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		062EA276288ED9D00043B3EC /* libwebp */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -676,14 +1028,6 @@
 			name = "react-native-config";
 			path = "libreact-native-config.a";
 			remoteRef = 062EA277288ED9D00043B3EC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		062EA27A288ED9D00043B3EC /* react-native-image-picker */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			name = "react-native-image-picker";
-			path = "libreact-native-image-picker.a";
-			remoteRef = 062EA279288ED9D00043B3EC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		062EA27C288ED9D00043B3EC /* react-native-image-resizer */ = {
@@ -1070,6 +1414,190 @@
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		064CF23C28AAB1F400B7648E /* react-native-webview */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-webview";
+			path = "libreact-native-webview.a";
+			remoteRef = 064CF23B28AAB1F400B7648E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B66C28A898D300BF5CC4 /* AppAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = AppAuth;
+			path = libAppAuth.a;
+			remoteRef = 0658B66B28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B66E28A898D300BF5CC4 /* GoogleSignIn */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GoogleSignIn;
+			path = libGoogleSignIn.a;
+			remoteRef = 0658B66D28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67028A898D300BF5CC4 /* GoogleSignIn-GoogleSignIn */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "GoogleSignIn-GoogleSignIn";
+			path = GoogleSignIn.bundle;
+			remoteRef = 0658B66F28A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67228A898D300BF5CC4 /* GTMAppAuth */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GTMAppAuth;
+			path = libGTMAppAuth.a;
+			remoteRef = 0658B67128A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67428A898D300BF5CC4 /* GTMSessionFetcher */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = GTMSessionFetcher;
+			path = libGTMSessionFetcher.a;
+			remoteRef = 0658B67328A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0658B67628A898D300BF5CC4 /* RNGoogleSignin */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNGoogleSignin;
+			path = libRNGoogleSignin.a;
+			remoteRef = 0658B67528A898D300BF5CC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		065C89A028B3B4E80039707C /* RNCAsyncStorage */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNCAsyncStorage;
+			path = libRNCAsyncStorage.a;
+			remoteRef = 065C899F28B3B4E80039707C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		066C199828A27BDA006E14DB /* BVLinearGradient */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = BVLinearGradient;
+			path = libBVLinearGradient.a;
+			remoteRef = 066C199728A27BDA006E14DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		068EC0CD28B2EE3C004D239F /* react-native-splash-screen */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-splash-screen";
+			path = "libreact-native-splash-screen.a";
+			remoteRef = 068EC0CC28B2EE3C004D239F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C92A5828996D04009267C3 /* RNGestureHandler */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNGestureHandler;
+			path = libRNGestureHandler.a;
+			remoteRef = 06C92A5728996D04009267C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06C92A5A28996D04009267C3 /* RNReanimated */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNReanimated;
+			path = libRNReanimated.a;
+			remoteRef = 06C92A5928996D04009267C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BA289E4DB1004A3FCC /* Permission-Camera */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-Camera";
+			path = "libPermission-Camera.a";
+			remoteRef = 06E2E0B9289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BC289E4DB1004A3FCC /* Permission-LocationAccuracy */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationAccuracy";
+			path = "libPermission-LocationAccuracy.a";
+			remoteRef = 06E2E0BB289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0BE289E4DB1004A3FCC /* Permission-LocationAlways */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationAlways";
+			path = "libPermission-LocationAlways.a";
+			remoteRef = 06E2E0BD289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C0289E4DB1004A3FCC /* Permission-LocationWhenInUse */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-LocationWhenInUse";
+			path = "libPermission-LocationWhenInUse.a";
+			remoteRef = 06E2E0BF289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C2289E4DB1004A3FCC /* Permission-Notifications */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-Notifications";
+			path = "libPermission-Notifications.a";
+			remoteRef = 06E2E0C1289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C4289E4DB1004A3FCC /* Permission-PhotoLibrary */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "Permission-PhotoLibrary";
+			path = "libPermission-PhotoLibrary.a";
+			remoteRef = 06E2E0C3289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C6289E4DB1004A3FCC /* RNImageCropPicker */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNImageCropPicker;
+			path = libRNImageCropPicker.a;
+			remoteRef = 06E2E0C5289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0C8289E4DB1004A3FCC /* RNImageCropPicker-QBImagePicker */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "RNImageCropPicker-QBImagePicker";
+			path = QBImagePicker.bundle;
+			remoteRef = 06E2E0C7289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CA289E4DB1004A3FCC /* RNPermissions */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = RNPermissions;
+			path = libRNPermissions.a;
+			remoteRef = 06E2E0C9289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CC289E4DB1004A3FCC /* TOCropViewController */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = TOCropViewController;
+			path = libTOCropViewController.a;
+			remoteRef = 06E2E0CB289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		06E2E0CE289E4DB1004A3FCC /* TOCropViewController-TOCropViewControllerBundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			name = "TOCropViewController-TOCropViewControllerBundle";
+			path = TOCropViewControllerBundle.bundle;
+			remoteRef = 06E2E0CD289E4DB1004A3FCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1334,6 +1862,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34T4G7PLC;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = hot6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1361,6 +1890,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34T4G7PLC;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = hot6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

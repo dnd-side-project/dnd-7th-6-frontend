@@ -1,13 +1,16 @@
 import {ThemeProvider} from '@emotion/react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {QueryClient, QueryClientProvider} from 'react-query';
+import {Provider} from 'react-redux';
 
-import BoothScreen from 'src/screens/BoothScreen/BoothScreen';
-import MyScreen from 'src/screens/MyScreen/MyScreen';
-import RouteRecommendScreen from 'src/screens/RecommendScreen';
-import StorageScreen from 'src/screens/StorageScreen/StorageScreen';
+import AppInner from 'AppInner';
+import {Interceptor} from 'src/components/utils/Interceptor';
+import store from 'src/redux/store';
+import RouteLoginScreen from 'src/screens/LoginScreen';
+import PermissionScreen from 'src/screens/PermissionScreen';
+import GlobalStyle from 'src/styles/GlobalStyle';
 import theme from 'src/styles/Theme';
 
 export type RootParamList = {
@@ -16,21 +19,24 @@ export type RootParamList = {
   StorageScreen: undefined;
   MyScreen: undefined;
 };
-
-const Tab = createBottomTabNavigator();
+export type RootScreenProps = NativeStackScreenProps<RootParamList, 'BoothScreen'>;
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <QueryClientProvider client={new QueryClient()}>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={{headerShown: false}}>
-            <Tab.Screen name={'BoothScreen'} component={BoothScreen} />
-            <Tab.Screen name={'RecommendScreen'} component={RouteRecommendScreen} />
-            <Tab.Screen name={'StorageScreen'} component={StorageScreen} />
-            <Tab.Screen name={'MyScreen'} component={MyScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+          <Interceptor>
+            <NavigationContainer theme={GlobalStyle}>
+              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="AppInner">
+                <Stack.Screen name="AppInner" component={AppInner} />
+                <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
+                <Stack.Screen name="InitPermissionScreen" component={PermissionScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </Interceptor>
+        </Provider>
       </ThemeProvider>
     </QueryClientProvider>
   );

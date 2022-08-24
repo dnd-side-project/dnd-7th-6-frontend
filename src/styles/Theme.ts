@@ -5,8 +5,8 @@ import {fontPercentage} from './ScreenResponse';
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
-      primary: PrimaryColorTheme;
-      secondary: Array<SecondaryColorTheme>;
+      primary: Array<ColorTheme>;
+      secondary: Array<ColorTheme>;
       grayscale: Array<string>;
     };
     fonts: {
@@ -17,11 +17,7 @@ declare module '@emotion/react' {
   }
 }
 
-export interface PrimaryColorTheme {
-  normal: string;
-}
-
-export interface SecondaryColorTheme {
+export interface ColorTheme {
   light: string;
   normal: string;
   dark: string;
@@ -35,18 +31,20 @@ export interface HeadLineFontsTheme {
 
 const theme: Theme = {
   colors: {
-    primary: {
-      normal: '#0F0F0F',
-    },
+    primary: [
+      {light: '#8B55FF', normal: '#6947EE', dark: '#6E30F3'},
+      {light: '#8B55FF', normal: '#6947EE', dark: '#6E30F3'},
+      {light: '#FF90C0', normal: '#FF58A0', dark: '#FC3D8F'},
+    ],
     secondary: [
-      {light: '#FE5454', normal: '#FF4040', dark: 'DC0909'},
-      {light: '#FE5454', normal: '#FF4040', dark: 'DC0909'},
+      {light: '#FE5454', normal: '#FF4040', dark: '#DC0909'},
+      {light: '#FE5454', normal: '#FF4040', dark: '#DC0909'},
       {light: '#E7E8F7', normal: '#878BE4', dark: '#44479C'},
     ],
     grayscale: [
       '#FFFFFF',
       '#FFFFFF',
-      '#F6F6F6',
+      '#F9F9F9',
       '#E5E5E5',
       '#CCCCCC',
       '#BDBDBD',
@@ -88,6 +86,11 @@ const theme: Theme = {
       },
       {
         size: fontPercentage(16),
+        fontFamily: 'Pretendard-SemiBold',
+        lineHeight: fontPercentage(20),
+      },
+      {
+        size: fontPercentage(14),
         fontFamily: 'Pretendard-SemiBold',
         lineHeight: fontPercentage(20),
       },
