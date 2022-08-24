@@ -28,15 +28,21 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
   };
   const handleLike = (type: string, id: number) => () => {
     if (type === 'POST') {
-      likePost(id, {
-        onSuccess: () => {
-          queryClient.invalidateQueries(['post']);
-          queryClient.invalidateQueries(['userLike']);
+      likePost(
+        {targetId: id},
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries(['post']);
+          },
         },
-      });
+      );
     }
     if (type === 'REVIEW') {
-      likeReview(id);
+      likeReview(id, {
+        onSuccess: () => {
+          queryClient.invalidateQueries(['review-images']);
+        },
+      });
     }
   };
   const handleCard = (type: string, id: number, reviewImage: UserLikeImage) => () => {
@@ -44,8 +50,11 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
       navigation.navigate(
         'BoothScreen' as never,
         {
-          screen: 'ReviewDetail' as never,
-          targetImage: reviewImageAdapter(reviewImage),
+          screen: 'ReviewImageDetail' as never,
+          params: {
+            targetImage: reviewImageAdapter(reviewImage),
+            isStorage: true,
+          },
         } as never,
       );
     }
@@ -54,7 +63,7 @@ const PhotoOrganism = ({photoList, isLoading}: Props) => {
         'RouteRecommendScreen' as never,
         {
           screen: 'RecommendDetail' as never,
-          params: {postId: id, distance: 0} as never,
+          params: {postId: id, distance: 0, isStorage: true} as never,
         } as never,
       );
     }

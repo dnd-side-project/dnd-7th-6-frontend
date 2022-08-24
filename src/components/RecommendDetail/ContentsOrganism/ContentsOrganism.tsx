@@ -17,11 +17,13 @@ const ContentsOrganism = ({id}: Props) => {
     <Container>
       {data && <UserReviewView post={data} />}
       <ChipWrapper>
-        {data?.postTagSet.map(({tag}) => (
-          <ChipContainer key={tag.id}>
-            <FilterChip title={tag.title} selected={false} />
-          </ChipContainer>
-        ))}
+        {data?.postTagSet
+          .sort((a, b) => a.tag.id - b.tag.id)
+          .map(({tag}) => (
+            <ChipContainer key={tag.id}>
+              <FilterChip title={tag.title} selected={false} />
+            </ChipContainer>
+          ))}
       </ChipWrapper>
     </Container>
   );

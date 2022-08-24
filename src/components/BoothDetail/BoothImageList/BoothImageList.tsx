@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {FlatList} from 'react-native';
 import {useQueryClient} from 'react-query';
+import {useDispatch} from 'react-redux';
 
 import {style} from './BoothImageList.styles';
 
@@ -11,6 +12,7 @@ import ScrollUpButton from 'src/components/utils/Button/ScrollUpButton';
 import Toast from 'src/components/utils/Toast';
 import useGetReviewImages from 'src/querys/useGetReviewImages';
 import useMutateReviewImageLike from 'src/querys/useMutateReviewImageLike';
+import {hideTabBar} from 'src/redux/actions/TabBarAction';
 
 interface Props {
   boothId: number;
@@ -27,7 +29,9 @@ const BoothImageList = ({boothId, scrollTrigger}: Props) => {
 
   const handleLikeReviewImage = (imageId: number) => () => {
     likeReviewImage(imageId, {
-      onSuccess: () => queryClient.invalidateQueries(['review-images']),
+      onSuccess: () => {
+        queryClient.invalidateQueries(['userLike']);
+      },
       onError: (error: any) => {
         if (error.response.data.code) {
           setOnToast(true);
@@ -39,7 +43,7 @@ const BoothImageList = ({boothId, scrollTrigger}: Props) => {
   useEffect(() => {
     scrollRef.current?.scrollToOffset({offset: 0});
   }, [scrollTrigger]);
-
+  const dispatch = useDispatch();
   if (!data) {
     return <></>;
   }
@@ -61,12 +65,13 @@ const BoothImageList = ({boothId, scrollTrigger}: Props) => {
             imgUrl={item.imageUrl}
             isLike={item.like}
             onLike={handleLikeReviewImage(item.id)}
-            onPress={() =>
+            onPress={() => {
+              dispatch(hideTabBar());
               navigation.navigate(
                 'ReviewImageDetail' as never,
                 {boothId, targetImage: item} as never,
-              )
-            }
+              );
+            }}
           />
         )}
       />

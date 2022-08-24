@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const TextFieldWrapper = styled.Pressable(({focus, isBorder}: Props) => ({
-  borderColor: focus ? '#8048F8' : theme.colors.grayscale[3],
+  borderColor: focus ? theme.colors.primary[1].normal : theme.colors.grayscale[3],
   height: heightPercentage(174),
   alignSelf: 'flex-start',
   width: '100%',

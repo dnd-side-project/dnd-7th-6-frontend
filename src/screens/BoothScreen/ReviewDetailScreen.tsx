@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
+import {SafeAreaView} from 'react-native';
 
 import {BoothParamList} from '.';
 
@@ -24,10 +25,10 @@ const Header = ({boothId}: {boothId: number}) => {
 
 const ReviewDetailScreen = ({route}: ReviewDetailScreenProps) => {
   return (
-    <>
+    <SafeAreaView>
       <Header boothId={route.params?.boothId} />
       <ReviewListOrganism boothId={route.params?.boothId} />
-    </>
+    </SafeAreaView>
   );
 };
 

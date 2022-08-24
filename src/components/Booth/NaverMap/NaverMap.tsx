@@ -12,9 +12,14 @@ import {PhotoBoothContentData} from 'src/types';
 import {getIconMarker} from 'src/utils/getIconMarker';
 import {getMarkerColor} from 'src/utils/getMarkerColor';
 
-const NaverMap = ({mapRef, centerPos, setScreenPos, data}: any) => {
+const NaverMap = ({mapRef, centerPos, refetchPos, setScreenPos, data}: any) => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
-
+  const brand = ['인생네컷', '포토그레이', '포토이즘', '하루필름', '셀픽스', '포토시그니처'];
+  const isInit = refetchPos.latitude === 0 || refetchPos.longitude === 0;
+  const initCoord = {
+    longitude: 0,
+    latitude: 0,
+  };
   return (
     // @ts-ignore: 모듈 문제
     <NaverMapView
@@ -46,6 +51,7 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data}: any) => {
           zIndex={10}
           width={heightPercentage(60)}
           height={heightPercentage(60)}
+          isForceShowIcon={false}
           caption={{
             align: 3,
             text: focusedBooth.photoBooth.name,
@@ -63,6 +69,10 @@ const NaverMap = ({mapRef, centerPos, setScreenPos, data}: any) => {
           <View key={null} />
         );
       })}
+      {isInit &&
+        brand.map((item, index) => (
+          <Marker coordinate={initCoord} image={getIconMarker(item)} key={index} />
+        ))}
     </NaverMapView>
   );
 };
@@ -76,6 +86,7 @@ const MarkersOnMap = ({data}: {data: PhotoBoothContentData}) => {
     <Marker
       width={heightPercentage(45)}
       height={heightPercentage(45)}
+      isForceShowIcon={false}
       coordinate={{latitude: data.photoBooth.latitude, longitude: data.photoBooth.longitude}}
       onClick={markerOnClick}
       image={getIconMarker(data.photoBooth.name)}

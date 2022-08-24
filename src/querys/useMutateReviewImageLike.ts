@@ -10,17 +10,36 @@ const useMutateReviewImageLike = () => {
     onMutate: (targetId: number) => {
       const oldReviewImages = queryClient.getQueryData(['review-images']);
       queryClient.cancelQueries(['review-images']);
-      queryClient.setQueryData(['review-images'], (oldData: any) => ({
-        ...oldData,
-        pages: oldData.pages.map((page: any) => ({
-          ...page,
-          content: page.content.map((reviewImage: ReviewImage) =>
+      queryClient.cancelQueries(['userLike']);
+      queryClient.setQueryData(['review-images'], (oldData: any) => {
+        if (!oldData) {
+          return;
+        }
+        return {
+          ...oldData,
+          pages: oldData.pages.map((page: any) => ({
+            ...page,
+            content: page.content.map((reviewImage: ReviewImage) =>
+              reviewImage.id === targetId
+                ? {...reviewImage, like: !reviewImage.like}
+                : {...reviewImage},
+            ),
+          })),
+        };
+      });
+      queryClient.setQueryData(['userLike'], (oldData: any) => {
+        if (!oldData) {
+          return;
+        }
+        return {
+          ...oldData,
+          imageList: oldData.imageList.map((reviewImage: ReviewImage) =>
             reviewImage.id === targetId
               ? {...reviewImage, like: !reviewImage.like}
               : {...reviewImage},
           ),
-        })),
-      }));
+        };
+      });
       return () => queryClient.setQueryData(['review-images'], oldReviewImages);
     },
     onError: (err, values, rollback) => {

@@ -14,9 +14,8 @@ import {
 import {BoothParamList} from '.';
 
 import {PressableCloseIcon} from 'src/components/utils/Pressables/PressableIcons';
-import useFocus from 'src/hooks/useFocus';
 import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
-import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 interface HeaderProps {
@@ -45,14 +44,22 @@ export type ReviewImageDetailScreenProps = NativeStackScreenProps<
 const ReviewImageDetailScreen = ({navigation, route}: ReviewImageDetailScreenProps) => {
   const dispatch = useDispatch();
 
-  useFocus(() => {
-    dispatch(hideTabBar());
-  });
+  const goBack = () => {
+    if (route.params.isStorage) {
+      navigation.reset({
+        routes: [{name: 'StorageScreen' as never}],
+        index: 0,
+      });
+    } else {
+      navigation.goBack();
+    }
+  };
 
   useEffect(() => {
     const show = () => {
       dispatch(showTabBar());
-      return false;
+      goBack();
+      return true;
     };
     BackHandler.addEventListener('hardwareBackPress', show);
     return () => BackHandler.removeEventListener('hardwareBackPress', show);
@@ -62,10 +69,10 @@ const ReviewImageDetailScreen = ({navigation, route}: ReviewImageDetailScreenPro
     <Background>
       <Header
         onCancel={() => {
-          navigation.goBack();
+          goBack();
           dispatch(showTabBar());
         }}
-        boothId={route.params.boothId}
+        boothId={route.params?.boothId}
       />
       <FastImage
         source={{uri: route.params.targetImage.imageUrl}}

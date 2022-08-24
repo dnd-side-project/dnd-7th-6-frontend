@@ -33,7 +33,7 @@ export const ReviewFlatList = styled.FlatList({
   alignSelf: 'center',
 });
 
-export const CardWrapper = styled.View({
+export const CardWrapper = styled.Pressable({
   paddingHorizontal: widthPercentage(5.5),
   paddingVertical: heightPercentage(16),
 });

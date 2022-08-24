@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 
-import {ButtonText, CardContainer, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
+import {ButtonText, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
 import RecommendPreviewFourCard from '../PreviewSixCard';
 import {
   OrganismView,
@@ -16,7 +16,7 @@ import {
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 
 const FrameRecommendOrganism = () => {
-  const {data, isLoading} = useGetInfinitePosts({tagIdSet: [41], order: 'popular'});
+  const {data, isLoading} = useGetInfinitePosts({tagIdSet: [41], order: 'popular', key: 'frame'});
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
@@ -33,17 +33,15 @@ const FrameRecommendOrganism = () => {
         </TextnIconWrapper>
         <SubTitleText>요즘 포톡커들이 많이 찾는 프레임이에요</SubTitleText>
       </TitleWrapper>
-      <CardContainer>
-        {!!data && (
-          <ListWrapper>
-            <RecommendPreviewFourCard
-              isLoading={isLoading}
-              data={data.pages.flatMap(response => response.content) as any}
-              onPress={handlePressCard}
-            />
-          </ListWrapper>
-        )}
-      </CardContainer>
+      {!!data && (
+        <ListWrapper>
+          <RecommendPreviewFourCard
+            isLoading={isLoading}
+            data={data.pages.flatMap(response => response.content) as any}
+            onPress={handlePressCard}
+          />
+        </ListWrapper>
+      )}
       <ButtonPressable onPress={() => navigation.navigate('PostListDetail' as never)}>
         <ButtonText>캐릭터 프레임 더보기</ButtonText>
       </ButtonPressable>

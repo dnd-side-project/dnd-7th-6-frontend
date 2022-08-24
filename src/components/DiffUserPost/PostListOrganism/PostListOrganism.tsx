@@ -26,9 +26,12 @@ const PostListOrganism = ({userId, navigation}: Props) => {
   const {mutate: likePost} = useMutatePostLike();
 
   const handleLikePost = (postId: number) => () => {
-    likePost(postId, {
-      onSuccess: () => queryClient.invalidateQueries(['post']),
-    });
+    likePost(
+      {targetId: postId},
+      {
+        onSuccess: () => queryClient.invalidateQueries(['post']),
+      },
+    );
   };
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const velocity = e.nativeEvent.velocity?.y;

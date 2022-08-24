@@ -12,7 +12,7 @@ const InputCustomTagOrganism = () => {
   const {customTags} = useSelector((state: RootState) => state.postWriteReducer);
 
   const handleDelete = (index?: number) => {
-    if (!index) {
+    if (index === undefined) {
       return;
     }
     const next = [...customTags].filter((tag, i) => index !== i);

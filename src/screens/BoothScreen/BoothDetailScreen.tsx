@@ -20,7 +20,7 @@ const BoothDetailScreen = ({navigation, route}: DetailScreenProps) => {
 
   return (
     <SafeAreaView>
-      <HeaderOrganism id={id} navigation={navigation} />
+      <HeaderOrganism id={id} navigation={navigation} route={route} />
       <OuterScrollView id={id} distance={distance} />
     </SafeAreaView>
   );

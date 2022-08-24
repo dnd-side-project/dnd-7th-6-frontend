@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {ActivityIndicator, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -24,11 +23,10 @@ import useGetUserList from 'src/querys/useGetUserList';
 import {startUpdate} from 'src/redux/actions/ReviewAction';
 import {RootState} from 'src/redux/store';
 import {heightPercentage} from 'src/styles/ScreenResponse';
-import {Review} from 'src/types';
+import {Post, Review} from 'src/types';
 
-const RecordOrganism = () => {
+const RecordOrganism = ({navigation}: any) => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const queryClient = useQueryClient();
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const [focus, setFocus] = useState(0);
@@ -67,6 +65,18 @@ const RecordOrganism = () => {
       },
     },
   ];
+  const handlePressImage = (post: Post) => () => {
+    navigation.navigate(
+      'RouteRecommendScreen' as never,
+      {
+        screen: 'RecommendDetail',
+        params: {
+          postId: post.id,
+          isRecord: true,
+        },
+      } as never,
+    );
+  };
 
   return (
     <View>
@@ -85,7 +95,7 @@ const RecordOrganism = () => {
                   numColumns={2}
                   data={data?.postList}
                   renderItem={({item}: any) => (
-                    <CardWrapper>
+                    <CardWrapper onPress={handlePressImage(item)}>
                       <FastImage
                         source={{uri: item.postImageSet[0].imageUrl}}
                         style={style.recordFeedCard}
@@ -100,9 +110,9 @@ const RecordOrganism = () => {
                 <ReviewFlatList
                   numColumns={1}
                   data={data?.reviewList}
-                  renderItem={({item}: any) => (
-                    <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />
-                  )}
+                  renderItem={({item}: any) => {
+                    return <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />;
+                  }}
                 />
               )}
             </LineSlideView>

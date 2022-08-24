@@ -9,7 +9,7 @@ interface Parameter {
 
 const getPostsByTag = async ({page = 0, pageSize = 10, tagIdSet, order = 'popular'}: Parameter) => {
   try {
-    const url = tagIdSet.length <= 0 ? '/api/v1/post?' : '/api/v1/post/recommendation?';
+    const url = '/api/v1/post/recommendation?';
     const params = `page=${page}&pageSize=${pageSize}&order=${order}&tagIdSet=${tagIdSet.join(
       ',',
     )}`;

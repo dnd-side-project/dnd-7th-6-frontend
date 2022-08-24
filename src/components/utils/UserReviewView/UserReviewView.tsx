@@ -20,11 +20,14 @@ const UserReviewView = ({post}: Props) => {
   const {mutate: likePost} = useMutatePostLike();
 
   const handlePostLike = () => {
-    likePost(post.id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['post']);
+    likePost(
+      {targetId: post.id},
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(['post']);
+        },
       },
-    });
+    );
   };
 
   return (

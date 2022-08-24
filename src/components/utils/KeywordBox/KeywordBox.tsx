@@ -13,7 +13,7 @@ interface Props {
 const KeywordBox = ({iconUri, keyword, count, degree}: Props) => {
   return (
     <Container>
-      <Degree degree={degree} />
+      <Degree degree={Math.min(100, degree)} />
       <TextWrapper>
         <RowBox>
           {!iconUri || <FastImage source={{uri: iconUri}} style={style.fastImage} />}
