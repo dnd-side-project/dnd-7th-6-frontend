@@ -22,7 +22,6 @@ const TagSearchList = ({
   const {data, refetch} = useGetSearchedTag(inputWord);
   const debounce = useDebounce(refetch, 500);
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (!inputWord) {
       return;

@@ -14,7 +14,7 @@ const RecommendDetailMainFrame = ({id}: Props) => {
   const images =
     useMemo(() => data?.postImageSet.sort((a, b) => a.imageOrder - b.imageOrder), [data]) || [];
 
-  return <FastImage source={{uri: images[0]?.imageUrl}} style={style} />;
+  return <FastImage source={{uri: images[0]?.imageUrl}} style={style} resizeMode="contain" />;
 };
 
 export default RecommendDetailMainFrame;

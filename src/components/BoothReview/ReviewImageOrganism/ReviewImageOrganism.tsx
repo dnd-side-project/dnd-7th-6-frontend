@@ -56,7 +56,14 @@ const ReviewImageOrganism = () => {
   const isUpdateMode = useSelector((state: RootState) => state.reviewReducer.isUpdateMode);
   const reviewId = useSelector((state: RootState) => state.reviewReducer.reviewId);
   const inputPostReviewData = useSelector((state: RootState) => state.reviewReducer);
-
+  const [disabled, setDisabled] = useState(false);
+  useEffect(() => {
+    if (disabled) {
+      setTimeout(() => {
+        setDisabled(false);
+      }, 1000);
+    }
+  }, [disabled]);
   const onChangeFile = useCallback(async () => {
     try {
       await requestcameraPermission();
@@ -132,6 +139,7 @@ const ReviewImageOrganism = () => {
 
   const navigation = useNavigation();
   const nextOnPress = () => {
+    setDisabled(true);
     if (isUpdateMode) {
       updateReview(
         {
@@ -232,7 +240,9 @@ const ReviewImageOrganism = () => {
           </TextFieldWrapper>
         </ActivityIndicator>
         <ReviewNextPressableWrapper>
-          <ReviewNextPressable onPress={nextOnPress}>완료</ReviewNextPressable>
+          <ReviewNextPressable onPress={nextOnPress} disable={disabled}>
+            완료
+          </ReviewNextPressable>
         </ReviewNextPressableWrapper>
       </ReviewSectionContainer>
     </DismissKeyboardView>

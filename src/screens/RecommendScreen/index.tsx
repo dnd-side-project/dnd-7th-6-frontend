@@ -45,7 +45,7 @@ const RouteRecommendScreen = () => {
       <Stack.Screen
         name="RoutePostWrite"
         component={RoutePostWriteScreen}
-        options={{headerShown: false}}
+        options={{headerShown: false, gestureEnabled: false}}
       />
     </Stack.Navigator>
   );

@@ -40,7 +40,11 @@ const TagInput = ({
     [navigation],
   );
   const chipTextInputOnPress = (text: string) => {
-    setInputWord(text);
+    if (text.includes(' ')) {
+      chipTextEventOnPress();
+    } else {
+      setInputWord(text);
+    }
   };
   const searchTextEventOnPress = (event: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
     if (event.nativeEvent.key === 'Backspace') {
@@ -53,6 +57,9 @@ const TagInput = ({
     }
   };
   const chipTextEventOnPress = () => {
+    if (!inputWord || inputWord === ' ') {
+      return;
+    }
     let prevData = [...tagData];
     if (prevData.find(item => inputWord === item)) {
       return;

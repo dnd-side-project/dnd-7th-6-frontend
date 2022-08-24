@@ -110,9 +110,9 @@ const RecordOrganism = ({navigation}: any) => {
                 <ReviewFlatList
                   numColumns={1}
                   data={data?.reviewList}
-                  renderItem={({item}: any) => (
-                    <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />
-                  )}
+                  renderItem={({item}: any) => {
+                    return <ReviewSummary {...item} key={item.id} menuItems={reviewMenus(item)} />;
+                  }}
                 />
               )}
             </LineSlideView>

@@ -43,7 +43,7 @@ const postWriteReducer: Reducer = (state = initialState, action) => {
     case CHANGE_SCREEN:
       return {...state, screenIndex: payload.target};
     case CLEAR_POST_WRITE:
-      return {...initialState};
+      return {...initialState, screenIndex: 4};
     case CHANGE_SHARED_SCOPE:
       return {...state, isPublic: payload.sharedScope};
     case CHANGE_MODIFY_MODE:

@@ -10,7 +10,6 @@ import {
   ContainerView,
   CurrentPositionPressable,
   FilterWrapper,
-  MapIndicator,
   RefreshPressableWrapper,
 } from './MapNaverMapOrganism.styles';
 
@@ -19,7 +18,6 @@ import CrosshairIcon from 'src/icons/CrosshairIcon';
 import useGetPhotoBoothLocation from 'src/querys/useGetPhotoBoothLocation';
 import {focusBooth} from 'src/redux/actions/MapAction';
 import {RootState} from 'src/redux/store';
-import theme from 'src/styles/Theme';
 import getGeolocation from 'src/utils/getGeolocation';
 const MapNaverMapOrganism = () => {
   const mapRef = useRef<NaverMapView>(null);
@@ -34,7 +32,7 @@ const MapNaverMapOrganism = () => {
     latitude: 0,
     longitude: 0,
   });
-  const {data, refetch, isLoading} = useGetPhotoBoothLocation({
+  const {data, refetch, isLoading, isFetching} = useGetPhotoBoothLocation({
     coord: refetchPos,
     selectTagArr,
   });
@@ -64,8 +62,9 @@ const MapNaverMapOrganism = () => {
     if (refetchPos.latitude === 0 || refetchPos.longitude === 0) {
       return;
     }
-    refetch();
-    setShowRefreshPressable(false);
+    setTimeout(() => {
+      refetch();
+    }, 1);
   }, [refetchPos]);
 
   useEffect(() => {
@@ -79,6 +78,12 @@ const MapNaverMapOrganism = () => {
     }
     setShowRefreshPressable(true);
   }, [screenCenterPos]);
+
+  useEffect(() => {
+    if (!isFetching) {
+      setShowRefreshPressable(false);
+    }
+  }, [isFetching]);
 
   //가장 가까이 있는 marker focused로 변경
   useEffect(() => {
@@ -153,14 +158,12 @@ const MapNaverMapOrganism = () => {
 
   return (
     <ContainerView>
-      {isLoading && <MapIndicator size="large" color={theme.colors.primary[1].normal} />}
       <NaverMap
         mapRef={mapRef}
         centerPos={screenCenterPos}
         refetchPos={refetchPos}
         setScreenPos={setScreenCenterPos}
         data={data?.data}
-        setShowRefreshPressable={setShowRefreshPressable}
       />
       <FilterWrapper>
         <MapFilterOrganism />

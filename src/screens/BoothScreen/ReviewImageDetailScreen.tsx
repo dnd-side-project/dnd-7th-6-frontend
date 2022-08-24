@@ -14,9 +14,8 @@ import {
 import {BoothParamList} from '.';
 
 import {PressableCloseIcon} from 'src/components/utils/Pressables/PressableIcons';
-import useFocus from 'src/hooks/useFocus';
 import useGetPhotoBooth from 'src/querys/useGetPhotoBooth';
-import {hideTabBar, showTabBar} from 'src/redux/actions/TabBarAction';
+import {showTabBar} from 'src/redux/actions/TabBarAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 
 interface HeaderProps {
@@ -55,10 +54,6 @@ const ReviewImageDetailScreen = ({navigation, route}: ReviewImageDetailScreenPro
       navigation.goBack();
     }
   };
-
-  useFocus(() => {
-    dispatch(hideTabBar());
-  });
 
   useEffect(() => {
     const show = () => {

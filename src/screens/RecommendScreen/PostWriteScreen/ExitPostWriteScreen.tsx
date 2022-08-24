@@ -6,7 +6,6 @@ import {useDispatch} from 'react-redux';
 import {PostWriteParamList} from '.';
 
 import ExitCenterOrganism from 'src/components/PostWrite/ExitCenterOrganism';
-import ExitNavigationOrganism from 'src/components/PostWrite/ExitNavigationOrganism/ExitNavigationOrganism';
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
 import useHideTabBar from 'src/hooks/useHideTabBar';
 import {clearPostWrite} from 'src/redux/actions/PostWriteAction';
@@ -27,7 +26,6 @@ const ExitPostWriteScreen = ({navigation}: ExitPostWriteScreenProps) => {
     <SafeAreaView>
       <LeftBackHeader onPressBack={handlePressBack} />
       <ExitCenterOrganism />
-      <ExitNavigationOrganism />
     </SafeAreaView>
   );
 };
