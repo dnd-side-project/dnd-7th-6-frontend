@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Platform} from 'react-native';
 import NaverMapView, {TrackingMode, type Coord} from 'react-native-nmap';
 import {useDispatch, useSelector} from 'react-redux';
 
