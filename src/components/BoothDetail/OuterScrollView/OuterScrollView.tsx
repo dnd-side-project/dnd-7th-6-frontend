@@ -29,7 +29,7 @@ interface Props {
 
 const OuterScrollView = ({id, distance}: Props) => {
   const navigation = useNavigation();
-  const {data: photoBooth} = useGetPhotoBooth(id);
+  const {data: photoBooth, isFetching} = useGetPhotoBooth(id);
   const scrollRef = useRef<ScrollView>(null);
   const [scrollIndex, setScrollIndex] = useState(0);
   const [scrollTargets, setScrollTargets] = useState([0, 0, 0]);
@@ -71,7 +71,7 @@ const OuterScrollView = ({id, distance}: Props) => {
   return (
     <>
       <ScrollContainer ref={scrollRef} stickyHeaderIndices={[2]}>
-        <ImageSliderOrganism booth={photoBooth} />
+        <ImageSliderOrganism booth={photoBooth} isLoading={isFetching} />
         <DescriptionOrganism booth={photoBooth} distance={distance} />
         <BoothDetailNavigation index={scrollIndex} setIndex={setScrollIndex} />
         <StarScoreOrganism booth={photoBooth} />
