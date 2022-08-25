@@ -2,6 +2,7 @@ import {ThemeProvider} from '@emotion/react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator, NativeStackScreenProps} from '@react-navigation/native-stack';
 import * as React from 'react';
+import CodePush from 'react-native-code-push';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider} from 'react-redux';
 
@@ -42,4 +43,14 @@ const App = () => {
   );
 };
 
-export default App;
+const codePushOptions = {
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
+  updateDialog: {
+    title: '앱 업데이트가 필요합니다.',
+    optionalInstallButtonLabel: '업데이트',
+    optionalIgnoreButtonLabel: '아니요.',
+  },
+  installMode: CodePush.InstallMode.IMMEDIATE,
+};
+
+export default CodePush(codePushOptions)(App);

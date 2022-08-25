@@ -142,7 +142,7 @@ android {
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
         resValue "string", "build_config_package", "com.hot6" //React-Config 추가
-
+        resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
         if (isNewArchitectureEnabled()) {
             // We configure the NDK build only if you decide to opt-in for the New Architecture.
             externalNativeBuild {
@@ -249,6 +249,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+
         //밑 부터 환경 분리 설정 (React-Config)
         devDebug {
             initWith debug
@@ -327,6 +328,7 @@ dependencies {
         implementation("com.facebook.react:hermes-engine:+") { // From node_modules
             exclude group:'com.facebook.fbjni'
         }
+        releaseStagingImplementation files(hermesPath + "hermes-release.aar") // 이미 있는 경우도 있다.
     } else {
         implementation jscFlavor
     }
@@ -364,3 +366,5 @@ def isNewArchitectureEnabled() {
     // - Set an environment variable `ORG_GRADLE_PROJECT_newArchEnabled=true`
     return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
 }
+
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
