@@ -20,22 +20,24 @@ interface Props {
 }
 
 const BoothImageList = ({boothId, scrollTrigger}: Props) => {
+  const dispatch = useDispatch();
   const queryClient = useQueryClient();
   const navigation = useNavigation();
   const scrollRef = useRef<FlatList>(null);
   const [onToast, setOnToast] = useState(false);
   const {data, fetchNextPage} = useGetReviewImages(boothId);
-  const {mutate: likeReviewImage} = useMutateReviewImageLike();
+  const {mutate: likeReviewImage} = useMutateReviewImageLike({
+    onError: error => {
+      if (error.response.data.code) {
+        setOnToast(true);
+      }
+    },
+  });
 
   const handleLikeReviewImage = (imageId: number) => () => {
     likeReviewImage(imageId, {
       onSuccess: () => {
         queryClient.invalidateQueries(['userLike']);
-      },
-      onError: (error: any) => {
-        if (error.response.data.code) {
-          setOnToast(true);
-        }
       },
     });
   };
@@ -43,14 +45,15 @@ const BoothImageList = ({boothId, scrollTrigger}: Props) => {
   useEffect(() => {
     scrollRef.current?.scrollToOffset({offset: 0});
   }, [scrollTrigger]);
-  const dispatch = useDispatch();
+
   if (!data) {
     return <></>;
   }
+
   return (
     <>
       <Toast
-        content="자신의 사진에는 좋아요를 누를 수 없습니다."
+        content={'자신의 사진에는 \n좋아요를 누를 수 없습니다.'}
         isOpen={onToast}
         setIsOpen={setOnToast}
       />
