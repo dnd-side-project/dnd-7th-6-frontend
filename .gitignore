@@ -22,7 +22,7 @@ DerivedData
 *.xcuserstate
 ios/.xcode.env.local
 ios/hot6/info.plist
-ios/hot5.xcodeproj/project.pbxproj
+ios/hot6.xcodeproj/project.pbxproj
 
 # Android/IntelliJ
 #
@@ -32,7 +32,7 @@ build/
 local.properties
 *.iml
 *.hprof
-strings.xml
+android/app/src/main/res/values/strings.xml
 
 # node.js
 #
