@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {View} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 import {TextnIconWrapper, TitleIcon} from '../PoseOrganism/PoseOrganism.styles';
@@ -8,9 +8,9 @@ import {
   Container,
   KeywordSearchList,
   KeywordSearchView,
+  RowScrollView,
   SubTitleText,
   TitleText,
-  TitleWrapper,
 } from './RecommendKeywordQuest.styles';
 
 import FilterChip from 'src/components/Chip/FilterChip';
@@ -73,22 +73,22 @@ const RecommendKeywordQuest = () => {
 
   return (
     <Container>
-      <TitleWrapper>
+      <View>
         <TextnIconWrapper>
           <TitleIcon source={require('src/assets/images/RecommendScreen/Icon_Home_Tag.png')} />
           <TitleText>키워드로 빠르게 찾아보세요</TitleText>
         </TextnIconWrapper>
         <SubTitleText>키워드로 빠르게 포즈를 찾을 수 있어요!</SubTitleText>
-      </TitleWrapper>
-      <ScrollView horizontal>
+      </View>
+      <RowScrollView horizontal showsHorizontalScrollIndicator persistentScrollbar>
         <KeywordSearchList
           numColumns={10}
-          showsHorizontalScrollIndicator={false}
           scrollEnabled={false}
+          showsHorizontalScrollIndicator
           data={sortData.slice(0, 20)}
           renderItem={({item, index}: any) => {
             return (
-              <KeywordSearchView index={index}>
+              <KeywordSearchView>
                 <FilterChip
                   title={item.title}
                   selected={keywordFocus[index]}
@@ -105,7 +105,7 @@ const RecommendKeywordQuest = () => {
             );
           }}
         />
-      </ScrollView>
+      </RowScrollView>
     </Container>
   );
 };
