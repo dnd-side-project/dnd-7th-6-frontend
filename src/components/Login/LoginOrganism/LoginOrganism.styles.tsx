@@ -31,6 +31,16 @@ export const KakaoLoginContainer = styled.Pressable({
   justifyContent: 'center',
 });
 
+export const AppleLoginContainer = styled.Pressable({
+  marginTop: widthPercentage(8),
+  backgroundColor: '#000000',
+  borderRadius: 4,
+  width: widthPercentage(343),
+  height: heightPercentage(48),
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const GoogleLoginContainer = styled.Pressable({
   marginTop: widthPercentage(8),
   backgroundColor: theme.colors.grayscale[1],
@@ -45,6 +55,10 @@ export const GoogleLoginContainer = styled.Pressable({
 
 export const LoginTitle = styled(SubHeadline3)({
   color: theme.colors.grayscale[10],
+});
+
+export const AppleLoginTitle = styled(SubHeadline3)({
+  color: theme.colors.grayscale[1],
 });
 
 export const LogoImage = styled.Image({
