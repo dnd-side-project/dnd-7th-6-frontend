@@ -3,11 +3,13 @@ import {useMutation, useQueryClient} from 'react-query';
 import mutateReviewImageLike from 'src/apis/mutateReviewImageLike';
 import {ReviewImage} from 'src/types';
 
-interface Parameter {
-  onError?: (error: any) => void;
-}
+type Parameter =
+  | {
+      onError?: (error: any) => void;
+    }
+  | undefined;
 
-const useMutateReviewImageLike = ({onError}: Parameter) => {
+const useMutateReviewImageLike = (params?: Parameter) => {
   const queryClient = useQueryClient();
 
   return useMutation((id: number) => mutateReviewImageLike(id), {
@@ -50,8 +52,8 @@ const useMutateReviewImageLike = ({onError}: Parameter) => {
       if (rollback) {
         rollback();
       }
-      if (onError) {
-        onError(err);
+      if (params?.onError) {
+        params.onError(err);
       }
       return Promise.reject(err);
     },
