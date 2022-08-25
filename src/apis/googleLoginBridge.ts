@@ -5,7 +5,7 @@ import {Config} from 'react-native-config';
 interface LoginParam {
   email: string;
   providerId: string;
-  provider: 'KAKAO' | 'GOOGLE' | 'NAVER';
+  provider: 'KAKAO' | 'GOOGLE' | 'APPLE';
 }
 
 const googleLoginBridge = async (): Promise<LoginParam> => {
