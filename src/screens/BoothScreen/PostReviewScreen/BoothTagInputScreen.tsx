@@ -5,6 +5,7 @@ import {PostReviewParamList} from '.';
 
 import BoothReviewHeader from 'src/components/BoothReview/BoothReviewHeader';
 import ReviewTagOrganism from 'src/components/BoothReview/ReviewTagOrganism';
+import DismissKeyboardView from 'src/components/utils/DismissKeyboardScrollView';
 
 export type BoothTagInputScreenProps = NativeStackScreenProps<
   PostReviewParamList,
@@ -12,10 +13,10 @@ export type BoothTagInputScreenProps = NativeStackScreenProps<
 >;
 const BoothTagInputScreen = ({navigation}: BoothTagInputScreenProps) => {
   return (
-    <>
+    <DismissKeyboardView>
       <BoothReviewHeader onPress={() => navigation.goBack()}>부스 리뷰 작성</BoothReviewHeader>
       <ReviewTagOrganism />
-    </>
+    </DismissKeyboardView>
   );
 };
 
