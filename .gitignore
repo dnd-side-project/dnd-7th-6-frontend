@@ -21,6 +21,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+ios/hot6/info.plist
+ios/hot5.xcodeproj/project.pbxproj
 
 # Android/IntelliJ
 #
@@ -30,6 +32,7 @@ build/
 local.properties
 *.iml
 *.hprof
+strings.xml
 
 # node.js
 #
