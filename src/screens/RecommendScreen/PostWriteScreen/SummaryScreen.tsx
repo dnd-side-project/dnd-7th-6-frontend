@@ -39,7 +39,11 @@ const Header = () => {
     navigation.goBack();
   };
 
-  return <LeftBackHeader onPressBack={handleBack}>새 게시물</LeftBackHeader>;
+  return (
+    <LeftBackHeader onPressBack={handleBack}>
+      {isPostModifyMode ? '게시물 수정' : '새 게시물'}
+    </LeftBackHeader>
+  );
 };
 
 const SummaryScreen = ({navigation}: SummaryScreenProps) => {
