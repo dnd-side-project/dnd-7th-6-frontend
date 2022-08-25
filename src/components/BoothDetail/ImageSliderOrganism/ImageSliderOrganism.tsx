@@ -29,7 +29,7 @@ const ImageSliderOrganism = ({booth}: Props) => {
           activeDotColor={theme.colors.grayscale[1]}
           dotColor={theme.colors.grayscale[0] + '66'}
           dotStyle={style.dot}>
-          {booth.reviewImageList.map(uri => (
+          {booth.reviewImageList.slice(0, 6).map(uri => (
             <View key={uri}>
               <FastImage source={{uri}} style={style.fastImage} />
             </View>
