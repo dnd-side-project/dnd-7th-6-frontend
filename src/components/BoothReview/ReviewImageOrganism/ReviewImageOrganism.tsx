@@ -102,7 +102,8 @@ const ReviewImageOrganism = () => {
         ),
       );
     };
-    const images = await takeResizeImages(response);
+    const images = await await takeResizeImages(response);
+
     dispatch(
       changeDeleteImage(imageData.filter((image: any) => !!image.id).map((image: any) => image.id)),
     );

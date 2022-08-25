@@ -21,6 +21,7 @@ const RecommendDetailScreen = ({navigation, route}: DetailScreenProps) => {
         navigation={navigation}
         postId={route.params.postId}
         isRecord={route.params.isRecord}
+        isStorage={route.params.isStorage}
       />
       <ScrollView style={{height: Dimensions.get('window').height - heightPercentage(125)}}>
         <RecommendDetailMainFrame id={route.params.postId} />

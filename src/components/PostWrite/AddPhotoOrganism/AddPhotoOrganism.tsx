@@ -39,12 +39,16 @@ const AddPhotoOrganism = () => {
       imageResponse.splice(0, 1).map(item =>
         ImageResizer.createResizedImage(
           item.path,
-          600,
-          600,
+          1000,
+          1000,
           item.mime.includes('jpeg') ? 'JPEG' : 'PNG',
           100,
           0,
         ).then(r => {
+          if (r.size > 3000000) {
+            Alert.alert('사진 용량이 너무 큽니다.');
+            return;
+          }
           dispatch(addPostWriteImage({uri: r.uri, name: r.name, type: item.mime}));
         }),
       );
