@@ -15,10 +15,10 @@ import {
   TitleWrapper,
 } from './PoseOrganism.styles';
 
-import useGetPosts from 'src/querys/useGetPosts';
+import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 
 const PoseRecommendOrganism = () => {
-  const {data, isLoading} = useGetPosts({order: 'popular', key: 'pose'});
+  const {data, isLoading} = useGetInfinitePosts({order: 'popular', key: 'pose'});
   const navigation = useNavigation();
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
