@@ -7,6 +7,7 @@ import theme from 'src/styles/Theme';
 export const SearchListView = styled.View({
   alignSelf: 'center',
   width: '100%',
+  height: heightPercentage(515),
 });
 
 export const TextView = styled.View({

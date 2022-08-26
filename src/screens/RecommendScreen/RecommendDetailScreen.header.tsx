@@ -16,19 +16,24 @@ interface Props {
   navigation: NativeStackNavigationProp<RecommendParamList, 'RecommendDetail', undefined>;
   postId: number;
   isRecord?: boolean;
+  isStorage?: boolean;
 }
 
-const RecommendDetailScreenHeader = ({navigation, postId, isRecord}: Props) => {
+const RecommendDetailScreenHeader = ({navigation, postId, isRecord, isStorage}: Props) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const {userInfo} = useSelector((state: RootState) => state.userReducer);
   const {data} = useGetPost(postId);
   const {mutate: deletePost} = useDeletePost();
-
   const goBack = () => {
     if (isRecord) {
       navigation.reset({
         routes: [{name: 'RouteRecordScreen' as never}],
+        index: 0,
+      });
+    } else if (isStorage) {
+      navigation.reset({
+        routes: [{name: 'StorageScreen' as never}],
         index: 0,
       });
     } else {

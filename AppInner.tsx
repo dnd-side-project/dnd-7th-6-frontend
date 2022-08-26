@@ -3,7 +3,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import Config from 'react-native-config';
+import {Config} from 'react-native-config';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import SplashScreen from 'react-native-splash-screen';
 import {useDispatch, useSelector} from 'react-redux';
@@ -23,9 +23,7 @@ const Tab = createBottomTabNavigator();
 const AppInner = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const {accessToken: newToken, isSettingInterceptor} = useSelector(
-    (state: RootState) => state.userReducer,
-  );
+  const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -55,9 +53,6 @@ const AppInner = () => {
   }, []);
 
   useEffect(() => {
-    if (!newToken) {
-      return;
-    }
     if (!isSettingInterceptor) {
       return;
     }
@@ -67,7 +62,7 @@ const AppInner = () => {
       SplashScreen.hide();
     };
     getUserData();
-  }, [newToken, isSettingInterceptor]);
+  }, [isSettingInterceptor]);
 
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
