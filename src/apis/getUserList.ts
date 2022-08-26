@@ -8,7 +8,6 @@ const getUserList = async () => {
     }
     return result.data;
   } catch (error) {
-    console.log(error);
     return Promise.reject(error);
   }
 };
