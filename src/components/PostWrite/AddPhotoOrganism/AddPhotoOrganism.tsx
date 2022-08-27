@@ -60,7 +60,7 @@ const AddPhotoOrganism = () => {
   if (image.uri) {
     return (
       <Container onPress={takePhoto(true)}>
-        <FastImage source={{uri: image.uri}} style={style.fastImage} resizeMode="contain" />
+        <FastImage source={{uri: image.uri}} style={style.fastImage} />
       </Container>
     );
   }
