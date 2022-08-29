@@ -23,7 +23,9 @@ const Tab = createBottomTabNavigator();
 const AppInner = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
+  const {accessToken: newToken, isSettingInterceptor} = useSelector(
+    (state: RootState) => state.userReducer,
+  );
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -37,6 +39,8 @@ const AppInner = () => {
           return;
         }
         dispatch(loginAction(true));
+        SplashScreen.hide();
+
         const newAccessToken = await getAccessToken(token);
         dispatch(setAccessToken(newAccessToken));
       } catch (error) {
@@ -53,6 +57,9 @@ const AppInner = () => {
   }, []);
 
   useEffect(() => {
+    if (!newToken) {
+      return;
+    }
     if (!isSettingInterceptor) {
       return;
     }
@@ -62,7 +69,7 @@ const AppInner = () => {
       SplashScreen.hide();
     };
     getUserData();
-  }, [isSettingInterceptor]);
+  }, [isSettingInterceptor, newToken]);
 
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
