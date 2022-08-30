@@ -21,12 +21,14 @@ import getUser from 'src/apis/getUser';
 import googleLoginBridge from 'src/apis/googleLoginBridge';
 import kakaoLoginBridge from 'src/apis/kakaoLoginBridge';
 import login from 'src/apis/login';
+import useLogout from 'src/hooks/useLogout';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
 import valueOfPlatform from 'src/utils/valueOfPlatform';
+
 const LoginOrganism = () => {
   const navigation = useNavigation();
-
+  const logout = useLogout();
   const dispatch = useDispatch();
 
   const handleLogin = (bridge: any) => async () => {
@@ -34,6 +36,9 @@ const LoginOrganism = () => {
     EncryptedStorage.setItem('refreshToken', token.refreshToken);
     dispatch(setAccessToken(token.token));
     const user = await getUser(token.token);
+    if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+      logout();
+    }
     dispatch(changeUserInfo(user));
     dispatch(loginAction(true));
     navigation.goBack();

@@ -1,11 +1,7 @@
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {logout} from '@react-native-seoul/kakao-login';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Alert, SafeAreaView} from 'react-native';
-import EncryptedStorage from 'react-native-encrypted-storage/';
-import {useQueryClient} from 'react-query';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import {
   Container,
@@ -16,30 +12,18 @@ import {
 } from './SettingOrganism.styles';
 
 import LeftBackHeader from 'src/components/utils/Header/LeftBackHeader';
+import useLogout from 'src/hooks/useLogout';
 import useDeleteUser from 'src/querys/useDeleteUser';
-import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 const SettingOrganism = () => {
   const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
   const userInfo = useSelector((state: RootState) => state.userReducer.userInfo);
-  const queryClient = useQueryClient();
   const {mutate} = useDeleteUser();
+  const logout = useLogout();
 
   const navigation = useNavigation();
-  const dispatch = useDispatch();
   const handleLogOut = async () => {
-    const provider = userInfo?.provider;
-    if (provider === 'GOOGLE') {
-      await GoogleSignin.signOut();
-    } else if (provider === 'KAKAO') {
-      await logout();
-    } else if (provider === 'APPLE') {
-    }
-    await EncryptedStorage.removeItem('refreshToken');
-    dispatch(setAccessToken(''));
-    dispatch(changeUserInfo({}));
-    dispatch(loginAction(false));
-    queryClient.invalidateQueries();
+    logout();
     navigation.goBack();
   };
 

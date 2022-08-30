@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import getAccessToken from 'src/apis/getAccessToken';
 import getUser from 'src/apis/getUser';
 import TabBar from 'src/components/utils/TabBar';
+import useLogout from 'src/hooks/useLogout';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 import RouteBoothScreen from 'src/screens/BoothScreen';
@@ -23,6 +24,7 @@ const Tab = createBottomTabNavigator();
 const AppInner = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const logout = useLogout();
   const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
@@ -57,9 +59,16 @@ const AppInner = () => {
       return;
     }
     const getUserData = async () => {
-      const user = await getUser();
-      dispatch(changeUserInfo(user));
-      SplashScreen.hide();
+      try {
+        const user = await getUser();
+        if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+          logout();
+        }
+        dispatch(changeUserInfo(user));
+        SplashScreen.hide();
+      } catch (error) {
+        SplashScreen.hide();
+      }
     };
     getUserData();
   }, [isSettingInterceptor]);
