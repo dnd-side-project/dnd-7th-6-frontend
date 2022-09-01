@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {useQueryClient} from 'react-query';
 import {useSelector} from 'react-redux';
@@ -16,10 +17,15 @@ interface Props {
 
 const UserReviewView = ({post}: Props) => {
   const queryClient = useQueryClient();
-  const {userInfo} = useSelector((state: RootState) => state.userReducer);
+  const navigation = useNavigation();
+  const {userInfo, isLoggedIn} = useSelector((state: RootState) => state.userReducer);
   const {mutate: likePost} = useMutatePostLike();
 
   const handlePostLike = () => {
+    if (!isLoggedIn) {
+      navigation.navigate('RouteLoginScreen' as never);
+      return;
+    }
     likePost(
       {targetId: post.id},
       {
