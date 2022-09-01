@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren, useEffect, useMemo, useState} from 'react';
+import React, {PropsWithChildren, useMemo, useState} from 'react';
 import {PressableProps} from 'react-native';
 import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
@@ -36,13 +36,6 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   );
   const [disabled, setDisabled] = useState(false);
 
-  useEffect(() => {
-    if (disabled) {
-      setTimeout(() => {
-        setDisabled(false);
-      }, 500);
-    }
-  }, [disabled]);
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
   const handlePressSubmit = () => {
     setDisabled(true);
@@ -72,6 +65,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
             },
+            onSettled: () => {
+              setDisabled(false);
+            },
           },
         );
         return;
@@ -92,6 +88,9 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
               dispatch(changeScreen(4));
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
+            },
+            onSettled: () => {
+              setDisabled(false);
             },
           },
         );
