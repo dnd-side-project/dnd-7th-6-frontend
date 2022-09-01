@@ -37,6 +37,8 @@ const AppInner = () => {
           return;
         }
         dispatch(loginAction(true));
+        SplashScreen.hide();
+
         const newAccessToken = await getAccessToken(token);
         dispatch(setAccessToken(newAccessToken));
       } catch (error) {
