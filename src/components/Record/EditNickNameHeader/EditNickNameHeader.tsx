@@ -12,6 +12,7 @@ import {
 
 import getUser from 'src/apis/getUser';
 import {PressableLeftArrowIcon} from 'src/components/utils/Pressables/PressableIcons';
+import useLogout from 'src/hooks/useLogout';
 import usePatchNickName from 'src/querys/usePatchNickName';
 import {changeUserInfo} from 'src/redux/actions/UserAction';
 
@@ -25,10 +26,14 @@ const EditNickNameHeader = ({children, onPressBack, isSuccess, name}: PropsWithC
   const {mutate} = usePatchNickName();
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const logout = useLogout();
   const onPressSuccess = () => {
     mutate(name, {
       onSuccess: async () => {
         const user = await getUser();
+        if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+          logout();
+        }
         dispatch(changeUserInfo(user));
         navigation.goBack();
       },
