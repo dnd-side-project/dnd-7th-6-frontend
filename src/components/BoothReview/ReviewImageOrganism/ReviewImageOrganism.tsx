@@ -57,13 +57,7 @@ const ReviewImageOrganism = () => {
   const reviewId = useSelector((state: RootState) => state.reviewReducer.reviewId);
   const inputPostReviewData = useSelector((state: RootState) => state.reviewReducer);
   const [disabled, setDisabled] = useState(false);
-  useEffect(() => {
-    if (disabled) {
-      setTimeout(() => {
-        setDisabled(false);
-      }, 1000);
-    }
-  }, [disabled]);
+
   const onChangeFile = useCallback(async () => {
     try {
       await requestcameraPermission();
@@ -103,6 +97,7 @@ const ReviewImageOrganism = () => {
       );
     };
     const images = await takeResizeImages(response);
+
     dispatch(
       changeDeleteImage(imageData.filter((image: any) => !!image.id).map((image: any) => image.id)),
     );
@@ -162,6 +157,9 @@ const ReviewImageOrganism = () => {
             queryClient.invalidateQueries(['reviews']);
             navigation.navigate('BoothReviewComplete' as never, {} as never);
           },
+          onSettled: () => {
+            setDisabled(false);
+          },
         },
       );
     } else {
@@ -182,6 +180,9 @@ const ReviewImageOrganism = () => {
             queryClient.invalidateQueries(['userList']);
             queryClient.invalidateQueries(['photo-booth', boothId]);
             navigation.navigate('BoothReviewComplete' as never, {} as never);
+          },
+          onSettled: () => {
+            setDisabled(false);
           },
         },
       );

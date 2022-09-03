@@ -45,6 +45,7 @@ const TextFieldOrganism = ({isFlex = true, ...props}: TextInputProps & {isFlex?:
         onFocus={e => handleFocusTextField(e)}
         onBlur={e => handleBlurTextField(e)}
         placeholder="내용을 입력해주세요."
+        multiline
       />
     </Container>
   );

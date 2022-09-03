@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {Platform} from 'react-native';
 import NaverMapView, {TrackingMode, type Coord} from 'react-native-nmap';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -50,9 +49,7 @@ const MapNaverMapOrganism = () => {
       }
       mapRef.current?.setLocationTrackingMode(TrackingMode.Follow);
       const {longitude, latitude} = await getGeolocation();
-      if (Platform.OS === 'android') {
-        mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});
-      }
+      mapRef.current?.animateToCoordinate({latitude: latitude, longitude: longitude});
       setRetchPos({latitude: latitude, longitude: longitude});
     };
     initMap();
@@ -62,9 +59,13 @@ const MapNaverMapOrganism = () => {
     if (refetchPos.latitude === 0 || refetchPos.longitude === 0) {
       return;
     }
-    setTimeout(() => {
+    if (screenCenterPos.latitude === 0 || screenCenterPos.longitude === 0) {
+      setTimeout(() => {
+        refetch();
+      }, 300);
+    } else {
       refetch();
-    }, 1);
+    }
   }, [refetchPos]);
 
   useEffect(() => {

@@ -6,14 +6,15 @@ import theme from 'src/styles/Theme';
 
 export const Container = styled.View({
   marginBottom: heightPercentage(52),
+  paddingHorizontal: heightPercentage(16),
 });
 
 export const TitleText = styled(SubHeadline1)({color: theme.colors.grayscale[9]});
 
 export const SubTitleText = styled(BodyText4)({color: theme.colors.grayscale[7]});
 
-export const TitleWrapper = styled.View({
-  marginLeft: widthPercentage(16),
+export const RowScrollView = styled.ScrollView({
+  paddingBottom: heightPercentage(24),
 });
 
 export const KeywordSearchList = styled.FlatList({
@@ -23,8 +24,7 @@ export const KeywordSearchList = styled.FlatList({
   marginTop: heightPercentage(16),
 });
 
-export const KeywordSearchView = styled.View(({index}: {index: number}) => ({
-  marginHorizontal: widthPercentage(4),
-  marginLeft: index === 0 || index === 10 ? widthPercentage(12) : 0,
+export const KeywordSearchView = styled.View({
+  marginRight: widthPercentage(8),
   marginBottom: heightPercentage(12),
-}));
+});

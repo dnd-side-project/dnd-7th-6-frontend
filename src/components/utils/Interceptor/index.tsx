@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {PropsWithChildren, useEffect} from 'react';
+import {Alert} from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -43,13 +44,17 @@ const Interceptor = ({children}: PropsWithChildren<{}>) => {
       async error => {
         const {
           config,
-          response: {status},
+          response: {status, data},
         } = error;
         if (status === 403) {
           const originalHeader = config;
           const refreshToken = await EncryptedStorage.getItem('refreshToken');
           if (!refreshToken) {
             return;
+          }
+          if (data.code === -100012) {
+            EncryptedStorage.removeItem('refreshToken');
+            Alert.alert('로그인이 만료되어 재로그인이 필요합니다.');
           }
           const newAccessToken = await getAccessToken(refreshToken);
           originalHeader.headers.Authorization = `Bearer ${newAccessToken}`;

@@ -3,7 +3,7 @@ import {login, getProfile, KakaoProfile} from '@react-native-seoul/kakao-login';
 interface LoginParam {
   email: string;
   providerId: string;
-  provider: 'KAKAO' | 'GOOGLE' | 'NAVER';
+  provider: 'KAKAO' | 'GOOGLE' | 'APPLE';
 }
 
 const kakaoLoginBridge = async (): Promise<LoginParam> => {

@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren, useEffect, useMemo, useState} from 'react';
+import React, {PropsWithChildren, useMemo, useState} from 'react';
 import {PressableProps} from 'react-native';
+import {useQueryClient} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 
 import PressableSubmit from '../Pressables/PressableSubmit';
@@ -19,6 +20,7 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   const {screenIndex, isModifyMode, isPostModifyMode} = useSelector(
     (state: RootState) => state.postWriteReducer,
   );
+  const queryClient = useQueryClient();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const inputPostData = useSelector((state: RootState) => state.postWriteReducer);
@@ -34,13 +36,6 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
   );
   const [disabled, setDisabled] = useState(false);
 
-  useEffect(() => {
-    if (disabled) {
-      setTimeout(() => {
-        setDisabled(false);
-      }, 500);
-    }
-  }, [disabled]);
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
   const handlePressSubmit = () => {
     setDisabled(true);
@@ -64,9 +59,14 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
+              queryClient.invalidateQueries(['userList']);
+              queryClient.invalidateQueries(['post']);
               dispatch(changeScreen(4));
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
+            },
+            onSettled: () => {
+              setDisabled(false);
             },
           },
         );
@@ -83,9 +83,14 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
           },
           {
             onSuccess: () => {
+              queryClient.invalidateQueries(['userList']);
+              queryClient.invalidateQueries(['post']);
               dispatch(changeScreen(4));
               navigation.navigate(screens[screenIndex + 1] as never);
               dispatch(clearPostWrite());
+            },
+            onSettled: () => {
+              setDisabled(false);
             },
           },
         );

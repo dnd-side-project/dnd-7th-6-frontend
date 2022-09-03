@@ -3,7 +3,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import Config from 'react-native-config';
+import {Config} from 'react-native-config';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import SplashScreen from 'react-native-splash-screen';
 import {useDispatch, useSelector} from 'react-redux';
@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import getAccessToken from 'src/apis/getAccessToken';
 import getUser from 'src/apis/getUser';
 import TabBar from 'src/components/utils/TabBar';
+import useLogout from 'src/hooks/useLogout';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {RootState} from 'src/redux/store';
 import RouteBoothScreen from 'src/screens/BoothScreen';
@@ -23,9 +24,8 @@ const Tab = createBottomTabNavigator();
 const AppInner = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const {accessToken: newToken, isSettingInterceptor} = useSelector(
-    (state: RootState) => state.userReducer,
-  );
+  const logout = useLogout();
+  const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -39,6 +39,8 @@ const AppInner = () => {
           return;
         }
         dispatch(loginAction(true));
+        SplashScreen.hide();
+
         const newAccessToken = await getAccessToken(token);
         dispatch(setAccessToken(newAccessToken));
       } catch (error) {
@@ -55,19 +57,23 @@ const AppInner = () => {
   }, []);
 
   useEffect(() => {
-    if (!newToken) {
-      return;
-    }
     if (!isSettingInterceptor) {
       return;
     }
     const getUserData = async () => {
-      const user = await getUser();
-      dispatch(changeUserInfo(user));
-      SplashScreen.hide();
+      try {
+        const user = await getUser();
+        if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+          logout();
+        }
+        dispatch(changeUserInfo(user));
+        SplashScreen.hide();
+      } catch (error) {
+        SplashScreen.hide();
+      }
     };
     getUserData();
-  }, [newToken, isSettingInterceptor]);
+  }, [isSettingInterceptor]);
 
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
