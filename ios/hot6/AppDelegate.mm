@@ -71,6 +71,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  if (@available(iOS 13.0, *)) {
+       rootView.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+   }
   [RNSplashScreen show];
   return YES;
 }
