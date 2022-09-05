@@ -1,4 +1,4 @@
-import {LOGIN, USER_INFO, SET_ACCESS_TOKEN, SET_INTERCEPTOR} from '../types/UserActionType';
+import {LOGIN, USER_INFO, SET_ACCESS_TOKEN} from '../types/UserActionType';
 
 import {User} from 'src/types';
 
@@ -15,8 +15,4 @@ export const changeUserInfo = (userInfo: User | {}) => ({
 export const setAccessToken = (accessToken: string) => ({
   type: SET_ACCESS_TOKEN,
   payload: {accessToken},
-});
-
-export const setInterceptor = () => ({
-  type: SET_INTERCEPTOR,
 });
