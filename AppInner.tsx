@@ -1,19 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
-import {Config} from 'react-native-config';
-import EncryptedStorage from 'react-native-encrypted-storage';
-import SplashScreen from 'react-native-splash-screen';
-import {useDispatch, useSelector} from 'react-redux';
 
-import getAccessToken from 'src/apis/getAccessToken';
-import getUser from 'src/apis/getUser';
 import TabBar from 'src/components/utils/TabBar';
-import useLogout from 'src/hooks/useLogout';
-import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
-import {RootState} from 'src/redux/store';
 import RouteBoothScreen from 'src/screens/BoothScreen';
 import RouteRecommendScreen from 'src/screens/RecommendScreen';
 import RouteRecordScreen from 'src/screens/RecordScreen';
@@ -22,32 +12,9 @@ import StorageScreen from 'src/screens/StorageScreen/StorageScreen';
 const Tab = createBottomTabNavigator();
 
 const AppInner = () => {
-  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const logout = useLogout();
-  const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
-    GoogleSignin.configure({
-      iosClientId: Config.IOS_GOOGLE_API_KEY,
-    });
-    const getToken = async () => {
-      try {
-        const token = await EncryptedStorage.getItem('refreshToken');
-        if (!token) {
-          SplashScreen.hide();
-          return;
-        }
-        dispatch(loginAction(true));
-        SplashScreen.hide();
-
-        const newAccessToken = await getAccessToken(token);
-        dispatch(setAccessToken(newAccessToken));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getToken();
     AsyncStorage.getItem('alreadyLaunched').then(value => {
       if (value == null) {
         AsyncStorage.setItem('alreadyLaunched', 'true');
@@ -55,25 +22,6 @@ const AppInner = () => {
       }
     });
   }, []);
-
-  useEffect(() => {
-    if (!isSettingInterceptor) {
-      return;
-    }
-    const getUserData = async () => {
-      try {
-        const user = await getUser();
-        if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
-          logout();
-        }
-        dispatch(changeUserInfo(user));
-        SplashScreen.hide();
-      } catch (error) {
-        SplashScreen.hide();
-      }
-    };
-    getUserData();
-  }, [isSettingInterceptor]);
 
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>

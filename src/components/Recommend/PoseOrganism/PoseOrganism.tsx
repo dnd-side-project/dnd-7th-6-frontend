@@ -20,8 +20,8 @@ import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 import {RootState} from 'src/redux/store';
 
 const PoseRecommendOrganism = () => {
+  const {accessToken} = useSelector((state: RootState) => state.userReducer);
   const {data, isLoading, refetch} = useGetInfinitePosts({order: 'popular', key: 'pose'});
-  const {isSettingInterceptor} = useSelector((state: RootState) => state.userReducer);
   const navigation = useNavigation();
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
@@ -29,7 +29,7 @@ const PoseRecommendOrganism = () => {
 
   useEffect(() => {
     refetch();
-  }, [isSettingInterceptor]);
+  }, [accessToken]);
 
   return (
     <OrganismView>
