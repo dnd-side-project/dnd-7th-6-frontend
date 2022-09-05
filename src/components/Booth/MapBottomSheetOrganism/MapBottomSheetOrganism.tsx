@@ -1,6 +1,6 @@
 import BottomSheet, {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 import {useHeaderHeight} from '@react-navigation/elements';
-import React, {useMemo, useRef} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {type Coord} from 'react-native-nmap';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
@@ -39,6 +39,25 @@ const MapBottomSheetOrganism = () => {
   const focusedBooth = useSelector((state: RootState) => state.mapReducer.focusBooth);
   const initCoord: Coord = {longitude: 0, latitude: 0};
   const {data} = useGetPhotoBoothLocation({coord: initCoord});
+  const [filteredBoothData, setFilteredBoothData] = useState<PhotoBoothContentData[]>();
+
+  useEffect(() => {
+    const filteringData = async () => {
+      if (!data?.data || !focusedBooth) {
+        return;
+      }
+      const changeData = await [
+        focusedBooth,
+        ...data?.data.content.filter((item: PhotoBoothContentData) => {
+          if (item !== focusedBooth) {
+            return item;
+          }
+        }),
+      ];
+      setFilteredBoothData(changeData);
+    };
+    filteringData();
+  }, [focusedBooth]);
 
   return (
     <BottomSheetConatiner>
@@ -51,14 +70,10 @@ const MapBottomSheetOrganism = () => {
         index={sheetIndex}>
         {data?.data.content.length > 0 ? (
           <BottomSheetFlatList
-            data={data?.data.content}
+            data={filteredBoothData}
             renderItem={({item, index}: {item: PhotoBoothContentData; index: number}) => {
               return index === 0 ? (
-                focusedBooth !== null ? (
-                  <BoothSummaryView {...focusedBooth} />
-                ) : (
-                  <BoothSummaryView {...item} />
-                )
+                focusedBooth && <BoothSummaryView {...focusedBooth} />
               ) : item.photoBooth.id !== focusedBooth?.photoBooth.id ? (
                 <BoothSummaryView {...item} />
               ) : (
