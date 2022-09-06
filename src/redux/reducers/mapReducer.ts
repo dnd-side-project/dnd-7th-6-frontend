@@ -43,9 +43,15 @@ const mapReducer: Reducer = (state = initialState, action) => {
         boothData: payload.booth,
       };
     case CHANGE_FILTER.BRANDS:
+      if (payload.target === parseInt(Object.keys(state.filteredBrand)[0], 10)) {
+        return {
+          ...state,
+          filteredBrand: initialState.filteredBrand,
+        };
+      }
       return {
         ...state,
-        filteredBrand: toggleTag({...initialState.filteredBrand}, payload.target),
+        filteredBrand: toggleTag(initialState.filteredBrand, payload.target),
       };
     case CHANGE_FILTER.TAG:
       return {...state, filteredTag: toggleTag(state.filteredTag, payload.target)};
