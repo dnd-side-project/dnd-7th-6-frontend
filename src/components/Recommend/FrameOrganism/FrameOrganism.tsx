@@ -25,6 +25,7 @@ const FrameRecommendOrganism = () => {
     tagIdSet: [41],
     order: 'popular',
     key: 'frame',
+    accessToken,
   });
   const navigation = useNavigation();
 

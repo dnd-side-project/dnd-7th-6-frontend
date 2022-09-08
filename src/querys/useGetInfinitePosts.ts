@@ -9,10 +9,14 @@ interface Parameter {
   pageSize?: number;
   key?: string;
   tagIdSet?: number[];
+  accessToken?: string;
   order: string;
 }
 
-const useGetInfinitePosts = ({tagIdSet = [], order, key}: Parameter, options?: any) => {
+const useGetInfinitePosts = (
+  {tagIdSet = [], order, key, accessToken}: Parameter,
+  options?: any,
+) => {
   return useInfiniteQuery<
     ServerResponse<Post>,
     AxiosError,
@@ -21,7 +25,12 @@ const useGetInfinitePosts = ({tagIdSet = [], order, key}: Parameter, options?: a
   >(
     ['post', order, key, tagIdSet],
     ({pageParam = 0, queryKey}) => {
-      return getPostsByTag({page: pageParam, tagIdSet: queryKey[3], order: queryKey[1]});
+      return getPostsByTag({
+        page: pageParam,
+        tagIdSet: queryKey[3],
+        order: queryKey[1],
+        accessToken,
+      });
     },
     {
       getNextPageParam: lastPage => {
