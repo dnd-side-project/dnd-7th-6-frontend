@@ -3,6 +3,7 @@ import React, {PropsWithChildren, useEffect} from 'react';
 import {Config} from 'react-native-config';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import SplashScreen from 'react-native-splash-screen';
+import {useQueryClient} from 'react-query';
 import {useDispatch} from 'react-redux';
 
 import getAccessToken from 'src/apis/getAccessToken';
@@ -13,7 +14,10 @@ import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/Use
 const UserProvider = ({children}: PropsWithChildren<{}>) => {
   const dispatch = useDispatch();
   const logout = useLogout();
-
+  const queryClient = useQueryClient();
+  const delay = (time: number) => {
+    return new Promise<void>(resolve => setTimeout(resolve, time));
+  };
   useEffect(() => {
     GoogleSignin.configure({
       iosClientId: Config.IOS_GOOGLE_API_KEY,
@@ -26,12 +30,14 @@ const UserProvider = ({children}: PropsWithChildren<{}>) => {
           return;
         }
         dispatch(loginAction(true));
-        SplashScreen.hide();
-
         const newAccessToken = await getAccessToken(token);
         dispatch(setAccessToken(newAccessToken));
+        await delay(100);
+        queryClient.invalidateQueries();
+        SplashScreen.hide();
       } catch (error) {
         console.log(error);
+        SplashScreen.hide();
       }
     };
     getToken();
