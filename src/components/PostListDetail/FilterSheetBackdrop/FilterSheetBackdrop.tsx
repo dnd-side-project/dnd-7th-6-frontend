@@ -43,6 +43,12 @@ const FilterSheetBackdrop = ({title}: {title?: string}) => {
     return () => BackHandler.removeEventListener('hardwareBackPress', clear);
   }, []);
 
+  useEffect(() => {
+    navigation.addListener('beforeRemove', () => {
+      dispatch(clearFilter());
+    });
+  });
+
   return (
     <SafeAreaView>
       {title ? (
