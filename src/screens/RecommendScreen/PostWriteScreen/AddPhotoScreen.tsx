@@ -1,7 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useEffect, useRef, useState} from 'react';
 import {
-  BackHandler,
   Dimensions,
   NativeSyntheticEvent,
   SafeAreaView,
@@ -57,11 +56,12 @@ const PostWriteMainScreen = ({navigation}: AddPhotoScreenProps) => {
   };
 
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+    const open = (e: any) => {
+      e.preventDefault();
       openAlert();
-      return true;
-    });
-    return () => backHandler.remove();
+    };
+    navigation.addListener('beforeRemove', open);
+    return navigation.removeListener('beforeRemove', open);
   });
   useFocus(() => {
     dispatch(changeScreen(0));

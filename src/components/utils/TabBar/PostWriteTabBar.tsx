@@ -38,8 +38,8 @@ const PostWriteTabBar = ({...props}: PropsWithChildren<PressableProps>) => {
 
   const screens = ['PostWriteMain', 'SelectTag', 'CustomTag', 'Summary', 'ExitPostWrite'];
   const handlePressSubmit = () => {
-    setDisabled(true);
     if (screenIndex === 3) {
+      setDisabled(true);
       if (isPostModifyMode) {
         const {id, ...image} = inputPostData.image;
         modifyPost(
