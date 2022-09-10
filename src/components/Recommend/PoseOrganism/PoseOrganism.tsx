@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 
 import PreviewFourCard from '../PreviewSixCard';
 import {
@@ -16,13 +17,23 @@ import {
 } from './PoseOrganism.styles';
 
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
+import {RootState} from 'src/redux/store';
 
 const PoseRecommendOrganism = () => {
-  const {data, isLoading} = useGetInfinitePosts({order: 'popular', key: 'pose'});
+  const {accessToken} = useSelector((state: RootState) => state.userReducer);
+  const {data, isLoading, refetch} = useGetInfinitePosts({
+    order: 'popular',
+    key: 'pose',
+    accessToken,
+  });
   const navigation = useNavigation();
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };
+
+  useEffect(() => {
+    refetch();
+  }, [accessToken]);
 
   return (
     <OrganismView>

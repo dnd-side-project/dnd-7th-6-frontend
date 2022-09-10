@@ -7,6 +7,7 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider} from 'react-redux';
 
 import AppInner from 'AppInner';
+import UserProvider from 'src/components/UserProvider';
 import {Interceptor} from 'src/components/utils/Interceptor';
 import store from 'src/redux/store';
 import RouteLoginScreen from 'src/screens/LoginScreen';
@@ -28,15 +29,17 @@ const App = () => {
     <QueryClientProvider client={new QueryClient()}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <Interceptor>
-            <NavigationContainer theme={GlobalStyle}>
-              <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="AppInner">
-                <Stack.Screen name="AppInner" component={AppInner} />
-                <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
-                <Stack.Screen name="InitPermissionScreen" component={PermissionScreen} />
-              </Stack.Navigator>
-            </NavigationContainer>
-          </Interceptor>
+          <UserProvider>
+            <Interceptor>
+              <NavigationContainer theme={GlobalStyle}>
+                <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="AppInner">
+                  <Stack.Screen name="AppInner" component={AppInner} />
+                  <Stack.Screen name="RouteLoginScreen" component={RouteLoginScreen} />
+                  <Stack.Screen name="InitPermissionScreen" component={PermissionScreen} />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </Interceptor>
+          </UserProvider>
         </Provider>
       </ThemeProvider>
     </QueryClientProvider>

@@ -22,7 +22,6 @@ DerivedData
 *.xcuserstate
 ios/.xcode.env.local
 ios/hot6/info.plist
-ios/hot6.xcodeproj/project.pbxproj
 
 # Android/IntelliJ
 #
