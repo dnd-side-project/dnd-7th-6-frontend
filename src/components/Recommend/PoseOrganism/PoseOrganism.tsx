@@ -32,7 +32,9 @@ const PoseRecommendOrganism = () => {
   };
 
   useEffect(() => {
-    refetch();
+    setImmediate(() => {
+      refetch();
+    });
   }, [accessToken]);
 
   return (

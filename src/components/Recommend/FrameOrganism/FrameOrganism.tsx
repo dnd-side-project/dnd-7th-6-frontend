@@ -34,7 +34,9 @@ const FrameRecommendOrganism = () => {
   };
 
   useEffect(() => {
-    refetch();
+    setImmediate(() => {
+      refetch();
+    });
   }, [accessToken]);
 
   return (
