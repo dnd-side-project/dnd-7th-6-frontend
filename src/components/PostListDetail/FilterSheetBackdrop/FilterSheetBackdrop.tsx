@@ -44,9 +44,11 @@ const FilterSheetBackdrop = ({title}: {title?: string}) => {
   }, []);
 
   useEffect(() => {
-    navigation.addListener('beforeRemove', () => {
+    const clearReduxFilter = () => {
       dispatch(clearFilter());
-    });
+    };
+    navigation.addListener('beforeRemove', clearReduxFilter);
+    return navigation.removeListener('beforeRemove', clearReduxFilter);
   });
 
   return (
