@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {ButtonText, TextnIconWrapper} from '../PoseOrganism/PoseOrganism.styles';
 import RecommendPreviewFourCard from '../PreviewSixCard';
@@ -16,28 +16,19 @@ import {
 
 import useGetInfinitePosts from 'src/querys/useGetInfinitePosts';
 import {changeFilteredFrame} from 'src/redux/actions/PostAction';
-import {RootState} from 'src/redux/store';
 
 const FrameRecommendOrganism = () => {
   const dispatch = useDispatch();
-  const {accessToken} = useSelector((state: RootState) => state.userReducer);
-  const {data, isLoading, refetch} = useGetInfinitePosts({
+  const {data, isLoading} = useGetInfinitePosts({
     tagIdSet: [41],
     order: 'popular',
     key: 'frame',
-    accessToken,
   });
   const navigation = useNavigation();
 
   const handlePressCard = (id: number) => () => {
     navigation.navigate('RecommendDetail' as never, {postId: id} as never);
   };
-
-  useEffect(() => {
-    setImmediate(() => {
-      refetch();
-    });
-  }, [accessToken]);
 
   return (
     <OrganismView>
