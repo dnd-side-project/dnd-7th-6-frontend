@@ -302,6 +302,7 @@ dependencies {
 
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-splash-screen')
+    implementation project(':RNMail')
 
     implementation 'com.naver.maps:map-sdk:3.15.0'
 
@@ -323,6 +324,7 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
+
 
     if (enableHermes) {
         //noinspection GradleDynamicVersion

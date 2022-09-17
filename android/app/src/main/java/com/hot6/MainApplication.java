@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.microsoft.codepush.react.CodePush;
+import com.chirag.RNMail.*;
 
 
 public class MainApplication extends Application implements ReactApplication {
