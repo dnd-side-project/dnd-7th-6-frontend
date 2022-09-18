@@ -103,6 +103,13 @@
 			remoteGlobalIDString = 010529B54CB3EF6A20305B86A37D41BB;
 			remoteInfo = "react-native-encrypted-storage";
 		};
+		060A0E6228D7408A00AB06AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 060A0E5E28D7408A00AB06AE /* RNMail.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 46FEDE7F1AFF192F00D3261C;
+			remoteInfo = RNMail;
+		};
 		062EA275288ED9D00043B3EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -453,6 +460,13 @@
 			remoteGlobalIDString = 5B3357A1CE67C0BF4AE31936A1BE6888;
 			remoteInfo = YogaKit;
 		};
+		063FD60D28D735AE009CB15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9BE13B790F10E261BD167C44D1060C68;
+			remoteInfo = "react-native-mail";
+		};
 		064CF23B28AAB1F400B7648E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
@@ -655,6 +669,7 @@
 		00E356EE1AD99517003FC87E /* hot6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hot6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* hot6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hot6Tests.m; sourceTree = "<group>"; };
+		060A0E5E28D7408A00AB06AE /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = "<group>"; };
 		062EA309289427290043B3EC /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		0630524D287C4EB900DDFD03 /* hot6-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hot6-Bridging-Header.h"; sourceTree = "<group>"; };
 		0630524E287C4EB900DDFD03 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -713,6 +728,14 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		060A0E5F28D7408A00AB06AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				060A0E6328D7408A00AB06AE /* libRNMail.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		06305251287C4EC600DDFD03 /* Products */ = {
@@ -774,6 +797,7 @@
 				0602CD3128A8F1B600684958 /* react-native-encrypted-storage */,
 				063052BF287C4EC600DDFD03 /* react-native-geolocation-service */,
 				062EA27C288ED9D00043B3EC /* react-native-image-resizer */,
+				063FD60E28D735AE009CB15B /* react-native-mail */,
 				063052C1287C4EC600DDFD03 /* react-native-nmap */,
 				063052C3287C4EC600DDFD03 /* react-native-safe-area-context */,
 				068EC0CD28B2EE3C004D239F /* react-native-splash-screen */,
@@ -840,6 +864,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				060A0E5E28D7408A00AB06AE /* RNMail.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -962,6 +987,10 @@
 					ProductGroup = 06305251287C4EC600DDFD03 /* Products */;
 					ProjectRef = 06305250287C4EC600DDFD03 /* Pods.xcodeproj */;
 				},
+				{
+					ProductGroup = 060A0E5F28D7408A00AB06AE /* Products */;
+					ProjectRef = 060A0E5E28D7408A00AB06AE /* RNMail.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1058,6 +1087,13 @@
 			name = "react-native-encrypted-storage";
 			path = "libreact-native-encrypted-storage.a";
 			remoteRef = 0602CD3028A8F1B600684958 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		060A0E6328D7408A00AB06AE /* libRNMail.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNMail.a;
+			remoteRef = 060A0E6228D7408A00AB06AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		062EA276288ED9D00043B3EC /* libwebp */ = {
@@ -1458,6 +1494,14 @@
 			name = YogaKit;
 			path = libYogaKit.a;
 			remoteRef = 063052DE287C4EC600DDFD03 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		063FD60E28D735AE009CB15B /* react-native-mail */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "react-native-mail";
+			path = "libreact-native-mail.a";
+			remoteRef = 063FD60D28D735AE009CB15B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		064CF23C28AAB1F400B7648E /* react-native-webview */ = {
@@ -2013,7 +2057,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = hot6/hot6.entitlements;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = B7925JYQ6U;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = hot6/Info.plist;
@@ -2066,7 +2110,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = hot6/hot6.entitlements;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = B7925JYQ6U;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -2096,7 +2140,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = hot6/hot6.entitlements;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = B7925JYQ6U;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = hot6/Info.plist;
