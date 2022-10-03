@@ -71,7 +71,8 @@ const SettingOrganism = () => {
             </LogOutPressable>
           </ListContainer>
         )}
-        <ListContainer onPress={() => navigation.navigate('PersonalProcess' as never)}>
+        {/* <ListContainer onPress={() => navigation.navigate('PersonalProcess' as never)}> */}
+        <ListContainer onPress={() => navigation.navigate('InitTermsScreen' as never)}>
           <ListTitle>개인정보처리방침</ListTitle>
         </ListContainer>
 

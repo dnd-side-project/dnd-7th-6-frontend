@@ -7,9 +7,11 @@ import postWriteReducer from './reducers/postWriteReducer';
 import recommendReducer from './reducers/recommendReducer';
 import reviewReducer from './reducers/reviewReducer';
 import tabBarReducer from './reducers/tabBarReducer';
+import termsReducer from './reducers/termsReducer';
 import userReducer from './reducers/userReducer';
 
 const rootReducer: Reducer = combineReducers({
+  termsReducer,
   mapReducer,
   tabBarReducer,
   postReducer,

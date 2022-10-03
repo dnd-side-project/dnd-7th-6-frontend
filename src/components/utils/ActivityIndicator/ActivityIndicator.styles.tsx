@@ -18,5 +18,5 @@ export const BackdropView = styled.View({
   height: '100%',
   flex: 1,
   opacity: 0.8,
-  backgroundColor: theme.colors.grayscale[3],
+  backgroundColor: theme.colors.grayscale[0],
 });
