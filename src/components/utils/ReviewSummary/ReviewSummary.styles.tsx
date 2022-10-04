@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import {StyleSheet} from 'react-native';
 
-import {BodyText4, BodyText6} from '../Text';
+import {BodyText4, BodyText5, BodyText6} from '../Text';
 
 import {heightPercentage, widthPercentage} from 'src/styles/ScreenResponse';
 import theme from 'src/styles/Theme';
@@ -26,6 +26,13 @@ export const RowView = styled.View({
 
 export const UserName = styled(BodyText4)({
   color: theme.colors.grayscale[7],
+});
+
+export const ReportButton = styled(BodyText5)({
+  color: theme.colors.grayscale[5],
+  textDecorationLine: 'underline',
+  position: 'absolute',
+  right: 0,
 });
 
 export const CreatedAt = styled(BodyText6)({

@@ -12,6 +12,7 @@ import {
   CreatedAt,
   DropdownWrapper,
   ImageContainer,
+  ReportButton,
   RowView,
   style,
   TagContainer,
@@ -22,6 +23,7 @@ import {
 } from './ReviewSummary.styles';
 
 import {Review} from 'src/types';
+import report from 'src/utils/report';
 import toDateFormat from 'src/utils/toDateFormat';
 
 interface MenuItem {
@@ -42,10 +44,17 @@ const ReviewSummary = ({menuItems, ...props}: Props) => {
   const isExistImage = props.reviewImageSet.length <= 0;
   const isExistTag = props.reviewTagSet.length <= 0;
 
+  const handleReport = () => {
+    report({type: 'review', targetId: props.id});
+  };
+
   return (
     <TouchableWithoutFeedback onPress={() => setIsOpenDropdown(false)}>
       <Container isLast={props.isLast}>
-        <UserName>@{props.user.name}</UserName>
+        <RowView>
+          <UserName>@{props.user.name}</UserName>
+          <ReportButton onPress={handleReport}>신고</ReportButton>
+        </RowView>
         <RowView>
           <StarBox score={props.starScore} />
           <CreatedAt>{toDateFormat(new Date(props.createdAt))}</CreatedAt>

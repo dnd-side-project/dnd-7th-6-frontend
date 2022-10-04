@@ -11,6 +11,7 @@ import useDeletePost from 'src/querys/useDeletePost';
 import useGetPost from 'src/querys/useGetPost';
 import {startModifyPost} from 'src/redux/actions/PostWriteAction';
 import {RootState} from 'src/redux/store';
+import report from 'src/utils/report';
 
 interface Props {
   navigation: NativeStackNavigationProp<RecommendParamList, 'RecommendDetail', undefined>;
@@ -58,10 +59,14 @@ const RecommendDetailScreenHeader = ({navigation, postId, isRecord, isStorage}: 
       },
     });
   };
-  const menuItem = [
+  const handleReport = () => {
+    report({type: 'post', targetId: postId});
+  };
+  const myMenuItem = [
     {name: '수정', onPressItem: handleModifyPost},
     {name: '삭제', onPressItem: handleDeletePost},
   ];
+  const diffUserMenuItem = [{name: '게시물 신고', onPressItem: handleReport}];
 
   useEffect(() => {
     const handler = () => {
@@ -75,7 +80,7 @@ const RecommendDetailScreenHeader = ({navigation, postId, isRecord, isStorage}: 
   return (
     <LeftBackHeader
       onPressBack={goBack}
-      menuItems={data?.user.id === userInfo.id ? menuItem : undefined}
+      menuItems={data?.user.id === userInfo.id ? myMenuItem : diffUserMenuItem}
     />
   );
 };
