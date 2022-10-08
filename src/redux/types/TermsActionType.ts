@@ -1,0 +1,3 @@
+export const SERVICE_TERMS = 'SERVICE_TERMS';
+export const PRIVACY_TERMS = 'PRIVACY_TERMS';
+export const LOCATION_TERMS = 'LOCATION_TERMS';
