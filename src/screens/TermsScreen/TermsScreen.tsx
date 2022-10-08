@@ -7,6 +7,11 @@ import ServiceTermsOrganism from 'src/components/Terms/ServiceTermsOrganism';
 import TermsOrganism from 'src/components/Terms/TermsOrganism';
 
 const Stack = createNativeStackNavigator();
+
+export type TermsParamList = {
+  TermsScreen: {email: string};
+};
+
 const TermsScreen = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="TermsScreen">
