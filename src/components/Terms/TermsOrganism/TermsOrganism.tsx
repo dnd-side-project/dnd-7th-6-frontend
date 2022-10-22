@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -22,6 +22,7 @@ import {
   TitleBold,
 } from './TermsOrganism.styles';
 
+import putAgreeTerm from 'src/apis/putAgreeTerm';
 import requestcameraPermission from 'src/hooks/requestcameraPermission';
 import requestLocationPermission from 'src/hooks/requestLocationPermission';
 import {
@@ -30,15 +31,18 @@ import {
   changeServiceTerms,
 } from 'src/redux/actions/TermsAction';
 import {RootState} from 'src/redux/store';
+import {TermsParamList} from 'src/screens/TermsScreen/TermsScreen';
 
-const TermsOrganism = () => {
-  const navigation = useNavigation();
+export type TermsScreenProps = NativeStackScreenProps<TermsParamList, 'TermsScreen'>;
+
+const TermsOrganism = ({navigation, route}: TermsScreenProps) => {
   const dispatch = useDispatch();
   const {serviceTerms, privacyTerms, locationTerms} = useSelector(
     (state: RootState) => state.termsReducer,
   );
 
   const nextHandler = () => {
+    putAgreeTerm(route.params.email);
     requestcameraPermission().then(() =>
       requestLocationPermission().then(() => navigation.navigate('AppInner' as never)),
     );

@@ -24,6 +24,7 @@ import login from 'src/apis/login';
 import useLogout from 'src/hooks/useLogout';
 import {changeUserInfo, loginAction, setAccessToken} from 'src/redux/actions/UserAction';
 import {heightPercentage} from 'src/styles/ScreenResponse';
+import {User} from 'src/types';
 import valueOfPlatform from 'src/utils/valueOfPlatform';
 
 const LoginOrganism = () => {
@@ -32,16 +33,24 @@ const LoginOrganism = () => {
   const dispatch = useDispatch();
 
   const handleLogin = (bridge: any) => async () => {
-    const token = await login(bridge);
-    EncryptedStorage.setItem('refreshToken', token.refreshToken);
-    dispatch(setAccessToken(token.token));
-    const user = await getUser(token.token);
-    if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
-      logout();
+    let user: User;
+    try {
+      const token = await login(bridge);
+      EncryptedStorage.setItem('refreshToken', token.refreshToken);
+      dispatch(setAccessToken(token.token));
+      user = await getUser(token.token);
+      if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+        logout();
+      }
+      dispatch(changeUserInfo(user));
+      dispatch(loginAction(true));
+      navigation.goBack();
+    } catch (err: any) {
+      //@ts-ignore
+      if (error.response.data.code === -100015) {
+        navigation.navigate('InitTermsScreen' as never, {email: err.email} as never);
+      }
     }
-    dispatch(changeUserInfo(user));
-    dispatch(loginAction(true));
-    navigation.goBack();
   };
 
   return (
