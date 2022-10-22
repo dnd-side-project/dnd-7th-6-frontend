@@ -1,6 +1,8 @@
 import {Alert} from 'react-native';
 import Mailer from 'react-native-mail';
 
+import mutatePostReport from 'src/apis/mutatePostReport';
+
 interface Parameter {
   type: 'post' | 'review';
   targetId: number;
@@ -27,7 +29,15 @@ const report = ({type, targetId}: Parameter) => {
       body: description,
     },
     (error, event) => {
-      Alert.alert(error, event, [], {cancelable: true});
+      if (error) {
+        return Alert.alert(error, event, [], {cancelable: true});
+      }
+      if (type === 'post') {
+        return mutatePostReport(targetId);
+      }
+      if (type === 'review') {
+        return;
+      }
     },
   );
 };
