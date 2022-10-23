@@ -32,22 +32,26 @@ const LoginOrganism = () => {
   const logout = useLogout();
   const dispatch = useDispatch();
 
-  const handleLogin = (bridge: any) => async () => {
+  const handleLogined = async (token: any) => {
     let user: User;
+    EncryptedStorage.setItem('refreshToken', token.refreshToken);
+    dispatch(setAccessToken(token.token));
+    user = await getUser(token.token);
+    if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
+      logout();
+    }
+    dispatch(changeUserInfo(user));
+    dispatch(loginAction(true));
+    navigation.goBack();
+  };
+  const handleLogin = (bridge: any) => async () => {
+    let token: any;
     try {
-      const token = await login(bridge);
-      EncryptedStorage.setItem('refreshToken', token.refreshToken);
-      dispatch(setAccessToken(token.token));
-      user = await getUser(token.token);
-      if (!['KAKAO', 'APPLE', 'GOOGLE'].includes(user.provider)) {
-        logout();
-      }
-      dispatch(changeUserInfo(user));
-      dispatch(loginAction(true));
-      navigation.goBack();
+      token = await login(bridge);
+      handleLogined(token);
     } catch (err: any) {
       //@ts-ignore
-      if (error.response.data.code === -100015) {
+      if (err.response.data.code === -100015) {
         navigation.navigate('InitTermsScreen' as never, {email: err.email} as never);
       }
     }
