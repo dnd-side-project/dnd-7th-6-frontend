@@ -22,7 +22,6 @@ const login = async (loginBridge: () => Promise<LoginParam>) => {
       Alert.alert(err.message);
     }
     if (err.response.data.code === -100015) {
-      Alert.alert(err.message);
       err.email = email;
       throw err;
     }
